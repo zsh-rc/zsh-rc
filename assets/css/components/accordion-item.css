@@ -1,0 +1,96 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-accordion-item),
+.ds-accordion-item {
+  --base-padding: 16px;
+  --icon-right-margin: 8px;
+  --header-min-height: 56px;
+  --font-size: 16px;
+  --line-height: 24px;
+  --font-weight: 600;
+  --base-border: 1px solid var(--ds-color-border-neutral);
+  --actions-max-width: 15%;
+  --arrow-width: 16px;
+  --label-actions-break: 8px;
+  --small-padding: 12px var(--base-padding);
+  --small-header-min-height: 48px;
+  --small-font-size: 12px;
+  --small-text-transform: uppercase;
+  --small-line-height: 16px;
+  --small-font-weight: 600;
+  --ds-accordion-item-transition-timing-function: var(--ds-motion-timing-entrance);
+  --ds-accordion-item-transition-duration: var(--ds-motion-duration-quick);
+  --ds-accordion-item-transition-timing-function-entrance: var(--ds-motion-timing-standard);
+  --ds-accordion-item-transition-duration-entrance: var(--ds-motion-duration-standard);
+  --ds-accordion-item-transition-timing-function-exit: var(--ds-motion-timing-standard);
+  --ds-accordion-item-transition-duration-exit: var(--ds-motion-duration-standard);
+  border-top: var(--base-border);
+  display: block;
+}
+:host(ds-accordion-item):first-of-type,
+.ds-accordion-item:first-of-type {
+  border-top: none;
+}
+:host(ds-accordion-item).ds-no-motion,
+.ds-accordion-item.ds-no-motion {
+  --ds-accordion-item-transition-duration: 0s;
+}
+
+.ds-accordion-item__wrapper {
+  position: relative;
+  --ds-box-content-padding: 0px;
+  --ds-box-base-background-color: transparent;
+}
+.ds-accordion-item__wrapper .ds-accordion-item__header {
+  cursor: pointer;
+  user-select: none;
+}
+.ds-accordion-item__wrapper .ds-accordion-item__header:focus-visible {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: -2px;
+}
+.ds-accordion-item__wrapper .ds-accordion-item__header:focus:not(:focus-visible) {
+  outline: none;
+}
+.ds-accordion-item__wrapper .ds-accordion-item__header:hover {
+  background-color: var(--ds-color-surface-neutral);
+}
+.ds-accordion-item__wrapper .ds-accordion-item__header--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.ds-accordion-item__wrapper .ds-accordion-item__header--disabled:hover {
+  background-color: inherit;
+}
+.ds-accordion-item__wrapper .ds-accordion-item__header ::ng-deep > .ds-box-header__item > .ds-box-header__header-wrapper > .ds-box-header__arrow {
+  margin-right: var(--icon-right-margin);
+  transform: rotate(-90deg);
+  transition: transform var(--ds-accordion-item-transition-duration) var(--ds-accordion-item-transition-timing-function);
+}
+.ds-accordion-item__wrapper .ds-accordion-item__header.ds-accordion-item__header--opened ::ng-deep {
+  color: var(--ds-box-header-active-color);
+}
+.ds-accordion-item__wrapper .ds-accordion-item__header.ds-accordion-item__header--opened ::ng-deep > .ds-box-header__item > .ds-box-header__header-wrapper > ds-icon {
+  --ds-box-header-icon-color: var(--ds-box-header-active-color);
+}
+.ds-accordion-item__wrapper .ds-accordion-item__header.ds-accordion-item__header--opened ::ng-deep > .ds-box-header__item > .ds-box-header__header-wrapper > ds-icon.ds-box-header__arrow {
+  transform: rotate(0deg);
+}
+.ds-accordion-item__wrapper .ds-accordion-item__header.ds-accordion-item__header--opened ::ng-deep .ds-box-header__header-wrapper {
+  color: var(--ds-box-header-active-color);
+}
+.ds-accordion-item__wrapper .ds-accordion-item__header.ds-accordion-item__header--opened ::ng-deep .ds-panel__header-wrapper {
+  color: var(--ds-box-header-active-color);
+}
+.ds-accordion-item__content--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.ds-accordion-item__content--closed {
+  display: none;
+}

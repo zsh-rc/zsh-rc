@@ -1,0 +1,177 @@
+@use '../../density-styles-sass' as *;
+@use '../../utilities/sass_utilities' as *;
+@use '../../utilities/typography-utilities' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}navigation-bar),
+.#{$prefix}navigation-bar {
+  // TODO: tokens:
+  --#{$prefix}navigation-bar-max-width: 240px;
+  --#{$prefix}navigation-bar-button-width: 40px;
+  --#{$prefix}navigation-bar-item-height: 40px;
+  --#{$prefix}navigation-bar-vertical-padding: var(--#{$prefix}space-2x) 0;
+
+  --#{$prefix}navigation-bar-drawer-transition-duration-entrance: var(--#{$prefix}motion-duration-standard);
+  --#{$prefix}navigation-bar-drawer-transition-duration-exit: var(--#{$prefix}motion-duration-quick);
+  --#{$prefix}navigation-bar-toggle-transition-duration: var(--#{$prefix}motion-duration-3);
+
+  &.#{$prefix}no-motion {
+    --#{$prefix}navigation-bar-drawer-transition-duration-entrance: 0s;
+    --#{$prefix}navigation-bar-drawer-transition-duration-exit: 0s;
+    --#{$prefix}navigation-bar-toggle-transition-duration: 0s;
+  }
+
+  &.#{$prefix}navigation-bar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    background-color: var(--#{$prefix}color-surface-base);
+    width: var(--#{$prefix}navigation-bar-max-width);
+    max-width: var(--#{$prefix}navigation-bar-button-width);
+    padding: var(--#{$prefix}navigation-bar-vertical-padding);
+
+    &.#{$prefix}navigation-bar--overflowing {
+      max-width: calc(var(--#{$prefix}space-10x) + var(--#{$prefix}space-3x));
+      .#{$prefix}navigation-bar__items {
+        overflow-x: hidden;
+
+        .#{$prefix}navigation-bar-item,
+        // Need for nav bar items passed via content projection
+        ::ng-deep .#{$prefix}navigation-bar-item {
+          min-width: var(--#{$prefix}space-10x);
+          max-width: var(--#{$prefix}space-10x);
+        }
+      }
+
+      .#{$prefix}navigation-bar__actions {
+        max-width: var(--#{$prefix}space-10x);
+      }
+    }
+
+    &--expanded {
+      max-width: var(--#{$prefix}navigation-bar-max-width);
+      padding: var(--#{$prefix}space-inline-start-nav-item);
+
+      &--animate {
+        transition: max-width var(--#{$prefix}navigation-bar-drawer-transition-duration-entrance)
+          var(--#{$prefix}motion-timing-standard);
+      }
+    }
+
+    &--resizable.#{$prefix}navigation-bar--expanded {
+      resize: horizontal;
+      overflow: auto;
+      min-width: calc(var(--#{$prefix}navigation-bar-button-width) * 2);
+      max-width: none;
+
+      & .#{$prefix}navigation-bar__vertical-divider {
+        right: 0;
+      }
+    }
+
+    &--animate {
+      transition: max-width var(--#{$prefix}navigation-bar-drawer-transition-duration-exit)
+        var(--#{$prefix}motion-timing-standard);
+    }
+
+    &--mobile {
+      height: initial;
+      padding: 0;
+      max-width: var(--#{$prefix}navigation-bar-max-width);
+    }
+
+    &--hidden-by-header {
+      display: none;
+    }
+  }
+}
+
+.#{$prefix}navigation-bar__items {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  flex: 1;
+
+  .#{$prefix}navigation-bar-item__label--group {
+    overflow-wrap: break-word;
+  }
+
+  &--mobile {
+    background-color: var(--#{$prefix}color-surface-base);
+    padding: 0 var(--#{$prefix}space-indent-nav-item);
+    overflow: initial;
+
+    ::ng-deep #{$prefix}navigation-bar-item {
+      --#{$prefix}navigation-bar-item-max-height: 48px;
+
+      .#{$prefix}navigation-bar-item__label:not(.#{$prefix}navigation-bar-item__label--group) {
+        @extend .text-regular;
+      }
+    }
+  }
+}
+
+.#{$prefix}navigation-bar__actions {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: var(--#{$prefix}navigation-bar-item-height);
+  padding-top: var(--#{$prefix}space-inline-start-nav-item);
+
+  &--mobile {
+    padding: 0 var(--#{$prefix}space-indent-nav-item);
+  }
+
+  &--expanded {
+    display: block;
+  }
+
+  &__divider {
+    height: 1px;
+    margin: var(--#{$prefix}space-inline-start-nav-item) 0;
+  }
+
+  &__expand-toggle {
+    position: relative;
+    width: var(--#{$prefix}navigation-bar-button-width);
+    height: 32px;
+    z-index: calc(z-index(content) + 1);
+    align-items: center;
+
+    &:focus-visible:not([disabled]) {
+      --#{$prefix}space-inline-end-list-item: 10px;
+      max-width: calc(var(--#{$prefix}navigation-bar-button-width) - var(--#{$prefix}space-05x) * 2);
+    }
+
+    ::ng-deep .#{$prefix}icon {
+      --#{$prefix}space-inline-couple-list-item: 0;
+
+      width: 100%;
+      transition: transform var(--#{$prefix}navigation-bar-toggle-transition-duration) var(--#{$prefix}motion-timing-2);
+      transform: rotate(-180deg);
+    }
+
+    &--expanded {
+      position: absolute;
+      right: 0;
+      bottom: calc(var(--#{$prefix}space-inline-start-nav-item) / 2);
+
+      ::ng-deep .#{$prefix}icon {
+        transform: rotate(0deg);
+      }
+    }
+  }
+}
+
+.#{$prefix}navigation-bar__vertical-divider {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  right: -1px;
+  background-color: var(--#{$prefix}color-surface-nav-divider);
+}

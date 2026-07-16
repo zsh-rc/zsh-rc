@@ -1,0 +1,35 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}calendar),
+.#{$prefix}calendar {
+  color: var(--#{$prefix}color-text-calendar);
+  display: inline-block;
+  user-select: none;
+  position: relative;
+  min-width: var(--#{$prefix}shape-size-xmin-datemenu);
+
+  &.#{$prefix}calendar--lg {
+    min-width: var(--#{$prefix}shape-size-xmin-datemenu-large);
+  }
+
+  .#{$prefix}calendar__wrapper {
+    min-width: var(--#{$prefix}shape-size-xmin-calendar);
+    min-height: var(--#{$prefix}shape-size-ymin-calendar);
+
+    &--lg {
+      min-width: var(--#{$prefix}shape-size-xmin-calendar-large);
+      min-height: var(--#{$prefix}shape-size-ymin-calendar-large);
+    }
+  }
+
+  .#{$prefix}calendar__menu-actions-wrapper {
+    padding: var(--#{$prefix}space-1x) var(--#{$prefix}space-2x);
+  }
+
+  &.#{$prefix}calendar--expand-width {
+    width: 100%;
+  }
+}

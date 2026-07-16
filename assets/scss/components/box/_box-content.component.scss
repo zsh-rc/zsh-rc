@@ -1,0 +1,307 @@
+@use '../../density-styles-sass' as *;
+@use '../box/box.utilities' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}box-content),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}box-content {
+  display: flex;
+  position: relative;
+
+  --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-default);
+
+  $inset-spacing-small: 8px;
+  $inset-spacing-medium: var(--#{$prefix}space-inset-box-content);
+  $inset-spacing-large: 32px;
+
+  &.#{$prefix}box-content {
+    // divider variant
+    &--divider {
+      &-full {
+        &::before {
+          @extend .#{$prefix}box-content-divider-basics;
+          width: 100%;
+        }
+      }
+      &-lg {
+        &::before {
+          content: ' ';
+          @extend .#{$prefix}box-content-divider-basics;
+          width: calc(100% - var(--#{$prefix}space-8x) * 2);
+        }
+      }
+      &-md {
+        &::before {
+          content: ' ';
+          @extend .#{$prefix}box-content-divider-basics;
+          width: calc(100% - $inset-spacing-medium * 2);
+        }
+      }
+      &-sm {
+        &::before {
+          content: ' ';
+          @extend .#{$prefix}box-content-divider-basics;
+          width: calc(100% - var(--#{$prefix}space-2x) * 2);
+        }
+      }
+    }
+
+    // spacing variant
+    &--spacing {
+      &-regular {
+        padding: $inset-spacing-medium;
+      }
+      &-lg {
+        padding: $inset-spacing-large;
+      }
+      &-md {
+        padding: $inset-spacing-medium;
+      }
+      &-sm {
+        padding: $inset-spacing-small;
+      }
+
+      &-none {
+        padding: 0;
+      }
+
+      &-top {
+        &-sm {
+          padding-top: $inset-spacing-small;
+        }
+
+        &-md {
+          padding-top: $inset-spacing-medium;
+        }
+
+        &-lg {
+          padding-top: $inset-spacing-large;
+        }
+
+        &-none {
+          padding-top: 0;
+        }
+      }
+
+      &-bottom {
+        &-sm {
+          padding-bottom: $inset-spacing-small;
+        }
+
+        &-md {
+          padding-bottom: $inset-spacing-medium;
+        }
+
+        &-lg {
+          padding-bottom: $inset-spacing-large;
+        }
+
+        &-none {
+          padding-bottom: 0;
+        }
+      }
+
+      &-left {
+        &-sm {
+          padding-left: $inset-spacing-small;
+        }
+
+        &-md {
+          padding-left: $inset-spacing-medium;
+        }
+
+        &-lg {
+          padding-left: $inset-spacing-large;
+        }
+
+        &-none {
+          padding-left: 0;
+        }
+      }
+
+      &-right {
+        &-sm {
+          padding-right: $inset-spacing-small;
+        }
+
+        &-md {
+          padding-right: $inset-spacing-medium;
+        }
+
+        &-lg {
+          padding-right: $inset-spacing-large;
+        }
+
+        &-none {
+          padding-right: 0;
+        }
+      }
+    }
+
+    // surface color variant
+    &--surface {
+      &-default {
+        // background-color: var(--#{$prefix}color-surface-box-default);
+        background-color: transparent;
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-default);
+        // color: var(--#{$prefix}color-elements-box-default);
+      }
+      &-invert {
+        background-color: var(--#{$prefix}color-surface-box-invert);
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-invert);
+        // color: var(--#{$prefix}color-elements-box-invert);
+      }
+      &-primary {
+        background-color: var(--#{$prefix}color-surface-box-primary);
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-primary);
+        // color: var(--#{$prefix}color-elements-box-primary);
+      }
+      &-info {
+        background-color: var(--#{$prefix}color-surface-box-info);
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-info);
+        // color: var(--#{$prefix}color-elements-box-info);
+      }
+      &-positive {
+        background-color: var(--#{$prefix}color-surface-box-positive);
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-positive);
+        // color: var(--#{$prefix}color-elements-box-positive);
+      }
+      &-caution {
+        background-color: var(--#{$prefix}color-surface-box-caution);
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-caution);
+        // color: var(--#{$prefix}color-elements-box-caution);
+      }
+      &-critical {
+        background-color: var(--#{$prefix}color-surface-box-critical);
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-critical);
+        // color: var(--#{$prefix}color-elements-box-critical);
+      }
+      &-neutral {
+        background-color: var(--#{$prefix}color-surface-box-neutral);
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-neutral);
+        // color: var(--#{$prefix}color-elements-box-critical);
+      }
+      &-custom {
+        background-color: var(--#{$prefix}color-surface-box-custom);
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-custom);
+      }
+    }
+
+    // surface color variant
+    &--accent-bar {
+      &-default {
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-default);
+      }
+      &-invert {
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-invert);
+      }
+      &-primary {
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-primary);
+      }
+      &-info {
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-info);
+      }
+      &-positive {
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-positive);
+      }
+      &-caution {
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-caution);
+      }
+      &-critical {
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-critical);
+      }
+      &-neutral {
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-neutral);
+      }
+      &-ghost {
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-ghost);
+      }
+      &-custom {
+        --#{$prefix}box-content-accent-bar-color: var(--#{$prefix}color-elements-box-custom);
+      }
+    }
+
+    // accent bar
+    &--with-accent-bar {
+      &::after {
+        content: ' ';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: var(--#{$prefix}shape-size-x-box-content-accent-bar);
+        height: 100%;
+        background-color: var(--#{$prefix}box-content-accent-bar-color);
+      }
+    }
+
+    &--clickable {
+      &:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--#{$prefix}color-outline-tag);
+      }
+
+      &:not(.#{$prefix}box-content--clickable--without-border) {
+        &:not(.#{$prefix}box-content--clickable--supressed-hover) {
+          &:focus-visible {
+            outline: none;
+            box-shadow: inset 0 0 0 2px var(--#{$prefix}color-outline-tag);
+          }
+
+          cursor: pointer;
+
+          &.#{$prefix}box-content--clickable--no-color {
+            &.#{$prefix}box-content--surface {
+              &-default,
+              &-ghost,
+              &-neutral {
+                &:hover,
+                &:focus-visible {
+                  & .#{$prefix}box-content__interaction-layer {
+                    @extend .#{$prefix}interaction-layer-hover;
+                  }
+                }
+              }
+            }
+          }
+
+          &:not(.#{$prefix}box-content--clickable--no-color) {
+            &:hover,
+            &:focus-visible {
+              @extend .#{$prefix}interaction-surface-blend;
+
+              & .#{$prefix}box-content__interaction-layer {
+                @extend .#{$prefix}interaction-layer-hover;
+
+                background-color: var(--#{$prefix}color-surface-transparent) !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// children
+.#{$prefix}box-content__selectable-wrapper {
+  padding-right: 8px;
+}
+
+.#{$prefix}box-content__content-wrapper {
+  width: 100%;
+}
+
+.#{$prefix}box-content__content-title {
+  padding-bottom: var(--#{$prefix}space-2x);
+}
+
+.#{$prefix}box-content-divider-basics {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--#{$prefix}color-surface-box-content-divider);
+  height: var(--#{$prefix}shape-size-y-box-content-divider);
+}

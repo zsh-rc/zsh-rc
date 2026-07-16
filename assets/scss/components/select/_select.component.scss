@@ -1,0 +1,197 @@
+@use '../../density-styles-sass' as *;
+@use '../../mixins/placeholder' as *;
+@use '../../elements/input/input' as input;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}select),
+
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}select {
+  display: block;
+  width: 100%;
+
+  .#{$prefix}select-wrapper {
+    position: relative;
+    display: flex;
+    min-height: var(--#{$prefix}shape-size-y-input);
+
+    // Helper variable used to store the action button size based on select size to calculate the right side spacing.
+    --action-button-size: var(--#{$prefix}shape-size-ymin-button-sm);
+
+    // Helper variable used to store the right side spacing when select has only the open button.
+    --right-side-padding: calc(
+      var(--#{$prefix}space-inline-couple-input) + var(--action-button-size) + var(--#{$prefix}space-1x)
+    );
+    // Helper variable used to store the right side spacing when select has clear all and open buttons.
+    --right-side-with-clear-all-padding: calc(
+      var(--#{$prefix}space-inline-couple-input) + var(--action-button-size) + var(--action-button-size) +
+        var(--#{$prefix}space-1x)
+    );
+
+    .#{$prefix}select__hidden-input {
+      display: none;
+    }
+
+    &--has-clear-all-button .#{$prefix}select__fake-input {
+      padding-right: calc(var(--right-side-with-clear-all-padding) - 1px);
+    }
+
+    &--has-clear-all-button .#{$prefix}select__tags-wrapper {
+      padding-right: var(--right-side-with-clear-all-padding);
+
+      &--scroll {
+        padding-right: 0px;
+        margin-right: var(--right-side-with-clear-all-padding);
+      }
+    }
+
+    &--readonly button.#{$prefix}select__fake-input {
+      cursor: default;
+      border-color: var(--#{$prefix}color-border-input-readonly);
+      background-color: var(--#{$prefix}color-surface-input-readonly);
+      color: var(--#{$prefix}color-text-input-readonly);
+    }
+  }
+
+  .#{$prefix}select__fake-input {
+    @include input.input-base-styles;
+    @include input.input-placeholder-styles;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    height: 100%;
+    background-color: var(--#{$prefix}color-surface-input-alt);
+
+    padding: var(--#{$prefix}space-1x) 0px;
+    padding-left: calc(var(--#{$prefix}space-inline-start-input) - 1px);
+    padding-right: calc(var(--right-side-padding) - 1px);
+
+    &__label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &__placeholder {
+      color: var(--#{$prefix}color-text-input-placeholder);
+      font-size: var(--#{$prefix}font-size-input-placeholder);
+      font-style: var(--#{$prefix}font-style-input-placeholder);
+    }
+
+    &:focus {
+      outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+      outline-offset: var(--#{$prefix}size-outline-offset);
+    }
+  }
+
+  &.#{$prefix}select--invalid .#{$prefix}select__fake-input {
+    border-color: var(--#{$prefix}color-border-input-error);
+    background-color: var(--#{$prefix}color-surface-input-error);
+    color: var(--#{$prefix}color-text-input-error);
+
+    &:hover {
+      background-color: var(--#{$prefix}color-surface-input-error);
+      border-color: var(--#{$prefix}color-border-input-error);
+    }
+
+    &:focus {
+      background-color: var(--#{$prefix}color-surface-input-error);
+      outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+      outline-offset: var(--#{$prefix}size-outline-offset);
+    }
+
+    &:disabled {
+      background-color: var(--#{$prefix}color-surface-input-disabled);
+      border-color: var(--#{$prefix}color-border-input-disabled);
+    }
+  }
+
+  .#{$prefix}select__tags-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: var(--#{$prefix}space-1x) 0px;
+    padding-left: var(--#{$prefix}space-inline-start-input);
+    padding-right: var(--right-side-padding);
+    pointer-events: none;
+
+    &--scroll {
+      overflow: hidden;
+      flex-wrap: nowrap;
+      padding-left: 0px;
+      padding-right: 0px;
+      margin-left: var(--#{$prefix}space-inline-start-input);
+      margin-right: var(--right-side-padding);
+    }
+
+    &--with-clear-all {
+      padding-right: var(--right-side-with-clear-all-padding);
+
+      &.#{$prefix}select__tags-wrapper--scroll {
+        padding-right: 0px;
+        margin-right: var(--right-side-with-clear-all-padding);
+      }
+    }
+
+    .#{$prefix}select__tag {
+      display: inline-flex;
+      max-width: 100%;
+      margin-top: var(--#{$prefix}space-05x);
+      margin-right: var(--#{$prefix}space-inline-couple-input);
+      margin-bottom: var(--#{$prefix}space-05x);
+
+      &:last-of-type {
+        margin-right: 0px;
+      }
+
+      &--more {
+        flex-shrink: 0;
+        margin-left: var(--#{$prefix}space-inline-couple-input);
+      }
+    }
+  }
+
+  &.#{$prefix}select--lg {
+    .#{$prefix}select-wrapper {
+      --action-button-size: var(--#{$prefix}shape-size-ymin-button);
+      min-height: var(--#{$prefix}shape-size-y-input-large);
+
+      .#{$prefix}select__tags-wrapper {
+        padding-top: calc(var(--#{$prefix}space-2x) - var(--#{$prefix}space-05x));
+        padding-bottom: calc(var(--#{$prefix}space-2x) - var(--#{$prefix}space-05x));
+      }
+    }
+
+    .#{$prefix}select__fake-input {
+      font-size: var(--#{$prefix}font-size-input-label-large);
+
+      &__placeholder {
+        font-size: var(--#{$prefix}font-size-input-placeholder-large);
+        font-style: var(--#{$prefix}font-style-input-placeholder);
+      }
+    }
+    .#{$prefix}select__clear-all-button {
+      right: calc(var(--#{$prefix}shape-size-ymin-button) + var(--#{$prefix}space-1x));
+    }
+  }
+
+  .#{$prefix}select__clear-all-button {
+    position: absolute;
+    top: var(--#{$prefix}space-1x);
+    right: calc(var(--#{$prefix}space-1x) + var(--#{$prefix}icon-size-small) + var(--#{$prefix}space-inline-end-input));
+  }
+
+  .#{$prefix}select__arrow-button {
+    position: absolute;
+    top: var(--#{$prefix}space-1x);
+    right: calc(var(--#{$prefix}space-inline-end-input));
+    margin-right: calc(-1 * var(--#{$prefix}space-1x));
+  }
+}

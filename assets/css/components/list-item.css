@@ -1,0 +1,428 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/*
+ *  For focus states we use 'box-shadow' as it respects border-radius unlike 'outline'
+ */
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]),
+.ds-list-item {
+  display: flex;
+  align-items: flex-start;
+  min-height: var(--ds-shape-size-ymin-list-item);
+  --vertical-padding: calc(
+    (var(--ds-shape-size-ymin-list-item) - var(--ds-font-line-height-list-item)) / 2
+  );
+  padding: var(--vertical-padding) var(--ds-space-inline-end-list-item) var(--vertical-padding) var(--ds-space-inline-start-list-item);
+  outline: none;
+  position: relative;
+  cursor: default;
+  user-select: none;
+  border-radius: var(--ds-shape-radius-list-item);
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  z-index: var(--ds-z-index-content-base);
+  /*
+   *  By default set "primary" style.
+   */
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--primary,
+.ds-list-item,
+.ds-list-item.ds-list-item--primary {
+  background-color: var(--ds-color-surface-list-item);
+  border-color: var(--ds-color-border-list-item);
+  color: var(--ds-color-text-list-item);
+}
+@media (hover: hover) {
+  :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable:hover:not([disabled]):not(.ds-list-item--readonly), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable:hover:not([disabled]):not(.ds-list-item--readonly), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--primary.ds-list-item--hoverable:hover:not([disabled]):not(.ds-list-item--readonly), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--primary.ds-list-item--selectable:hover:not([disabled]):not(.ds-list-item--readonly),
+  .ds-list-item.ds-list-item--hoverable:hover:not([disabled]):not(.ds-list-item--readonly),
+  .ds-list-item.ds-list-item--selectable:hover:not([disabled]):not(.ds-list-item--readonly),
+  .ds-list-item.ds-list-item--primary.ds-list-item--hoverable:hover:not([disabled]):not(.ds-list-item--readonly),
+  .ds-list-item.ds-list-item--primary.ds-list-item--selectable:hover:not([disabled]):not(.ds-list-item--readonly) {
+    z-index: var(--ds-z-index-content-base);
+  }
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable:target:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable:target:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--primary.ds-list-item--hoverable:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--primary.ds-list-item--hoverable:target:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--primary.ds-list-item--selectable:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--primary.ds-list-item--selectable:target:not([disabled]),
+.ds-list-item.ds-list-item--hoverable:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--hoverable:target:not([disabled]),
+.ds-list-item.ds-list-item--selectable:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--selectable:target:not([disabled]),
+.ds-list-item.ds-list-item--primary.ds-list-item--hoverable:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--primary.ds-list-item--hoverable:target:not([disabled]),
+.ds-list-item.ds-list-item--primary.ds-list-item--selectable:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--primary.ds-list-item--selectable:target:not([disabled]) {
+  z-index: calc(var(--ds-z-index-content-base) + 1);
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable.ds-navigation-bar-item__label:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable.ds-navigation-bar-item__label:target:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable.ds-navigation-bar-item__label:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable.ds-navigation-bar-item__label:target:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--primary.ds-list-item--hoverable.ds-navigation-bar-item__label:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--primary.ds-list-item--hoverable.ds-navigation-bar-item__label:target:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--primary.ds-list-item--selectable.ds-navigation-bar-item__label:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--primary.ds-list-item--selectable.ds-navigation-bar-item__label:target:not([disabled]),
+.ds-list-item.ds-list-item--hoverable.ds-navigation-bar-item__label:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--hoverable.ds-navigation-bar-item__label:target:not([disabled]),
+.ds-list-item.ds-list-item--selectable.ds-navigation-bar-item__label:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--selectable.ds-navigation-bar-item__label:target:not([disabled]),
+.ds-list-item.ds-list-item--primary.ds-list-item--hoverable.ds-navigation-bar-item__label:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--primary.ds-list-item--hoverable.ds-navigation-bar-item__label:target:not([disabled]),
+.ds-list-item.ds-list-item--primary.ds-list-item--selectable.ds-navigation-bar-item__label:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--primary.ds-list-item--selectable.ds-navigation-bar-item__label:target:not([disabled]) {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: -2px;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable:focus:not(:focus-visible), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable:focus:not(:focus-visible), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--primary.ds-list-item--hoverable:focus:not(:focus-visible), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--primary.ds-list-item--selectable:focus:not(:focus-visible),
+.ds-list-item.ds-list-item--hoverable:focus:not(:focus-visible),
+.ds-list-item.ds-list-item--selectable:focus:not(:focus-visible),
+.ds-list-item.ds-list-item--primary.ds-list-item--hoverable:focus:not(:focus-visible),
+.ds-list-item.ds-list-item--primary.ds-list-item--selectable:focus:not(:focus-visible) {
+  outline: none;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item])[disabled], :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--primary[disabled],
+.ds-list-item[disabled],
+.ds-list-item.ds-list-item--primary[disabled] {
+  background-color: var(--ds-color-surface-list-item-disabled);
+  color: var(--ds-color-text-list-item-disabled);
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item])[disabled] ds-icon, :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--primary[disabled] ds-icon,
+.ds-list-item[disabled] ds-icon,
+.ds-list-item.ds-list-item--primary[disabled] ds-icon {
+  color: inherit;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]),
+.ds-list-item {
+  /*
+   *  By default set "primary" style.
+   */
+}
+@media (hover: hover) {
+  :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable.ds-list-item--hoverable:hover:not([disabled]):not(.ds-list-item--readonly), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable.ds-list-item--selectable:hover:not([disabled]):not(.ds-list-item--readonly),
+  .ds-list-item.ds-list-item--hoverable.ds-list-item--hoverable:hover:not([disabled]):not(.ds-list-item--readonly),
+  .ds-list-item.ds-list-item--hoverable.ds-list-item--selectable:hover:not([disabled]):not(.ds-list-item--readonly) {
+    cursor: pointer;
+    background-color: var(--ds-color-surface-list-item-hover);
+    z-index: var(--ds-z-index-content-base);
+  }
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable.ds-list-item--hoverable:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable.ds-list-item--hoverable:target:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable.ds-list-item--selectable:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable.ds-list-item--selectable:target:not([disabled]),
+.ds-list-item.ds-list-item--hoverable.ds-list-item--hoverable:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--hoverable.ds-list-item--hoverable:target:not([disabled]),
+.ds-list-item.ds-list-item--hoverable.ds-list-item--selectable:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--hoverable.ds-list-item--selectable:target:not([disabled]) {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: -2px;
+  z-index: calc(var(--ds-z-index-content-base) + 1);
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable.ds-list-item--hoverable.ds-navigation-bar-item__label:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable.ds-list-item--hoverable.ds-navigation-bar-item__label:target:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable.ds-list-item--selectable.ds-navigation-bar-item__label:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable.ds-list-item--selectable.ds-navigation-bar-item__label:target:not([disabled]),
+.ds-list-item.ds-list-item--hoverable.ds-list-item--hoverable.ds-navigation-bar-item__label:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--hoverable.ds-list-item--hoverable.ds-navigation-bar-item__label:target:not([disabled]),
+.ds-list-item.ds-list-item--hoverable.ds-list-item--selectable.ds-navigation-bar-item__label:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--hoverable.ds-list-item--selectable.ds-navigation-bar-item__label:target:not([disabled]) {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: -2px;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable.ds-list-item--hoverable:focus:not(:focus-visible), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable.ds-list-item--selectable:focus:not(:focus-visible),
+.ds-list-item.ds-list-item--hoverable.ds-list-item--hoverable:focus:not(:focus-visible),
+.ds-list-item.ds-list-item--hoverable.ds-list-item--selectable:focus:not(:focus-visible) {
+  outline: none;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable[disabled],
+.ds-list-item.ds-list-item--hoverable[disabled] {
+  cursor: not-allowed;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable[disabled] ds-icon,
+.ds-list-item.ds-list-item--hoverable[disabled] ds-icon {
+  color: inherit;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--hoverable.ds-list-item--hoverable-active,
+.ds-list-item.ds-list-item--hoverable.ds-list-item--hoverable-active {
+  cursor: pointer;
+  background-color: var(--ds-color-surface-list-item-hover);
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]),
+.ds-list-item {
+  /*
+   *  By default set "primary" style.
+   */
+}
+@media (hover: hover) {
+  :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable.ds-list-item--hoverable:hover:not([disabled]):not(.ds-list-item--readonly), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable.ds-list-item--selectable:hover:not([disabled]):not(.ds-list-item--readonly),
+  .ds-list-item.ds-list-item--selectable.ds-list-item--hoverable:hover:not([disabled]):not(.ds-list-item--readonly),
+  .ds-list-item.ds-list-item--selectable.ds-list-item--selectable:hover:not([disabled]):not(.ds-list-item--readonly) {
+    cursor: pointer;
+    background-color: var(--ds-color-surface-list-item-hover);
+    z-index: var(--ds-z-index-content-base);
+  }
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable.ds-list-item--hoverable:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable.ds-list-item--hoverable:target:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable.ds-list-item--selectable:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable.ds-list-item--selectable:target:not([disabled]),
+.ds-list-item.ds-list-item--selectable.ds-list-item--hoverable:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--selectable.ds-list-item--hoverable:target:not([disabled]),
+.ds-list-item.ds-list-item--selectable.ds-list-item--selectable:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--selectable.ds-list-item--selectable:target:not([disabled]) {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: -2px;
+  z-index: calc(var(--ds-z-index-content-base) + 1);
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable.ds-list-item--hoverable.ds-navigation-bar-item__label:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable.ds-list-item--hoverable.ds-navigation-bar-item__label:target:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable.ds-list-item--selectable.ds-navigation-bar-item__label:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable.ds-list-item--selectable.ds-navigation-bar-item__label:target:not([disabled]),
+.ds-list-item.ds-list-item--selectable.ds-list-item--hoverable.ds-navigation-bar-item__label:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--selectable.ds-list-item--hoverable.ds-navigation-bar-item__label:target:not([disabled]),
+.ds-list-item.ds-list-item--selectable.ds-list-item--selectable.ds-navigation-bar-item__label:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--selectable.ds-list-item--selectable.ds-navigation-bar-item__label:target:not([disabled]) {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: -2px;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable.ds-list-item--hoverable:focus:not(:focus-visible), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable.ds-list-item--selectable:focus:not(:focus-visible),
+.ds-list-item.ds-list-item--selectable.ds-list-item--hoverable:focus:not(:focus-visible),
+.ds-list-item.ds-list-item--selectable.ds-list-item--selectable:focus:not(:focus-visible) {
+  outline: none;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable[disabled],
+.ds-list-item.ds-list-item--selectable[disabled] {
+  cursor: not-allowed;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selectable[disabled] ds-icon,
+.ds-list-item.ds-list-item--selectable[disabled] ds-icon {
+  color: inherit;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]),
+.ds-list-item {
+  /*
+   *  By default set "primary" style.
+   */
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--parent,
+.ds-list-item.ds-list-item--parent {
+  --ds-color-surface-list-item-selected: var(--ds-color-surface-list-item);
+  --ds-color-surface-list-item-selected-hover: var(--ds-color-surface-neutral);
+}
+@media (hover: hover) {
+  :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--parent.ds-list-item--hoverable:hover:not([disabled]):not(.ds-list-item--readonly), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--parent.ds-list-item--selectable:hover:not([disabled]):not(.ds-list-item--readonly),
+  .ds-list-item.ds-list-item--parent.ds-list-item--hoverable:hover:not([disabled]):not(.ds-list-item--readonly),
+  .ds-list-item.ds-list-item--parent.ds-list-item--selectable:hover:not([disabled]):not(.ds-list-item--readonly) {
+    z-index: var(--ds-z-index-content-base);
+  }
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--parent.ds-list-item--hoverable:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--parent.ds-list-item--hoverable:target:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--parent.ds-list-item--selectable:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--parent.ds-list-item--selectable:target:not([disabled]),
+.ds-list-item.ds-list-item--parent.ds-list-item--hoverable:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--parent.ds-list-item--hoverable:target:not([disabled]),
+.ds-list-item.ds-list-item--parent.ds-list-item--selectable:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--parent.ds-list-item--selectable:target:not([disabled]) {
+  z-index: calc(var(--ds-z-index-content-base) + 1);
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--parent.ds-list-item--hoverable.ds-navigation-bar-item__label:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--parent.ds-list-item--hoverable.ds-navigation-bar-item__label:target:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--parent.ds-list-item--selectable.ds-navigation-bar-item__label:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--parent.ds-list-item--selectable.ds-navigation-bar-item__label:target:not([disabled]),
+.ds-list-item.ds-list-item--parent.ds-list-item--hoverable.ds-navigation-bar-item__label:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--parent.ds-list-item--hoverable.ds-navigation-bar-item__label:target:not([disabled]),
+.ds-list-item.ds-list-item--parent.ds-list-item--selectable.ds-navigation-bar-item__label:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--parent.ds-list-item--selectable.ds-navigation-bar-item__label:target:not([disabled]) {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: -2px;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--parent.ds-list-item--hoverable:focus:not(:focus-visible), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--parent.ds-list-item--selectable:focus:not(:focus-visible),
+.ds-list-item.ds-list-item--parent.ds-list-item--hoverable:focus:not(:focus-visible),
+.ds-list-item.ds-list-item--parent.ds-list-item--selectable:focus:not(:focus-visible) {
+  outline: none;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--parent[disabled] ds-icon,
+.ds-list-item.ds-list-item--parent[disabled] ds-icon {
+  color: inherit;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]),
+.ds-list-item {
+  /*
+   *  By default set "primary" style.
+   */
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected,
+.ds-list-item.ds-list-item--selected {
+  background-color: var(--ds-color-surface-list-item-selected);
+  color: var(--ds-color-text-list-item-active);
+}
+@media (hover: hover) {
+  :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected.ds-list-item--hoverable:hover:not([disabled]):not(.ds-list-item--readonly), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected.ds-list-item--selectable:hover:not([disabled]):not(.ds-list-item--readonly),
+  .ds-list-item.ds-list-item--selected.ds-list-item--hoverable:hover:not([disabled]):not(.ds-list-item--readonly),
+  .ds-list-item.ds-list-item--selected.ds-list-item--selectable:hover:not([disabled]):not(.ds-list-item--readonly) {
+    background-color: var(--ds-color-surface-list-item-selected-hover);
+    z-index: var(--ds-z-index-content-base);
+  }
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected.ds-list-item--hoverable:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected.ds-list-item--hoverable:target:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected.ds-list-item--selectable:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected.ds-list-item--selectable:target:not([disabled]),
+.ds-list-item.ds-list-item--selected.ds-list-item--hoverable:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--selected.ds-list-item--hoverable:target:not([disabled]),
+.ds-list-item.ds-list-item--selected.ds-list-item--selectable:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--selected.ds-list-item--selectable:target:not([disabled]) {
+  z-index: calc(var(--ds-z-index-content-base) + 1);
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected.ds-list-item--hoverable.ds-navigation-bar-item__label:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected.ds-list-item--hoverable.ds-navigation-bar-item__label:target:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected.ds-list-item--selectable.ds-navigation-bar-item__label:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected.ds-list-item--selectable.ds-navigation-bar-item__label:target:not([disabled]),
+.ds-list-item.ds-list-item--selected.ds-list-item--hoverable.ds-navigation-bar-item__label:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--selected.ds-list-item--hoverable.ds-navigation-bar-item__label:target:not([disabled]),
+.ds-list-item.ds-list-item--selected.ds-list-item--selectable.ds-navigation-bar-item__label:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--selected.ds-list-item--selectable.ds-navigation-bar-item__label:target:not([disabled]) {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: -2px;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected.ds-list-item--hoverable:focus:not(:focus-visible), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected.ds-list-item--selectable:focus:not(:focus-visible),
+.ds-list-item.ds-list-item--selected.ds-list-item--hoverable:focus:not(:focus-visible),
+.ds-list-item.ds-list-item--selected.ds-list-item--selectable:focus:not(:focus-visible) {
+  outline: none;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected[disabled],
+.ds-list-item.ds-list-item--selected[disabled] {
+  cursor: not-allowed;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected[disabled] ds-icon,
+.ds-list-item.ds-list-item--selected[disabled] ds-icon {
+  color: inherit;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected:not(.ds-list-item--parent):before, :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected.ds-list-item--supress-parent:before,
+.ds-list-item.ds-list-item--selected:not(.ds-list-item--parent):before,
+.ds-list-item.ds-list-item--selected.ds-list-item--supress-parent:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: var(--ds-color-surface-list-item-selected-bar);
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected.ds-list-item--parent,
+.ds-list-item.ds-list-item--selected.ds-list-item--parent {
+  --ds-color-text-list-item: var(--ds-color-typography-action-active);
+  --ds-color-icon-list-item: var(--ds-color-icon-list-item-active);
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]),
+.ds-list-item {
+  /*
+   *  By default set "primary" style.
+   */
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--lg,
+.ds-list-item.ds-list-item--lg {
+  min-height: var(--ds-shape-size-ymin-list-item-large);
+  --vertical-padding: calc((var(--ds-shape-size-ymin-list-item-large) - var(--ds-font-line-height-list-item-large)) / 2);
+}
+@media (hover: hover) {
+  :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--lg.ds-list-item--hoverable:hover:not([disabled]):not(.ds-list-item--readonly), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--lg.ds-list-item--selectable:hover:not([disabled]):not(.ds-list-item--readonly),
+  .ds-list-item.ds-list-item--lg.ds-list-item--hoverable:hover:not([disabled]):not(.ds-list-item--readonly),
+  .ds-list-item.ds-list-item--lg.ds-list-item--selectable:hover:not([disabled]):not(.ds-list-item--readonly) {
+    z-index: var(--ds-z-index-content-base);
+  }
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--lg.ds-list-item--hoverable:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--lg.ds-list-item--hoverable:target:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--lg.ds-list-item--selectable:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--lg.ds-list-item--selectable:target:not([disabled]),
+.ds-list-item.ds-list-item--lg.ds-list-item--hoverable:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--lg.ds-list-item--hoverable:target:not([disabled]),
+.ds-list-item.ds-list-item--lg.ds-list-item--selectable:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--lg.ds-list-item--selectable:target:not([disabled]) {
+  z-index: calc(var(--ds-z-index-content-base) + 1);
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--lg.ds-list-item--hoverable.ds-navigation-bar-item__label:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--lg.ds-list-item--hoverable.ds-navigation-bar-item__label:target:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--lg.ds-list-item--selectable.ds-navigation-bar-item__label:focus-visible:not([disabled]), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--lg.ds-list-item--selectable.ds-navigation-bar-item__label:target:not([disabled]),
+.ds-list-item.ds-list-item--lg.ds-list-item--hoverable.ds-navigation-bar-item__label:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--lg.ds-list-item--hoverable.ds-navigation-bar-item__label:target:not([disabled]),
+.ds-list-item.ds-list-item--lg.ds-list-item--selectable.ds-navigation-bar-item__label:focus-visible:not([disabled]),
+.ds-list-item.ds-list-item--lg.ds-list-item--selectable.ds-navigation-bar-item__label:target:not([disabled]) {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: -2px;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--lg.ds-list-item--hoverable:focus:not(:focus-visible), :host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--lg.ds-list-item--selectable:focus:not(:focus-visible),
+.ds-list-item.ds-list-item--lg.ds-list-item--hoverable:focus:not(:focus-visible),
+.ds-list-item.ds-list-item--lg.ds-list-item--selectable:focus:not(:focus-visible) {
+  outline: none;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--lg[disabled] ds-icon,
+.ds-list-item.ds-list-item--lg[disabled] ds-icon {
+  color: inherit;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]) .ds-list-item__template-parent,
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]) .ds-list-item__template-switch,
+.ds-list-item .ds-list-item__template-parent,
+.ds-list-item .ds-list-item__template-switch {
+  flex: 1 1 100%;
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  align-items: flex-start;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]) > ds-switch,
+.ds-list-item > ds-switch {
+  margin-left: var(--ds-space-inline-couple-list-item);
+  flex: 0 0 auto;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]) > .ds-checkbox,
+.ds-list-item > .ds-checkbox {
+  margin-right: var(--ds-space-inline-couple-list-item);
+  flex: 0 0 auto;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]) > .ds-checkbox.ds-list-item__checkbox--with-icon,
+.ds-list-item > .ds-checkbox.ds-list-item__checkbox--with-icon {
+  margin-right: var(--ds-space-inline-join-list-item);
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]) > .ds-list-item__checkbox-wrapper,
+.ds-list-item > .ds-list-item__checkbox-wrapper {
+  width: var(--ds-shape-size-y-checkbox);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: var(--ds-space-inline-couple-list-item);
+  margin-left: 1px;
+  flex: 0 0 auto;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]) .ds-list-item__content-wrapper,
+.ds-list-item .ds-list-item__content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]) .ds-list-item__content,
+.ds-list-item .ds-list-item__content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--truncate .ds-list-item__content,
+.ds-list-item.ds-list-item--truncate .ds-list-item__content {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item__label--group,
+.ds-list-item.ds-list-item__label--group {
+  cursor: inherit;
+  color: var(--ds-color-typography-neutral);
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-title-xs);
+  font-weight: var(--ds-typography-weight-title-xs);
+  line-height: var(--ds-typography-line-height-title-xs);
+  text-transform: var(--ds-typography-transform-uppercase);
+  padding-left: 0;
+  min-height: fit-content;
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]) ds-icon,
+.ds-list-item ds-icon {
+  flex: 0 0 auto;
+  color: var(--ds-color-icon-list-item);
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]).ds-list-item--selected ds-icon,
+.ds-list-item.ds-list-item--selected ds-icon {
+  color: var(--ds-color-icon-list-item-active);
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]) .icon-left,
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]) .ds-list-item__prefix,
+.ds-list-item .icon-left,
+.ds-list-item .ds-list-item__prefix {
+  margin-right: var(--ds-space-inline-couple-list-item);
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]) .icon-right,
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]) .ds-list-item__suffix,
+.ds-list-item .icon-right,
+.ds-list-item .ds-list-item__suffix {
+  margin-left: var(--ds-space-inline-couple-list-item);
+}
+:host(ds-list-item, [ds-list-item], ds-menu-item, [ds-menu-item]) .ds-list-item__tree-indicator,
+.ds-list-item .ds-list-item__tree-indicator {
+  width: var(--ds-space-6x);
+  margin-right: var(--ds-space-inline-node-list-item);
+}
+
+.ds-list-item__overlay--disabled {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}

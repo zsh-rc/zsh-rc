@@ -1,0 +1,247 @@
+@use '../../density-styles-sass' as *;
+/*
+ *  For focus states we use 'box-shadow' as it respects border-radius unlike 'outline'
+ */
+$button-states: (
+  'primary': (
+    'enabled': (
+      'background-color': var(--#{$prefix}color-surface-button-primary),
+      'border-color': var(--#{$prefix}color-border-button-primary),
+      'color': var(--#{$prefix}color-typography-button-primary),
+    ),
+    'hover': (
+      'background-color': var(--#{$prefix}color-surface-button-primary-hover),
+      'border-color': var(--#{$prefix}color-border-button-primary-hover),
+      'color': var(--#{$prefix}color-typography-button-primary),
+    ),
+    'focus': (
+      'background-color': var(--#{$prefix}color-surface-button-primary),
+      'border-color': var(--#{$prefix}color-border-button-primary),
+      'color': var(--#{$prefix}color-typography-button-primary),
+      'outline': var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action),
+      'outline-offset': var(--#{$prefix}size-outline-offset),
+    ),
+    'active': (
+      'background-color': var(--#{$prefix}color-surface-button-primary-active),
+      'border-color': var(--#{$prefix}color-border-button-primary-active),
+      'color': var(--#{$prefix}color-typography-button-primary),
+    ),
+    'disabled': (
+      'background-color': var(--#{$prefix}color-surface-button-primary-disabled),
+      'border-color': var(--#{$prefix}color-border-button-primary-disabled),
+      'color': var(--#{$prefix}color-typography-button-disabled),
+    ),
+  ),
+  'destructive': (
+    'enabled': (
+      'background-color': var(--#{$prefix}color-surface-button-primary-destructive),
+      'border-color': var(--#{$prefix}color-border-button-primary-destructive),
+      'color': var(--#{$prefix}color-typography-button-primary-destructive),
+    ),
+    'hover': (
+      'background-color': var(--#{$prefix}color-surface-button-primary-destructive-hover),
+      'border-color': var(--#{$prefix}color-border-button-primary-destructive-hover),
+      'color': var(--#{$prefix}color-typography-button-primary-destructive),
+    ),
+    'focus': (
+      'background-color': var(--#{$prefix}color-surface-button-primary-destructive),
+      'border-color': var(--#{$prefix}color-border-button-primary-destructive),
+      'color': var(--#{$prefix}color-typography-button-primary-destructive),
+      'outline': var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action),
+      'outline-offset': var(--#{$prefix}size-outline-offset),
+    ),
+    'active': (
+      'background-color': var(--#{$prefix}color-surface-button-primary-destructive-active),
+      'border-color': var(--#{$prefix}color-border-button-primary-destructive-active),
+      'color': var(--#{$prefix}color-typography-button-primary-destructive),
+    ),
+    'disabled': (
+      'background-color': var(--#{$prefix}color-surface-button-primary-disabled),
+      'border-color': var(--#{$prefix}color-border-button-primary-disabled),
+      'color': var(--#{$prefix}color-typography-button-disabled),
+    ),
+  ),
+  'outline': (
+    'enabled': (
+      'background-color': var(--#{$prefix}color-surface-button-outline),
+      'border-color': var(--#{$prefix}color-border-button-outline),
+      'color': var(--#{$prefix}color-typography-button-outline),
+    ),
+    'hover': (
+      'background-color': var(--#{$prefix}color-surface-button-outline-hover),
+      'border-color': var(--#{$prefix}color-border-button-outline-hover),
+      'color': var(--#{$prefix}color-typography-button-outline-hover),
+    ),
+    'focus': (
+      'background-color': var(--#{$prefix}color-surface-button-outline),
+      'border-color': var(--#{$prefix}color-border-button-outline),
+      'color': var(--#{$prefix}color-typography-button-outline),
+      'outline': var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action),
+      'outline-offset': var(--#{$prefix}size-outline-offset),
+    ),
+    'active': (
+      'background-color': var(--#{$prefix}color-surface-button-outline-active),
+      'border-color': var(--#{$prefix}color-border-button-outline-active),
+      'color': var(--#{$prefix}color-typography-button-outline-active),
+    ),
+    'disabled': (
+      'background-color': var(--#{$prefix}color-surface-button-outline-disabled),
+      'border-color': var(--#{$prefix}color-border-button-outline-disabled),
+      'color': var(--#{$prefix}color-typography-button-disabled),
+    ),
+  ),
+  'outline-destructive': (
+    'enabled': (
+      'background-color': var(--#{$prefix}color-surface-button-outline-destructive),
+      'border-color': var(--#{$prefix}color-border-button-outline-destructive),
+      'color': var(--#{$prefix}color-typography-button-outline-destructive),
+    ),
+    'hover': (
+      'background-color': var(--#{$prefix}color-surface-button-outline-destructive-hover),
+      'border-color': var(--#{$prefix}color-border-button-outline-destructive-hover),
+      'color': var(--#{$prefix}color-typography-button-outline-destructive-hover),
+    ),
+    'focus': (
+      'background-color': var(--#{$prefix}color-surface-button-outline-destructive),
+      'border-color': var(--#{$prefix}color-border-button-outline-destructive),
+      'color': var(--#{$prefix}color-typography-button-outline-destructive),
+      'outline': var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action),
+      'outline-offset': var(--#{$prefix}size-outline-offset),
+    ),
+    'active': (
+      'background-color': var(--#{$prefix}color-surface-button-outline-destructive-active),
+      'border-color': var(--#{$prefix}color-border-button-outline-destructive-active),
+      'color': var(--#{$prefix}color-typography-button-outline-destructive-active),
+    ),
+    'disabled': (
+      'background-color': var(--#{$prefix}color-surface-button-outline-disabled),
+      'border-color': var(--#{$prefix}color-border-button-outline-disabled),
+      'color': var(--#{$prefix}color-typography-button-disabled),
+    ),
+  ),
+  'ghost': (
+    'enabled': (
+      'background-color': var(--#{$prefix}color-surface-button-ghost),
+      'border-color': var(--#{$prefix}color-border-button-ghost),
+      'color': var(--#{$prefix}color-typography-button-ghost),
+      'padding': 0 var(--#{$prefix}space-inline-end-button-ghost) 0 var(--#{$prefix}space-inline-start-button-ghost),
+    ),
+    'hover': (
+      'background-color': var(--#{$prefix}color-surface-button-ghost-hover),
+      'border-color': var(--#{$prefix}color-border-button-ghost-hover),
+      'color': var(--#{$prefix}color-typography-button-ghost-hover),
+    ),
+    'focus': (
+      'background-color': var(--#{$prefix}color-surface-button-ghost),
+      'border-color': var(--#{$prefix}color-border-button-ghost),
+      'color': var(--#{$prefix}color-typography-button-ghost),
+      'outline': var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action),
+      'outline-offset': var(--#{$prefix}size-outline-offset),
+    ),
+    'active': (
+      'background-color': var(--#{$prefix}color-surface-button-ghost-active),
+      'border-color': var(--#{$prefix}color-border-button-ghost-active),
+      'color': var(--#{$prefix}color-typography-button-ghost-active),
+    ),
+    'disabled': (
+      'background-color': var(--#{$prefix}color-surface-button-ghost-disabled),
+      'border-color': var(--#{$prefix}color-border-button-ghost-disabled),
+      'color': var(--#{$prefix}color-typography-button-disabled),
+    ),
+  ),
+  'ghost-destructive': (
+    'enabled': (
+      'background-color': var(--#{$prefix}color-surface-button-ghost),
+      'border-color': var(--#{$prefix}color-border-button-ghost),
+      'color': var(--#{$prefix}color-typography-button-ghost-destructive),
+      'padding': 0 var(--#{$prefix}space-inline-end-button-ghost) 0 var(--#{$prefix}space-inline-start-button-ghost),
+    ),
+    'hover': (
+      'background-color': var(--#{$prefix}color-surface-button-ghost-destructive-hover),
+      'border-color': var(--#{$prefix}color-border-button-ghost-destructive-hover),
+      'color': var(--#{$prefix}color-typography-button-ghost-destructive-hover),
+    ),
+    'focus': (
+      'background-color': var(--#{$prefix}color-surface-button-ghost),
+      'border-color': var(--#{$prefix}color-border-button-ghost),
+      'color': var(--#{$prefix}color-typography-button-ghost-destructive),
+      'outline': var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action),
+      'outline-offset': var(--#{$prefix}size-outline-offset),
+    ),
+    'active': (
+      'background-color': var(--#{$prefix}color-surface-button-ghost-destructive-active),
+      'border-color': var(--#{$prefix}color-border-button-ghost-destructive-active),
+      'color': var(--#{$prefix}color-typography-button-ghost-destructive-active),
+    ),
+    'disabled': (
+      'background-color': var(--#{$prefix}color-surface-button-ghost-disabled),
+      'border-color': var(--#{$prefix}color-border-button-ghost-disabled),
+      'color': var(--#{$prefix}color-typography-button-disabled),
+    ),
+  ),
+  'ghost-muted': (
+    'enabled': (
+      'background-color': var(--#{$prefix}color-surface-button-ghost),
+      'border-color': var(--#{$prefix}color-border-button-ghost),
+      'color': var(--#{$prefix}color-typography-neutral),
+      'padding': 0 var(--#{$prefix}space-inline-end-button-ghost) 0 var(--#{$prefix}space-inline-start-button-ghost),
+    ),
+    'hover': (
+      'background-color': var(--#{$prefix}color-surface-button-ghost-muted-hover),
+      'border-color': var(--#{$prefix}color-border-button-ghost-hover),
+      'color': var(--#{$prefix}color-typography-button-ghost-muted-hover),
+    ),
+    'focus': (
+      'background-color': var(--#{$prefix}color-surface-button-ghost),
+      'border-color': var(--#{$prefix}color-border-button-ghost),
+      'color': var(--#{$prefix}color-typography-neutral),
+      'outline': var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action),
+      'outline-offset': var(--#{$prefix}size-outline-offset),
+    ),
+    'active': (
+      'background-color': var(--#{$prefix}color-surface-button-ghost-muted-active),
+      'border-color': var(--#{$prefix}color-border-button-ghost-active),
+      'color': var(--#{$prefix}color-typography-button-ghost-muted-active),
+    ),
+    'disabled': (
+      'background-color': var(--#{$prefix}color-surface-button-ghost-disabled),
+      'border-color': var(--#{$prefix}color-border-button-ghost-disabled),
+      'color': var(--#{$prefix}color-typography-button-disabled),
+    ),
+  ),
+  'toggle': (
+    'enabled': (
+      'background-color': var(--#{$prefix}color-surface-button-toggle),
+      'border-color': var(--#{$prefix}color-border-button-toggle),
+      'color': var(--#{$prefix}color-typography-button-toggle),
+    ),
+    'hover': (
+      'background-color': var(--#{$prefix}color-surface-button-toggle-hover),
+      'border-color': var(--#{$prefix}color-border-button-toggle-hover),
+      'color': var(--#{$prefix}color-typography-button-toggle-hover),
+    ),
+    'focus': (
+      'outline': var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action),
+      'outline-offset': var(--#{$prefix}size-outline-offset),
+    ),
+    'active': (
+      'background-color': var(--#{$prefix}color-surface-button-toggle-checked),
+      'border-color': var(--#{$prefix}color-border-button-toggle-checked),
+      'color': var(--#{$prefix}color-typography-button-toggle-checked),
+    ),
+    'disabled': (
+      'background-color': var(--#{$prefix}color-surface-button-toggle-disabled),
+      'border-color': var(--#{$prefix}color-border-button-toggle-disabled),
+      'color': var(--#{$prefix}color-typography-button-disabled),
+    ),
+    'active:hover': (
+      'background-color': var(--#{$prefix}color-surface-button-toggle-checked-hover),
+      'border-color': var(--#{$prefix}color-border-button-toggle-checked-hover),
+    ),
+    'active-disabled': (
+      'background-color': var(--#{$prefix}color-surface-button-toggle-disabled-checked),
+      'border-color': var(--#{$prefix}color-border-button-toggle-disabled-checked),
+      'color': var(--#{$prefix}color-typography-button-toggle-disabled-checked),
+    ),
+  ),
+);

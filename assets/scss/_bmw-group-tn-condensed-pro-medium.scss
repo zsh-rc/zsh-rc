@@ -1,0 +1,11 @@
+@font-face {
+  font-display: swap;
+  font-family: 'BMWGroupTNCondensedPro-Medium';
+  font-style: normal;
+  font-weight: 500;
+  src:
+    local('BMWGroupTN Condensed Pro Med'),
+    local('BMWGroupTNCondensedPro-Med'),
+    url('../fonts/bmw-group-tn-condensed-pro-medium.woff2') format('woff2'),
+    url('../fonts/bmw-group-tn-condensed-pro-medium.woff') format('woff');
+}

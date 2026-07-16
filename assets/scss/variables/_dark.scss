@@ -1,0 +1,220 @@
+@use 'sass-variables' as *;
+
+:root:has(.#{$prefix}dark) {
+  /* start typography-weight global tokens block */
+  --#{$prefix}color-typography-action: var(--#{$prefix}color-ocean-300);
+  --#{$prefix}color-typography-action-hover: var(--#{$prefix}color-ocean-200);
+  --#{$prefix}color-typography-action-active: var(--#{$prefix}color-ocean-200);
+  --#{$prefix}color-typography-action-visited: var(--#{$prefix}color-violet-300);
+  --#{$prefix}color-typography-action-visited-hover: var(--#{$prefix}color-violet-200);
+  --#{$prefix}color-typography-action-visited-active: var(--#{$prefix}color-violet-200);
+  --#{$prefix}color-typography-base: var(--#{$prefix}color-cool-grey-100);
+  --#{$prefix}color-typography-caution: var(--#{$prefix}color-yellow-200);
+  --#{$prefix}color-typography-critical: var(--#{$prefix}color-red-300);
+  --#{$prefix}color-typography-critical-active: var(--#{$prefix}color-red-200);
+  --#{$prefix}color-typography-critical-hover: var(--#{$prefix}color-red-200);
+  --#{$prefix}color-typography-disabled: var(--#{$prefix}color-cool-grey-100-alpha-30);
+  --#{$prefix}color-typography-info: var(--#{$prefix}color-blue-200);
+  --#{$prefix}color-typography-invert: var(--#{$prefix}color-cool-grey-900);
+  --#{$prefix}color-typography-neutral: var(--#{$prefix}color-cool-grey-200);
+  --#{$prefix}color-typography-placeholder: var(--#{$prefix}color-cool-grey-400);
+  --#{$prefix}color-typography-positive: var(--#{$prefix}color-green-200);
+  /* end typography-weight global tokens block */
+
+  /* start surface global tokens block */
+  --#{$prefix}color-surface-action: var(--#{$prefix}color-ocean-800);
+  --#{$prefix}color-surface-action-active: var(--#{$prefix}color-ocean-700);
+  --#{$prefix}color-surface-action-hover: var(--#{$prefix}color-ocean-700);
+  --#{$prefix}color-surface-action-mild: var(--#{$prefix}color-ocean-700);
+  --#{$prefix}color-surface-action-mild-hover: var(--#{$prefix}color-ocean-600);
+  --#{$prefix}color-surface-action-strong: var(--#{$prefix}color-ocean-300);
+  --#{$prefix}color-surface-action-strong-active: var(--#{$prefix}color-ocean-200);
+  --#{$prefix}color-surface-action-strong-hover: var(--#{$prefix}color-ocean-200);
+  --#{$prefix}color-surface-base: var(--#{$prefix}color-cool-grey-900);
+  --#{$prefix}color-surface-caution: var(--#{$prefix}color-yellow-800);
+  --#{$prefix}color-surface-caution-hover: var(--#{$prefix}color-yellow-700);
+  --#{$prefix}color-surface-caution-mild: var(--#{$prefix}color-yellow-700);
+  --#{$prefix}color-surface-caution-mild-hover: var(--#{$prefix}color-yellow-600);
+  --#{$prefix}color-surface-caution-strong: var(--#{$prefix}color-yellow-300);
+  --#{$prefix}color-surface-caution-strong-hover: var(--#{$prefix}color-yellow-200);
+  --#{$prefix}color-surface-critical: var(--#{$prefix}color-red-800);
+  --#{$prefix}color-surface-critical-hover: var(--#{$prefix}color-red-700);
+  --#{$prefix}color-surface-critical-mild: var(--#{$prefix}color-red-700);
+  --#{$prefix}color-surface-critical-mild-hover: var(--#{$prefix}color-red-600);
+  --#{$prefix}color-surface-critical-strong: var(--#{$prefix}color-red-300);
+  --#{$prefix}color-surface-critical-strong-active: var(--#{$prefix}color-red-200);
+  --#{$prefix}color-surface-critical-strong-hover: var(--#{$prefix}color-red-200);
+  --#{$prefix}color-surface-disabled: var(--#{$prefix}color-grey-100-alpha-10);
+  --#{$prefix}color-surface-info: var(--#{$prefix}color-blue-800);
+  --#{$prefix}color-surface-info-hover: var(--#{$prefix}color-blue-700);
+  --#{$prefix}color-surface-info-mild: var(--#{$prefix}color-blue-700);
+  --#{$prefix}color-surface-info-mild-hover: var(--#{$prefix}color-blue-600);
+  --#{$prefix}color-surface-info-strong: var(--#{$prefix}color-blue-300);
+  --#{$prefix}color-surface-info-strong-hover: var(--#{$prefix}color-blue-200);
+  --#{$prefix}color-surface-invert: var(--#{$prefix}color-cool-grey-100);
+  --#{$prefix}color-surface-mark: var(--#{$prefix}color-yellow-300-alpha-30);
+  --#{$prefix}color-surface-neutral: var(--#{$prefix}color-cool-grey-800);
+  --#{$prefix}color-surface-neutral-hover: var(--#{$prefix}color-cool-grey-700);
+  --#{$prefix}color-surface-neutral-mild: var(--#{$prefix}color-cool-grey-700);
+  --#{$prefix}color-surface-neutral-mild-hover: var(--#{$prefix}color-cool-grey-600);
+  --#{$prefix}color-surface-neutral-medium: var(--#{$prefix}color-cool-grey-500);
+  --#{$prefix}color-surface-neutral-strong: var(--#{$prefix}color-cool-grey-300);
+  --#{$prefix}color-surface-neutral-strong-hover: var(--#{$prefix}color-cool-grey-200);
+  --#{$prefix}color-surface-neutral-translucent: var(--#{$prefix}color-grey-100-alpha-10);
+  --#{$prefix}color-surface-nontypable-input: var(--#{$prefix}color-cool-grey-700-alpha-20);
+  --#{$prefix}color-surface-page: var(--#{$prefix}color-cool-grey-950);
+  --#{$prefix}color-surface-positive: var(--#{$prefix}color-green-800);
+  --#{$prefix}color-surface-positive-hover: var(--#{$prefix}color-green-700);
+  --#{$prefix}color-surface-positive-mild: var(--#{$prefix}color-green-700);
+  --#{$prefix}color-surface-positive-mild-hover: var(--#{$prefix}color-green-600);
+  --#{$prefix}color-surface-positive-strong: var(--#{$prefix}color-green-300);
+  --#{$prefix}color-surface-positive-strong-hover: var(--#{$prefix}color-green-200);
+  --#{$prefix}color-surface-transparent: var(--#{$prefix}color-white-alpha-00);
+  --#{$prefix}color-surface-backdrop: var(--#{$prefix}color-cool-grey-700-alpha-70);
+  --#{$prefix}color-surface-overlay-hover: var(--#{$prefix}color-white-alpha-05);
+  --#{$prefix}color-surface-overlay-blend: var(--#{$prefix}color-white-alpha-20);
+  /* end surface global tokens block */
+
+  /* start outline global tokens block */
+  --#{$prefix}color-outline-action: var(--#{$prefix}color-ocean-400);
+  --#{$prefix}color-outline-critical: var(--#{$prefix}color-red-600);
+  /* end outline global tokens block */
+
+  /* start icon global tokens block */
+  --#{$prefix}color-icon-action: var(--#{$prefix}color-ocean-300);
+  --#{$prefix}color-icon-action-active: var(--#{$prefix}color-ocean-200);
+  --#{$prefix}color-icon-action-hover: var(--#{$prefix}color-ocean-200);
+  --#{$prefix}color-icon-base: var(--#{$prefix}color-cool-grey-100);
+  --#{$prefix}color-icon-caution: var(--#{$prefix}color-yellow-200);
+  --#{$prefix}color-icon-critical: var(--#{$prefix}color-red-300);
+  --#{$prefix}color-icon-critical-active: var(--#{$prefix}color-red-200);
+  --#{$prefix}color-icon-critical-hover: var(--#{$prefix}color-red-200);
+  --#{$prefix}color-icon-disabled: var(--#{$prefix}color-cool-grey-100-alpha-30);
+  --#{$prefix}color-icon-info: var(--#{$prefix}color-blue-200);
+  --#{$prefix}color-icon-invert: var(--#{$prefix}color-cool-grey-900);
+  --#{$prefix}color-icon-neutral: var(--#{$prefix}color-cool-grey-200);
+  --#{$prefix}color-icon-neutral-mild: var(--#{$prefix}color-cool-grey-200);
+  --#{$prefix}color-icon-positive: var(--#{$prefix}color-green-200);
+  --#{$prefix}color-icon-base-translucent: var(--#{$prefix}color-cool-grey-100-alpha-20);
+  --#{$prefix}color-icon-base-translucent-hover: var(--#{$prefix}color-cool-grey-100-alpha-10);
+  /* end icon global tokens block */
+
+  /* start border global tokens block */
+  --#{$prefix}color-border-action: var(--#{$prefix}color-ocean-700);
+  --#{$prefix}color-border-action-mild: var(--#{$prefix}color-ocean-600);
+  --#{$prefix}color-border-action-strong: var(--#{$prefix}color-ocean-300);
+  --#{$prefix}color-border-action-strong-active: var(--#{$prefix}color-ocean-200);
+  --#{$prefix}color-border-action-strong-hover: var(--#{$prefix}color-ocean-200);
+  --#{$prefix}color-border-base: var(--#{$prefix}color-cool-grey-800);
+  --#{$prefix}color-border-caution: var(--#{$prefix}color-yellow-700);
+  --#{$prefix}color-border-caution-mild: var(--#{$prefix}color-yellow-300);
+  --#{$prefix}color-border-caution-strong: var(--#{$prefix}color-yellow-200);
+  --#{$prefix}color-border-critical: var(--#{$prefix}color-red-700);
+  --#{$prefix}color-border-critical-mild: var(--#{$prefix}color-red-600);
+  --#{$prefix}color-border-critical-strong: var(--#{$prefix}color-red-300);
+  //Seems like the token below shouldn't exist but it does? Currently it's a red-100, but I need it to be red-200, study the implications...
+  --#{$prefix}color-border-critical-strong-active: var(--#{$prefix}color-red-200);
+  --#{$prefix}color-border-critical-strong-hover: var(--#{$prefix}color-red-200);
+  --#{$prefix}color-border-disabled: var(--#{$prefix}color-grey-100-alpha-10);
+  --#{$prefix}color-border-info: var(--#{$prefix}color-blue-700);
+  --#{$prefix}color-border-info-mild: var(--#{$prefix}color-blue-600);
+  --#{$prefix}color-border-info-strong: var(--#{$prefix}color-blue-200);
+  --#{$prefix}color-border-invert: var(--#{$prefix}color-white);
+  --#{$prefix}color-border-neutral: var(--#{$prefix}color-cool-grey-700);
+  --#{$prefix}color-border-neutral-mild: var(--#{$prefix}color-cool-grey-600);
+  --#{$prefix}color-border-neutral-medium: var(--#{$prefix}color-cool-grey-400);
+  --#{$prefix}color-border-neutral-strong: var(--#{$prefix}color-cool-grey-200);
+  --#{$prefix}color-border-positive: var(--#{$prefix}color-green-700);
+  --#{$prefix}color-border-positive-mild: var(--#{$prefix}color-green-600);
+  --#{$prefix}color-border-positive-strong: var(--#{$prefix}color-green-200);
+  --#{$prefix}color-border-transparent: var(--#{$prefix}color-white-alpha-00);
+  /* end border global tokens block */
+
+  /* start logos global tokens block */
+  --#{$prefix}logo-bmwgroup: var(--#{$prefix}asset-logo-bmwgroup-inverted);
+  --#{$prefix}logo-bmwgroup-bmw: var(--#{$prefix}asset-logo-bmwgroup-bmw-inverted);
+  --#{$prefix}logo-bmwgroup-bmw-mini: var(--#{$prefix}asset-logo-bmwgroup-bmw-mini-inverted);
+  --#{$prefix}logo-bmwgroup-bmw-mini-rr: var(--#{$prefix}asset-logo-bmwgroup-bmw-mini-rr-inverted);
+  --#{$prefix}logo-bmwgroup-mini: var(--#{$prefix}asset-logo-bmwgroup-mini-inverted);
+  --#{$prefix}logo-bmwgroup-bmw-i: var(--#{$prefix}asset-logo-bmwgroup-bmw-i-inverted);
+  --#{$prefix}logo-bmwgroup-bmw-m: var(--#{$prefix}asset-logo-bmwgroup-bmw-m-inverted);
+  --#{$prefix}logo-bmwgroup-bmw-motorrad: var(--#{$prefix}asset-logo-bmwgroup-bmw-motorrad-inverted);
+  --#{$prefix}logo-bmwgroup-bmw-mini-jcw: var(--#{$prefix}asset-logo-bmwgroup-bmw-mini-jcw-inverted);
+  /* end logos global tokens block */
+
+  /* empty state illustrations */
+  --#{$prefix}illustration-create-sm: var(--#{$prefix}asset-illustration-create-sm-inverted);
+  --#{$prefix}illustration-create-lg: var(--#{$prefix}asset-illustration-create-lg-inverted);
+  --#{$prefix}illustration-create-2-sm: var(--#{$prefix}asset-illustration-create-2-sm-inverted);
+  --#{$prefix}illustration-create-2-lg: var(--#{$prefix}asset-illustration-create-2-lg-inverted);
+  --#{$prefix}illustration-database-sm: var(--#{$prefix}asset-illustration-database-sm-inverted);
+  --#{$prefix}illustration-database-lg: var(--#{$prefix}asset-illustration-database-lg-inverted);
+  --#{$prefix}illustration-database-2-sm: var(--#{$prefix}asset-illustration-database-2-sm-inverted);
+  --#{$prefix}illustration-database-2-lg: var(--#{$prefix}asset-illustration-database-2-lg-inverted);
+  --#{$prefix}illustration-empty-sm: var(--#{$prefix}asset-illustration-empty-sm-inverted);
+  --#{$prefix}illustration-empty-lg: var(--#{$prefix}asset-illustration-empty-lg-inverted);
+  --#{$prefix}illustration-error-sm: var(--#{$prefix}asset-illustration-error-sm-inverted);
+  --#{$prefix}illustration-error-lg: var(--#{$prefix}asset-illustration-error-lg-inverted);
+  --#{$prefix}illustration-error-2-sm: var(--#{$prefix}asset-illustration-error-2-sm-inverted);
+  --#{$prefix}illustration-error-2-lg: var(--#{$prefix}asset-illustration-error-2-lg-inverted);
+  --#{$prefix}illustration-error-3-sm: var(--#{$prefix}asset-illustration-error-3-sm-inverted);
+  --#{$prefix}illustration-error-3-lg: var(--#{$prefix}asset-illustration-error-3-lg-inverted);
+  --#{$prefix}illustration-padlock-sm: var(--#{$prefix}asset-illustration-padlock-sm-inverted);
+  --#{$prefix}illustration-padlock-lg: var(--#{$prefix}asset-illustration-padlock-lg-inverted);
+  --#{$prefix}illustration-select-sm: var(--#{$prefix}asset-illustration-select-sm-inverted);
+  --#{$prefix}illustration-select-lg: var(--#{$prefix}asset-illustration-select-lg-inverted);
+  --#{$prefix}illustration-signal-sm: var(--#{$prefix}asset-illustration-signal-sm-inverted);
+  --#{$prefix}illustration-signal-lg: var(--#{$prefix}asset-illustration-signal-lg-inverted);
+  --#{$prefix}illustration-success-sm: var(--#{$prefix}asset-illustration-success-sm-inverted);
+  --#{$prefix}illustration-success-lg: var(--#{$prefix}asset-illustration-success-lg-inverted);
+  --#{$prefix}illustration-success-2-sm: var(--#{$prefix}asset-illustration-success-2-sm-inverted);
+  --#{$prefix}illustration-success-2-lg: var(--#{$prefix}asset-illustration-success-2-lg-inverted);
+  --#{$prefix}illustration-success-3-sm: var(--#{$prefix}asset-illustration-success-3-sm-inverted);
+  --#{$prefix}illustration-success-3-lg: var(--#{$prefix}asset-illustration-success-3-lg-inverted);
+  --#{$prefix}illustration-wait-sm: var(--#{$prefix}asset-illustration-wait-sm-inverted);
+  --#{$prefix}illustration-wait-lg: var(--#{$prefix}asset-illustration-wait-lg-inverted);
+
+  /* end logos global tokens block */
+
+  /* start icons global tokens block */
+  --#{$prefix}icon-checkbox-checked: var(--#{$prefix}asset-icon-checkbox-checked-inverted);
+  --#{$prefix}icon-checkbox-checked-disabled: var(--#{$prefix}asset-icon-checkbox-checked-disabled-inverted);
+  --#{$prefix}icon-checkbox-checked-readonly: var(--#{$prefix}asset-icon-checkbox-checked-readonly-inverted);
+  --#{$prefix}icon-checkbox-checked-error: var(--#{$prefix}asset-icon-checkbox-checked-error-inverted);
+  --#{$prefix}icon-checkbox-checked-error-hover: var(--#{$prefix}asset-icon-checkbox-checked-error-hover-inverted);
+  --#{$prefix}icon-checkbox-checked-error-focus: var(--#{$prefix}asset-icon-checkbox-checked-error-hover-inverted);
+  --#{$prefix}icon-checkbox-indeterminate: var(--#{$prefix}asset-icon-checkbox-indeterminate-inverted);
+  --#{$prefix}icon-checkbox-indeterminate-disabled: var(
+    --#{$prefix}asset-icon-checkbox-indeterminate-disabled-inverted
+  );
+  --#{$prefix}icon-checkbox-indeterminate-readonly: var(
+    --#{$prefix}asset-icon-checkbox-indeterminate-readonly-inverted
+  );
+  --#{$prefix}icon-checkbox-indeterminate-error: var(--#{$prefix}asset-icon-checkbox-indeterminate-error-inverted);
+  --#{$prefix}icon-checkbox-indeterminate-error-hover: var(
+    --#{$prefix}asset-icon-checkbox-indeterminate-error-hover-inverted
+  );
+  --#{$prefix}icon-checkbox-indeterminate-error-focus: var(
+    --#{$prefix}asset-icon-checkbox-indeterminate-error-hover-inverted
+  );
+  --#{$prefix}icon-disclosure: var(--#{$prefix}asset-icon-disclosure-inverted);
+  --#{$prefix}icon-disclosure-disabled: var(--#{$prefix}asset-icon-disclosure-disabled-inverted);
+  --#{$prefix}icon-minus: var(--#{$prefix}asset-icon-minus-inverted);
+  --#{$prefix}icon-minus-disabled: var(--#{$prefix}asset-icon-minus-disabled-inverted);
+  --#{$prefix}icon-plus: var(--#{$prefix}asset-icon-plus-inverted);
+  --#{$prefix}icon-plus-disabled: var(--#{$prefix}asset-icon-plus-disabled-inverted);
+  /* end icons global tokens block */
+
+  /* skeleton shimmer dark */
+  --#{$prefix}color-shimmer-1: var(--#{$prefix}color-shimmer-dark-1);
+  --#{$prefix}color-shimmer-2: var(--#{$prefix}color-shimmer-dark-2);
+  --#{$prefix}color-shimmer-3: var(--#{$prefix}color-shimmer-dark-3);
+  /* end skeleton shimmer dark */
+
+  .#{$prefix}tag--caution.#{$prefix}tag--strong:not([disabled='true']) {
+    color: var(--#{$prefix}color-typography-invert);
+    .#{$prefix}tag__clear-area {
+      color: var(--#{$prefix}color-icon-invert);
+    }
+  }
+}

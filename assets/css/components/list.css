@@ -1,0 +1,16 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-list),
+.ds-list {
+  display: block;
+}
+:host(ds-list).ds-list ul,
+.ds-list.ds-list ul {
+  list-style: none;
+  padding-left: 0;
+}

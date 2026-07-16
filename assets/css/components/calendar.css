@@ -1,0 +1,553 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-calendar),
+.ds-calendar {
+  color: var(--ds-color-text-calendar);
+  display: inline-block;
+  user-select: none;
+  position: relative;
+  min-width: var(--ds-shape-size-xmin-datemenu);
+}
+:host(ds-calendar).ds-calendar--lg,
+.ds-calendar.ds-calendar--lg {
+  min-width: var(--ds-shape-size-xmin-datemenu-large);
+}
+:host(ds-calendar) .ds-calendar__wrapper,
+.ds-calendar .ds-calendar__wrapper {
+  min-width: var(--ds-shape-size-xmin-calendar);
+  min-height: var(--ds-shape-size-ymin-calendar);
+}
+:host(ds-calendar) .ds-calendar__wrapper--lg,
+.ds-calendar .ds-calendar__wrapper--lg {
+  min-width: var(--ds-shape-size-xmin-calendar-large);
+  min-height: var(--ds-shape-size-ymin-calendar-large);
+}
+:host(ds-calendar) .ds-calendar__menu-actions-wrapper,
+.ds-calendar .ds-calendar__menu-actions-wrapper {
+  padding: var(--ds-space-1x) var(--ds-space-2x);
+}
+:host(ds-calendar).ds-calendar--expand-width,
+.ds-calendar.ds-calendar--expand-width {
+  width: 100%;
+}
+
+:host(ds-calendar-header),
+.ds-calendar-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-calendar-view-days),
+.ds-calendar-view-days {
+  display: table;
+  width: 100%;
+}
+:host(ds-calendar-view-days) .ds-calendar-days-header,
+:host(ds-calendar-view-days) .ds-calendar-days-row,
+.ds-calendar-view-days .ds-calendar-days-header,
+.ds-calendar-view-days .ds-calendar-days-row {
+  display: grid;
+  grid-template-columns: 3fr 4fr 4fr 4fr 4fr 4fr 4fr 4fr;
+  text-align: center;
+  position: relative;
+}
+:host(ds-calendar-view-days) .ds-calendar-week,
+:host(ds-calendar-view-days) .ds-calendar-week-weekday,
+:host(ds-calendar-view-days) .ds-calendar-day-weekday,
+:host(ds-calendar-view-days) .ds-calendar-day,
+.ds-calendar-view-days .ds-calendar-week,
+.ds-calendar-view-days .ds-calendar-week-weekday,
+.ds-calendar-view-days .ds-calendar-day-weekday,
+.ds-calendar-view-days .ds-calendar-day {
+  align-items: center;
+  white-space: nowrap;
+  display: inline-flex;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+:host(ds-calendar-view-days) .ds-calendar-week,
+.ds-calendar-view-days .ds-calendar-week {
+  min-width: var(--ds-shape-size-xmin-calendar-week);
+  min-height: var(--ds-shape-size-ymin-calendar-week);
+}
+:host(ds-calendar-view-days) .ds-calendar-week-weekday,
+.ds-calendar-view-days .ds-calendar-week-weekday {
+  min-width: var(--ds-shape-size-xmin-calendar-week-weekday);
+  min-height: var(--ds-shape-size-ymin-calendar-week-weekday);
+}
+:host(ds-calendar-view-days) .ds-calendar-week-weekday--lg,
+.ds-calendar-view-days .ds-calendar-week-weekday--lg {
+  min-width: var(--ds-shape-size-xmin-calendar-week-weekday-large);
+  height: var(--ds-shape-size-ymin-calendar-week-weekday-large);
+}
+:host(ds-calendar-view-days) .ds-calendar-day-weekday,
+.ds-calendar-view-days .ds-calendar-day-weekday {
+  padding: 0;
+  min-width: var(--ds-shape-size-xmin-calendar-day-weekday);
+  min-height: var(--ds-shape-size-ymin-calendar-day-weekday);
+}
+:host(ds-calendar-view-days) .ds-calendar-day-weekday:before,
+.ds-calendar-view-days .ds-calendar-day-weekday:before {
+  content: "";
+  width: 1px;
+  margin-left: -1px;
+  float: left;
+  height: 0;
+  padding-top: 50%;
+}
+:host(ds-calendar-view-days) .ds-calendar-day-weekday--lg,
+.ds-calendar-view-days .ds-calendar-day-weekday--lg {
+  min-width: var(--ds-shape-size-xmin-calendar-day-weekday-large);
+  height: var(--ds-shape-size-ymin-calendar-day-weekday-large);
+}
+:host(ds-calendar-view-days) .ds-calendar-day,
+.ds-calendar-view-days .ds-calendar-day {
+  min-width: var(--ds-shape-size-xmin-calendar-day);
+  min-height: var(--ds-shape-size-ymin-calendar-day);
+}
+:host(ds-calendar-view-days) .ds-calendar-day:before,
+.ds-calendar-view-days .ds-calendar-day:before {
+  content: "";
+  width: 1px;
+  margin-left: -1px;
+  float: left;
+  height: 0;
+  padding-top: 100%;
+}
+:host(ds-calendar-view-days) .ds-calendar-day--lg,
+.ds-calendar-view-days .ds-calendar-day--lg {
+  min-width: var(--ds-shape-size-xmin-calendar-day-large);
+  height: var(--ds-shape-size-ymin-calendar-day-large);
+}
+:host(ds-calendar-view-days) .ds-calendar-day,
+:host(ds-calendar-view-days) .ds-calendar-week,
+.ds-calendar-view-days .ds-calendar-day,
+.ds-calendar-view-days .ds-calendar-week {
+  border-color: transparent;
+  border-style: solid;
+  border-width: 1px;
+}
+:host(ds-calendar-view-days) .ds-calendar-day,
+.ds-calendar-view-days .ds-calendar-day {
+  border-radius: var(--ds-shape-radius-calendar-item);
+  font-family: var(--ds-font-family-calendar);
+  font-size: var(--ds-font-size-calendar-item);
+  line-height: var(--ds-font-line-height-calendar-item);
+  background-color: var(--ds-color-surface-calendar-item);
+  color: inherit;
+  text-align: var(--ds-text-alignment-calendar-item);
+}
+:host(ds-calendar-view-days) .ds-calendar-day[disabled],
+.ds-calendar-view-days .ds-calendar-day[disabled] {
+  color: var(--ds-color-text-calendar-disabled);
+  background: var(--ds-color-surface-calendar-item-disabled);
+}
+:host(ds-calendar-view-days) .ds-calendar-day[disabled].ds-calendar-range,
+.ds-calendar-view-days .ds-calendar-day[disabled].ds-calendar-range {
+  background: var(--ds-color-surface-calendar-item-inrange);
+}
+:host(ds-calendar-view-days) .ds-calendar-day:focus:not([disabled]),
+.ds-calendar-view-days .ds-calendar-day:focus:not([disabled]) {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+  z-index: var(--ds-z-index-content-base);
+}
+:host(ds-calendar-view-days) .ds-calendar-day-secondary,
+.ds-calendar-view-days .ds-calendar-day-secondary {
+  color: var(--ds-color-text-calendar-neutral);
+}
+:host(ds-calendar-view-days) .ds-calendar-day-weekday,
+.ds-calendar-view-days .ds-calendar-day-weekday {
+  color: var(--ds-color-text-calendar-neutral);
+  text-align: var(--ds-text-alignment-calendar-weekday);
+  font-size: var(--ds-font-size-calendar-week);
+  line-height: var(--ds-font-line-height-calendar-weekday);
+}
+:host(ds-calendar-view-days) .ds-calendar-day-weekday--lg,
+.ds-calendar-view-days .ds-calendar-day-weekday--lg {
+  min-width: var(--ds-shape-size-xmin-weekday-large);
+  height: var(--ds-shape-size-ymin-weekday-large);
+}
+:host(ds-calendar-view-days) .ds-calendar-week,
+.ds-calendar-view-days .ds-calendar-week {
+  text-align: var(--ds-text-alignment-calendar-week);
+  background: var(--ds-color-surface-calendar-week);
+  border-color: var(--ds-color-border-calendar-week);
+  color: var(--ds-color-text-calendar-neutral);
+  font-size: var(--ds-font-size-calendar-week);
+  line-height: var(--ds-font-line-height-calendar-week);
+}
+:host(ds-calendar-view-days) .ds-calendar-week.ds-calendar-week-disabled,
+.ds-calendar-view-days .ds-calendar-week.ds-calendar-week-disabled {
+  color: var(--ds-color-surface-calendar-item-disabled);
+}
+:host(ds-calendar-view-days) .ds-calendar-week--lg,
+.ds-calendar-view-days .ds-calendar-week--lg {
+  max-width: var(--ds-shape-size-xmin-calendar-week-large);
+  height: var(--ds-shape-size-ymin-calendar-week-large);
+}
+:host(ds-calendar-view-days) .ds-calendar-day-today,
+.ds-calendar-view-days .ds-calendar-day-today {
+  border-color: var(--ds-color-border-calendar-item-current);
+  background-color: var(--ds-color-surface-calendar-item-current);
+}
+:host(ds-calendar-view-days) .ds-calendar-day-today[disabled],
+.ds-calendar-view-days .ds-calendar-day-today[disabled] {
+  background-color: var(--ds-color-surface-calendar-item-current-disabled);
+}
+:host(ds-calendar-view-days) .ds-calendar-range,
+.ds-calendar-view-days .ds-calendar-range {
+  background: var(--ds-color-surface-calendar-item-inrange);
+  color: var(--ds-color-text-calendar-inrange);
+  font-weight: var(--ds-font-weight-calendar-item-active);
+}
+:host(ds-calendar-view-days) .ds-calendar-day-highlighted,
+.ds-calendar-view-days .ds-calendar-day-highlighted {
+  border-color: var(--ds-color-surface-calendar-item-active);
+}
+:host(ds-calendar-view-days) .ds-calendar-range:not(.ds-calendar-range-start),
+.ds-calendar-view-days .ds-calendar-range:not(.ds-calendar-range-start) {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+:host(ds-calendar-view-days) .ds-calendar-range:not(.ds-calendar-range-end),
+.ds-calendar-view-days .ds-calendar-range:not(.ds-calendar-range-end) {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+:host(ds-calendar-view-days) .ds-calendar-week-active,
+:host(ds-calendar-view-days) .ds-calendar-day-active,
+.ds-calendar-view-days .ds-calendar-week-active,
+.ds-calendar-view-days .ds-calendar-day-active {
+  background-color: var(--ds-color-surface-calendar-item-active);
+  color: var(--ds-color-text-calendar-active);
+  font-weight: var(--ds-font-weight-calendar-item-active);
+}
+:host(ds-calendar-view-days) .ds-calendar-week-active.ds-calendar-day-today,
+:host(ds-calendar-view-days) .ds-calendar-day-active.ds-calendar-day-today,
+.ds-calendar-view-days .ds-calendar-week-active.ds-calendar-day-today,
+.ds-calendar-view-days .ds-calendar-day-active.ds-calendar-day-today {
+  border-color: var(--ds-color-border-calendar-item-active-current);
+  background-color: var(--ds-color-surface-calendar-item-active-current);
+}
+:host(ds-calendar-view-days) .ds-calendar-select-single .ds-calendar-day,
+:host(ds-calendar-view-days) .ds-calendar-select-multiple .ds-calendar-day,
+:host(ds-calendar-view-days) .ds-calendar-select-range .ds-calendar-day,
+.ds-calendar-view-days .ds-calendar-select-single .ds-calendar-day,
+.ds-calendar-view-days .ds-calendar-select-multiple .ds-calendar-day,
+.ds-calendar-view-days .ds-calendar-select-range .ds-calendar-day {
+  cursor: pointer;
+}
+:host(ds-calendar-view-days) .ds-calendar-select-single .ds-calendar-day[disabled],
+:host(ds-calendar-view-days) .ds-calendar-select-multiple .ds-calendar-day[disabled],
+:host(ds-calendar-view-days) .ds-calendar-select-range .ds-calendar-day[disabled],
+.ds-calendar-view-days .ds-calendar-select-single .ds-calendar-day[disabled],
+.ds-calendar-view-days .ds-calendar-select-multiple .ds-calendar-day[disabled],
+.ds-calendar-view-days .ds-calendar-select-range .ds-calendar-day[disabled] {
+  cursor: not-allowed;
+}
+:host(ds-calendar-view-days) .ds-calendar-select-single .ds-calendar-day:not([disabled]):not(.ds-calendar-day-active):hover,
+:host(ds-calendar-view-days) .ds-calendar-select-multiple .ds-calendar-day:not([disabled]):not(.ds-calendar-day-active):hover,
+:host(ds-calendar-view-days) .ds-calendar-select-range .ds-calendar-day:not([disabled]):not(.ds-calendar-day-active):hover,
+.ds-calendar-view-days .ds-calendar-select-single .ds-calendar-day:not([disabled]):not(.ds-calendar-day-active):hover,
+.ds-calendar-view-days .ds-calendar-select-multiple .ds-calendar-day:not([disabled]):not(.ds-calendar-day-active):hover,
+.ds-calendar-view-days .ds-calendar-select-range .ds-calendar-day:not([disabled]):not(.ds-calendar-day-active):hover {
+  border-color: var(--ds-color-border-calendar-item-hover);
+  border-width: 2px;
+  background-color: var(--ds-color-surface-calendar-item-hover);
+  color: inherit;
+}
+:host(ds-calendar-view-days) .ds-calendar-select-week .ds-calendar-days-row,
+.ds-calendar-view-days .ds-calendar-select-week .ds-calendar-days-row {
+  cursor: pointer;
+  border: transparent;
+}
+:host(ds-calendar-view-days) .ds-calendar-select-week .ds-calendar-days-row.ds-calendar-week-disabled,
+.ds-calendar-view-days .ds-calendar-select-week .ds-calendar-days-row.ds-calendar-week-disabled {
+  cursor: not-allowed;
+}
+:host(ds-calendar-view-days) .ds-calendar-select-week .ds-calendar-days-row:not(.ds-calendar-week-disabled):hover,
+.ds-calendar-view-days .ds-calendar-select-week .ds-calendar-days-row:not(.ds-calendar-week-disabled):hover {
+  color: inherit;
+  background: var(--ds-color-surface-calendar-week-hover);
+}
+:host(ds-calendar-view-days) .ds-calendar-select-week .ds-calendar-days-row:not(.ds-calendar-week-disabled):hover:after,
+.ds-calendar-view-days .ds-calendar-select-week .ds-calendar-days-row:not(.ds-calendar-week-disabled):hover:after {
+  content: "";
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-color: var(--ds-color-border-calendar-week-hover);
+  border-width: 2px;
+  border-style: solid;
+  pointer-events: none;
+}
+:host(ds-calendar-view-days) .ds-calendar-select-week .ds-calendar-range-end,
+.ds-calendar-view-days .ds-calendar-select-week .ds-calendar-range-end {
+  border-right: 2px solid var(--ds-color-border-calendar-item-active);
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-calendar-view-months, ds-calendar-view-years),
+.ds-calendar-view-months,
+.ds-calendar-view-years {
+  display: block;
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-years,
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-months,
+.ds-calendar-view-months .ds-calendar-years,
+.ds-calendar-view-months .ds-calendar-months,
+.ds-calendar-view-years .ds-calendar-years,
+.ds-calendar-view-years .ds-calendar-months {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-years,
+.ds-calendar-view-months .ds-calendar-years,
+.ds-calendar-view-years .ds-calendar-years {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-year,
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-month,
+.ds-calendar-view-months .ds-calendar-year,
+.ds-calendar-view-months .ds-calendar-month,
+.ds-calendar-view-years .ds-calendar-year,
+.ds-calendar-view-years .ds-calendar-month {
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  border-radius: var(--ds-shape-radius-calendar-item);
+  padding: 0;
+  font-family: var(--ds-font-family-calendar);
+  font-size: var(--ds-font-size-calendar-item);
+  line-height: var(--ds-font-line-height-calendar-item);
+  background-color: var(--ds-color-surface-calendar-item);
+  color: inherit;
+  width: 100%;
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-year:after,
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-month:after,
+.ds-calendar-view-months .ds-calendar-year:after,
+.ds-calendar-view-months .ds-calendar-month:after,
+.ds-calendar-view-years .ds-calendar-year:after,
+.ds-calendar-view-years .ds-calendar-month:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-color: transparent;
+  border-width: 1px;
+  border-style: solid;
+  pointer-events: none;
+  border-radius: var(--ds-shape-radius-calendar-item);
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-year:not([disabled]):not(.ds-calendar-year-active):not(.ds-calendar-month-active):hover,
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-month:not([disabled]):not(.ds-calendar-year-active):not(.ds-calendar-month-active):hover,
+.ds-calendar-view-months .ds-calendar-year:not([disabled]):not(.ds-calendar-year-active):not(.ds-calendar-month-active):hover,
+.ds-calendar-view-months .ds-calendar-month:not([disabled]):not(.ds-calendar-year-active):not(.ds-calendar-month-active):hover,
+.ds-calendar-view-years .ds-calendar-year:not([disabled]):not(.ds-calendar-year-active):not(.ds-calendar-month-active):hover,
+.ds-calendar-view-years .ds-calendar-month:not([disabled]):not(.ds-calendar-year-active):not(.ds-calendar-month-active):hover {
+  color: inherit;
+  border-color: transparent;
+  background: var(--ds-color-surface-calendar-item-hover);
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-year:not([disabled]):not(.ds-calendar-year-active):not(.ds-calendar-month-active):hover:after,
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-month:not([disabled]):not(.ds-calendar-year-active):not(.ds-calendar-month-active):hover:after,
+.ds-calendar-view-months .ds-calendar-year:not([disabled]):not(.ds-calendar-year-active):not(.ds-calendar-month-active):hover:after,
+.ds-calendar-view-months .ds-calendar-month:not([disabled]):not(.ds-calendar-year-active):not(.ds-calendar-month-active):hover:after,
+.ds-calendar-view-years .ds-calendar-year:not([disabled]):not(.ds-calendar-year-active):not(.ds-calendar-month-active):hover:after,
+.ds-calendar-view-years .ds-calendar-month:not([disabled]):not(.ds-calendar-year-active):not(.ds-calendar-month-active):hover:after {
+  border-color: var(--ds-color-border-calendar-item-hover);
+  border-width: 2px;
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-year[disabled],
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-month[disabled],
+.ds-calendar-view-months .ds-calendar-year[disabled],
+.ds-calendar-view-months .ds-calendar-month[disabled],
+.ds-calendar-view-years .ds-calendar-year[disabled],
+.ds-calendar-view-years .ds-calendar-month[disabled] {
+  cursor: not-allowed;
+  color: var(--ds-color-text-calendar-disabled);
+  background: var(--ds-color-surface-calendar-item-disabled);
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-year:focus:not([disabled]),
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-month:focus:not([disabled]),
+.ds-calendar-view-months .ds-calendar-year:focus:not([disabled]),
+.ds-calendar-view-months .ds-calendar-month:focus:not([disabled]),
+.ds-calendar-view-years .ds-calendar-year:focus:not([disabled]),
+.ds-calendar-view-years .ds-calendar-month:focus:not([disabled]) {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+  z-index: var(--ds-z-index-content-base);
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-year:before,
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-month:before,
+.ds-calendar-view-months .ds-calendar-year:before,
+.ds-calendar-view-months .ds-calendar-month:before,
+.ds-calendar-view-years .ds-calendar-year:before,
+.ds-calendar-view-years .ds-calendar-month:before {
+  content: "";
+  width: 1px;
+  margin-left: -1px;
+  float: left;
+  height: 0;
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-month,
+.ds-calendar-view-months .ds-calendar-month,
+.ds-calendar-view-years .ds-calendar-month {
+  min-width: calc(2.5833333333 * (var(--ds-shape-size-xmin-calendar-day)));
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-month::before,
+.ds-calendar-view-months .ds-calendar-month::before,
+.ds-calendar-view-years .ds-calendar-month::before {
+  /* This suppose to be calc(100% * (var(--ds-shape-size-ymin-calendar-day) * 1.625 / 82.66666666666667))
+  but due to that the var reference is in pixels this is not compatible in this calc function.
+  If there is a way how to generate alternative space properties without units this would be usable with it.
+  */
+  padding-top: 62.9032258065%;
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-month--lg,
+.ds-calendar-view-months .ds-calendar-month--lg,
+.ds-calendar-view-years .ds-calendar-month--lg {
+  min-width: calc(2.5833333333 * (var(--ds-shape-size-xmin-calendar-day-large)));
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-year,
+.ds-calendar-view-months .ds-calendar-year,
+.ds-calendar-view-years .ds-calendar-year {
+  min-width: calc(1.9375 * (var(--ds-shape-size-xmin-calendar-day)));
+  min-width: 62px;
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-year:before,
+.ds-calendar-view-months .ds-calendar-year:before,
+.ds-calendar-view-years .ds-calendar-year:before {
+  /* This suppose to be calc(100% * (var(--ds-shape-size-ymin-calendar-day) * 1.625 / 82.66666666666667))
+  but due to that the var reference is in pixels this is not compatible in this calc function.
+  If there is a way how to generate alternative space properties without units this would be usable with it.
+  */
+  padding-top: 83.8709677419%;
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-year--lg,
+.ds-calendar-view-months .ds-calendar-year--lg,
+.ds-calendar-view-years .ds-calendar-year--lg {
+  min-width: calc(1.9375 * (var(--ds-shape-size-xmin-calendar-day-large)));
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-year-highlighted:after,
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-month-highlighted:after,
+.ds-calendar-view-months .ds-calendar-year-highlighted:after,
+.ds-calendar-view-months .ds-calendar-month-highlighted:after,
+.ds-calendar-view-years .ds-calendar-year-highlighted:after,
+.ds-calendar-view-years .ds-calendar-month-highlighted:after {
+  border-color: var(--ds-color-surface-calendar-item-active);
+  border-width: 2px;
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-year-today,
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-month-today,
+.ds-calendar-view-months .ds-calendar-year-today,
+.ds-calendar-view-months .ds-calendar-month-today,
+.ds-calendar-view-years .ds-calendar-year-today,
+.ds-calendar-view-years .ds-calendar-month-today {
+  background: var(--ds-color-surface-calendar-item-current);
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-year-today:after,
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-month-today:after,
+.ds-calendar-view-months .ds-calendar-year-today:after,
+.ds-calendar-view-months .ds-calendar-month-today:after,
+.ds-calendar-view-years .ds-calendar-year-today:after,
+.ds-calendar-view-years .ds-calendar-month-today:after {
+  border-color: var(--ds-color-border-calendar-item-current);
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-range,
+.ds-calendar-view-months .ds-calendar-range,
+.ds-calendar-view-years .ds-calendar-range {
+  background: var(--ds-color-surface-calendar-item-inrange);
+  color: var(--ds-color-text-calendar-inrange);
+  font-weight: var(--ds-font-weight-calendar-item-active);
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-range:not(.ds-calendar-range-start),
+.ds-calendar-view-months .ds-calendar-range:not(.ds-calendar-range-start),
+.ds-calendar-view-years .ds-calendar-range:not(.ds-calendar-range-start) {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-range:not(.ds-calendar-range-end),
+.ds-calendar-view-months .ds-calendar-range:not(.ds-calendar-range-end),
+.ds-calendar-view-years .ds-calendar-range:not(.ds-calendar-range-end) {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-year-active,
+:host(ds-calendar-view-months, ds-calendar-view-years) .ds-calendar-month-active,
+.ds-calendar-view-months .ds-calendar-year-active,
+.ds-calendar-view-months .ds-calendar-month-active,
+.ds-calendar-view-years .ds-calendar-year-active,
+.ds-calendar-view-years .ds-calendar-month-active {
+  background-color: var(--ds-color-surface-calendar-item-active);
+  color: var(--ds-color-text-calendar-active);
+  font-weight: var(--ds-font-weight-calendar-item-active);
+}
+
+.ds-calendar-shift-animation {
+  animation-duration: 0.267s;
+  animation-timing-function: cubic-bezier(0.1, 0.25, 0.75, 0.9);
+  animation-fill-mode: both;
+}
+
+.ds-calendar-shift-down.ds-calendar-shift-animation {
+  animation-name: moveDown, fadeIn;
+}
+
+.ds-calendar-shift-up.ds-calendar-shift-animation {
+  animation-name: moveUp, fadeIn;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes moveUp {
+  0% {
+    transform: translate3d(0px, -20px, 0px);
+    pointer-events: none;
+  }
+  100% {
+    transform: translate3d(0px, 0px, 0px);
+    pointer-events: auto;
+  }
+}
+@keyframes moveDown {
+  0% {
+    transform: translate3d(0px, 20px, 0px);
+    pointer-events: none;
+  }
+  100% {
+    transform: translate3d(0px, 0px, 0px);
+    pointer-events: auto;
+  }
+}

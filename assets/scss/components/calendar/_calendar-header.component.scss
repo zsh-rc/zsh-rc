@@ -1,0 +1,7 @@
+@use '../../density-styles-sass' as *;
+
+:host(#{$prefix}calendar-header),
+.#{$prefix}calendar-header {
+  display: flex;
+  justify-content: space-between;
+}

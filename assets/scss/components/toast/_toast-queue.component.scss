@@ -1,0 +1,29 @@
+@use '../../density-styles-sass' as *;
+@use '../../utilities/sass_utilities' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}toast-queue),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}toast-queue {
+  display: block;
+  width: 100%;
+
+  .#{$prefix}toast-queue__wrapper {
+    --shape-size-x-toast: 400px;
+
+    display: flex;
+    flex-direction: column-reverse;
+    width: var(--shape-size-x-toast);
+
+    .#{$prefix}toast:not(:first-of-type) {
+      margin-bottom: var(--#{$prefix}space-stack-gap-toast);
+    }
+
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+    }
+  }
+}

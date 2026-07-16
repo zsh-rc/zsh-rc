@@ -1,0 +1,91 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}tree-item),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}tree-item {
+  --#{$prefix}tree-item-transition-timing-function: var(--#{$prefix}motion-timing-entrance);
+  --#{$prefix}tree-item-transition-duration: var(--#{$prefix}motion-duration-quick);
+
+  --#{$prefix}tree-item-transition-timing-function-entrance: var(--#{$prefix}motion-timing-standard);
+  --#{$prefix}tree-item-transition-duration-entrance: var(--#{$prefix}motion-duration-standard);
+  --#{$prefix}tree-item-transition-timing-function-exit: var(--#{$prefix}motion-timing-standard);
+  --#{$prefix}tree-item-transition-duration-exit: var(--#{$prefix}motion-duration-standard);
+
+  display: block;
+
+  &.#{$prefix}no-motion {
+    --#{$prefix}tree-item-transition-duration: 0s;
+  }
+
+  &.#{$prefix}tree-item {
+    & ul {
+      //resets ul style
+      list-style: none;
+      padding-left: 0;
+    }
+
+    & .#{$prefix}tree-item__children-list {
+      padding-left: var(--#{$prefix}space-inline-indent-list-item);
+      margin-top: var(--#{$prefix}space-1x);
+      margin-bottom: var(--#{$prefix}space-1x);
+      &--closed {
+        display: none;
+      }
+    }
+
+    & .#{$prefix}tree-item__list-item {
+      padding-left: 0;
+      padding-right: var(--#{$prefix}space-inline-end-list-item);
+      margin-top: 1px;
+
+      &:focus-visible.#{$prefix}tree-item__list-item {
+        outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+        outline-offset: -2px; //TODO: TEMPORARY UNTIL DESIGNERS STUDY THE IMPACT OF THE USER TO INCREASE THE OUTLINE OFFSET, TALK TO RSF FOR MORE INFO
+
+        &--without-top-margin {
+          margin-top: 0;
+        }
+      }
+
+      &.#{$prefix}list-item--lg {
+        ::ng-deep > .#{$prefix}list-item__checkbox-wrapper {
+          width: var(--#{$prefix}shape-size-x-checkboxarea-list-item-large);
+          margin-left: 0;
+        }
+      }
+
+      &--without-top-margin {
+        margin-top: 0;
+      }
+    }
+
+    & .#{$prefix}tree-item__parent-item {
+      &--highlighted-background {
+        --#{$prefix}color-surface-list-item: var(--#{$prefix}color-surface-list-item-selected);
+
+        &:hover {
+          --#{$prefix}color-surface-list-item-hover: var(--#{$prefix}color-surface-list-item-selected-hover);
+        }
+      }
+    }
+
+    & .#{$prefix}tree-item__item {
+      &--active-text {
+        --#{$prefix}color-text-list-item: var(--#{$prefix}color-text-list-item-active);
+        & ::ng-deep .icon-left {
+          --#{$prefix}color-icon-list-item: var(--#{$prefix}color-icon-list-item-active);
+        }
+      }
+
+      &--open {
+        ::ng-deep > #{$prefix}icon {
+          transform: rotate(90deg);
+          transition: transform var(--#{$prefix}tree-item-transition-duration)
+            var(--#{$prefix}tree-item-transition-timing-function);
+        }
+      }
+    }
+  }
+}

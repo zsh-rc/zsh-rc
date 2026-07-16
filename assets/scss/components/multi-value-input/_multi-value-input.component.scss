@@ -1,0 +1,220 @@
+@use '../../density-styles-sass' as *;
+@use '../../mixins/placeholder' as *;
+@use '../../elements/input/input' as input;
+
+/* multi-value-inputs a shadow root host only if it is matched by the multi-value-input argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}multi-value-input),
+
+
+/* CSS multi-value-input for independent library use without Shadow DOM */
+.#{$prefix}multi-value-input {
+  display: block;
+  position: relative;
+  width: 100%;
+
+  .#{$prefix}multi-value-input__wrapper {
+    @include input.input-base-styles;
+    @include input.input-placeholder-styles;
+
+    position: relative;
+    display: -webkit-inline-box;
+    cursor: text;
+    align-items: start;
+    min-height: var(--#{$prefix}shape-size-y-input);
+    height: auto;
+    width: 100%;
+
+    padding: var(--#{$prefix}space-1x) 0px;
+    padding-left: calc(var(--#{$prefix}space-inline-start-input) - 1px);
+    padding-right: var(--#{$prefix}space-1x);
+
+    // Helper variable used to store the action button size based on select size to calculate the right side spacing.
+    --action-button-size: var(--#{$prefix}shape-size-ymin-button-sm);
+
+    // Helper variable used to store the right side spacing when select has only the open button.
+    --right-side-padding: calc(
+      var(--#{$prefix}space-inline-couple-input) + var(--action-button-size) + var(--#{$prefix}space-1x)
+    );
+    // Helper variable used to store the right side spacing when select has clear all and open buttons.
+    --right-side-with-clear-all-padding: calc(
+      var(--#{$prefix}space-inline-couple-input) + var(--action-button-size) + var(--action-button-size) +
+        var(--#{$prefix}space-1x)
+    );
+
+    &--has-clear-all-button {
+      padding-right: 32px;
+    }
+
+    &:has(input:focus) {
+      outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+      outline-offset: var(--#{$prefix}size-outline-offset);
+    }
+
+    .#{$prefix}multi-value-input__content__input-wrapper__input-element {
+      width: 100%;
+      border: none;
+      background-color: transparent;
+      color: var(--#{$prefix}color-text-input-value);
+      font-family: var(--#{$prefix}font-family-input);
+      font-size: var(--#{$prefix}font-size-input-label);
+      font-weight: var(--#{$prefix}font-weight-input);
+      line-height: var(--#{$prefix}font-line-height-input);
+
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
+    .#{$prefix}multi-value-input__scrollable-content {
+      overflow: auto;
+      width: 100%;
+
+      .#{$prefix}multi-value-input__content {
+        display: flex;
+        flex-flow: wrap;
+        gap: var(--#{$prefix}space-1x);
+        height: 100%;
+        align-items: center;
+
+        &__input-wrapper {
+          display: flex;
+          align-items: center;
+          flex: 1 1 0;
+
+          &__input-element {
+            width: 100%;
+            min-width: 18px;
+            height: var(--#{$prefix}font-line-height-input);
+            border: none;
+            background-color: transparent;
+            color: var(--#{$prefix}color-text-input-value);
+            font-family: var(--#{$prefix}font-family-input);
+            font-size: var(--#{$prefix}font-size-input-label);
+            font-weight: var(--#{$prefix}font-weight-input);
+            line-height: var(--#{$prefix}font-line-height-input);
+
+            &:focus-visible {
+              outline: none;
+            }
+            @include placeholder {
+              color: var(--#{$prefix}color-text-input-placeholder);
+              font-size: var(--#{$prefix}font-size-input-placeholder);
+              font-style: var(--#{$prefix}font-style-input-placeholder);
+            }
+            &[disabled] {
+              cursor: not-allowed;
+            }
+          }
+        }
+        .#{$prefix}tag {
+          --#{$prefix}size-outline-offset: -2px;
+          align-self: unset;
+          cursor: default;
+        }
+      }
+    }
+  }
+
+  &.#{$prefix}multi-value-input--invalid .#{$prefix}multi-value-input__wrapper--invalid {
+    border-color: var(--#{$prefix}color-border-input-error);
+    background-color: var(--#{$prefix}color-surface-input-error);
+    color: var(--#{$prefix}color-text-input-error);
+
+    .#{$prefix}multi-value-input__scrollable-content {
+      .#{$prefix}multi-value-input__content__input-wrapper__input-element {
+        color: var(--#{$prefix}color-text-input-error);
+      }
+    }
+  }
+
+  // Repeat the selector to increase CSS hierarchy
+  &.#{$prefix}multi-value-input[disabled] .#{$prefix}multi-value-input__wrapper {
+    background-color: var(--#{$prefix}color-surface-input-disabled);
+    border-color: var(--#{$prefix}color-border-input-disabled);
+    cursor: not-allowed;
+
+    .#{$prefix}multi-value-input__scrollable-content {
+      .#{$prefix}multi-value-input__content__input-wrapper__input-element {
+        color: var(--#{$prefix}color-text-input-disabled);
+      }
+    }
+  }
+
+  // Repeat the selector to increase CSS hierarchy
+  &.#{$prefix}multi-value-input[readonly] .#{$prefix}multi-value-input__wrapper--readonly {
+    border-color: var(--#{$prefix}color-border-input-readonly);
+    background-color: var(--#{$prefix}color-surface-input-readonly);
+    color: var(--#{$prefix}color-text-input-readonly);
+
+    .#{$prefix}multi-value-input__scrollable-content {
+      .#{$prefix}multi-value-input__content__input-wrapper__input-element {
+        color: var(--#{$prefix}color-text-input-readonly);
+      }
+    }
+  }
+
+  &:hover {
+    &:not([readonly]):not([disabled]):not(.#{$prefix}multi-value-input--invalid) {
+      .#{$prefix}multi-value-input__wrapper {
+        background-color: var(--#{$prefix}color-surface-input-hover);
+        border: 1px solid var(--#{$prefix}color-border-input-hover);
+
+        &:has(.#{$prefix}tag:hover),
+        &:has(~ .#{$prefix}button:hover),
+        &:focus-within {
+          background-color: var(--#{$prefix}color-surface-input);
+        }
+      }
+    }
+
+    &.#{$prefix}multi-value-input--invalid .#{$prefix}multi-value-input__wrapper--invalid {
+      background-color: var(--#{$prefix}color-surface-input-error);
+      border-color: var(--#{$prefix}color-border-input-error);
+    }
+  }
+
+  &:has(input:focus):not([readonly]):not([disabled]) {
+    .#{$prefix}multi-value-input__wrapper {
+      background-color: var(--#{$prefix}color-surface-input);
+      border: 1px solid var(--#{$prefix}color-border-input-hover);
+    }
+
+    &.#{$prefix}multi-value-input--invalid {
+      .#{$prefix}multi-value-input__wrapper {
+        border: 1px solid var(--#{$prefix}color-border-input-error);
+      }
+    }
+  }
+
+  .#{$prefix}multi-value-input__clear-all-button {
+    position: absolute;
+    top: var(--#{$prefix}space-1x);
+    right: calc(var(--#{$prefix}space-inline-end-input));
+    margin-right: calc(-1 * var(--#{$prefix}space-1x));
+  }
+
+  &.#{$prefix}multi-value-input--lg {
+    .#{$prefix}multi-value-input__wrapper {
+      --action-button-size: var(--#{$prefix}shape-size-ymin-button);
+      min-height: var(--#{$prefix}shape-size-y-input-large);
+
+      .#{$prefix}multi-value-input__scrollable-content .#{$prefix}multi-value-input__content {
+        &__input-wrapper {
+          height: var(--#{$prefix}space-6x);
+
+          &__input-element {
+            height: var(--#{$prefix}font-line-height-input-large);
+            font-size: var(--#{$prefix}font-size-input-label-large);
+            line-height: var(--#{$prefix}font-line-height-input-large);
+
+            @include placeholder {
+              font-size: var(--#{$prefix}font-size-input-placeholder-large);
+            }
+          }
+        }
+      }
+    }
+  }
+}

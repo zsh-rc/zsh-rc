@@ -1,0 +1,220 @@
+@use '../../density-styles-sass' as *;
+
+$tag-states: (
+  'brand': (
+    'enabled': (
+      'background-color': var(--#{$prefix}color-surface-tag-brand),
+      'border-color': var(--#{$prefix}color-border-tag),
+    ),
+    'dismissable-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-brand-hover),
+    ),
+    'interactive': (
+      'border-color': var(--#{$prefix}color-border-tag-brand),
+    ),
+    'interactive-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-brand-hover),
+    ),
+    'strong': (
+      'background-color': var(--#{$prefix}color-surface-tag-brand-strong),
+    ),
+    'strong-dismissable-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-brand-strong-hover),
+    ),
+    'strong-interactive': (
+      'border-color': var(--#{$prefix}color-border-tag-brand-strong),
+    ),
+    'strong-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-brand-strong-hover),
+    ),
+  ),
+  'info': (
+    'enabled': (
+      'background-color': var(--#{$prefix}color-surface-tag-info),
+      'border-color': var(--#{$prefix}color-border-tag),
+    ),
+    'dismissable-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-info-hover),
+    ),
+    'interactive': (
+      'border-color': var(--#{$prefix}color-border-tag-info),
+    ),
+    'interactive-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-info-hover),
+    ),
+    'strong': (
+      'background-color': var(--#{$prefix}color-surface-tag-info-strong),
+    ),
+    'strong-dismissable-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-info-strong-hover),
+    ),
+    'strong-interactive': (
+      'border-color': var(--#{$prefix}color-border-tag-info-strong),
+    ),
+    'strong-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-info-strong-hover),
+    ),
+  ),
+  'muted': (
+    'enabled': (
+      'background-color': var(--#{$prefix}color-surface-tag-neutral),
+      'border-color': var(--#{$prefix}color-border-tag),
+    ),
+    'dismissable-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-neutral-hover),
+    ),
+    'interactive': (
+      'border-color': var(--#{$prefix}color-border-tag-neutral),
+    ),
+    'interactive-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-neutral-hover),
+    ),
+    'strong': (
+      'background-color': var(--#{$prefix}color-surface-tag-neutral-strong),
+    ),
+    'strong-dismissable-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-neutral-strong-hover),
+    ),
+    'strong-interactive': (
+      'border-color': var(--#{$prefix}color-border-tag-neutral-strong),
+    ),
+    'strong-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-neutral-strong-hover),
+    ),
+  ),
+  'neutral': (
+    'enabled': (
+      'background-color': var(--#{$prefix}color-surface-tag-neutral),
+      'border-color': var(--#{$prefix}color-border-tag),
+    ),
+    'dismissable-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-neutral-hover),
+    ),
+    'interactive': (
+      'border-color': var(--#{$prefix}color-border-tag-neutral),
+    ),
+    'interactive-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-neutral-hover),
+    ),
+    'strong': (
+      'background-color': var(--#{$prefix}color-surface-tag-neutral-strong),
+    ),
+    'strong-dismissable-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-neutral-strong-hover),
+    ),
+    'strong-interactive': (
+      'border-color': var(--#{$prefix}color-border-tag-neutral-strong),
+    ),
+    'strong-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-neutral-strong-hover),
+    ),
+  ),
+  'positive': (
+    'enabled': (
+      'background-color': var(--#{$prefix}color-surface-tag-positive),
+      'border-color': var(--#{$prefix}color-border-tag),
+    ),
+    'dismissable-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-positive-hover),
+    ),
+    'interactive': (
+      'border-color': var(--#{$prefix}color-border-tag-positive),
+    ),
+    'interactive-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-positive-hover),
+    ),
+    'strong': (
+      'background-color': var(--#{$prefix}color-surface-tag-positive-strong),
+    ),
+    'strong-dismissable-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-positive-strong-hover),
+    ),
+    'strong-interactive': (
+      'border-color': var(--#{$prefix}color-border-tag-positive-strong),
+    ),
+    'strong-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-positive-strong-hover),
+    ),
+  ),
+  'caution': (
+    'enabled': (
+      'background-color': var(--#{$prefix}color-surface-tag-caution),
+      'border-color': var(--#{$prefix}color-border-tag),
+    ),
+    'dismissable-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-caution-hover),
+    ),
+    'interactive': (
+      'border-color': var(--#{$prefix}color-border-tag-caution),
+    ),
+    'interactive-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-caution-hover),
+    ),
+    'strong': (
+      'background-color': var(--#{$prefix}color-surface-tag-caution-strong),
+    ),
+    'strong-dismissable-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-caution-strong-hover),
+    ),
+    'strong-interactive': (
+      'border-color': var(--#{$prefix}color-border-tag-caution-strong),
+    ),
+    'strong-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-caution-strong-hover),
+    ),
+  ),
+  'critical': (
+    'enabled': (
+      'background-color': var(--#{$prefix}color-surface-tag-critical),
+      'border-color': var(--#{$prefix}color-border-tag),
+    ),
+    'dismissable-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-critical-hover),
+    ),
+    'interactive': (
+      'border-color': var(--#{$prefix}color-border-tag-critical),
+    ),
+    'interactive-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-critical-hover),
+    ),
+    'strong': (
+      'background-color': var(--#{$prefix}color-surface-tag-critical-strong),
+    ),
+    'strong-dismissable-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-critical-strong-hover),
+    ),
+    'strong-interactive': (
+      'border-color': var(--#{$prefix}color-border-tag-critical-strong),
+    ),
+    'strong-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-critical-strong-hover),
+    ),
+  ),
+  'custom': (
+    'enabled': (
+      'background-color': var(--#{$prefix}color-surface-tag-custom),
+      'border-color': var(--#{$prefix}color-border-tag),
+    ),
+    'dismissable-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-custom-hover),
+    ),
+    'interactive': (
+      'border-color': var(--#{$prefix}color-border-tag-custom),
+    ),
+    'interactive-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-custom-hover),
+    ),
+    'strong': (
+      'background-color': var(--#{$prefix}color-surface-tag-custom-strong),
+    ),
+    'strong-dismissable-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-custom-strong-hover),
+    ),
+    'strong-interactive': (
+      'border-color': var(--#{$prefix}color-border-tag-custom-strong),
+    ),
+    'strong-hover': (
+      'background-color': var(--#{$prefix}color-surface-tag-custom-strong-hover),
+    ),
+  ),
+);

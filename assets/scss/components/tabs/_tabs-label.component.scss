@@ -1,0 +1,89 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}tabs-label),
+
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}tabs-label {
+  --#{$prefix}tabs-label-min-width: 48px;
+  --#{$prefix}tabs-label-vertical-padding: 16px;
+  --#{$prefix}tabs-label-label-actions-break: 4px; //var(--#{$prefix}space-inline-gap-message);
+  --#{$prefix}tabs-label-small-vertical-padding: 12px;
+  --#{$prefix}tabs-label-left-padding: var(--#{$prefix}space-inline-start-tab);
+  --#{$prefix}tabs-label-right-padding: var(--#{$prefix}space-inline-end-tab);
+  --#{$prefix}tabs-label-accent-bar-width: var(--#{$prefix}shape-size-y-tab-accent-bar);
+  --#{$prefix}tabs-label-focus-outline: 2px solid var(--#{$prefix}color-outline-tab);
+
+  --#{$prefix}tabs-label-leading-icon-margin-right: var(--#{$prefix}space-inline-couple-tab);
+
+  --#{$prefix}tabs-label-close-icon-displace-value: -6px;
+  --#{$prefix}tabs-label-close-icon-right-displace-value: -12px;
+
+  display: inline-flex;
+  position: relative;
+  user-select: none;
+
+  &:focus-visible {
+    outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+    outline-offset: -3px; //TODO: TEMPORARY UNTIL DESIGNERS STUDY THE IMPACT OF THE USER TO INCREASE THE OUTLINE OFFSET, TALK TO RSF FOR MORE INFO
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+.#{$prefix}tabs-label-wrapper {
+  cursor: pointer;
+  min-width: var(--#{$prefix}tabs-label-min-width);
+  --#{$prefix}box-header-base-padding: var(--#{$prefix}tabs-label-vertical-padding)
+    var(--#{$prefix}tabs-label-right-padding) var(--#{$prefix}tabs-label-vertical-padding)
+    var(--#{$prefix}tabs-label-left-padding);
+  --#{$prefix}box-header-small-base-padding: var(--#{$prefix}tabs-label-small-vertical-padding)
+    var(--#{$prefix}tabs-label-right-padding) var(--#{$prefix}tabs-label-small-vertical-padding)
+    var(--#{$prefix}tabs-label-left-padding);
+  --#{$prefix}box-header-icon-right-margin: var(--#{$prefix}tabs-label-leading-icon-margin-right);
+  --#{$prefix}box-header-label-actions-break: var(--#{$prefix}tabs-label-label-actions-break);
+  --#{$prefix}box-header-base-color: var(--#{$prefix}color-text-tab);
+  --#{$prefix}box-header-actions-max-width: none;
+  --#{$prefix}box-header-font-size: var(--#{$prefix}font-size-tab);
+  --#{$prefix}box-header-font-weight: var(--#{$prefix}font-weight-tab);
+  --#{$prefix}box-header-line-height: var(--#{$prefix}font-line-height-tab);
+  --#{$prefix}box-header-button-y-margin: -6px;
+  --#{$prefix}box-header-icon-y-margin: 0;
+
+  background-color: var(--#{$prefix}color-surface-tab-enabled);
+
+  &--selected {
+    --#{$prefix}box-header-background-color: var(--#{$prefix}color-surface-tab-selected);
+    --#{$prefix}box-header-base-color: var(--#{$prefix}color-text-tab-selected);
+  }
+
+  &:hover:not(&--disabled) {
+    background-color: var(--#{$prefix}color-surface-tab-hover);
+
+    --#{$prefix}box-header-background-color: var(--#{$prefix}color-surface-tab-hover);
+  }
+
+  &--disabled {
+    --#{$prefix}box-header-background-color: var(--#{$prefix}color-surface-tab-disabled);
+    cursor: no-drop;
+    opacity: 0.5;
+  }
+
+  &--with-only-child {
+    --#{$prefix}tabs-label-leading-icon-margin-right: 0;
+  }
+
+  ::ng-deep .#{$prefix}box-header__label-wrapper {
+    text-transform: none;
+  }
+
+  &__actions {
+    display: flex;
+    max-height: 20px;
+  }
+}

@@ -1,0 +1,178 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}modal),
+.#{$prefix}modal {
+  --#{$prefix}modal-backdrop-transition-duration: var(--cdk-overlay-backdrop-transition-duration);
+
+  --#{$prefix}modal-animation-duration: var(--#{$prefix}motion-duration-quick);
+  --#{$prefix}modal-animation-timing: var(--#{$prefix}motion-timing-exit);
+  --#{$prefix}modal-animation-delay: 0ms;
+}
+
+.#{$prefix}modal-wrapper {
+  --#{$prefix}modal-backdrop-transition-duration: var(--cdk-overlay-backdrop-transition-duration);
+
+  --#{$prefix}modal-animation-duration: var(--#{$prefix}motion-duration-quick);
+  --#{$prefix}modal-animation-timing: var(--#{$prefix}motion-timing-exit);
+  --#{$prefix}modal-animation-delay: 0ms;
+
+  --#{$prefix}modal-border-radius: 2px;
+
+  --#{$prefix}modal-close-icon-size: 20px;
+
+  --#{$prefix}modal-content-padding: 16px;
+
+  &.#{$prefix}no-motion {
+    --#{$prefix}modal-animation-duration: 0s;
+  }
+
+  position: relative;
+  border-radius: var(--#{$prefix}modal-border-radius);
+  width: 100%;
+  opacity: 0;
+  transition:
+    opacity var(--#{$prefix}modal-animation-duration) var(--#{$prefix}modal-animation-timing)
+      var(--#{$prefix}modal-animation-delay),
+    transform var(--#{$prefix}modal-animation-duration) var(--#{$prefix}modal-animation-timing)
+      var(--#{$prefix}modal-animation-delay),
+    visibility var(--#{$prefix}modal-animation-duration) var(--#{$prefix}modal-animation-timing)
+      var(--#{$prefix}modal-animation-delay);
+  transform: translateY(-24px);
+
+  &--in-modal {
+    flex: 1;
+    pointer-events: all;
+    user-select: text;
+
+    &.#{$prefix}modal-wrapper--non-scrollable {
+      height: 100%;
+    }
+  }
+
+  &--size- {
+    &sm {
+      max-width: 42%;
+
+      @include media-breakpoint-down(xl) {
+        max-width: 50%;
+      }
+
+      @include media-breakpoint-down(md) {
+        max-width: 58%;
+      }
+
+      @include media-breakpoint-down(sm) {
+        max-width: 100%;
+      }
+    }
+    &md {
+      max-width: 58%;
+
+      @include media-breakpoint-down(xl) {
+        max-width: 66%;
+      }
+
+      @include media-breakpoint-down(md) {
+        max-width: 75%;
+      }
+
+      @include media-breakpoint-down(sm) {
+        max-width: 100%;
+      }
+    }
+    &lg {
+      max-width: 75%;
+
+      @include media-breakpoint-down(xl) {
+        max-width: 83%;
+      }
+
+      @include media-breakpoint-down(md) {
+        max-width: 92%;
+      }
+
+      @include media-breakpoint-down(sm) {
+        max-width: 100%;
+      }
+    }
+  }
+
+  // narrow screen
+  @include media-breakpoint-down(sm) {
+    // if touch device
+    @media (any-hover: none) {
+      transform: translateY(100%);
+      max-width: none;
+      padding: 0 0;
+      margin-bottom: 0;
+    }
+  }
+
+  // if touch device (regular size screen)
+  @media (any-hover: none) {
+  }
+
+  &--visible {
+    --#{$prefix}modal-animation-duration: var(--#{$prefix}motion-duration-standard);
+    --#{$prefix}modal-animation-timing: var(--#{$prefix}motion-timing-entrance);
+    transform: translateY(0);
+    opacity: 1;
+
+    // narrow screen
+    @include media-breakpoint-down(sm) {
+      // if touch device
+      @media (any-hover: none) {
+        transform: translateY(0);
+      }
+    }
+
+    // if touch device (regular size screen)
+    @media (any-hover: none) {
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+
+    ::ng-deep #{$prefix}box-header {
+      flex: 1;
+    }
+  }
+
+  ::ng-deep .#{$prefix}box-footer .#{$prefix}box-footer__item {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  ::ng-deep .#{$prefix}box-header__item__close-button.#{$prefix}button {
+    &:focus {
+      outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+      outline-offset: var(--#{$prefix}size-outline-offset);
+    }
+  }
+}
+
+.#{$prefix}modal-wrapper__context {
+  width: 100%;
+  max-height: 100%;
+  display: inherit;
+  justify-content: inherit;
+  user-select: none;
+  overflow: visible;
+  padding: 0;
+
+  &--allow-overflow {
+    overflow: auto;
+  }
+
+  &--align-top {
+    align-self: flex-start;
+  }
+
+  @include media-breakpoint-down(sm) {
+    align-self: initial;
+  }
+}

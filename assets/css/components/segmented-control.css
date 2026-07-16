@@ -1,0 +1,168 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+:host(ds-segmented-control),
+.ds-segmented-control {
+  background-color: var(--ds-color-surface-segmented-control-container);
+  border-radius: var(--ds-shape-radius-segmented-control-item);
+  height: var(--ds-shape-size-ymin-segmented-control-item);
+  border-color: var(--ds-color-border-segmented-control-container);
+  display: flex;
+  white-space: nowrap;
+}
+:host(ds-segmented-control).ds-segmented-control--sm,
+.ds-segmented-control.ds-segmented-control--sm {
+  height: var(--ds-shape-size-ymin-segmented-control-item-sm);
+}
+:host(ds-segmented-control).ds-segmented-control--lg,
+.ds-segmented-control.ds-segmented-control--lg {
+  height: var(--ds-shape-size-ymin-segmented-control-item-lg);
+}
+:host(ds-segmented-control).ds-segmented-control--fit-to-content,
+.ds-segmented-control.ds-segmented-control--fit-to-content {
+  width: fit-content;
+  max-width: -webkit-fill-available;
+}
+:host(ds-segmented-control).ds-segmented-control--fit-to-content ::ng-deep .ds-segmented-control-item,
+.ds-segmented-control.ds-segmented-control--fit-to-content ::ng-deep .ds-segmented-control-item {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+:host(ds-segmented-control).ds-segmented-control--fit-to-content ::ng-deep .ds-segmented-control-item ::ng-deep .ds-button--toggle,
+.ds-segmented-control.ds-segmented-control--fit-to-content ::ng-deep .ds-segmented-control-item ::ng-deep .ds-button--toggle {
+  justify-content: center;
+}
+:host(ds-segmented-control).ds-segmented-control--fit-to-content ::ng-deep .ds-segmented-control-item ::ng-deep .ds-button--toggle.has-no-content.has-icon.ds-button--sm,
+.ds-segmented-control.ds-segmented-control--fit-to-content ::ng-deep .ds-segmented-control-item ::ng-deep .ds-button--toggle.has-no-content.has-icon.ds-button--sm {
+  --ds-space-inline-couple-button: var(--ds-space-1x);
+}
+:host(ds-segmented-control).ds-segmented-control--fit-to-content ::ng-deep .ds-segmented-control-item ::ng-deep .ds-button--toggle.has-no-content.has-icon.ds-button--md,
+.ds-segmented-control.ds-segmented-control--fit-to-content ::ng-deep .ds-segmented-control-item ::ng-deep .ds-button--toggle.has-no-content.has-icon.ds-button--md {
+  --ds-space-inline-couple-button: calc(var(--ds-space-2x) - 2px);
+}
+:host(ds-segmented-control).ds-segmented-control--fit-to-content ::ng-deep .ds-segmented-control-item ::ng-deep .ds-button--toggle.has-no-content.has-icon.ds-button--lg,
+.ds-segmented-control.ds-segmented-control--fit-to-content ::ng-deep .ds-segmented-control-item ::ng-deep .ds-button--toggle.has-no-content.has-icon.ds-button--lg {
+  --ds-space-inline-couple-button: var(--ds-space-2x);
+}
+
+:host(ds-segmented-control-item),
+.ds-segmented-control-item {
+  --ds-shape-size-xmin-button: var(--ds-shape-size-xmin-segmented-control-item);
+  --ds-color-surface-button-toggle: var(--ds-color-surface-segmented-control-item);
+  position: relative;
+  display: block;
+}
+:host(ds-segmented-control-item)::after,
+.ds-segmented-control-item::after {
+  content: " ";
+  position: absolute;
+  left: 0px;
+  top: 7px;
+  bottom: 7px;
+  background-color: var(--ds-color-divider-segmented-control-item);
+  width: var(--ds-shape-divider-segmented-control-item);
+  z-index: 1;
+}
+:host(ds-segmented-control-item):first-child::after, :host(ds-segmented-control-item):has(.ds-button--toggle--active)::after, :host(ds-segmented-control-item):has(.ds-button--toggle--active) + .ds-segmented-control-item::after,
+.ds-segmented-control-item:first-child::after,
+.ds-segmented-control-item:has(.ds-button--toggle--active)::after,
+.ds-segmented-control-item:has(.ds-button--toggle--active) + .ds-segmented-control-item::after {
+  content: unset;
+}
+:host(ds-segmented-control-item).ds-flex-items,
+.ds-segmented-control-item.ds-flex-items {
+  flex: 1;
+}
+:host(ds-segmented-control-item) ::ng-deep .ds-button--toggle,
+.ds-segmented-control-item ::ng-deep .ds-button--toggle {
+  width: 100%;
+  height: 100%;
+}
+:host(ds-segmented-control-item) ::ng-deep .ds-button--toggle.ds-button--toggle--active,
+.ds-segmented-control-item ::ng-deep .ds-button--toggle.ds-button--toggle--active {
+  border-radius: var(--ds-shape-radius-button) !important;
+  background-color: var(--ds-color-surface-segmented-control-item-checked);
+  cursor: default;
+  border: 1px solid var(--ds-color-border-segmented-control-item-checked);
+}
+:host(ds-segmented-control-item) ::ng-deep .ds-button--toggle.ds-button--toggle--active[disabled],
+.ds-segmented-control-item ::ng-deep .ds-button--toggle.ds-button--toggle--active[disabled] {
+  --ds-color-surface-button-toggle-disabled: var(
+    --ds-color-surface-segmented-control-item-disabled-checked
+  );
+  border: 1px solid var(--ds-color-border-segmented-control-item-disabled-checked);
+  cursor: not-allowed;
+}
+:host(ds-segmented-control-item) ::ng-deep .ds-button--toggle.ds-button--toggle--active[disabled] .ds-icon,
+.ds-segmented-control-item ::ng-deep .ds-button--toggle.ds-button--toggle--active[disabled] .ds-icon {
+  color: var(--ds-color-icon-segmented-control-item-disabled-checked);
+}
+:host(ds-segmented-control-item) ::ng-deep .ds-button--toggle.ds-button--toggle--active .ds-icon,
+.ds-segmented-control-item ::ng-deep .ds-button--toggle.ds-button--toggle--active .ds-icon {
+  color: var(--ds-color-icon-segmented-control-item-checked);
+}
+:host(ds-segmented-control-item) ::ng-deep .ds-button--toggle[disabled]:not(.ds-button--toggle--active),
+.ds-segmented-control-item ::ng-deep .ds-button--toggle[disabled]:not(.ds-button--toggle--active) {
+  background-color: var(--ds-color-surface-segmented-control-item-disabled);
+  border-color: var(--ds-color-border-segmented-control-item-disabled);
+}
+:host(ds-segmented-control-item) ::ng-deep .ds-button--toggle[disabled]:not(.ds-button--toggle--active) .ds-icon,
+.ds-segmented-control-item ::ng-deep .ds-button--toggle[disabled]:not(.ds-button--toggle--active) .ds-icon {
+  color: var(--ds-color-icon-segmented-control-item-disabled);
+}
+:host(ds-segmented-control-item) ::ng-deep .ds-button--toggle:hover,
+.ds-segmented-control-item ::ng-deep .ds-button--toggle:hover {
+  --ds-color-surface-button-toggle-checked-hover: var(
+    --ds-color-surface-segmented-control-item-checked
+  );
+  --ds-color-surface-button-toggle-hover: var(--ds-color-surface-segmented-control-item-hover);
+}
+:host(ds-segmented-control-item) ::ng-deep .ds-button--toggle:hover:not(.ds-button--toggle--active),
+.ds-segmented-control-item ::ng-deep .ds-button--toggle:hover:not(.ds-button--toggle--active) {
+  --ds-color-surface-button-toggle-checked-hover: var(
+    --ds-color-surface-segmented-control-item-hover
+  );
+  border-color: var(--ds-color-border-segmented-control-item-hover);
+}
+:host(ds-segmented-control-item) ::ng-deep .ds-button--toggle:hover:not(.ds-button--toggle--active):not([disabled]) .ds-icon,
+.ds-segmented-control-item ::ng-deep .ds-button--toggle:hover:not(.ds-button--toggle--active):not([disabled]) .ds-icon {
+  color: var(--ds-color-icon-segmented-control-item-hover);
+}
+:host(ds-segmented-control-item) ::ng-deep .ds-button--toggle .ds-icon,
+.ds-segmented-control-item ::ng-deep .ds-button--toggle .ds-icon {
+  color: var(--ds-color-icon-segmented-control-item);
+  --ds-space-inline-couple-button: var(--ds-space-inline-couple-segmented-control-item);
+}
+:host(ds-segmented-control-item) ::ng-deep .ds-button--toggle .ds-icon.ds-icon--sm,
+.ds-segmented-control-item ::ng-deep .ds-button--toggle .ds-icon.ds-icon--sm {
+  --ds-icon-size-small: var(--ds-icon-size-segmented-control-item-sm);
+}
+:host(ds-segmented-control-item) ::ng-deep .ds-button--toggle .ds-icon.ds-icon--md,
+.ds-segmented-control-item ::ng-deep .ds-button--toggle .ds-icon.ds-icon--md {
+  --ds-icon-size-medium: var(--ds-icon-size-segmented-control-item);
+}
+:host(ds-segmented-control-item) ::ng-deep .ds-button--toggle .ds-icon.ds-icon--lg,
+.ds-segmented-control-item ::ng-deep .ds-button--toggle .ds-icon.ds-icon--lg {
+  --ds-icon-size-large: var(--ds-icon-size-segmented-control-item-lg);
+}
+:host(ds-segmented-control-item) ::ng-deep .ds-button--toggle.ds-button--sm,
+.ds-segmented-control-item ::ng-deep .ds-button--toggle.ds-button--sm {
+  --ds-shape-size-ymin-button: var(--ds-shape-size-ymin-segmented-control-item-sm);
+  --ds-space-inline-end-button: var(--ds-space-inline-end-segmented-control-item-sm);
+  --ds-space-inline-start-button: var(--ds-space-inline-start-segmented-control-item-sm);
+}
+:host(ds-segmented-control-item) ::ng-deep .ds-button--toggle.ds-button--md,
+.ds-segmented-control-item ::ng-deep .ds-button--toggle.ds-button--md {
+  --ds-shape-size-ymin-button: var(--ds-shape-size-ymin-segmented-control-item);
+  --ds-space-inline-end-button: var(--ds-space-inline-end-segmented-control-item);
+  --ds-space-inline-start-button: var(--ds-space-inline-start-segmented-control-item);
+}
+:host(ds-segmented-control-item) ::ng-deep .ds-button--toggle.ds-button--lg,
+.ds-segmented-control-item ::ng-deep .ds-button--toggle.ds-button--lg {
+  --ds-shape-size-ymin-button: var(--ds-shape-size-ymin-segmented-control-item-lg);
+  --ds-space-inline-end-button: var(--ds-space-inline-end-segmented-control-item-lg);
+  --ds-space-inline-start-button: var(--ds-space-inline-start-segmented-control-item-lg);
+}

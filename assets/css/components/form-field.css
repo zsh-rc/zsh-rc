@@ -1,0 +1,966 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+.text-smallprint {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-smallprint);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-smallprint);
+}
+.text-label {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-label);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-label);
+}
+.text-regular {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-regular);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-regular);
+}
+.text-paragraph {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-paragraph);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-paragraph);
+}
+
+.title-xs {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-title-xs);
+  font-weight: var(--ds-typography-weight-title-xs);
+  line-height: var(--ds-typography-line-height-title-xs);
+  text-transform: var(--ds-typography-transform-uppercase);
+}
+.title-sm {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-title-sm);
+  font-weight: var(--ds-typography-weight-title-sm);
+  line-height: var(--ds-typography-line-height-title-sm);
+  text-transform: var(--ds-typography-transform-uppercase);
+}
+.title-md {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-title-md);
+  font-weight: var(--ds-typography-weight-title-md);
+  line-height: var(--ds-typography-line-height-title-md);
+}
+.title-lg {
+  font-family: var(--ds-typography-family-brand);
+  font-size: var(--ds-typography-size-title-lg);
+  font-weight: var(--ds-typography-weight-title-lg);
+  line-height: var(--ds-typography-line-height-title-lg);
+  text-transform: var(--ds-typography-transform-uppercase);
+}
+
+.truncated-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-form-field),
+.ds-form-field {
+  display: flex;
+  --ds-autofill-text-color: var(--ds-color-text-input-value);
+}
+:host(ds-form-field).ds-form-field--block,
+.ds-form-field.ds-form-field--block {
+  flex-direction: column;
+}
+:host(ds-form-field):not(.ds-form-field--block),
+.ds-form-field:not(.ds-form-field--block) {
+  flex-direction: row;
+}
+:host(ds-form-field):not(.ds-form-field--block) .ds-form-field__label,
+.ds-form-field:not(.ds-form-field--block) .ds-form-field__label {
+  align-items: baseline;
+  justify-content: flex-end;
+  margin-bottom: 0px;
+}
+:host(ds-form-field):not(.ds-form-field--block) .ds-form-field__label__required,
+.ds-form-field:not(.ds-form-field--block) .ds-form-field__label__required {
+  margin-top: calc((var(--ds-shape-size-y-input) - var(--ds-font-line-height-input)) / 2 + var(--ds-space-stack-start-input-requiredflag));
+}
+:host(ds-form-field):not(.ds-form-field--block) .ds-form-field__label ::ng-deep [ds-label],
+.ds-form-field:not(.ds-form-field--block) .ds-form-field__label ::ng-deep [ds-label] {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-label);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-label);
+  width: fit-content;
+  margin-top: calc((var(--ds-shape-size-y-input) - var(--ds-font-line-height-input)) / 2);
+}
+:host(ds-form-field):not(.ds-form-field--block) .ds-form-field__label__optional,
+.ds-form-field:not(.ds-form-field--block) .ds-form-field__label__optional {
+  align-self: baseline;
+  margin-left: var(--ds-space-inline-couple-input-optionalflag);
+  margin-top: calc((var(--ds-shape-size-y-input) - var(--ds-font-line-height-input)) / 2);
+}
+:host(ds-form-field):not(.ds-form-field--block) span.ds-form-field__label__lg,
+.ds-form-field:not(.ds-form-field--block) span.ds-form-field__label__lg {
+  align-items: baseline;
+  justify-content: flex-end;
+  margin-bottom: 0px;
+}
+:host(ds-form-field):not(.ds-form-field--block) span.ds-form-field__label__lg__required,
+.ds-form-field:not(.ds-form-field--block) span.ds-form-field__label__lg__required {
+  margin-top: calc((var(--ds-shape-size-y-input-large) - var(--ds-font-line-height-input-large)) / 2 + var(--ds-space-stack-start-input-requiredflag-large));
+}
+:host(ds-form-field):not(.ds-form-field--block) span.ds-form-field__label__lg ::ng-deep [ds-label],
+.ds-form-field:not(.ds-form-field--block) span.ds-form-field__label__lg ::ng-deep [ds-label] {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-regular);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-regular);
+  width: fit-content;
+  margin-top: calc((var(--ds-shape-size-y-input-large) - var(--ds-font-line-height-input-large)) / 2);
+}
+:host(ds-form-field):not(.ds-form-field--block) span.ds-form-field__label__lg__optional,
+.ds-form-field:not(.ds-form-field--block) span.ds-form-field__label__lg__optional {
+  align-self: baseline;
+  margin-left: var(--ds-space-inline-couple-input-optionalflag);
+  margin-top: calc((var(--ds-shape-size-y-input-large) - var(--ds-font-line-height-input-large)) / 2);
+}
+:host(ds-form-field) .ds-form-field__label,
+.ds-form-field .ds-form-field__label {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: var(--ds-space-1x);
+}
+:host(ds-form-field) .ds-form-field__label__required,
+.ds-form-field .ds-form-field__label__required {
+  flex-shrink: 0;
+  margin-top: var(--ds-space-stack-start-input-requiredflag);
+  margin-right: var(--ds-space-inline-couple-input-requiredflag);
+}
+:host(ds-form-field) .ds-form-field__label ::ng-deep [ds-label],
+.ds-form-field .ds-form-field__label ::ng-deep [ds-label] {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-label);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-label);
+  width: 100%;
+  color: var(--ds-color-text-input-label);
+  font-weight: var(--ds-font-weight-input);
+}
+:host(ds-form-field) .ds-form-field__label__optional,
+.ds-form-field .ds-form-field__label__optional {
+  align-self: flex-end;
+  color: var(--ds-color-text-input-label);
+  font-style: italic;
+  margin-left: var(--ds-space-inline-start-input-optionalflag);
+  margin-right: var(--ds-space-inline-end-input-optionalflag);
+  white-space: nowrap;
+}
+:host(ds-form-field) .ds-form-field__label__lg,
+.ds-form-field .ds-form-field__label__lg {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: var(--ds-space-1x);
+}
+:host(ds-form-field) .ds-form-field__label__lg__required,
+.ds-form-field .ds-form-field__label__lg__required {
+  flex-shrink: 0;
+  margin-top: var(--ds-space-stack-start-input-requiredflag-large);
+  margin-right: var(--ds-space-inline-couple-input-requiredflag);
+}
+:host(ds-form-field) .ds-form-field__label__lg ::ng-deep [ds-label],
+.ds-form-field .ds-form-field__label__lg ::ng-deep [ds-label] {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-regular);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-regular);
+  width: 100%;
+  color: var(--ds-color-text-input-label);
+  font-weight: var(--ds-font-weight-input);
+}
+:host(ds-form-field) .ds-form-field__label__lg__optional,
+.ds-form-field .ds-form-field__label__lg__optional {
+  align-self: flex-end;
+  color: var(--ds-color-text-input-label);
+  font-style: italic;
+  font-size: var(--ds-font-size-input-label);
+  margin-left: var(--ds-space-inline-start-input-optionalflag);
+  margin-right: var(--ds-space-inline-end-input-optionalflag);
+  white-space: nowrap;
+}
+:host(ds-form-field):focus-within .ds-form-field__label ::ng-deep [ds-label], :host(ds-form-field):focus-within .ds-form-field__label__lg ::ng-deep [ds-label],
+.ds-form-field:focus-within .ds-form-field__label ::ng-deep [ds-label],
+.ds-form-field:focus-within .ds-form-field__label__lg ::ng-deep [ds-label] {
+  color: var(--ds-color-text-input-label-active);
+}
+:host(ds-form-field) .ds-form-field__wrapper,
+.ds-form-field .ds-form-field__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+:host(ds-form-field) .ds-form-field__clear-button,
+.ds-form-field .ds-form-field__clear-button {
+  position: absolute;
+  top: 50%;
+  right: calc(var(--ds-space-1x) + var(--ds-icon-size-small));
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--ds-color-icon-input-clear);
+  cursor: pointer;
+  font-size: var(--ds-icon-size-small);
+  padding: 0;
+  visibility: hidden; /* Hide by default */
+  z-index: 1;
+}
+:host(ds-form-field) .ds-form-field__clear-button:focus,
+.ds-form-field .ds-form-field__clear-button:focus {
+  outline: none;
+}
+:host(ds-form-field) .ds-form-field__clear-button:hover,
+.ds-form-field .ds-form-field__clear-button:hover {
+  color: var(--ds-color-icon-input-clear-hover);
+}
+:host(ds-form-field) .ds-form-field__clear-button,
+.ds-form-field .ds-form-field__clear-button {
+  /* If the field has value, show the clear button */
+}
+:host(ds-form-field) .ds-form-field__clear-button.active,
+.ds-form-field .ds-form-field__clear-button.active {
+  visibility: visible;
+}
+:host(ds-form-field),
+.ds-form-field {
+  /* When the form field has content (for the clear button to be visible) */
+}
+:host(ds-form-field) .ds-form-field__input-wrapper--has-content .ds-form-field__clear-button,
+.ds-form-field .ds-form-field__input-wrapper--has-content .ds-form-field__clear-button {
+  visibility: visible;
+}
+:host(ds-form-field) .ds-input-wrapper--file-input.ds-input,
+.ds-form-field .ds-input-wrapper--file-input.ds-input {
+  cursor: pointer;
+}
+:host(ds-form-field) .ds-input-wrapper--file-input--button-hovered,
+.ds-form-field .ds-input-wrapper--file-input--button-hovered {
+  --ds-color-surface-input-hover: var(--ds-color-surface-input-alt);
+}
+:host(ds-form-field) .ds-input-wrapper--file-input--readonly.ds-input,
+.ds-form-field .ds-input-wrapper--file-input--readonly.ds-input {
+  cursor: default;
+}
+:host(ds-form-field) .ds-input-wrapper--file-input--readonly .ds-form-field__file-input-button,
+.ds-form-field .ds-input-wrapper--file-input--readonly .ds-form-field__file-input-button {
+  visibility: hidden;
+}
+:host(ds-form-field).ds-form-field--focused.ds-form-field--invalid ::ng-deep .ds-input.ds-input-wrapper,
+:host(ds-form-field).ds-form-field--focused.ds-form-field--invalid ::ng-deep .ds-inputnumber.ds-input-wrapper,
+.ds-form-field.ds-form-field--focused.ds-form-field--invalid ::ng-deep .ds-input.ds-input-wrapper,
+.ds-form-field.ds-form-field--focused.ds-form-field--invalid ::ng-deep .ds-inputnumber.ds-input-wrapper {
+  background-color: var(--ds-color-surface-input-error);
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+}
+:host(ds-form-field).ds-form-field--focused.ds-form-field--invalid ::ng-deep .ds-select,
+.ds-form-field.ds-form-field--focused.ds-form-field--invalid ::ng-deep .ds-select {
+  background-color: var(--ds-color-surface-input-error);
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+}
+:host(ds-form-field).ds-form-field--focused ::ng-deep .ds-input.ds-input-wrapper, :host(ds-form-field).ds-form-field--focused ::ng-deep .ds-inputnumber.ds-input-wrapper,
+.ds-form-field.ds-form-field--focused ::ng-deep .ds-input.ds-input-wrapper,
+.ds-form-field.ds-form-field--focused ::ng-deep .ds-inputnumber.ds-input-wrapper {
+  border: 1px solid var(--ds-color-border-input-focus);
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+}
+:host(ds-form-field).ds-form-field--focused ::ng-deep .ds-input.ds-input-wrapper input, :host(ds-form-field).ds-form-field--focused ::ng-deep .ds-inputnumber.ds-input-wrapper input,
+.ds-form-field.ds-form-field--focused ::ng-deep .ds-input.ds-input-wrapper input,
+.ds-form-field.ds-form-field--focused ::ng-deep .ds-inputnumber.ds-input-wrapper input {
+  outline: 0;
+}
+:host(ds-form-field).ds-form-field--focused ::ng-deep .ds-input.ds-input-wrapper:not(.ds-input-wrapper--non-typeable), :host(ds-form-field).ds-form-field--focused ::ng-deep .ds-inputnumber.ds-input-wrapper:not(.ds-input-wrapper--non-typeable),
+.ds-form-field.ds-form-field--focused ::ng-deep .ds-input.ds-input-wrapper:not(.ds-input-wrapper--non-typeable),
+.ds-form-field.ds-form-field--focused ::ng-deep .ds-inputnumber.ds-input-wrapper:not(.ds-input-wrapper--non-typeable) {
+  background-color: var(--ds-color-surface-input);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep,
+.ds-form-field.ds-form-field--invalid ::ng-deep {
+  --ds-autofill-text-color: var(--ds-color-text-input-error);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=text],
+:host(ds-form-field).ds-form-field--invalid ::ng-deep textarea,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-input.ds-input-wrapper,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-inputnumber.ds-input-wrapper,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-select,
+.ds-form-field.ds-form-field--invalid ::ng-deep input,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=text],
+.ds-form-field.ds-form-field--invalid ::ng-deep textarea,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-input.ds-input-wrapper,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-inputnumber.ds-input-wrapper,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-select {
+  background-color: var(--ds-color-surface-input-error);
+  border-color: var(--ds-color-border-input-error);
+  color: var(--ds-color-text-input-error);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input ::ng-deep .ds-timepicker .ds-input.ds-input-wrapper > .ds-input > input,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=text] ::ng-deep .ds-timepicker .ds-input.ds-input-wrapper > .ds-input > input,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep textarea ::ng-deep .ds-timepicker .ds-input.ds-input-wrapper > .ds-input > input,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-input.ds-input-wrapper ::ng-deep .ds-timepicker .ds-input.ds-input-wrapper > .ds-input > input,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-inputnumber.ds-input-wrapper ::ng-deep .ds-timepicker .ds-input.ds-input-wrapper > .ds-input > input,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-select ::ng-deep .ds-timepicker .ds-input.ds-input-wrapper > .ds-input > input,
+.ds-form-field.ds-form-field--invalid ::ng-deep input ::ng-deep .ds-timepicker .ds-input.ds-input-wrapper > .ds-input > input,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=text] ::ng-deep .ds-timepicker .ds-input.ds-input-wrapper > .ds-input > input,
+.ds-form-field.ds-form-field--invalid ::ng-deep textarea ::ng-deep .ds-timepicker .ds-input.ds-input-wrapper > .ds-input > input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-input.ds-input-wrapper ::ng-deep .ds-timepicker .ds-input.ds-input-wrapper > .ds-input > input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-inputnumber.ds-input-wrapper ::ng-deep .ds-timepicker .ds-input.ds-input-wrapper > .ds-input > input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-select ::ng-deep .ds-timepicker .ds-input.ds-input-wrapper > .ds-input > input {
+  color: var(--ds-color-text-input-error);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input input,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=text] input,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep textarea input,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-input.ds-input-wrapper input,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-inputnumber.ds-input-wrapper input,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-select input,
+.ds-form-field.ds-form-field--invalid ::ng-deep input input,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=text] input,
+.ds-form-field.ds-form-field--invalid ::ng-deep textarea input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-input.ds-input-wrapper input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-inputnumber.ds-input-wrapper input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-select input {
+  color: var(--ds-color-text-input-error);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input:hover,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=text]:hover,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep textarea:hover,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-input.ds-input-wrapper:hover,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-inputnumber.ds-input-wrapper:hover,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-select:hover,
+.ds-form-field.ds-form-field--invalid ::ng-deep input:hover,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=text]:hover,
+.ds-form-field.ds-form-field--invalid ::ng-deep textarea:hover,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-input.ds-input-wrapper:hover,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-inputnumber.ds-input-wrapper:hover,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-select:hover {
+  background-color: var(--ds-color-surface-input-error);
+  border-color: var(--ds-color-border-input-error);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input:focus,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=text]:focus,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep textarea:focus,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-input.ds-input-wrapper:focus,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-inputnumber.ds-input-wrapper:focus,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-select:focus,
+.ds-form-field.ds-form-field--invalid ::ng-deep input:focus,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=text]:focus,
+.ds-form-field.ds-form-field--invalid ::ng-deep textarea:focus,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-input.ds-input-wrapper:focus,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-inputnumber.ds-input-wrapper:focus,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-select:focus {
+  background-color: var(--ds-color-surface-input-error);
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input:disabled,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=text]:disabled,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep textarea:disabled,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-input.ds-input-wrapper:disabled,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-inputnumber.ds-input-wrapper:disabled,
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-select:disabled,
+.ds-form-field.ds-form-field--invalid ::ng-deep input:disabled,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=text]:disabled,
+.ds-form-field.ds-form-field--invalid ::ng-deep textarea:disabled,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-input.ds-input-wrapper:disabled,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-inputnumber.ds-input-wrapper:disabled,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-select:disabled {
+  background-color: var(--ds-color-surface-input-disabled);
+  border-color: var(--ds-color-border-input-disabled);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=radio]:not(:disabled),
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=radio]:not(:disabled) {
+  background-color: var(--ds-color-surface-input-error);
+  border: 1px solid var(--ds-color-border-input-error);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=radio]:not(:disabled):checked,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=radio]:not(:disabled):checked {
+  background-color: var(--ds-color-surface-input-error);
+  border: 1px solid var(--ds-color-border-input-error);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=radio]:not(:disabled):checked::after,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=radio]:not(:disabled):checked::after {
+  background-color: var(--ds-color-icon-input-error);
+  border-radius: var(--ds-shape-radius-radiobutton);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=radio]:not(:disabled):checked:hover::after,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=radio]:not(:disabled):checked:hover::after {
+  background-color: var(--ds-color-icon-input-error-hover);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=radio]:not(:disabled):checked:focus-visible::after,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=radio]:not(:disabled):checked:focus-visible::after {
+  background-color: var(--ds-color-icon-input-error-focus);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=radio]:not(:disabled):hover,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=radio]:not(:disabled):hover {
+  border: 1px solid var(--ds-color-border-input-error-hover);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=radio]:not(:disabled):focus-visible,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=radio]:not(:disabled):focus-visible {
+  border: 1px solid var(--ds-color-border-input-error-focus);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=radio]:not(:disabled):focus,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=radio]:not(:disabled):focus {
+  outline: 0;
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled), :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled),
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled),
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled) {
+  background-color: var(--ds-color-surface-input-block-error);
+  border: 1px solid var(--ds-color-border-input-block-error);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):not(:has(input.ds-input:checked)):hover, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):not(:has(input.ds-input:checked)):hover,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):not(:has(input.ds-input:checked)):hover,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):not(:has(input.ds-input:checked)):hover {
+  border: 1px solid var(--ds-color-border-input-block-error-hover);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):not(:has(input.ds-input:checked)):hover input.ds-input, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):not(:has(input.ds-input:checked)):hover input.ds-input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):not(:has(input.ds-input:checked)):hover input.ds-input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):not(:has(input.ds-input:checked)):hover input.ds-input {
+  border-color: var(--ds-color-border-input-block-error-hover);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):not(:has(input.ds-input:checked)):focus-visible, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):not(:has(input.ds-input:checked)):focus-visible,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):not(:has(input.ds-input:checked)):focus-visible,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):not(:has(input.ds-input:checked)):focus-visible {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+  border: 1px solid var(--ds-color-border-input-block-error-focus);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):not(:has(input.ds-input:checked)):focus-visible input.ds-input, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):not(:has(input.ds-input:checked)):focus-visible input.ds-input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):not(:has(input.ds-input:checked)):focus-visible input.ds-input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):not(:has(input.ds-input:checked)):focus-visible input.ds-input {
+  border-color: var(--ds-color-border-input-block-error-focus);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):has(input.ds-input:checked), :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):has(input.ds-input:checked),
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):has(input.ds-input:checked),
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):has(input.ds-input:checked) {
+  background-color: var(--ds-color-surface-input-block-active-error);
+  border: 1px solid var(--ds-color-border-input-block-active-error);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):has(input.ds-input:checked) input.ds-input, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):has(input.ds-input:checked) input.ds-input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):has(input.ds-input:checked) input.ds-input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):has(input.ds-input:checked) input.ds-input {
+  border-color: var(--ds-color-border-input-block-active-error);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):has(input.ds-input:checked):hover, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):has(input.ds-input:checked):hover,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):has(input.ds-input:checked):hover,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):has(input.ds-input:checked):hover {
+  border: 1px solid var(--ds-color-border-input-block-error-hover);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):has(input.ds-input:checked):hover input.ds-input, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):has(input.ds-input:checked):hover input.ds-input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):has(input.ds-input:checked):hover input.ds-input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):has(input.ds-input:checked):hover input.ds-input {
+  border-color: var(--ds-color-border-input-block-error-hover);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):has(input.ds-input:checked):hover input.ds-input::after, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):has(input.ds-input:checked):hover input.ds-input::after,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):has(input.ds-input:checked):hover input.ds-input::after,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):has(input.ds-input:checked):hover input.ds-input::after {
+  background-color: var(--ds-color-icon-input-error-hover);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):has(input.ds-input:checked):focus-visible, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):has(input.ds-input:checked):focus-visible,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):has(input.ds-input:checked):focus-visible,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):has(input.ds-input:checked):focus-visible {
+  border: 1px solid var(--ds-color-border-input-block-error-focus);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):has(input.ds-input:checked):focus-visible input.ds-input, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):has(input.ds-input:checked):focus-visible input.ds-input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):has(input.ds-input:checked):focus-visible input.ds-input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):has(input.ds-input:checked):focus-visible input.ds-input {
+  border-color: var(--ds-color-border-input-block-error-focus);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):has(input.ds-input:checked):focus-visible input.ds-input::after, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):has(input.ds-input:checked):focus-visible input.ds-input::after,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled):has(input.ds-input:checked):focus-visible input.ds-input::after,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled):has(input.ds-input:checked):focus-visible input.ds-input::after {
+  background-color: var(--ds-color-icon-input-error-focus);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled) input.ds-input:not(:checked), :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled) input.ds-input:not(:checked),
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__explicit-label:not(.ds-radio-button__explicit-label--disabled) input.ds-input:not(:checked),
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-radio-group--is-block .ds-radio-button__implicit-label:not(.ds-radio-button__implicit-label--disabled) input.ds-input:not(:checked) {
+  background-color: initial;
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled), :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled),
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled),
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled) {
+  background-color: var(--ds-color-surface-input-block-error);
+  border: 1px solid var(--ds-color-border-input-block-error);
+  --ds-color-surface-input-block-active: var(--ds-color-surface-input-block-error);
+  --ds-color-border-input-block-active: var(--ds-color-border-input-block-error);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):hover, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):hover,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):hover,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):hover {
+  background-color: var(--ds-color-surface-input-block-error);
+  border: 1px solid var(--ds-color-border-input-block-error-hover);
+  --ds-color-surface-input-block-active: var(--ds-color-surface-input-block-error);
+  --ds-color-border-input-block-active: var(--ds-color-border-input-block-error-hover);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):hover input, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):hover input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):hover input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):hover input {
+  border: 1px solid var(--ds-color-border-input-block-error-hover);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):focus-visible, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):focus-visible,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):focus-visible,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):focus-visible {
+  background-color: var(--ds-color-surface-input-block-error-focus);
+  border: 1px solid var(--ds-color-border-input-block-error-focus);
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):focus-visible input, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):focus-visible input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):focus-visible input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):focus-visible input {
+  border: 1px solid var(--ds-color-border-input-block-error-focus);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input.ds-checkbox:checked), :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input.ds-checkbox:checked),
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input.ds-checkbox:checked),
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input.ds-checkbox:checked) {
+  background-color: var(--ds-color-surface-input-block-active-error);
+  border: 1px solid var(--ds-color-border-input-block-active-error);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input.ds-checkbox:checked) input, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input.ds-checkbox:checked) input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input.ds-checkbox:checked) input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input.ds-checkbox:checked) input {
+  border: 1px solid var(--ds-color-border-input-block-active-error);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input.ds-checkbox:checked):hover, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input.ds-checkbox:checked):hover,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input.ds-checkbox:checked):hover,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input.ds-checkbox:checked):hover {
+  background-color: var(--ds-color-surface-input-block-error);
+  border-color: var(--ds-color-border-input-block-error-hover);
+  --ds-color-surface-input-block-active: var(--ds-color-surface-input-block-error);
+  --ds-color-border-input-block-active: var(--ds-color-border-input-block-error-hover);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input.ds-checkbox:checked):hover input, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input.ds-checkbox:checked):hover input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input.ds-checkbox:checked):hover input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input.ds-checkbox:checked):hover input {
+  border-color: var(--ds-color-border-input-block-error-hover);
+  background-image: var(--ds-icon-checkbox-checked-error-hover);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input.ds-checkbox:checked):focus-visible, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input.ds-checkbox:checked):focus-visible,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input.ds-checkbox:checked):focus-visible,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input.ds-checkbox:checked):focus-visible {
+  background-color: var(--ds-color-surface-input-block-error-focus);
+  border-color: var(--ds-color-border-input-block-error-focus);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input.ds-checkbox:checked):focus-visible input, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input.ds-checkbox:checked):focus-visible input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input.ds-checkbox:checked):focus-visible input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input.ds-checkbox:checked):focus-visible input {
+  border-color: var(--ds-color-border-input-block-error-focus);
+  background-image: var(--ds-icon-checkbox-checked-error-focus);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate), :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate),
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate),
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate) {
+  background-color: var(--ds-color-surface-input-block-active-error);
+  border: 1px solid var(--ds-color-border-input-block-active-error);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate) input, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate) input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate) input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate) input {
+  border: 1px solid var(--ds-color-border-input-block-active-error);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate):hover, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate):hover,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate):hover,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate):hover {
+  background-color: var(--ds-color-surface-input-block-error);
+  border-color: var(--ds-color-border-input-block-error-hover);
+  --ds-color-surface-input-block-active: var(--ds-color-surface-input-block-error);
+  --ds-color-border-input-block-active: var(--ds-color-border-input-block-error-hover);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate):hover input, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate):hover input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate):hover input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate):hover input {
+  border-color: var(--ds-color-border-input-block-error-hover);
+  background-image: var(--ds-icon-checkbox-indeterminate-error-hover);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate):focus-visible, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate):focus-visible,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate):focus-visible,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate):focus-visible {
+  background-color: var(--ds-color-surface-input-block-error-focus);
+  border-color: var(--ds-color-border-input-block-error-focus);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate):focus-visible input, :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate):focus-visible input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate):focus-visible input,
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled):has(input[type=checkbox]:not(:disabled):indeterminate):focus-visible input {
+  border-color: var(--ds-color-border-input-block-error-focus);
+  background-image: var(--ds-icon-checkbox-indeterminate-error-focus);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled) input.ds-checkbox:not(:checked), :host(ds-form-field).ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled) input.ds-checkbox:not(:checked),
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__explicit-label:not(.ds-checkbox__explicit-label--disabled) input.ds-checkbox:not(:checked),
+.ds-form-field.ds-form-field--invalid ::ng-deep .ds-checkbox-group--is-block .ds-checkbox__implicit-label:not(.ds-checkbox__implicit-label--disabled) input.ds-checkbox:not(:checked) {
+  background-color: initial;
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled),
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled) {
+  background-color: var(--ds-color-surface-input-error);
+  border: 1px solid var(--ds-color-border-input-error);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled):checked,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled):checked {
+  background-color: var(--ds-color-surface-input-error);
+  background-image: var(--ds-icon-checkbox-checked-error);
+  border: 1px solid var(--ds-color-border-input-error);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled):indeterminate,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled):indeterminate {
+  background-color: var(--ds-color-surface-input-error);
+  background-image: var(--ds-icon-checkbox-indeterminate-error);
+  border: 1px solid var(--ds-color-border-input-error);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled):focus,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled):focus {
+  outline: 0;
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled):focus-visible,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled):focus-visible {
+  border: 1px solid var(--ds-color-border-input-error-focus);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled):focus-visible:checked,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled):focus-visible:checked {
+  background-image: var(--ds-icon-checkbox-checked-error-focus);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled):focus-visible:indeterminate,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled):focus-visible:indeterminate {
+  background-image: var(--ds-icon-checkbox-indeterminate-error-focus);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled):hover,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled):hover {
+  --ds-color-surface-input-active: var(--ds-color-surface-input-error);
+  --ds-color-border-input-active-hover: var(--ds-color-border-input-error-hover);
+  border: 1px solid var(--ds-color-border-input-error-hover);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled):hover:checked,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled):hover:checked {
+  background-image: var(--ds-icon-checkbox-checked-error-hover);
+}
+:host(ds-form-field).ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled):hover:indeterminate,
+.ds-form-field.ds-form-field--invalid ::ng-deep input[type=checkbox]:not(:disabled):hover:indeterminate {
+  background-image: var(--ds-icon-checkbox-indeterminate-error-hover);
+}
+:host(ds-form-field).ds-form-field--disabled .ds-input.ds-input-wrapper,
+:host(ds-form-field).ds-form-field--disabled .ds-inputnumber.ds-input-wrapper,
+.ds-form-field.ds-form-field--disabled .ds-input.ds-input-wrapper,
+.ds-form-field.ds-form-field--disabled .ds-inputnumber.ds-input-wrapper {
+  background-color: var(--ds-color-surface-input-disabled);
+  border-color: var(--ds-color-border-input-disabled);
+  color: var(--ds-color-text-input-disabled);
+  cursor: not-allowed;
+}
+:host(ds-form-field).ds-form-field--disabled .ds-input.ds-input-wrapper ::ng-deep input:disabled,
+:host(ds-form-field).ds-form-field--disabled .ds-inputnumber.ds-input-wrapper ::ng-deep input:disabled,
+.ds-form-field.ds-form-field--disabled .ds-input.ds-input-wrapper ::ng-deep input:disabled,
+.ds-form-field.ds-form-field--disabled .ds-inputnumber.ds-input-wrapper ::ng-deep input:disabled {
+  background-color: transparent;
+  color: var(--ds-color-text-input-disabled);
+  cursor: not-allowed;
+}
+:host(ds-form-field).ds-form-field--disabled .ds-input.ds-input-wrapper .ds-input-wrapper__affixes__prefix, :host(ds-form-field).ds-form-field--disabled .ds-input.ds-input-wrapper .ds-input-wrapper__affixes__suffix,
+:host(ds-form-field).ds-form-field--disabled .ds-inputnumber.ds-input-wrapper .ds-input-wrapper__affixes__prefix,
+:host(ds-form-field).ds-form-field--disabled .ds-inputnumber.ds-input-wrapper .ds-input-wrapper__affixes__suffix,
+.ds-form-field.ds-form-field--disabled .ds-input.ds-input-wrapper .ds-input-wrapper__affixes__prefix,
+.ds-form-field.ds-form-field--disabled .ds-input.ds-input-wrapper .ds-input-wrapper__affixes__suffix,
+.ds-form-field.ds-form-field--disabled .ds-inputnumber.ds-input-wrapper .ds-input-wrapper__affixes__prefix,
+.ds-form-field.ds-form-field--disabled .ds-inputnumber.ds-input-wrapper .ds-input-wrapper__affixes__suffix {
+  color: var(--ds-color-text-input-disabled);
+}
+:host(ds-form-field).ds-form-field--disabled .ds-input.ds-input-wrapper .ds-input-wrapper__affixes__trailing,
+:host(ds-form-field).ds-form-field--disabled .ds-inputnumber.ds-input-wrapper .ds-input-wrapper__affixes__trailing,
+.ds-form-field.ds-form-field--disabled .ds-input.ds-input-wrapper .ds-input-wrapper__affixes__trailing,
+.ds-form-field.ds-form-field--disabled .ds-inputnumber.ds-input-wrapper .ds-input-wrapper__affixes__trailing {
+  color: var(--ds-color-typography-neutral);
+}
+:host(ds-form-field).ds-form-field--disabled ::ng-deep .ds-inputnumber__step-down-button,
+:host(ds-form-field).ds-form-field--disabled ::ng-deep .ds-inputnumber__step-up-button,
+.ds-form-field.ds-form-field--disabled ::ng-deep .ds-inputnumber__step-down-button,
+.ds-form-field.ds-form-field--disabled ::ng-deep .ds-inputnumber__step-up-button {
+  cursor: not-allowed;
+  background-color: transparent;
+  border: 0;
+}
+:host(ds-form-field).ds-form-field--disabled ::ng-deep .ds-inputnumber__step-down-button .ds-inputnumber__step-down-button--icon,
+:host(ds-form-field).ds-form-field--disabled ::ng-deep .ds-inputnumber__step-up-button .ds-inputnumber__step-down-button--icon,
+.ds-form-field.ds-form-field--disabled ::ng-deep .ds-inputnumber__step-down-button .ds-inputnumber__step-down-button--icon,
+.ds-form-field.ds-form-field--disabled ::ng-deep .ds-inputnumber__step-up-button .ds-inputnumber__step-down-button--icon {
+  background-image: var(--ds-icon-minus-disabled);
+}
+:host(ds-form-field).ds-form-field--disabled ::ng-deep .ds-inputnumber__step-down-button .ds-inputnumber__step-up-button--icon,
+:host(ds-form-field).ds-form-field--disabled ::ng-deep .ds-inputnumber__step-up-button .ds-inputnumber__step-up-button--icon,
+.ds-form-field.ds-form-field--disabled ::ng-deep .ds-inputnumber__step-down-button .ds-inputnumber__step-up-button--icon,
+.ds-form-field.ds-form-field--disabled ::ng-deep .ds-inputnumber__step-up-button .ds-inputnumber__step-up-button--icon {
+  background-image: var(--ds-icon-plus-disabled);
+}
+:host(ds-form-field).ds-form-field--readonly .ds-input.ds-input-wrapper,
+:host(ds-form-field).ds-form-field--readonly .ds-inputnumber.ds-input-wrapper,
+.ds-form-field.ds-form-field--readonly .ds-input.ds-input-wrapper,
+.ds-form-field.ds-form-field--readonly .ds-inputnumber.ds-input-wrapper {
+  background-color: var(--ds-color-surface-input-readonly);
+  border-color: var(--ds-color-border-input-readonly);
+  color: var(--ds-color-text-input-readonly);
+}
+:host(ds-form-field).ds-form-field--readonly .ds-input.ds-input-wrapper ::ng-deep .ds-inputnumber__step-down-button,
+:host(ds-form-field).ds-form-field--readonly .ds-inputnumber.ds-input-wrapper ::ng-deep .ds-inputnumber__step-down-button,
+.ds-form-field.ds-form-field--readonly .ds-input.ds-input-wrapper ::ng-deep .ds-inputnumber__step-down-button,
+.ds-form-field.ds-form-field--readonly .ds-inputnumber.ds-input-wrapper ::ng-deep .ds-inputnumber__step-down-button {
+  display: none;
+}
+:host(ds-form-field).ds-form-field--readonly .ds-input.ds-input-wrapper ::ng-deep input.ds-inputnumber,
+:host(ds-form-field).ds-form-field--readonly .ds-inputnumber.ds-input-wrapper ::ng-deep input.ds-inputnumber,
+.ds-form-field.ds-form-field--readonly .ds-input.ds-input-wrapper ::ng-deep input.ds-inputnumber,
+.ds-form-field.ds-form-field--readonly .ds-inputnumber.ds-input-wrapper ::ng-deep input.ds-inputnumber {
+  margin-left: 0px;
+  margin-right: var(--ds-space-6x);
+  text-align: start;
+}
+:host(ds-form-field).ds-form-field--readonly .ds-input.ds-input-wrapper ::ng-deep .ds-inputnumber__step-up-button,
+:host(ds-form-field).ds-form-field--readonly .ds-inputnumber.ds-input-wrapper ::ng-deep .ds-inputnumber__step-up-button,
+.ds-form-field.ds-form-field--readonly .ds-input.ds-input-wrapper ::ng-deep .ds-inputnumber__step-up-button,
+.ds-form-field.ds-form-field--readonly .ds-inputnumber.ds-input-wrapper ::ng-deep .ds-inputnumber__step-up-button {
+  visibility: hidden;
+}
+:host(ds-form-field).ds-form-field--readonly .ds-input.ds-input-wrapper .ds-input-wrapper__affixes__prefix, :host(ds-form-field).ds-form-field--readonly .ds-input.ds-input-wrapper .ds-input-wrapper__affixes__suffix,
+:host(ds-form-field).ds-form-field--readonly .ds-inputnumber.ds-input-wrapper .ds-input-wrapper__affixes__prefix,
+:host(ds-form-field).ds-form-field--readonly .ds-inputnumber.ds-input-wrapper .ds-input-wrapper__affixes__suffix,
+.ds-form-field.ds-form-field--readonly .ds-input.ds-input-wrapper .ds-input-wrapper__affixes__prefix,
+.ds-form-field.ds-form-field--readonly .ds-input.ds-input-wrapper .ds-input-wrapper__affixes__suffix,
+.ds-form-field.ds-form-field--readonly .ds-inputnumber.ds-input-wrapper .ds-input-wrapper__affixes__prefix,
+.ds-form-field.ds-form-field--readonly .ds-inputnumber.ds-input-wrapper .ds-input-wrapper__affixes__suffix {
+  color: var(--ds-color-typography-neutral);
+}
+:host(ds-form-field) .ds-input-wrapper,
+.ds-form-field .ds-input-wrapper {
+  position: relative;
+}
+:host(ds-form-field) .ds-input-wrapper ::ng-deep [ds-before], :host(ds-form-field) .ds-input-wrapper ::ng-deep > ds-icon:not([ds-after]),
+.ds-form-field .ds-input-wrapper ::ng-deep [ds-before],
+.ds-form-field .ds-input-wrapper ::ng-deep > ds-icon:not([ds-after]) {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  height: 100%;
+  justify-content: center;
+  padding: 0;
+  align-items: center;
+}
+:host(ds-form-field) .ds-input-wrapper ::ng-deep [ds-before]:not(.ds-inputnumber__step-down-button), :host(ds-form-field) .ds-input-wrapper ::ng-deep > ds-icon:not([ds-after]):not(.ds-inputnumber__step-down-button),
+.ds-form-field .ds-input-wrapper ::ng-deep [ds-before]:not(.ds-inputnumber__step-down-button),
+.ds-form-field .ds-input-wrapper ::ng-deep > ds-icon:not([ds-after]):not(.ds-inputnumber__step-down-button) {
+  background-color: transparent;
+  border: 0;
+}
+:host(ds-form-field) .ds-input-wrapper ::ng-deep [ds-before] + .ds-input, :host(ds-form-field) .ds-input-wrapper ::ng-deep [ds-before] + .ds-form-field__files, :host(ds-form-field) .ds-input-wrapper ::ng-deep [ds-before] + .ds-input-wrapper__affixes, :host(ds-form-field) .ds-input-wrapper ::ng-deep > ds-icon:not([ds-after]) + .ds-input, :host(ds-form-field) .ds-input-wrapper ::ng-deep > ds-icon:not([ds-after]) + .ds-form-field__files, :host(ds-form-field) .ds-input-wrapper ::ng-deep > ds-icon:not([ds-after]) + .ds-input-wrapper__affixes,
+.ds-form-field .ds-input-wrapper ::ng-deep [ds-before] + .ds-input,
+.ds-form-field .ds-input-wrapper ::ng-deep [ds-before] + .ds-form-field__files,
+.ds-form-field .ds-input-wrapper ::ng-deep [ds-before] + .ds-input-wrapper__affixes,
+.ds-form-field .ds-input-wrapper ::ng-deep > ds-icon:not([ds-after]) + .ds-input,
+.ds-form-field .ds-input-wrapper ::ng-deep > ds-icon:not([ds-after]) + .ds-form-field__files,
+.ds-form-field .ds-input-wrapper ::ng-deep > ds-icon:not([ds-after]) + .ds-input-wrapper__affixes {
+  margin-left: var(--ds-space-inline-couple-input);
+}
+:host(ds-form-field) .ds-input-wrapper ::ng-deep .ds-input ~ [ds-after], :host(ds-form-field) .ds-input-wrapper ::ng-deep > [ds-button]:not([ds-before]),
+.ds-form-field .ds-input-wrapper ::ng-deep .ds-input ~ [ds-after],
+.ds-form-field .ds-input-wrapper ::ng-deep > [ds-button]:not([ds-before]) {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+}
+:host(ds-form-field) .ds-input-wrapper ::ng-deep .ds-input ~ [ds-after]:first-of-type, :host(ds-form-field) .ds-input-wrapper ::ng-deep > [ds-button]:not([ds-before]):first-of-type,
+.ds-form-field .ds-input-wrapper ::ng-deep .ds-input ~ [ds-after]:first-of-type,
+.ds-form-field .ds-input-wrapper ::ng-deep > [ds-button]:not([ds-before]):first-of-type {
+  margin-left: var(--ds-space-inline-couple-input);
+}
+:host(ds-form-field) .ds-input-wrapper ::ng-deep .ds-input ~ [ds-after]:last-child, :host(ds-form-field) .ds-input-wrapper ::ng-deep > [ds-button]:not([ds-before]):last-child,
+.ds-form-field .ds-input-wrapper ::ng-deep .ds-input ~ [ds-after]:last-child,
+.ds-form-field .ds-input-wrapper ::ng-deep > [ds-button]:not([ds-before]):last-child {
+  margin-right: calc(-1 * var(--ds-space-1x));
+}
+:host(ds-form-field) .ds-input-wrapper.ds-input-wrapper--has-messages ~ .ds-input-messages-wrapper,
+.ds-form-field .ds-input-wrapper.ds-input-wrapper--has-messages ~ .ds-input-messages-wrapper {
+  margin-top: var(--ds-space-1x);
+}
+:host(ds-form-field) .ds-input-wrapper.ds-input-wrapper--has-messages ~ .ds-input-messages-wrapper ::ng-deep .ds-hint:not(:first-child) > .ds-hint-wrapper,
+:host(ds-form-field) .ds-input-wrapper.ds-input-wrapper--has-messages ~ .ds-input-messages-wrapper ::ng-deep .ds-error:not(:first-child) > .ds-error-wrapper,
+.ds-form-field .ds-input-wrapper.ds-input-wrapper--has-messages ~ .ds-input-messages-wrapper ::ng-deep .ds-hint:not(:first-child) > .ds-hint-wrapper,
+.ds-form-field .ds-input-wrapper.ds-input-wrapper--has-messages ~ .ds-input-messages-wrapper ::ng-deep .ds-error:not(:first-child) > .ds-error-wrapper {
+  margin-top: var(--ds-space-1x);
+}
+:host(ds-form-field) .ds-input-wrapper.ds-input-wrapper--has-char-counter ::ng-deep textarea,
+.ds-form-field .ds-input-wrapper.ds-input-wrapper--has-char-counter ::ng-deep textarea {
+  margin-bottom: var(--ds-space-1x);
+}
+:host(ds-form-field) .ds-input-wrapper.ds-input.ds-input-wrapper--has-char-counter--lg, :host(ds-form-field) .ds-input-wrapper.ds-input.ds-input-wrapper--has-char-counter,
+.ds-form-field .ds-input-wrapper.ds-input.ds-input-wrapper--has-char-counter--lg,
+.ds-form-field .ds-input-wrapper.ds-input.ds-input-wrapper--has-char-counter {
+  margin-bottom: var(--ds-space-1x);
+}
+:host(ds-form-field) .ds-input-wrapper.ds-input-wrapper--has-char-counter--lg ~ .ds-input-messages-wrapper, :host(ds-form-field) .ds-input-wrapper.ds-input-wrapper--has-char-counter ~ .ds-input-messages-wrapper,
+.ds-form-field .ds-input-wrapper.ds-input-wrapper--has-char-counter--lg ~ .ds-input-messages-wrapper,
+.ds-form-field .ds-input-wrapper.ds-input-wrapper--has-char-counter ~ .ds-input-messages-wrapper {
+  margin-top: calc(-1 * var(--ds-typography-line-height-xs));
+}
+:host(ds-form-field) .ds-input-wrapper.ds-input-wrapper--has-char-counter--lg ::ng-deep textarea,
+.ds-form-field .ds-input-wrapper.ds-input-wrapper--has-char-counter--lg ::ng-deep textarea {
+  margin-bottom: var(--ds-space-1x);
+}
+:host(ds-form-field) .ds-input-wrapper.ds-input-wrapper--has-char-counter--lg + .ds-input-messages-wrapper,
+.ds-form-field .ds-input-wrapper.ds-input-wrapper--has-char-counter--lg + .ds-input-messages-wrapper {
+  margin-top: calc(-1 * var(--ds-typography-line-height-xs));
+}
+:host(ds-form-field) .ds-input-wrapper.ds-input-wrapper--has-char-counter--lg ::ng-deep .ds-input-textarea-char-counter,
+.ds-form-field .ds-input-wrapper.ds-input-wrapper--has-char-counter--lg ::ng-deep .ds-input-textarea-char-counter {
+  font-size: var(--ds-typography-size-label);
+}
+:host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes,
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+:host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-input, :host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-inputnumber,
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-input,
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-inputnumber {
+  display: flex;
+  border: none;
+  background-color: transparent;
+  height: auto;
+  min-width: 0;
+  padding: 0;
+}
+:host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-input:focus, :host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-inputnumber:focus,
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-input:focus,
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-inputnumber:focus {
+  box-shadow: none;
+  outline: none;
+}
+:host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-input[type=number], :host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-inputnumber[type=number],
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-input[type=number],
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-inputnumber[type=number] {
+  -moz-appearance: textfield;
+}
+:host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-input[type=number]::-webkit-outer-spin-button, :host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-input[type=number]::-webkit-inner-spin-button, :host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-inputnumber[type=number]::-webkit-outer-spin-button, :host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-inputnumber[type=number]::-webkit-inner-spin-button,
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-input[type=number]::-webkit-outer-spin-button,
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-input[type=number]::-webkit-inner-spin-button,
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-inputnumber[type=number]::-webkit-outer-spin-button,
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes ::ng-deep .ds-inputnumber[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+:host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes .ds-input-wrapper__affixes__fake-input-placeholder,
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes .ds-input-wrapper__affixes__fake-input-placeholder {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  color: var(--ds-color-text-input-placeholder);
+  font-size: var(--ds-font-size-input-placeholder);
+  font-style: var(--ds-font-style-input-placeholder);
+}
+:host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes__prefix,
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes__prefix {
+  color: var(--ds-color-text-input-value-prefix);
+}
+:host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes__prefix + ::ng-deep .ds-input,
+:host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes__prefix + ::ng-deep .ds-inputnumber,
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes__prefix + ::ng-deep .ds-input,
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes__prefix + ::ng-deep .ds-inputnumber {
+  margin-left: var(--ds-space-05x);
+}
+:host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes__prefix ~ .ds-input-wrapper__affixes__fake-input-placeholder,
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes__prefix ~ .ds-input-wrapper__affixes__fake-input-placeholder {
+  margin-left: var(--ds-space-05x);
+}
+:host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes__suffix,
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes__suffix {
+  color: var(--ds-color-text-input-value-suffix);
+  margin-left: var(--ds-space-05x);
+}
+:host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes__trailing,
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes__trailing {
+  color: var(--ds-color-typography-neutral);
+}
+:host(ds-form-field) .ds-input-wrapper .ds-input-wrapper__affixes .ds-input-wrapper__affixes__span-mimic-input,
+.ds-form-field .ds-input-wrapper .ds-input-wrapper__affixes .ds-input-wrapper__affixes__span-mimic-input {
+  position: absolute;
+  visibility: hidden;
+}
+:host(ds-form-field).ds-form-field--has-radio-or-checkbox .ds-form-field__label,
+:host(ds-form-field).ds-form-field--has-radio-or-checkbox .ds-form-field__label__lg,
+.ds-form-field.ds-form-field--has-radio-or-checkbox .ds-form-field__label,
+.ds-form-field.ds-form-field--has-radio-or-checkbox .ds-form-field__label__lg {
+  margin-bottom: var(--ds-space-0x);
+}
+:host(ds-form-field).ds-form-field--has-radio-or-checkbox .ds-input-messages-wrapper ::ng-deep .ds-error-wrapper,
+:host(ds-form-field).ds-form-field--has-radio-or-checkbox .ds-input-messages-wrapper ::ng-deep .ds-hint-wrapper,
+.ds-form-field.ds-form-field--has-radio-or-checkbox .ds-input-messages-wrapper ::ng-deep .ds-error-wrapper,
+.ds-form-field.ds-form-field--has-radio-or-checkbox .ds-input-messages-wrapper ::ng-deep .ds-hint-wrapper {
+  margin-top: var(--ds-space-0x);
+}
+:host(ds-form-field) ::ng-deep .ds-range-slider + .ds-input-messages-wrapper,
+.ds-form-field ::ng-deep .ds-range-slider + .ds-input-messages-wrapper {
+  margin-top: var(--ds-space-1x);
+}
+:host(ds-form-field) ::ng-deep .ds-range-slider + .ds-input-messages-wrapper ::ng-deep .ds-hint:not(:first-child) > .ds-hint-wrapper,
+:host(ds-form-field) ::ng-deep .ds-range-slider + .ds-input-messages-wrapper ::ng-deep .ds-error:not(:first-child) > .ds-error-wrapper,
+.ds-form-field ::ng-deep .ds-range-slider + .ds-input-messages-wrapper ::ng-deep .ds-hint:not(:first-child) > .ds-hint-wrapper,
+.ds-form-field ::ng-deep .ds-range-slider + .ds-input-messages-wrapper ::ng-deep .ds-error:not(:first-child) > .ds-error-wrapper {
+  margin-top: var(--ds-space-1x);
+}
+
+.ds-form-field__files {
+  width: 100%;
+  color: var(--ds-color-typography-neutral);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+}
+.ds-form-field__files--disabled {
+  cursor: not-allowed;
+  color: var(--ds-color-text-input-placeholder);
+}
+.ds-form-field__files--empty {
+  color: var(--ds-color-typography-disabled);
+  font-style: italic;
+}
+.ds-form-field__files--readonly {
+  cursor: default;
+}
+
+.ds-form-field__file {
+  color: var(--ds-color-typography-invert);
+}
+
+.ds-form-field__native-file-input {
+  display: none;
+}
+
+.ds-form-field__clear-all-button {
+  position: absolute;
+  top: var(--ds-space-1x);
+  right: 12px;
+}
+.ds-form-field__clear-all-button:focus {
+  outline: 0;
+}

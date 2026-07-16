@@ -1,0 +1,833 @@
+@use '../../density-styles-sass' as *;
+@use '../../mixins/placeholder' as *;
+@use '../../utilities/typography-utilities' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}form-field),
+
+
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}form-field {
+  display: flex;
+
+  --#{$prefix}autofill-text-color: var(--#{$prefix}color-text-input-value);
+
+  &.#{$prefix}form-field--block {
+    flex-direction: column;
+  }
+
+  // ----- Inline form field styles ----- //
+  &:not(.#{$prefix}form-field--block) {
+    flex-direction: row;
+
+    .#{$prefix}form-field__label {
+      align-items: baseline;
+      justify-content: flex-end;
+      margin-bottom: 0px;
+
+      &__required {
+        margin-top: calc(
+          (var(--#{$prefix}shape-size-y-input) - var(--#{$prefix}font-line-height-input)) / 2 +
+            var(--#{$prefix}space-stack-start-input-requiredflag)
+        );
+      }
+
+      ::ng-deep [#{$prefix}label] {
+        font-family: var(--#{$prefix}typography-family-base);
+        font-size: var(--#{$prefix}typography-size-label);
+        font-weight: var(--#{$prefix}typography-weight-regular);
+        line-height: var(--#{$prefix}typography-line-height-label);
+        width: fit-content;
+        margin-top: calc((var(--#{$prefix}shape-size-y-input) - var(--#{$prefix}font-line-height-input)) / 2);
+      }
+
+      &__optional {
+        align-self: baseline;
+        margin-left: var(--#{$prefix}space-inline-couple-input-optionalflag);
+        margin-top: calc((var(--#{$prefix}shape-size-y-input) - var(--#{$prefix}font-line-height-input)) / 2);
+      }
+    }
+
+    span.#{$prefix}form-field__label__lg {
+      align-items: baseline;
+      justify-content: flex-end;
+      margin-bottom: 0px;
+
+      &__required {
+        margin-top: calc(
+          (var(--#{$prefix}shape-size-y-input-large) - var(--#{$prefix}font-line-height-input-large)) / 2 +
+            var(--#{$prefix}space-stack-start-input-requiredflag-large)
+        );
+      }
+
+      ::ng-deep [#{$prefix}label] {
+        font-family: var(--#{$prefix}typography-family-base);
+        font-size: var(--#{$prefix}typography-size-regular);
+        font-weight: var(--#{$prefix}typography-weight-regular);
+        line-height: var(--#{$prefix}typography-line-height-regular);
+        width: fit-content;
+        margin-top: calc(
+          (var(--#{$prefix}shape-size-y-input-large) - var(--#{$prefix}font-line-height-input-large)) / 2
+        );
+      }
+
+      &__optional {
+        align-self: baseline;
+        margin-left: var(--#{$prefix}space-inline-couple-input-optionalflag);
+        margin-top: calc(
+          ((var(--#{$prefix}shape-size-y-input-large) - var(--#{$prefix}font-line-height-input-large)) / 2)
+        );
+      }
+    }
+  }
+  // ------------------------------------ //
+
+  .#{$prefix}form-field__label {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: var(--#{$prefix}space-1x);
+
+    &__required {
+      flex-shrink: 0;
+      margin-top: var(--#{$prefix}space-stack-start-input-requiredflag);
+      margin-right: var(--#{$prefix}space-inline-couple-input-requiredflag);
+    }
+
+    ::ng-deep [#{$prefix}label] {
+      font-family: var(--#{$prefix}typography-family-base);
+      font-size: var(--#{$prefix}typography-size-label);
+      font-weight: var(--#{$prefix}typography-weight-regular);
+      line-height: var(--#{$prefix}typography-line-height-label);
+      width: 100%;
+      color: var(--#{$prefix}color-text-input-label);
+      font-weight: var(--#{$prefix}font-weight-input);
+    }
+
+    &__optional {
+      align-self: flex-end;
+      color: var(--#{$prefix}color-text-input-label);
+      font-style: italic;
+      margin-left: var(--#{$prefix}space-inline-start-input-optionalflag);
+      margin-right: var(--#{$prefix}space-inline-end-input-optionalflag);
+      white-space: nowrap;
+    }
+
+    &__lg {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin-bottom: var(--#{$prefix}space-1x);
+
+      &__required {
+        flex-shrink: 0;
+        margin-top: var(--#{$prefix}space-stack-start-input-requiredflag-large);
+        margin-right: var(--#{$prefix}space-inline-couple-input-requiredflag);
+      }
+
+      ::ng-deep [#{$prefix}label] {
+        font-family: var(--#{$prefix}typography-family-base);
+        font-size: var(--#{$prefix}typography-size-regular);
+        font-weight: var(--#{$prefix}typography-weight-regular);
+        line-height: var(--#{$prefix}typography-line-height-regular);
+        width: 100%;
+        color: var(--#{$prefix}color-text-input-label);
+        font-weight: var(--#{$prefix}font-weight-input);
+      }
+
+      &__optional {
+        align-self: flex-end;
+        color: var(--#{$prefix}color-text-input-label);
+        font-style: italic;
+        font-size: var(--#{$prefix}font-size-input-label);
+        margin-left: var(--#{$prefix}space-inline-start-input-optionalflag);
+        margin-right: var(--#{$prefix}space-inline-end-input-optionalflag);
+        white-space: nowrap;
+      }
+    }
+  }
+
+  &:focus-within .#{$prefix}form-field__label ::ng-deep [#{$prefix}label],
+  &:focus-within .#{$prefix}form-field__label__lg ::ng-deep [#{$prefix}label] {
+    color: var(--#{$prefix}color-text-input-label-active);
+  }
+
+  .#{$prefix}form-field__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .#{$prefix}form-field__clear-button {
+    position: absolute;
+    top: 50%;
+    right: calc(var(--#{$prefix}space-1x) + var(--#{$prefix}icon-size-small));
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--#{$prefix}color-icon-input-clear);
+    cursor: pointer;
+    font-size: var(--#{$prefix}icon-size-small);
+    padding: 0;
+    visibility: hidden; /* Hide by default */
+    z-index: 1;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      color: var(--#{$prefix}color-icon-input-clear-hover);
+    }
+
+    /* If the field has value, show the clear button */
+    &.active {
+      visibility: visible;
+    }
+  }
+  /* When the form field has content (for the clear button to be visible) */
+  .#{$prefix}form-field__input-wrapper--has-content .#{$prefix}form-field__clear-button {
+    visibility: visible;
+  }
+
+  & .#{$prefix}input-wrapper--file-input {
+    &.#{$prefix}input {
+      cursor: pointer;
+    }
+
+    &--button-hovered {
+      --#{$prefix}color-surface-input-hover: var(--#{$prefix}color-surface-input-alt);
+    }
+
+    &--readonly {
+      &.#{$prefix}input {
+        cursor: default;
+      }
+
+      .#{$prefix}form-field__file-input-button {
+        visibility: hidden;
+      }
+    }
+  }
+
+  &.#{$prefix}form-field--focused {
+    &.#{$prefix}form-field--invalid ::ng-deep {
+      .#{$prefix}input,
+      .#{$prefix}inputnumber {
+        &.#{$prefix}input-wrapper {
+          background-color: var(--#{$prefix}color-surface-input-error);
+          outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+          outline-offset: var(--#{$prefix}size-outline-offset);
+        }
+      }
+
+      .#{$prefix}select {
+        background-color: var(--#{$prefix}color-surface-input-error);
+        outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+        outline-offset: var(--#{$prefix}size-outline-offset);
+      }
+    }
+
+    & ::ng-deep .#{$prefix}input,
+    & ::ng-deep .#{$prefix}inputnumber {
+      &.#{$prefix}input-wrapper {
+        border: 1px solid var(--#{$prefix}color-border-input-focus);
+        outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+        outline-offset: var(--#{$prefix}size-outline-offset);
+
+        input {
+          outline: 0;
+        }
+
+        &:not(.#{$prefix}input-wrapper--non-typeable) {
+          background-color: var(--#{$prefix}color-surface-input);
+        }
+      }
+    }
+  }
+
+  &.#{$prefix}form-field--invalid ::ng-deep {
+    --#{$prefix}autofill-text-color: var(--#{$prefix}color-text-input-error);
+
+    input,
+    input[type='text'],
+    textarea,
+    .#{$prefix}input.#{$prefix}input-wrapper,
+    .#{$prefix}inputnumber.#{$prefix}input-wrapper,
+    .#{$prefix}select {
+      background-color: var(--#{$prefix}color-surface-input-error);
+      border-color: var(--#{$prefix}color-border-input-error);
+      color: var(--#{$prefix}color-text-input-error);
+
+      ::ng-deep .#{$prefix}timepicker .#{$prefix}input.#{$prefix}input-wrapper > .#{$prefix}input > input {
+        color: var(--#{$prefix}color-text-input-error);
+      }
+
+      input {
+        color: var(--#{$prefix}color-text-input-error);
+      }
+
+      &:hover {
+        background-color: var(--#{$prefix}color-surface-input-error);
+        border-color: var(--#{$prefix}color-border-input-error);
+      }
+
+      &:focus {
+        background-color: var(--#{$prefix}color-surface-input-error);
+        outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+        outline-offset: var(--#{$prefix}size-outline-offset);
+      }
+
+      &:disabled {
+        background-color: var(--#{$prefix}color-surface-input-disabled);
+        border-color: var(--#{$prefix}color-border-input-disabled);
+      }
+    }
+
+    input[type='radio']:not(:disabled) {
+      background-color: var(--#{$prefix}color-surface-input-error);
+      border: 1px solid var(--#{$prefix}color-border-input-error);
+
+      &:checked {
+        background-color: var(--#{$prefix}color-surface-input-error);
+        border: 1px solid var(--#{$prefix}color-border-input-error);
+
+        &::after {
+          background-color: var(--#{$prefix}color-icon-input-error);
+          border-radius: var(--#{$prefix}shape-radius-radiobutton);
+        }
+
+        &:hover::after {
+          background-color: var(--#{$prefix}color-icon-input-error-hover);
+        }
+        &:focus-visible::after {
+          background-color: var(--#{$prefix}color-icon-input-error-focus);
+        }
+      }
+
+      &:hover {
+        border: 1px solid var(--#{$prefix}color-border-input-error-hover);
+      }
+
+      &:focus-visible {
+        border: 1px solid var(--#{$prefix}color-border-input-error-focus);
+      }
+
+      &:focus {
+        outline: 0;
+      }
+    }
+
+    &
+      .#{$prefix}radio-group--is-block
+      .#{$prefix}radio-button__explicit-label:not(.#{$prefix}radio-button__explicit-label--disabled),
+    &
+      .#{$prefix}radio-group--is-block
+      .#{$prefix}radio-button__implicit-label:not(.#{$prefix}radio-button__implicit-label--disabled) {
+      background-color: var(--#{$prefix}color-surface-input-block-error);
+      border: 1px solid var(--#{$prefix}color-border-input-block-error);
+
+      &:not(:has(input.#{$prefix}input:checked)) {
+        &:hover {
+          border: 1px solid var(--#{$prefix}color-border-input-block-error-hover);
+
+          & input.#{$prefix}input {
+            border-color: var(--#{$prefix}color-border-input-block-error-hover);
+          }
+        }
+
+        &:focus-visible {
+          outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+          outline-offset: var(--#{$prefix}size-outline-offset);
+          border: 1px solid var(--#{$prefix}color-border-input-block-error-focus);
+
+          & input.#{$prefix}input {
+            border-color: var(--#{$prefix}color-border-input-block-error-focus);
+          }
+        }
+      }
+
+      &:has(input.#{$prefix}input:checked) {
+        background-color: var(--#{$prefix}color-surface-input-block-active-error);
+        border: 1px solid var(--#{$prefix}color-border-input-block-active-error);
+
+        & input.#{$prefix}input {
+          border-color: var(--#{$prefix}color-border-input-block-active-error);
+        }
+
+        &:hover {
+          border: 1px solid var(--#{$prefix}color-border-input-block-error-hover);
+
+          & input.#{$prefix}input {
+            border-color: var(--#{$prefix}color-border-input-block-error-hover);
+
+            &::after {
+              background-color: var(--#{$prefix}color-icon-input-error-hover);
+            }
+          }
+        }
+
+        &:focus-visible {
+          border: 1px solid var(--#{$prefix}color-border-input-block-error-focus);
+
+          & input.#{$prefix}input {
+            border-color: var(--#{$prefix}color-border-input-block-error-focus);
+            &::after {
+              background-color: var(--#{$prefix}color-icon-input-error-focus);
+            }
+          }
+        }
+      }
+
+      & input.#{$prefix}input:not(:checked) {
+        background-color: initial;
+      }
+    }
+
+    &
+      .#{$prefix}checkbox-group--is-block
+      .#{$prefix}checkbox__explicit-label:not(.#{$prefix}checkbox__explicit-label--disabled),
+    &
+      .#{$prefix}checkbox-group--is-block
+      .#{$prefix}checkbox__implicit-label:not(.#{$prefix}checkbox__implicit-label--disabled) {
+      background-color: var(--#{$prefix}color-surface-input-block-error);
+      border: 1px solid var(--#{$prefix}color-border-input-block-error);
+
+      --#{$prefix}color-surface-input-block-active: var(--#{$prefix}color-surface-input-block-error);
+      --#{$prefix}color-border-input-block-active: var(--#{$prefix}color-border-input-block-error);
+
+      &:hover {
+        background-color: var(--#{$prefix}color-surface-input-block-error);
+        border: 1px solid var(--#{$prefix}color-border-input-block-error-hover);
+
+        --#{$prefix}color-surface-input-block-active: var(--#{$prefix}color-surface-input-block-error);
+        --#{$prefix}color-border-input-block-active: var(--#{$prefix}color-border-input-block-error-hover);
+
+        & input {
+          border: 1px solid var(--#{$prefix}color-border-input-block-error-hover);
+        }
+      }
+
+      &:focus-visible {
+        background-color: var(--#{$prefix}color-surface-input-block-error-focus);
+        border: 1px solid var(--#{$prefix}color-border-input-block-error-focus);
+        outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+        outline-offset: var(--#{$prefix}size-outline-offset);
+
+        & input {
+          border: 1px solid var(--#{$prefix}color-border-input-block-error-focus);
+        }
+      }
+
+      &:has(input.#{$prefix}checkbox:checked) {
+        background-color: var(--#{$prefix}color-surface-input-block-active-error);
+        border: 1px solid var(--#{$prefix}color-border-input-block-active-error);
+
+        & input {
+          border: 1px solid var(--#{$prefix}color-border-input-block-active-error);
+        }
+
+        &:hover {
+          background-color: var(--#{$prefix}color-surface-input-block-error);
+          border-color: var(--#{$prefix}color-border-input-block-error-hover);
+
+          --#{$prefix}color-surface-input-block-active: var(--#{$prefix}color-surface-input-block-error);
+          --#{$prefix}color-border-input-block-active: var(--#{$prefix}color-border-input-block-error-hover);
+
+          & input {
+            border-color: var(--#{$prefix}color-border-input-block-error-hover);
+            background-image: var(--#{$prefix}icon-checkbox-checked-error-hover);
+          }
+        }
+
+        &:focus-visible {
+          background-color: var(--#{$prefix}color-surface-input-block-error-focus);
+          border-color: var(--#{$prefix}color-border-input-block-error-focus);
+
+          & input {
+            border-color: var(--#{$prefix}color-border-input-block-error-focus);
+            background-image: var(--#{$prefix}icon-checkbox-checked-error-focus);
+          }
+        }
+      }
+
+      &:has(input[type='checkbox']:not(:disabled):indeterminate) {
+        background-color: var(--#{$prefix}color-surface-input-block-active-error);
+        border: 1px solid var(--#{$prefix}color-border-input-block-active-error);
+
+        & input {
+          border: 1px solid var(--#{$prefix}color-border-input-block-active-error);
+        }
+
+        &:hover {
+          background-color: var(--#{$prefix}color-surface-input-block-error);
+          border-color: var(--#{$prefix}color-border-input-block-error-hover);
+
+          --#{$prefix}color-surface-input-block-active: var(--#{$prefix}color-surface-input-block-error);
+          --#{$prefix}color-border-input-block-active: var(--#{$prefix}color-border-input-block-error-hover);
+
+          & input {
+            border-color: var(--#{$prefix}color-border-input-block-error-hover);
+            background-image: var(--#{$prefix}icon-checkbox-indeterminate-error-hover);
+          }
+        }
+
+        &:focus-visible {
+          background-color: var(--#{$prefix}color-surface-input-block-error-focus);
+          border-color: var(--#{$prefix}color-border-input-block-error-focus);
+
+          & input {
+            border-color: var(--#{$prefix}color-border-input-block-error-focus);
+            background-image: var(--#{$prefix}icon-checkbox-indeterminate-error-focus);
+          }
+        }
+      }
+
+      & input.#{$prefix}checkbox:not(:checked) {
+        background-color: initial;
+      }
+    }
+
+    input[type='checkbox']:not(:disabled) {
+      background-color: var(--#{$prefix}color-surface-input-error);
+      border: 1px solid var(--#{$prefix}color-border-input-error);
+
+      &:checked {
+        background-color: var(--#{$prefix}color-surface-input-error);
+        background-image: var(--#{$prefix}icon-checkbox-checked-error);
+        border: 1px solid var(--#{$prefix}color-border-input-error);
+      }
+
+      &:indeterminate {
+        background-color: var(--#{$prefix}color-surface-input-error);
+        background-image: var(--#{$prefix}icon-checkbox-indeterminate-error);
+        border: 1px solid var(--#{$prefix}color-border-input-error);
+      }
+
+      &:focus {
+        outline: 0;
+      }
+
+      &:focus-visible {
+        border: 1px solid var(--#{$prefix}color-border-input-error-focus);
+
+        &:checked {
+          background-image: var(--#{$prefix}icon-checkbox-checked-error-focus);
+        }
+
+        &:indeterminate {
+          background-image: var(--#{$prefix}icon-checkbox-indeterminate-error-focus);
+        }
+      }
+
+      &:hover {
+        --#{$prefix}color-surface-input-active: var(--#{$prefix}color-surface-input-error);
+        --#{$prefix}color-border-input-active-hover: var(--#{$prefix}color-border-input-error-hover);
+        border: 1px solid var(--#{$prefix}color-border-input-error-hover);
+
+        &:checked {
+          background-image: var(--#{$prefix}icon-checkbox-checked-error-hover);
+        }
+
+        &:indeterminate {
+          background-image: var(--#{$prefix}icon-checkbox-indeterminate-error-hover);
+        }
+      }
+    }
+  }
+
+  &.#{$prefix}form-field--disabled {
+    .#{$prefix}input,
+    .#{$prefix}inputnumber {
+      &.#{$prefix}input-wrapper {
+        background-color: var(--#{$prefix}color-surface-input-disabled);
+        border-color: var(--#{$prefix}color-border-input-disabled);
+        color: var(--#{$prefix}color-text-input-disabled);
+        cursor: not-allowed;
+
+        ::ng-deep input:disabled {
+          background-color: transparent;
+          color: var(--#{$prefix}color-text-input-disabled);
+          cursor: not-allowed;
+        }
+
+        .#{$prefix}input-wrapper__affixes {
+          &__prefix,
+          &__suffix {
+            color: var(--#{$prefix}color-text-input-disabled);
+          }
+
+          &__trailing {
+            color: var(--#{$prefix}color-typography-neutral);
+          }
+        }
+      }
+    }
+    ::ng-deep .#{$prefix}inputnumber__step-down-button,
+    ::ng-deep .#{$prefix}inputnumber__step-up-button {
+      cursor: not-allowed;
+      background-color: transparent;
+      border: 0;
+
+      .#{$prefix}inputnumber__step-down-button--icon {
+        background-image: var(--#{$prefix}icon-minus-disabled);
+      }
+
+      .#{$prefix}inputnumber__step-up-button--icon {
+        background-image: var(--#{$prefix}icon-plus-disabled);
+      }
+    }
+  }
+
+  &.#{$prefix}form-field--readonly {
+    .#{$prefix}input,
+    .#{$prefix}inputnumber {
+      &.#{$prefix}input-wrapper {
+        background-color: var(--#{$prefix}color-surface-input-readonly);
+        border-color: var(--#{$prefix}color-border-input-readonly);
+        color: var(--#{$prefix}color-text-input-readonly);
+
+        ::ng-deep .#{$prefix}inputnumber__step-down-button {
+          display: none;
+        }
+
+        ::ng-deep input.#{$prefix}inputnumber {
+          margin-left: 0px;
+          margin-right: var(--#{$prefix}space-6x);
+          text-align: start;
+        }
+
+        ::ng-deep .#{$prefix}inputnumber__step-up-button {
+          visibility: hidden;
+        }
+
+        .#{$prefix}input-wrapper__affixes {
+          &__prefix,
+          &__suffix {
+            color: var(--#{$prefix}color-typography-neutral);
+          }
+        }
+      }
+    }
+  }
+
+  .#{$prefix}input-wrapper {
+    position: relative;
+
+    & ::ng-deep [#{$prefix}before],
+    & ::ng-deep > #{$prefix}icon:not([#{$prefix}after]) {
+      align-items: center;
+      display: flex;
+      flex-shrink: 0;
+      height: 100%;
+      justify-content: center;
+      padding: 0;
+      align-items: center;
+
+      &:not(.#{$prefix}inputnumber__step-down-button) {
+        background-color: transparent;
+        border: 0;
+      }
+
+      & + .#{$prefix}input,
+      & + .#{$prefix}form-field__files,
+      & + .#{$prefix}input-wrapper__affixes {
+        margin-left: var(--#{$prefix}space-inline-couple-input);
+      }
+    }
+
+    & ::ng-deep .#{$prefix}input ~ [#{$prefix}after],
+    & ::ng-deep > [#{$prefix}button]:not([#{$prefix}before]) {
+      align-items: center;
+      display: flex;
+      flex-shrink: 0;
+      justify-content: center;
+
+      &:first-of-type {
+        margin-left: var(--#{$prefix}space-inline-couple-input);
+      }
+
+      &:last-child {
+        margin-right: calc(-1 * var(--#{$prefix}space-1x));
+      }
+    }
+
+    &.#{$prefix}input-wrapper--has-messages ~ .#{$prefix}input-messages-wrapper {
+      margin-top: var(--#{$prefix}space-1x);
+
+      ::ng-deep .#{$prefix}hint:not(:first-child) > .#{$prefix}hint-wrapper,
+      ::ng-deep .#{$prefix}error:not(:first-child) > .#{$prefix}error-wrapper {
+        margin-top: var(--#{$prefix}space-1x);
+      }
+    }
+
+    &.#{$prefix}input-wrapper--has-char-counter ::ng-deep textarea {
+      margin-bottom: var(--#{$prefix}space-1x);
+    }
+
+    &.#{$prefix}input.#{$prefix}input-wrapper--has-char-counter--lg,
+    &.#{$prefix}input.#{$prefix}input-wrapper--has-char-counter {
+      margin-bottom: var(--#{$prefix}space-1x);
+    }
+
+    &.#{$prefix}input-wrapper--has-char-counter--lg ~ .#{$prefix}input-messages-wrapper,
+    &.#{$prefix}input-wrapper--has-char-counter ~ .#{$prefix}input-messages-wrapper {
+      margin-top: calc(-1 * var(--#{$prefix}typography-line-height-xs));
+    }
+
+    &.#{$prefix}input-wrapper--has-char-counter--lg {
+      ::ng-deep textarea {
+        margin-bottom: var(--#{$prefix}space-1x);
+      }
+
+      + .#{$prefix}input-messages-wrapper {
+        margin-top: calc(-1 * var(--#{$prefix}typography-line-height-xs));
+      }
+
+      ::ng-deep .#{$prefix}input-textarea-char-counter {
+        font-size: var(--#{$prefix}typography-size-label);
+      }
+    }
+
+    .#{$prefix}input-wrapper__affixes {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+
+      & ::ng-deep .#{$prefix}input,
+      & ::ng-deep .#{$prefix}inputnumber {
+        display: flex;
+        border: none;
+        background-color: transparent;
+        height: auto;
+        min-width: 0;
+        padding: 0;
+
+        &:focus {
+          box-shadow: none;
+          outline: none;
+        }
+
+        &[type='number'] {
+          -moz-appearance: textfield;
+
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin: 0;
+          }
+        }
+      }
+
+      .#{$prefix}input-wrapper__affixes__fake-input-placeholder {
+        display: flex;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        color: var(--#{$prefix}color-text-input-placeholder);
+        font-size: var(--#{$prefix}font-size-input-placeholder);
+        font-style: var(--#{$prefix}font-style-input-placeholder);
+      }
+
+      &__prefix {
+        color: var(--#{$prefix}color-text-input-value-prefix);
+
+        & + ::ng-deep {
+          .#{$prefix}input,
+          .#{$prefix}inputnumber {
+            margin-left: var(--#{$prefix}space-05x);
+          }
+        }
+
+        & ~ .#{$prefix}input-wrapper__affixes__fake-input-placeholder {
+          margin-left: var(--#{$prefix}space-05x);
+        }
+      }
+
+      &__suffix {
+        color: var(--#{$prefix}color-text-input-value-suffix);
+        margin-left: var(--#{$prefix}space-05x);
+      }
+
+      &__trailing {
+        color: var(--#{$prefix}color-typography-neutral);
+      }
+
+      .#{$prefix}input-wrapper__affixes__span-mimic-input {
+        position: absolute;
+        visibility: hidden;
+      }
+    }
+  }
+
+  &.#{$prefix}form-field--has-radio-or-checkbox {
+    .#{$prefix}form-field__label,
+    .#{$prefix}form-field__label__lg {
+      margin-bottom: var(--#{$prefix}space-0x);
+    }
+
+    .#{$prefix}input-messages-wrapper ::ng-deep {
+      .#{$prefix}error-wrapper,
+      .#{$prefix}hint-wrapper {
+        margin-top: var(--#{$prefix}space-0x);
+      }
+    }
+  }
+
+  ::ng-deep .#{$prefix}range-slider + .#{$prefix}input-messages-wrapper {
+    margin-top: var(--#{$prefix}space-1x);
+
+    ::ng-deep .#{$prefix}hint:not(:first-child) > .#{$prefix}hint-wrapper,
+    ::ng-deep .#{$prefix}error:not(:first-child) > .#{$prefix}error-wrapper {
+      margin-top: var(--#{$prefix}space-1x);
+    }
+  }
+}
+
+.#{$prefix}form-field__files {
+  width: 100%;
+  color: var(--#{$prefix}color-typography-neutral);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+
+  &--disabled {
+    cursor: not-allowed;
+    color: var(--#{$prefix}color-text-input-placeholder);
+  }
+
+  &--empty {
+    color: var(--#{$prefix}color-typography-disabled);
+    font-style: italic;
+  }
+
+  &--readonly {
+    cursor: default;
+  }
+}
+
+.#{$prefix}form-field__file {
+  color: var(--#{$prefix}color-typography-invert);
+}
+
+.#{$prefix}form-field__native-file-input {
+  display: none;
+}
+.#{$prefix}form-field__clear-all-button {
+  position: absolute;
+  top: var(--#{$prefix}space-1x);
+  right: 12px;
+
+  &:focus {
+    outline: 0;
+  }
+}

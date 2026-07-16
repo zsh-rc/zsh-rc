@@ -1,0 +1,122 @@
+@use '../../density-styles-sass' as *;
+
+:host(#{$prefix}segmented-control-item),
+.#{$prefix}segmented-control-item {
+  --#{$prefix}shape-size-xmin-button: var(--#{$prefix}shape-size-xmin-segmented-control-item);
+  --#{$prefix}color-surface-button-toggle: var(--#{$prefix}color-surface-segmented-control-item);
+  position: relative;
+  display: block;
+
+  &::after {
+    content: ' ';
+    position: absolute;
+    left: 0px;
+    // Because the box-sizing is border-box, the top and bottom should be 7px instead of var(--#{$prefix}space-2x).
+    // Otherwise, the divider will be cut off by 2px, 1px from border top and 1px from border bottom.
+    top: 7px;
+    bottom: 7px;
+    background-color: var(--#{$prefix}color-divider-segmented-control-item);
+    width: var(--#{$prefix}shape-divider-segmented-control-item);
+    z-index: 1;
+  }
+
+  &:first-child::after,
+  &:has(.#{$prefix}button--toggle--active)::after,
+  &:has(.#{$prefix}button--toggle--active) + .#{$prefix}segmented-control-item::after {
+    content: unset;
+  }
+
+  &.#{$prefix}flex-items {
+    flex: 1;
+  }
+
+  ::ng-deep .#{$prefix}button--toggle {
+    width: 100%;
+    height: 100%;
+
+    &.#{$prefix}button--toggle--active {
+      border-radius: var(--#{$prefix}shape-radius-button) !important;
+      background-color: var(--#{$prefix}color-surface-segmented-control-item-checked);
+      cursor: default;
+      border: 1px solid var(--#{$prefix}color-border-segmented-control-item-checked);
+
+      &[disabled] {
+        --#{$prefix}color-surface-button-toggle-disabled: var(
+          --#{$prefix}color-surface-segmented-control-item-disabled-checked
+        );
+        border: 1px solid var(--#{$prefix}color-border-segmented-control-item-disabled-checked);
+        cursor: not-allowed;
+
+        .#{$prefix}icon {
+          color: var(--#{$prefix}color-icon-segmented-control-item-disabled-checked);
+        }
+      }
+
+      .#{$prefix}icon {
+        color: var(--#{$prefix}color-icon-segmented-control-item-checked);
+      }
+    }
+
+    &[disabled]:not(.#{$prefix}button--toggle--active) {
+      background-color: var(--#{$prefix}color-surface-segmented-control-item-disabled);
+      border-color: var(--#{$prefix}color-border-segmented-control-item-disabled);
+
+      .#{$prefix}icon {
+        color: var(--#{$prefix}color-icon-segmented-control-item-disabled);
+      }
+    }
+
+    &:hover {
+      --#{$prefix}color-surface-button-toggle-checked-hover: var(
+        --#{$prefix}color-surface-segmented-control-item-checked
+      );
+      --#{$prefix}color-surface-button-toggle-hover: var(--#{$prefix}color-surface-segmented-control-item-hover);
+
+      &:not(.#{$prefix}button--toggle--active) {
+        --#{$prefix}color-surface-button-toggle-checked-hover: var(
+          --#{$prefix}color-surface-segmented-control-item-hover
+        );
+        border-color: var(--#{$prefix}color-border-segmented-control-item-hover);
+
+        &:not([disabled]) .#{$prefix}icon {
+          color: var(--#{$prefix}color-icon-segmented-control-item-hover);
+        }
+      }
+    }
+
+    .#{$prefix}icon {
+      color: var(--#{$prefix}color-icon-segmented-control-item);
+      --#{$prefix}space-inline-couple-button: var(--#{$prefix}space-inline-couple-segmented-control-item);
+
+      &.#{$prefix}icon--sm {
+        --#{$prefix}icon-size-small: var(--#{$prefix}icon-size-segmented-control-item-sm);
+      }
+
+      &.#{$prefix}icon--md {
+        --#{$prefix}icon-size-medium: var(--#{$prefix}icon-size-segmented-control-item);
+      }
+
+      &.#{$prefix}icon--lg {
+        --#{$prefix}icon-size-large: var(--#{$prefix}icon-size-segmented-control-item-lg);
+      }
+    }
+
+    &.#{$prefix}button--sm {
+      --#{$prefix}shape-size-ymin-button: var(--#{$prefix}shape-size-ymin-segmented-control-item-sm);
+      --#{$prefix}space-inline-end-button: var(--#{$prefix}space-inline-end-segmented-control-item-sm);
+      --#{$prefix}space-inline-start-button: var(--#{$prefix}space-inline-start-segmented-control-item-sm);
+    }
+
+    &.#{$prefix}button--md {
+      --#{$prefix}shape-size-ymin-button: var(--#{$prefix}shape-size-ymin-segmented-control-item);
+      --#{$prefix}space-inline-end-button: var(--#{$prefix}space-inline-end-segmented-control-item);
+      --#{$prefix}space-inline-start-button: var(--#{$prefix}space-inline-start-segmented-control-item);
+    }
+
+    &.#{$prefix}button--lg {
+      --#{$prefix}shape-size-ymin-button: var(--#{$prefix}shape-size-ymin-segmented-control-item-lg);
+      --#{$prefix}space-inline-end-button: var(--#{$prefix}space-inline-end-segmented-control-item-lg);
+      --#{$prefix}space-inline-start-button: var(--#{$prefix}space-inline-start-segmented-control-item-lg);
+    }
+  }
+}

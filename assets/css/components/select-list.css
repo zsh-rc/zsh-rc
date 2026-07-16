@@ -1,0 +1,335 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-select-list),
+.ds-select-list {
+  display: block;
+  width: 100%;
+  margin-top: 0;
+  --ds-tree-item-transition-timing-function: var(--ds-motion-timing-entrance);
+  --ds-tree-item-transition-duration: var(--ds-motion-duration-quick);
+  --select-list-selected-bs: 0 0 0 2px inset rgba(var(--ds-color-blue-500), 0.3);
+  --fg-transition: all 150ms ease-in-out;
+}
+:host(ds-select-list).ds-no-motion,
+.ds-select-list.ds-no-motion {
+  --ds-tree-item-transition-duration: 0s;
+}
+:host(ds-select-list) .ds-select-list__wrapper,
+.ds-select-list .ds-select-list__wrapper {
+  height: 100%;
+}
+:host(ds-select-list) .ds-select-list__options-container,
+.ds-select-list .ds-select-list__options-container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+:host(ds-select-list) ul,
+.ds-select-list ul {
+  list-style: none;
+  padding-left: 0;
+}
+:host(ds-select-list) li,
+.ds-select-list li {
+  min-height: var(--ds-shape-size-ymin-list-item);
+}
+:host(ds-select-list) label,
+.ds-select-list label {
+  min-height: var(--ds-shape-size-ymin-list-item);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 0;
+  cursor: pointer;
+  outline: 0;
+}
+:host(ds-select-list) label > span,
+.ds-select-list label > span {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  white-space: pre;
+  font-size: var(--ds-font-size-list-item);
+  color: var(--ds-color-text-list-item);
+  padding: var(--ds-space-2x);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+:host(ds-select-list) label .truncate > div,
+.ds-select-list label .truncate > div {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+:host(ds-select-list) label .wrap,
+.ds-select-list label .wrap {
+  align-items: flex-start;
+}
+:host(ds-select-list) label .wrap > div,
+.ds-select-list label .wrap > div {
+  width: 100%;
+  white-space: normal;
+}
+:host(ds-select-list) .body-label,
+.ds-select-list .body-label {
+  color: var(--ds-color-text-list-item);
+  font-family: var(--ds-font-family-list-item);
+  font-size: var(--ds-font-size-list-item);
+  font-weight: var(--ds-font-weight-list-item);
+  line-height: var(--ds-font-line-height-list-item);
+}
+:host(ds-select-list) .ds-select-list__select-all,
+.ds-select-list .ds-select-list__select-all {
+  margin-bottom: 1px;
+}
+:host(ds-select-list) .ds-select-list__select-all .ds-list-item__content-wrapper .ds-list-item__content,
+.ds-select-list .ds-select-list__select-all .ds-list-item__content-wrapper .ds-list-item__content {
+  max-height: var(--ds-typography-line-height-regular);
+}
+:host(ds-select-list) .ds-select-list__select-all span,
+.ds-select-list .ds-select-list__select-all span {
+  width: auto;
+  font-size: var(--ds-font-size-list-item);
+}
+:host(ds-select-list) .ds-select-list__select-all span:nth-child(1),
+.ds-select-list .ds-select-list__select-all span:nth-child(1) {
+  padding-right: var(--ds-space-1x);
+  color: var(--ds-color-typography-action-active);
+}
+:host(ds-select-list) .ds-select-list__select-all span:nth-child(2),
+.ds-select-list .ds-select-list__select-all span:nth-child(2) {
+  padding-left: 0;
+  color: var(--ds-color-typography-neutral);
+}
+:host(ds-select-list) input,
+.ds-select-list input {
+  display: inline;
+  width: 0;
+  height: 0;
+}
+:host(ds-select-list) input ~ span,
+.ds-select-list input ~ span {
+  background-color: var(--ds-color-surface-list-item);
+}
+:host(ds-select-list) input:hover ~ span,
+.ds-select-list input:hover ~ span {
+  background-color: var(--ds-color-surface-list-item-hover);
+}
+:host(ds-select-list) input:focus ~ span,
+.ds-select-list input:focus ~ span {
+  background-color: var(--ds-color-surface-list-item-hover);
+  box-shadow: var(--select-list-selected-bs);
+}
+:host(ds-select-list) input.disabled ~ span,
+.ds-select-list input.disabled ~ span {
+  color: var(--ds-color-cool-grey-400);
+  cursor: not-allowed;
+}
+:host(ds-select-list) input.disabled ~ span:hover,
+.ds-select-list input.disabled ~ span:hover {
+  background-color: white;
+}
+:host(ds-select-list) input.disabled ~ span::before,
+.ds-select-list input.disabled ~ span::before {
+  background-color: var(--ds-color-cool-grey-100);
+  border-color: var(--ds-color-cool-grey-100);
+}
+:host(ds-select-list) input.disabled ~ span::after,
+.ds-select-list input.disabled ~ span::after {
+  display: none;
+}
+:host(ds-select-list) input.selected ~ span,
+.ds-select-list input.selected ~ span {
+  background-color: var(--ds-color-surface-list-item-selected);
+}
+:host(ds-select-list) input.selected:hover ~ span,
+.ds-select-list input.selected:hover ~ span {
+  background-color: var(--ds-color-surface-list-item-selected-hover);
+}
+:host(ds-select-list) input.selected:focus ~ span,
+.ds-select-list input.selected:focus ~ span {
+  outline: 0;
+  box-shadow: var(--select-list-selected-bs);
+}
+:host(ds-select-list) .ds-select-list__filter,
+.ds-select-list .ds-select-list__filter {
+  position: relative;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--ds-color-surface-list-item-search);
+}
+:host(ds-select-list) .ds-select-list__filter__icon,
+.ds-select-list .ds-select-list__filter__icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: var(--ds-space-inline-start-list-item);
+  pointer-events: none;
+  color: var(--ds-color-icon-list-item);
+}
+:host(ds-select-list) .ds-select-list__filter input.ds-select-list__filter__input,
+.ds-select-list .ds-select-list__filter input.ds-select-list__filter__input {
+  width: 100%;
+  height: inherit;
+  border: 0;
+  background-color: transparent;
+  padding-left: calc(var(--ds-space-inline-start-list-item) + var(--ds-icon-size-small) + var(--ds-space-inline-couple-list-item));
+  padding-top: var(--ds-space-stack-start-list-item);
+  padding-right: var(--ds-space-inline-end-list-item);
+  padding-bottom: var(--ds-space-stack-end-list-item);
+  color: var(--ds-color-text-list-item);
+  font-family: var(--ds-font-family-list-item);
+  font-size: var(--ds-font-size-list-item);
+  font-weight: var(--ds-font-weight-list-item);
+  line-height: var(--ds-font-line-height-list-item);
+}
+:host(ds-select-list) .ds-select-list__filter input.ds-select-list__filter__input::-webkit-input-placeholder, .ds-select-list .ds-select-list__filter input.ds-select-list__filter__input::-webkit-input-placeholder {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  color: var(--ds-color-text-input-placeholder);
+  font-size: var(--ds-font-size-input-placeholder);
+  font-style: var(--ds-font-style-input-placeholder);
+  font-style: italic;
+}
+
+:host(ds-select-list) .ds-select-list__filter input.ds-select-list__filter__input:-moz-placeholder, .ds-select-list .ds-select-list__filter input.ds-select-list__filter__input:-moz-placeholder {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  color: var(--ds-color-text-input-placeholder);
+  font-size: var(--ds-font-size-input-placeholder);
+  font-style: var(--ds-font-style-input-placeholder);
+  font-style: italic;
+}
+
+:host(ds-select-list) .ds-select-list__filter input.ds-select-list__filter__input::-moz-placeholder, .ds-select-list .ds-select-list__filter input.ds-select-list__filter__input::-moz-placeholder {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  color: var(--ds-color-text-input-placeholder);
+  font-size: var(--ds-font-size-input-placeholder);
+  font-style: var(--ds-font-style-input-placeholder);
+  font-style: italic;
+}
+
+:host(ds-select-list) .ds-select-list__filter input.ds-select-list__filter__input:-ms-input-placeholder, .ds-select-list .ds-select-list__filter input.ds-select-list__filter__input:-ms-input-placeholder {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  color: var(--ds-color-text-input-placeholder);
+  font-size: var(--ds-font-size-input-placeholder);
+  font-style: var(--ds-font-style-input-placeholder);
+  font-style: italic;
+}
+
+:host(ds-select-list) .ds-select-list__filter input.ds-select-list__filter__input:focus,
+.ds-select-list .ds-select-list__filter input.ds-select-list__filter__input:focus {
+  outline: 0;
+  box-shadow: var(--select-list-selected-bs);
+}
+:host(ds-select-list) .ds-select-list__filter input.ds-select-list__filter__input--lg,
+.ds-select-list .ds-select-list__filter input.ds-select-list__filter__input--lg {
+  --ds-font-size-list-item: var(--ds-font-size-list-item-large);
+  --ds-font-line-height-list-item: var(--ds-font-line-height-list-item-large);
+  --ds-space-stack-start-list-item: var(--ds-space-stack-start-list-item-large);
+  --ds-space-stack-end-list-item: var(--ds-space-stack-end-list-item-large);
+}
+:host(ds-select-list) ::ng-deep .cdk-virtual-scroll-content-wrapper,
+.ds-select-list ::ng-deep .cdk-virtual-scroll-content-wrapper {
+  width: 100%;
+}
+:host(ds-select-list) ::ng-deep .ds-select-list-item .ds-list-item__overlay--disabled,
+.ds-select-list ::ng-deep .ds-select-list-item .ds-list-item__overlay--disabled {
+  pointer-events: none;
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-select-list-item),
+.ds-select-list-item {
+  display: block;
+}
+:host(ds-select-list-item) .ds-select-list-item__item--group,
+.ds-select-list-item .ds-select-list-item__item--group {
+  cursor: inherit;
+  color: var(--ds-color-typography-neutral);
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-title-xs);
+  font-weight: var(--ds-typography-weight-title-xs);
+  line-height: var(--ds-typography-line-height-title-xs);
+  text-transform: var(--ds-typography-transform-uppercase);
+  min-height: var(--ds-space-3x);
+  padding: var(--ds-space-2x) 0;
+}
+:host(ds-select-list-item) .ds-select-list-item__item--group--first,
+.ds-select-list-item .ds-select-list-item__item--group--first {
+  padding-top: 0;
+}
+:host(ds-select-list-item) .ds-select-list-item__item ::ng-deep mark,
+.ds-select-list-item .ds-select-list-item__item ::ng-deep mark {
+  pointer-events: none;
+}
+
+.ds-select-list-item__group-wrapper:not(.ds-select-list-item__group-wrapper--first-option) {
+  margin-top: var(--ds-space-2x);
+}
+.ds-select-list-item__group-wrapper--no-title:not(.ds-select-list-item__group-wrapper--first-option) {
+  padding-top: var(--ds-space-2x);
+}
+.ds-select-list-item__group-wrapper--no-title:not(.ds-select-list-item__group-wrapper--first-option):not(.ds-select-list-item__group-wrapper--with-dividers) {
+  margin-top: 0;
+}
+.ds-select-list-item__group-wrapper * .ds-box-content {
+  margin: var(--ds-space-1x);
+}
+.ds-select-list-item__group-wrapper::before {
+  @useant as *;
+  z-index: var(--ds-z-index-content-base);
+}
+
+.ds-select-list-item__children__items {
+  display: block;
+  position: relative;
+  margin: 0 var(--ds-space-indent-nav-item);
+}
+.ds-select-list-item__children__items--closed {
+  display: none;
+}
+.ds-select-list-item__children__items ::ng-deep ds-list-item:not(.ds-list-item--selected) {
+  background-color: transparent;
+}
+.ds-select-list-item__children__items ::ng-deep ds-list-item .ds-list-item__content-wrapper {
+  margin-left: var(--ds-space-indent-nav-item);
+}
+.ds-select-list-item__children__items::before {
+  content: " ";
+  position: absolute;
+  width: var(--ds-shape-size-x-nav-node-line);
+  height: 100%;
+  left: 1px;
+  background-color: var(--ds-color-surface-nav-divider);
+}

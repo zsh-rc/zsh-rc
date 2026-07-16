@@ -1,0 +1,142 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-message),
+.ds-message {
+  --ds-message-border-color: var(--ds-color-border-message-neutral);
+  --ds-message-border-width: 1px;
+  --ds-message-border-style: solid;
+  --ds-message-icon-color: var(--ds-color-icon-message-neutral);
+  --ds-message-translate-distance: -8px;
+  --ds-message-motion-duration: var(--ds-motion-duration-quick);
+  display: none;
+  position: relative;
+  border-radius: var(--ds-shape-radius-message);
+  box-shadow: var(--ds-elevation-none);
+  visibility: hidden;
+  opacity: 0;
+}
+:host(ds-message).ds-message--elevation-none,
+.ds-message.ds-message--elevation-none {
+  box-shadow: var(--ds-elevation-none);
+}
+:host(ds-message).ds-message--elevation-base,
+.ds-message.ds-message--elevation-base {
+  box-shadow: var(--ds-elevation-base);
+}
+:host(ds-message).ds-message--elevation-component,
+.ds-message.ds-message--elevation-component {
+  box-shadow: var(--ds-elevation-component);
+}
+:host(ds-message).ds-message--elevation-temporary,
+.ds-message.ds-message--elevation-temporary {
+  box-shadow: var(--ds-elevation-temporary);
+}
+:host(ds-message).ds-message--elevation-navigation,
+.ds-message.ds-message--elevation-navigation {
+  box-shadow: var(--ds-elevation-navigation);
+}
+:host(ds-message).ds-message--elevation-notification,
+.ds-message.ds-message--elevation-notification {
+  box-shadow: var(--ds-elevation-notification);
+}
+:host(ds-message).ds-message--elevation-modal,
+.ds-message.ds-message--elevation-modal {
+  box-shadow: var(--ds-elevation-modal);
+}
+:host(ds-message).ds-no-motion,
+.ds-message.ds-no-motion {
+  --ds-message-motion-duration: 0s;
+}
+:host(ds-message).ds-message,
+.ds-message.ds-message {
+  transform: translateY(var(--ds-message-translate-distance));
+}
+:host(ds-message).ds-message--visible,
+.ds-message.ds-message--visible {
+  visibility: visible;
+  transform: translateY(0);
+  opacity: 1;
+}
+:host(ds-message).ds-message--loaded,
+.ds-message.ds-message--loaded {
+  transition: all var(--ds-message-motion-duration) var(--ds-motion-timing-exit) var(--ds-motion-delay-rapid);
+}
+:host(ds-message).ds-message .ds-message__wrapper,
+.ds-message.ds-message .ds-message__wrapper {
+  border: var(--ds-message-border-width) var(--ds-message-border-style) var(--ds-message-border-color);
+  border-radius: var(--ds-shape-radius-message);
+}
+:host(ds-message).ds-message .ds-message__wrapper--neutral,
+.ds-message.ds-message .ds-message__wrapper--neutral {
+  background-color: var(--ds-color-surface-message-neutral);
+  --ds-message-icon-color: var(--ds-color-icon-message-neutral);
+  --ds-message-border-color: var(--ds-color-border-message-neutral);
+}
+:host(ds-message).ds-message .ds-message__wrapper--info,
+.ds-message.ds-message .ds-message__wrapper--info {
+  background-color: var(--ds-color-surface-message-info);
+  --ds-message-icon-color: var(--ds-color-icon-message-info);
+  --ds-message-border-color: var(--ds-color-border-message-info);
+}
+:host(ds-message).ds-message .ds-message__wrapper--positive,
+.ds-message.ds-message .ds-message__wrapper--positive {
+  background-color: var(--ds-color-surface-message-positive);
+  --ds-message-icon-color: var(--ds-color-icon-message-positive);
+  --ds-message-border-color: var(--ds-color-border-message-positive);
+}
+:host(ds-message).ds-message .ds-message__wrapper--caution,
+.ds-message.ds-message .ds-message__wrapper--caution {
+  background-color: var(--ds-color-surface-message-caution);
+  --ds-message-icon-color: var(--ds-color-icon-message-caution);
+  --ds-message-border-color: var(--ds-color-border-message-caution);
+}
+:host(ds-message).ds-message .ds-message__wrapper--critical,
+.ds-message.ds-message .ds-message__wrapper--critical {
+  background-color: var(--ds-color-surface-message-critical);
+  --ds-message-icon-color: var(--ds-color-icon-message-critical);
+  --ds-message-border-color: var(--ds-color-border-message-critical);
+}
+:host(ds-message).ds-message .ds-message__wrapper--custom,
+.ds-message.ds-message .ds-message__wrapper--custom {
+  background-color: var(--ds-color-surface-message-custom);
+  --ds-message-icon-color: var(--ds-color-icon-message-custom);
+  --ds-message-border-color: var(--ds-color-border-message-custom);
+}
+:host(ds-message).ds-message ::ng-deep ds-box-header,
+.ds-message.ds-message ::ng-deep ds-box-header {
+  --ds-box-header-line-height: var(--ds-font-line-height-message-title);
+  --ds-box-header-button-y-margin: -6px;
+  --ds-box-header-icon-y-margin: 0;
+}
+:host(ds-message).ds-message ::ng-deep ds-box-header > .ds-box-header__item,
+.ds-message.ds-message ::ng-deep ds-box-header > .ds-box-header__item {
+  min-height: calc(var(--ds-font-line-height-message-title) + 2 * var(--ds-space-inset-message-regular));
+  --ds-box-header-icon-color: var(--ds-message-icon-color);
+}
+:host(ds-message).ds-message ::ng-deep ds-box-header.ds-message__wrapper--slim > .ds-box-header__item,
+.ds-message.ds-message ::ng-deep ds-box-header.ds-message__wrapper--slim > .ds-box-header__item {
+  min-height: calc(var(--ds-font-line-height-message-title) + 2 * var(--ds-space-inset-message-slim));
+  padding: var(--ds-space-inset-message-slim);
+}
+:host(ds-message).ds-message .ds-message__text-wrapper,
+.ds-message.ds-message .ds-message__text-wrapper {
+  color: var(--ds-color-text-message);
+  font-family: var(--ds-font-family-message);
+  font-size: var(--ds-font-size-message);
+  font-weight: var(--ds-font-weight-message);
+  line-height: var(--ds-font-line-height-message);
+}
+:host(ds-message).ds-message .ds-message__title-wrapper,
+.ds-message.ds-message .ds-message__title-wrapper {
+  color: var(--ds-color-text-message);
+  font-family: var(--ds-font-family-message-title);
+  font-size: var(--ds-font-size-message-title);
+  font-weight: var(--ds-font-weight-message-title);
+  line-height: var(--ds-font-line-height-message-title);
+  margin-bottom: var(--ds-space-stack-join-message);
+}

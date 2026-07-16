@@ -1,0 +1,167 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-switch),
+.ds-switch {
+  --ds-switch-transition-duration: var(--ds-motion-duration-standard);
+  display: block;
+}
+:host(ds-switch).ds-no-motion,
+.ds-switch.ds-no-motion {
+  --ds-switch-transition-duration: 0s;
+}
+:host(ds-switch).ds-switch--lg .ds-switch-wrapper,
+.ds-switch.ds-switch--lg .ds-switch-wrapper {
+  font-size: var(--ds-font-size-input-label-large);
+  font-weight: var(--ds-font-weight-input);
+  line-height: var(--ds-font-line-height-input-large);
+  --ds-shape-size-y-input-track: var(--ds-shape-size-y-input-track-large);
+  --ds-shape-size-x-input-track: var(--ds-shape-size-x-input-track-large);
+  --ds-shape-radius-input-track: var(--ds-shape-radius-input-track-large);
+  --ds-shape-size-y-input-handle: var(--ds-shape-size-y-input-handle-large);
+  --ds-shape-size-x-input-handle: var(--ds-shape-size-x-input-handle-large);
+}
+:host(ds-switch) .ds-switch-wrapper,
+.ds-switch .ds-switch-wrapper {
+  align-items: center;
+  color: var(--ds-color-text-input-value);
+  cursor: pointer;
+  display: flex;
+  flex: 1;
+  font-family: var(--ds-font-family-input);
+  font-size: var(--ds-font-size-input-label);
+  font-weight: var(--ds-font-weight-input);
+  line-height: var(--ds-font-line-height-input);
+  position: relative;
+  width: fit-content;
+}
+:host(ds-switch) .ds-switch-wrapper:focus-visible,
+.ds-switch .ds-switch-wrapper:focus-visible {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+}
+:host(ds-switch) .ds-switch-wrapper__track,
+.ds-switch .ds-switch-wrapper__track {
+  position: relative;
+  flex-shrink: 0;
+  height: var(--ds-shape-size-y-input-track);
+  width: var(--ds-shape-size-x-input-track);
+  background-color: var(--ds-color-surface-input-track);
+  border: 1px solid var(--ds-color-border-input-track);
+  border-radius: var(--ds-shape-radius-input-track);
+}
+:host(ds-switch) .ds-switch-wrapper__track::before,
+.ds-switch .ds-switch-wrapper__track::before {
+  position: absolute;
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--ds-shape-size-y-input-handle);
+  width: var(--ds-shape-size-x-input-handle);
+  top: calc(50% - var(--ds-shape-size-y-input-handle) / 2);
+  left: 1px;
+  background-color: var(--ds-color-surface-input-handle);
+  border-color: var(--ds-color-border-input-handle);
+  border-radius: var(--ds-shape-radius-input-handle);
+  box-shadow: var(--ds-elevation-base);
+  transition: transform var(--ds-switch-transition-duration) var(--ds-motion-timing-standard);
+}
+:host(ds-switch) .ds-switch-wrapper__content,
+.ds-switch .ds-switch-wrapper__content {
+  margin-left: var(--ds-space-2x);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+:host(ds-switch) .ds-switch-wrapper__content:empty,
+.ds-switch .ds-switch-wrapper__content:empty {
+  margin-left: 0px;
+}
+:host(ds-switch) .ds-switch-wrapper input,
+.ds-switch .ds-switch-wrapper input {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: 1px;
+  outline: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+}
+:host(ds-switch) .ds-switch-wrapper input:checked + .ds-switch-wrapper__track::before,
+.ds-switch .ds-switch-wrapper input:checked + .ds-switch-wrapper__track::before {
+  transform: translateX(calc((var(--ds-shape-size-x-input-track) - 4px) / 2));
+}
+:host(ds-switch) .ds-switch-wrapper input:checked:not(:disabled) ~ .ds-switch-wrapper__content,
+.ds-switch .ds-switch-wrapper input:checked:not(:disabled) ~ .ds-switch-wrapper__content {
+  color: var(--ds-color-text-input-value);
+}
+:host(ds-switch) .ds-switch-wrapper input:not(:disabled):not([readonly]):hover + .ds-switch-wrapper__track,
+.ds-switch .ds-switch-wrapper input:not(:disabled):not([readonly]):hover + .ds-switch-wrapper__track {
+  background-color: var(--ds-color-surface-input-track-hover);
+  border-color: var(--ds-color-border-input-track-hover);
+}
+:host(ds-switch) .ds-switch-wrapper input:not(:disabled):not([readonly]):checked + .ds-switch-wrapper__track,
+.ds-switch .ds-switch-wrapper input:not(:disabled):not([readonly]):checked + .ds-switch-wrapper__track {
+  background-color: var(--ds-color-surface-input-track-active);
+  border-color: var(--ds-color-border-input-track-active);
+}
+:host(ds-switch) .ds-switch-wrapper input:not(:disabled):not([readonly]):checked:hover + .ds-switch-wrapper__track,
+.ds-switch .ds-switch-wrapper input:not(:disabled):not([readonly]):checked:hover + .ds-switch-wrapper__track {
+  border-color: var(--ds-color-border-input-track-active-hover);
+}
+:host(ds-switch) .ds-switch-wrapper input:not(:disabled):not([readonly]):checked:focus + .ds-switch-wrapper__track,
+.ds-switch .ds-switch-wrapper input:not(:disabled):not([readonly]):checked:focus + .ds-switch-wrapper__track {
+  border-color: var(--ds-color-border-input-track-active);
+}
+:host(ds-switch) .ds-switch-wrapper input:not(:disabled):not([readonly]):checked:focus:hover + .ds-switch-wrapper__track,
+.ds-switch .ds-switch-wrapper input:not(:disabled):not([readonly]):checked:focus:hover + .ds-switch-wrapper__track {
+  border-color: var(--ds-color-border-input-track-active-hover);
+}
+:host(ds-switch) .ds-switch-wrapper--disabled:not(.ds-switch-wrapper--readonly),
+.ds-switch .ds-switch-wrapper--disabled:not(.ds-switch-wrapper--readonly) {
+  cursor: not-allowed;
+}
+:host(ds-switch) .ds-switch-wrapper--disabled .ds-switch-wrapper__track,
+.ds-switch .ds-switch-wrapper--disabled .ds-switch-wrapper__track {
+  background-color: var(--ds-color-surface-input-track-disabled);
+  border-color: var(--ds-color-border-input-track-disabled);
+}
+:host(ds-switch) .ds-switch-wrapper--disabled .ds-switch-wrapper__track::before,
+.ds-switch .ds-switch-wrapper--disabled .ds-switch-wrapper__track::before {
+  background-color: var(--ds-color-surface-input-handle-disabled);
+  border-color: var(--ds-color-border-input-handle-disabled);
+  box-shadow: none;
+}
+:host(ds-switch) .ds-switch-wrapper--disabled input:checked + .ds-switch-wrapper__track::before,
+.ds-switch .ds-switch-wrapper--disabled input:checked + .ds-switch-wrapper__track::before {
+  background-color: var(--ds-color-surface-input-handle-disabled);
+  border-color: var(--ds-color-border-input-handle-disabled);
+}
+:host(ds-switch) .ds-switch-wrapper--readonly,
+.ds-switch .ds-switch-wrapper--readonly {
+  pointer-events: none;
+}
+:host(ds-switch) .ds-switch-wrapper--readonly .ds-switch-wrapper__track,
+.ds-switch .ds-switch-wrapper--readonly .ds-switch-wrapper__track {
+  background-color: var(--ds-color-surface-input-track-readonly);
+  border-color: var(--ds-color-border-input-track-readonly);
+}
+:host(ds-switch) .ds-switch-wrapper--readonly .ds-switch-wrapper__track::before,
+.ds-switch .ds-switch-wrapper--readonly .ds-switch-wrapper__track::before {
+  background-color: var(--ds-color-surface-input-handle-readonly);
+  border-color: var(--ds-color-border-input-handle-readonly);
+  box-shadow: none;
+}
+:host(ds-switch) .ds-switch-wrapper--readonly input:checked + .ds-switch-wrapper__track::before,
+.ds-switch .ds-switch-wrapper--readonly input:checked + .ds-switch-wrapper__track::before {
+  background-color: var(--ds-color-surface-input-handle-readonly);
+  border-color: var(--ds-color-border-input-handle-readonly);
+}

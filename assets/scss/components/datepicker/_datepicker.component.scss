@@ -1,0 +1,50 @@
+@use '../../density-styles-sass' as *;
+
+:host(#{$prefix}datepicker),
+.#{$prefix}datepicker {
+  &.#{$prefix}datepicker--non-typeable {
+    ::ng-deep .#{$prefix}input.#{$prefix}input-wrapper {
+      cursor: pointer;
+      background-color: var(--#{$prefix}color-surface-input-alt);
+      transition: all 150ms ease-in-out;
+
+      &:hover {
+        background-color: var(--#{$prefix}color-surface-input-hover);
+        border: 1px solid var(--#{$prefix}color-border-input-hover);
+        outline: 0;
+      }
+
+      & input {
+        cursor: pointer;
+      }
+    }
+
+    &--supressed-hover {
+      ::ng-deep .#{$prefix}input.#{$prefix}input-wrapper {
+        &:hover {
+          background-color: var(--#{$prefix}color-surface-input-alt);
+          border: 1px solid var(--#{$prefix}color-border-input);
+          outline: 0;
+        }
+      }
+    }
+
+    &.#{$prefix}datepicker--readonly {
+      ::ng-deep .#{$prefix}input.#{$prefix}input-wrapper {
+        cursor: default;
+        & input {
+          cursor: default;
+        }
+      }
+    }
+  }
+
+  input {
+    border: none;
+    background: transparent;
+  }
+
+  #{$prefix}form-field {
+    display: flex;
+  }
+}

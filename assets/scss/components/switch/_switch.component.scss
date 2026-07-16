@@ -1,0 +1,187 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}switch),
+
+
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}switch {
+  --#{$prefix}switch-transition-duration: var(--#{$prefix}motion-duration-standard);
+
+  display: block;
+
+  &.#{$prefix}no-motion {
+    --#{$prefix}switch-transition-duration: 0s;
+  }
+
+  &.#{$prefix}switch--lg .#{$prefix}switch-wrapper {
+    font-size: var(--#{$prefix}font-size-input-label-large);
+    font-weight: var(--#{$prefix}font-weight-input);
+    line-height: var(--#{$prefix}font-line-height-input-large);
+
+    --#{$prefix}shape-size-y-input-track: var(--#{$prefix}shape-size-y-input-track-large);
+    --#{$prefix}shape-size-x-input-track: var(--#{$prefix}shape-size-x-input-track-large);
+    --#{$prefix}shape-radius-input-track: var(--#{$prefix}shape-radius-input-track-large);
+
+    --#{$prefix}shape-size-y-input-handle: var(--#{$prefix}shape-size-y-input-handle-large);
+    --#{$prefix}shape-size-x-input-handle: var(--#{$prefix}shape-size-x-input-handle-large);
+  }
+
+  .#{$prefix}switch-wrapper {
+    align-items: center;
+    color: var(--#{$prefix}color-text-input-value);
+    cursor: pointer;
+    display: flex;
+    flex: 1;
+    font-family: var(--#{$prefix}font-family-input);
+    font-size: var(--#{$prefix}font-size-input-label);
+    font-weight: var(--#{$prefix}font-weight-input);
+    line-height: var(--#{$prefix}font-line-height-input);
+    position: relative;
+    width: fit-content;
+
+    &:focus-visible {
+      outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+      outline-offset: var(--#{$prefix}size-outline-offset);
+    }
+
+    &__track {
+      position: relative;
+      flex-shrink: 0;
+      height: var(--#{$prefix}shape-size-y-input-track);
+      width: var(--#{$prefix}shape-size-x-input-track);
+      background-color: var(--#{$prefix}color-surface-input-track);
+      border: 1px solid var(--#{$prefix}color-border-input-track);
+      border-radius: var(--#{$prefix}shape-radius-input-track);
+
+      &::before {
+        position: absolute;
+        content: '';
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: var(--#{$prefix}shape-size-y-input-handle);
+        width: var(--#{$prefix}shape-size-x-input-handle);
+        top: calc(50% - var(--#{$prefix}shape-size-y-input-handle) / 2);
+        left: 1px;
+
+        background-color: var(--#{$prefix}color-surface-input-handle);
+        border-color: var(--#{$prefix}color-border-input-handle);
+        border-radius: var(--#{$prefix}shape-radius-input-handle);
+        box-shadow: var(--#{$prefix}elevation-base);
+
+        transition: transform var(--#{$prefix}switch-transition-duration) var(--#{$prefix}motion-timing-standard);
+      }
+    }
+
+    &__content {
+      margin-left: var(--#{$prefix}space-2x);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &:empty {
+        margin-left: 0px;
+      }
+    }
+
+    input {
+      border: 0;
+      clip: rect(0, 0, 0, 0);
+      height: 1px;
+      margin: 1px;
+      outline: 0;
+      overflow: hidden;
+      position: absolute;
+      width: 1px;
+
+      &:checked {
+        & + .#{$prefix}switch-wrapper__track::before {
+          transform: translateX(calc((var(--#{$prefix}shape-size-x-input-track) - 4px) / 2));
+        }
+
+        &:not(:disabled) ~ .#{$prefix}switch-wrapper__content {
+          color: var(--#{$prefix}color-text-input-value);
+        }
+      }
+
+      &:not(:disabled):not([readonly]) {
+        &:hover + .#{$prefix}switch-wrapper__track {
+          background-color: var(--#{$prefix}color-surface-input-track-hover);
+          border-color: var(--#{$prefix}color-border-input-track-hover);
+        }
+
+        &:checked + .#{$prefix}switch-wrapper__track {
+          background-color: var(--#{$prefix}color-surface-input-track-active);
+          border-color: var(--#{$prefix}color-border-input-track-active);
+        }
+
+        &:checked:hover {
+          & + .#{$prefix}switch-wrapper__track {
+            border-color: var(--#{$prefix}color-border-input-track-active-hover);
+          }
+        }
+
+        &:checked:focus {
+          & + .#{$prefix}switch-wrapper__track {
+            border-color: var(--#{$prefix}color-border-input-track-active);
+          }
+        }
+
+        &:checked:focus:hover {
+          & + .#{$prefix}switch-wrapper__track {
+            border-color: var(--#{$prefix}color-border-input-track-active-hover);
+          }
+        }
+      }
+    }
+
+    &--disabled {
+      &:not(.#{$prefix}switch-wrapper--readonly) {
+        cursor: not-allowed;
+      }
+      .#{$prefix}switch-wrapper__track {
+        background-color: var(--#{$prefix}color-surface-input-track-disabled);
+        border-color: var(--#{$prefix}color-border-input-track-disabled);
+
+        &::before {
+          background-color: var(--#{$prefix}color-surface-input-handle-disabled);
+          border-color: var(--#{$prefix}color-border-input-handle-disabled);
+          box-shadow: none;
+        }
+      }
+
+      input {
+        &:checked + .#{$prefix}switch-wrapper__track::before {
+          background-color: var(--#{$prefix}color-surface-input-handle-disabled);
+          border-color: var(--#{$prefix}color-border-input-handle-disabled);
+        }
+      }
+    }
+
+    &--readonly {
+      pointer-events: none;
+
+      .#{$prefix}switch-wrapper__track {
+        background-color: var(--#{$prefix}color-surface-input-track-readonly);
+        border-color: var(--#{$prefix}color-border-input-track-readonly);
+
+        &::before {
+          background-color: var(--#{$prefix}color-surface-input-handle-readonly);
+          border-color: var(--#{$prefix}color-border-input-handle-readonly);
+          box-shadow: none;
+        }
+      }
+
+      input {
+        &:checked + .#{$prefix}switch-wrapper__track::before {
+          background-color: var(--#{$prefix}color-surface-input-handle-readonly);
+          border-color: var(--#{$prefix}color-border-input-handle-readonly);
+        }
+      }
+    }
+  }
+}

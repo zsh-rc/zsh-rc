@@ -1,0 +1,73 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}autosuggest-item),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}autosuggest-item {
+  --a: var(--#{$prefix}space-inline-couple-list-item);
+
+  font-family: var(--#{$prefix}font-family-list-item);
+  font-size: var(--#{$prefix}font-size-list-item);
+  font-weight: var(--#{$prefix}font-weight-list-item);
+  line-height: var(--#{$prefix}font-line-height-list-item);
+  color: var(--#{$prefix}color-text-list-item);
+  margin: var(--#{$prefix}space-1x);
+
+  display: block;
+
+  & > ::ng-deep #{$prefix}list-item > .#{$prefix}list-item__content-wrapper > .#{$prefix}list-item__content {
+    overflow: hidden;
+  }
+}
+
+.#{$prefix}autosuggest-item {
+  &__option {
+    width: 100%;
+    min-height: var(--#{$prefix}shape-size-ymin-list-item);
+    padding-left: var(--#{$prefix}space-inline-start-list-item);
+    padding-right: var(--#{$prefix}space-inline-end-list-item);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 0;
+    cursor: pointer;
+
+    outline: 0;
+    outline-color: var(--#{$prefix}color-outline-list-item);
+
+    background-color: var(--#{$prefix}color-surface-list-item);
+    box-shadow: 0px 0px 0px transparent;
+    border: var(--#{$prefix}color-border-list-item);
+    text-shadow: 0px 0px 0px transparent;
+
+    &--group {
+      cursor: inherit;
+      color: var(--#{$prefix}color-typography-neutral);
+      font-family: var(--#{$prefix}typography-family-base);
+      font-size: var(--#{$prefix}typography-size-title-xs);
+      font-weight: var(--#{$prefix}typography-weight-title-xs);
+      line-height: var(--#{$prefix}typography-line-height-title-xs);
+      text-transform: var(--#{$prefix}typography-transform-uppercase);
+      min-height: var(--#{$prefix}space-3x);
+      padding: var(--#{$prefix}space-2x) 0;
+
+      &.#{$prefix}autosuggest-item__option--first {
+        padding: 0 0 var(--#{$prefix}space-2x);
+      }
+    }
+
+    &--focused {
+      outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+      outline-offset: var(--#{$prefix}size-outline-offset);
+    }
+
+    &--focused:hover:not(.#{$prefix}autosuggest-item__option--group) {
+      background-color: var(--#{$prefix}color-surface-list-item-hover);
+
+      outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+      outline-offset: var(--#{$prefix}size-outline-offset);
+    }
+  }
+}

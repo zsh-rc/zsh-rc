@@ -1,0 +1,21 @@
+@use '../../density-styles-sass' as *;
+
+:host(#{$prefix}badge-bed),
+:host(.#{$prefix}badge-bed),
+.#{$prefix}badge-bed {
+  height: 100%;
+  left: 0;
+  overflow: visible;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  & #{$prefix}badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    transform: translate(50%, -50%);
+  }
+}

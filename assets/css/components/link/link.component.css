@@ -1,0 +1,133 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-link).ds-link-wrapper,
+:host(.ds-link).ds-link-wrapper,
+.ds-link.ds-link-wrapper {
+  outline: none;
+}
+:host(ds-link).ds-link-wrapper:focus-visible,
+:host(.ds-link).ds-link-wrapper:focus-visible,
+.ds-link.ds-link-wrapper:focus-visible {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+}
+:host(ds-link).ds-link-wrapper--disabled,
+:host(.ds-link).ds-link-wrapper--disabled,
+.ds-link.ds-link-wrapper--disabled {
+  cursor: not-allowed;
+}
+:host(ds-link) a.ds-link--primary:not(:visited),
+:host(.ds-link) a.ds-link--primary:not(:visited),
+.ds-link a.ds-link--primary:not(:visited) {
+  color: var(--ds-color-typography-action);
+}
+:host(ds-link) a.ds-link--primary:not(:visited):hover,
+:host(.ds-link) a.ds-link--primary:not(:visited):hover,
+.ds-link a.ds-link--primary:not(:visited):hover {
+  color: var(--ds-color-typography-action-hover);
+}
+:host(ds-link) a.ds-link--primary:not(:visited):active,
+:host(.ds-link) a.ds-link--primary:not(:visited):active,
+.ds-link a.ds-link--primary:not(:visited):active {
+  color: var(--ds-color-typography-action-active);
+}
+:host(ds-link) a.ds-link--primary:visited,
+:host(.ds-link) a.ds-link--primary:visited,
+.ds-link a.ds-link--primary:visited {
+  color: var(--ds-color-typography-action-visited);
+}
+:host(ds-link) a.ds-link--primary:visited:hover,
+:host(.ds-link) a.ds-link--primary:visited:hover,
+.ds-link a.ds-link--primary:visited:hover {
+  color: var(--ds-color-typography-action-visited-hover);
+}
+:host(ds-link) a.ds-link--primary:visited:active,
+:host(.ds-link) a.ds-link--primary:visited:active,
+.ds-link a.ds-link--primary:visited:active {
+  color: var(--ds-color-typography-action-visited-active);
+}
+:host(ds-link) a.ds-link--muted,
+:host(.ds-link) a.ds-link--muted,
+.ds-link a.ds-link--muted {
+  color: var(--ds-color-typography-neutral);
+}
+:host(ds-link) a.ds-link--muted:not(:visited):hover,
+:host(.ds-link) a.ds-link--muted:not(:visited):hover,
+.ds-link a.ds-link--muted:not(:visited):hover {
+  color: var(--ds-color-typography-action-hover);
+}
+:host(ds-link) a.ds-link--muted:not(:visited):active,
+:host(.ds-link) a.ds-link--muted:not(:visited):active,
+.ds-link a.ds-link--muted:not(:visited):active {
+  color: var(--ds-color-typography-action-active);
+}
+:host(ds-link) a.ds-link--muted:visited:hover,
+:host(.ds-link) a.ds-link--muted:visited:hover,
+.ds-link a.ds-link--muted:visited:hover {
+  color: var(--ds-color-typography-action-visited-hover);
+}
+:host(ds-link) a.ds-link--muted:visited:active,
+:host(.ds-link) a.ds-link--muted:visited:active,
+.ds-link a.ds-link--muted:visited:active {
+  color: var(--ds-color-typography-action-visited-active);
+}
+:host(ds-link) a.ds-link--disabled,
+:host(.ds-link) a.ds-link--disabled,
+.ds-link a.ds-link--disabled {
+  pointer-events: none;
+  color: var(--ds-color-typography-disabled);
+  text-decoration: none;
+}
+:host(ds-link) .ds-link-label-wrapper,
+:host(.ds-link) .ds-link-label-wrapper,
+.ds-link .ds-link-label-wrapper {
+  display: inline;
+  white-space: normal;
+}
+:host(ds-link) .ds-link-text-wrapper,
+:host(.ds-link) .ds-link-text-wrapper,
+.ds-link .ds-link-text-wrapper {
+  display: inline;
+  white-space: nowrap;
+}
+:host(ds-link) .ds-link-icon-wrapper,
+:host(.ds-link) .ds-link-icon-wrapper,
+.ds-link .ds-link-icon-wrapper {
+  vertical-align: text-bottom;
+}
+:host(ds-link) .ds-link-icon-wrapper--left,
+:host(.ds-link) .ds-link-icon-wrapper--left,
+.ds-link .ds-link-icon-wrapper--left {
+  margin-right: var(--ds-space-1x);
+}
+:host(ds-link) .ds-link-icon-wrapper--right,
+:host(.ds-link) .ds-link-icon-wrapper--right,
+.ds-link .ds-link-icon-wrapper--right {
+  margin-left: var(--ds-space-1x);
+}
+:host(ds-link) .ds-link--primary:visited .ds-link-icon-wrapper ::ng-deep > svg > svg > svg > path,
+:host(.ds-link) .ds-link--primary:visited .ds-link-icon-wrapper ::ng-deep > svg > svg > svg > path,
+.ds-link .ds-link--primary:visited .ds-link-icon-wrapper ::ng-deep > svg > svg > svg > path {
+  fill: var(--ds-color-typography-action-visited);
+}
+:host(ds-link) .ds-link--primary:visited:hover .ds-link-icon-wrapper ::ng-deep > svg > svg > svg > path, :host(ds-link) .ds-link--muted:visited:hover .ds-link-icon-wrapper ::ng-deep > svg > svg > svg > path,
+:host(.ds-link) .ds-link--primary:visited:hover .ds-link-icon-wrapper ::ng-deep > svg > svg > svg > path,
+:host(.ds-link) .ds-link--muted:visited:hover .ds-link-icon-wrapper ::ng-deep > svg > svg > svg > path,
+.ds-link .ds-link--primary:visited:hover .ds-link-icon-wrapper ::ng-deep > svg > svg > svg > path,
+.ds-link .ds-link--muted:visited:hover .ds-link-icon-wrapper ::ng-deep > svg > svg > svg > path {
+  fill: var(--ds-color-typography-action-visited-hover);
+}
+:host(ds-link) .ds-link--primary:visited:active .ds-link-icon-wrapper ::ng-deep > svg > svg > svg > path, :host(ds-link) .ds-link--muted:visited:active .ds-link-icon-wrapper ::ng-deep > svg > svg > svg > path,
+:host(.ds-link) .ds-link--primary:visited:active .ds-link-icon-wrapper ::ng-deep > svg > svg > svg > path,
+:host(.ds-link) .ds-link--muted:visited:active .ds-link-icon-wrapper ::ng-deep > svg > svg > svg > path,
+.ds-link .ds-link--primary:visited:active .ds-link-icon-wrapper ::ng-deep > svg > svg > svg > path,
+.ds-link .ds-link--muted:visited:active .ds-link-icon-wrapper ::ng-deep > svg > svg > svg > path {
+  fill: var(--ds-color-typography-action-visited-active);
+}

@@ -1,0 +1,52 @@
+@use '../../density-styles-sass' as *;
+
+#{$prefix}datepicker,
+.#{$prefix}datepicker {
+  flex: 1 1 auto;
+
+  .#{$prefix}input.#{$prefix}input-wrapper > .#{$prefix}input {
+    display: inline-flex;
+    align-items: center;
+    flex: 1 1 auto;
+  }
+  .#{$prefix}input.#{$prefix}input-wrapper > .#{$prefix}input > input {
+    background: transparent;
+    border: 0;
+    height: auto;
+    box-shadow: none;
+    vertical-align: middle;
+    flex: 1 1 auto;
+    width: 100%;
+    color: var(--#{$prefix}color-text-input-value);
+
+    &:focus-visible {
+      border: none;
+      outline: none;
+    }
+  }
+
+  .#{$prefix}date-range-separator {
+    display: inline-flex;
+    align-items: center;
+    color: var(--#{$prefix}color-typography-neutral);
+    padding: 0 4px;
+  }
+  .#{$prefix}form-field--disabled .#{$prefix}date-range-separator {
+    color: var(--#{$prefix}color-typography-button-disabled);
+  }
+}
+
+.#{$prefix}input.#{$prefix}input-wrapper {
+  & > #{$prefix}datepicker,
+  .#{$prefix}datepicker {
+    height: 100%;
+    & > #{$prefix}form-field,
+    .#{$prefix}form-field {
+      height: 100%;
+    }
+  }
+}
+
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing.#{$prefix}datepicker__calendar-backdrop-class {
+  opacity: 0;
+}

@@ -1,0 +1,15 @@
+@use '../../density-styles-sass' as *;
+
+:host(#{$prefix}time-value-picker),
+.#{$prefix}time-value-picker {
+  display: block;
+  width: 160px;
+
+  .#{$prefix}time-value-picker__menu-actions-wrapper {
+    padding: var(--#{$prefix}space-1x) var(--#{$prefix}space-2x);
+  }
+
+  &.#{$prefix}time-value-picker--expand-width {
+    width: 100%;
+  }
+}

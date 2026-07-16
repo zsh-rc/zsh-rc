@@ -1,0 +1,562 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+.text-smallprint {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-smallprint);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-smallprint);
+}
+.text-label {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-label);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-label);
+}
+.text-regular, :host(ds-drawer).ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item .ds-box-header__label-wrapper.ds-drawer--left,
+.ds-drawer.ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item .ds-box-header__label-wrapper.ds-drawer--left {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-regular);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-regular);
+}
+.text-paragraph {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-paragraph);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-paragraph);
+}
+
+.title-xs {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-title-xs);
+  font-weight: var(--ds-typography-weight-title-xs);
+  line-height: var(--ds-typography-line-height-title-xs);
+  text-transform: var(--ds-typography-transform-uppercase);
+}
+.title-sm {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-title-sm);
+  font-weight: var(--ds-typography-weight-title-sm);
+  line-height: var(--ds-typography-line-height-title-sm);
+  text-transform: var(--ds-typography-transform-uppercase);
+}
+.title-md {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-title-md);
+  font-weight: var(--ds-typography-weight-title-md);
+  line-height: var(--ds-typography-line-height-title-md);
+}
+.title-lg {
+  font-family: var(--ds-typography-family-brand);
+  font-size: var(--ds-typography-size-title-lg);
+  font-weight: var(--ds-typography-weight-title-lg);
+  line-height: var(--ds-typography-line-height-title-lg);
+  text-transform: var(--ds-typography-transform-uppercase);
+}
+
+.truncated-text, :host(ds-drawer).ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item .ds-box-header__label-wrapper.ds-drawer--left > span,
+.ds-drawer.ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item .ds-box-header__label-wrapper.ds-drawer--left > span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*
+ *  For focus states we use 'box-shadow' as it respects border-radius unlike 'outline'
+ */
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-drawer),
+.ds-drawer {
+  box-sizing: border-box;
+  --ds-drawer-background-transition-duration: var(--ds-motion-duration-2);
+  --ds-drawer-animation-duration-out: var(--ds-motion-duration-quick);
+  --ds-drawer-animation-duration: var(--ds-motion-duration-quick);
+  --ds-drawer-animation-function: var(--ds-motion-timing-exit);
+  --ds-drawer-animation-delay: 0s;
+  width: 100%;
+}
+:host(ds-drawer).ds-drawer--left,
+.ds-drawer.ds-drawer--left {
+  --ds-drawer-background-transition-duration: var(--ds-motion-duration-quick);
+  --ds-drawer-animation-duration-out: var(--ds-motion-duration-rapid);
+  --ds-drawer-animation-duration: var(--ds-motion-duration-rapid);
+  --ds-drawer-animation-function: var(--ds-motion-timing-exit);
+  --ds-drawer-animation-delay: 0s;
+}
+:host(ds-drawer),
+.ds-drawer {
+  opacity: 0;
+  transition: opacity var(--ds-drawer-animation-duration) var(--ds-drawer-animation-function) var(--ds-drawer-animation-delay), transform var(--ds-drawer-animation-duration) var(--ds-drawer-animation-function) var(--ds-drawer-animation-delay), visibility var(--ds-drawer-animation-duration) var(--ds-drawer-animation-function) var(--ds-drawer-animation-delay);
+}
+:host(ds-drawer).ds-no-motion,
+.ds-drawer.ds-no-motion {
+  --ds-drawer-animation-duration: 0s;
+  --ds-drawer-animation-delay: 0s;
+  --cdk-overlay-backdrop-transition-duration: 0s;
+  --ds-drawer-background-transition-duration: 0s;
+  --ds-drawer-animation-duration-out: 0s;
+}
+:host(ds-drawer).ds-drawer,
+.ds-drawer.ds-drawer {
+  display: flex;
+  max-width: none;
+  padding: 0;
+  transform: translateY(var(--ds-space-6x));
+  --ds-box-header-min-height: 56px;
+}
+:host(ds-drawer).ds-drawer.ds-drawer--left,
+.ds-drawer.ds-drawer.ds-drawer--left {
+  transform: translateX(calc(-1 * var(--ds-space-6x)));
+}
+:host(ds-drawer).ds-drawer--visible,
+.ds-drawer.ds-drawer--visible {
+  --ds-drawer-animation-duration: var(--ds-motion-duration-2);
+  --ds-drawer-animation-function: var(--ds-motion-timing-0);
+  --ds-drawer-animation-delay: 0s;
+  opacity: 1;
+  transform: translateY(0);
+}
+:host(ds-drawer).ds-drawer--visible.ds-drawer--left,
+.ds-drawer.ds-drawer--visible.ds-drawer--left {
+  transform: translateX(0);
+  --ds-drawer-animation-duration: var(--ds-motion-duration-quick);
+  --ds-drawer-animation-function: var(--ds-motion-timing-0);
+  --ds-drawer-animation-delay: 0s;
+}
+:host(ds-drawer).ds-drawer--visible.ds-no-motion,
+.ds-drawer.ds-drawer--visible.ds-no-motion {
+  --ds-drawer-animation-duration: 0s;
+  --ds-drawer-animation-delay: 0s;
+  --cdk-overlay-backdrop-transition-duration: 0s;
+  --ds-drawer-background-transition-duration: 0s;
+  --ds-drawer-animation-duration-out: 0s;
+}
+:host(ds-drawer).ds-drawer > .ds-drawer__box--max-height,
+.ds-drawer.ds-drawer > .ds-drawer__box--max-height {
+  min-height: calc(100dvh - var(--ds-space-stack-safe-box-bsheet));
+}
+:host(ds-drawer) ::ng-deep > .ds-box,
+.ds-drawer ::ng-deep > .ds-box {
+  flex: 1;
+  --ds-box-border-radius: var(--ds-shape-radius-box) var(--ds-shape-radius-box) 0 0;
+}
+:host(ds-drawer) ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper,
+.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper {
+  z-index: calc(var(--ds-z-index-content-base) + 1);
+}
+:host(ds-drawer) ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item,
+.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item {
+  padding: var(--ds-space-stack-box-header-bsheet) var(--ds-space-inline-box-header-bsheet) 0 var(--ds-space-inline-box-header-bsheet);
+}
+:host(ds-drawer) ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item.ds-drawer--left,
+.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item.ds-drawer--left {
+  --ds-box-header-min-height: var(--ds-shape-max-height-header-item);
+  max-height: var(--ds-shape-max-height-header-item);
+  padding: var(--ds-space-1x) var(--ds-space-2x);
+}
+:host(ds-drawer) ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item.ds-drawer--left div.ds-box-header__item__close-button-wrapper,
+.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item.ds-drawer--left div.ds-box-header__item__close-button-wrapper {
+  height: var(--ds-shape-max-height-header-item);
+  padding: var(--ds-space-1x) 0;
+  max-width: var(--ds-space-9x);
+  margin-left: 0;
+}
+:host(ds-drawer) ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item.ds-drawer--left div.ds-box-header__item__close-button-wrapper button.ds-button,
+.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item.ds-drawer--left div.ds-box-header__item__close-button-wrapper button.ds-button {
+  padding: 0px 6px;
+  background-color: var(--ds-color-surface-button-ghost);
+  border-color: var(--ds-color-border-button-ghost);
+  color: var(--ds-color-typography-neutral);
+  padding: 0 var(--ds-space-inline-end-button-ghost) 0 var(--ds-space-inline-start-button-ghost);
+}
+:host(ds-drawer) ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper > .ds-box-header__label-wrapper,
+.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper > .ds-box-header__label-wrapper {
+  font-size: var(--ds-box-header-small-font-size);
+  font-weight: var(--ds-box-header-small-font-weight);
+  line-height: var(--ds-box-header-small-line-height);
+  text-transform: var(--ds-box-header-small-text-transform);
+  padding: 8px 0;
+}
+:host(ds-drawer) ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper > .ds-box-header__item__close-button-wrapper > .ds-box-header__item__close-button,
+.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper > .ds-box-header__item__close-button-wrapper > .ds-box-header__item__close-button {
+  margin: 0;
+}
+:host(ds-drawer) ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions,
+.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions {
+  flex-wrap: wrap;
+}
+:host(ds-drawer) ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions,
+.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions {
+  width: calc(100% + var(--ds-space-inline-box-header-bsheet) * 2);
+  margin: var(--ds-space-stack-box-header-bsheet) calc(var(--ds-space-inline-box-header-bsheet) * -1) 0 calc(var(--ds-space-inline-box-header-bsheet) * -1);
+  order: 99;
+  justify-content: flex-start;
+}
+:host(ds-drawer) ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions:empty,
+.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions:empty {
+  margin: 0;
+}
+:host(ds-drawer) ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper,
+.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+:host(ds-drawer) ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content,
+.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content {
+  flex: 1;
+  overflow: auto;
+}
+:host(ds-drawer) ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__last-content,
+.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__last-content {
+  padding: var(--ds-space-1x) var(--ds-space-2x);
+  width: 100%;
+  background-color: var(--ds-color-surface-base);
+}
+
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item {
+  padding: var(--ds-space-stack-box-header-bsheet) var(--ds-space-inline-box-header-bsheet);
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box {
+  height: 100%;
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-calendar__wrapper,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-calendar__wrapper {
+  overflow: scroll;
+  min-height: 0px;
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-calendar__wrapper > .ds-box-content__content-wrapper > .ds-box-content:nth-child(2),
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-calendar__wrapper > .ds-box-content__content-wrapper > .ds-box-content:nth-child(2) {
+  height: 272px;
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-calendar__wrapper > .ds-box-content__content-wrapper > .ds-box-content:nth-child(2) .ds-calendar-view-years,
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-calendar__wrapper > .ds-box-content__content-wrapper > .ds-box-content:nth-child(2) .ds-calendar-view-years .ds-calendar-years,
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-calendar__wrapper > .ds-box-content__content-wrapper > .ds-box-content:nth-child(2) .ds-calendar-view-months,
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-calendar__wrapper > .ds-box-content__content-wrapper > .ds-box-content:nth-child(2) .ds-calendar-view-months .ds-calendar-months,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-calendar__wrapper > .ds-box-content__content-wrapper > .ds-box-content:nth-child(2) .ds-calendar-view-years,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-calendar__wrapper > .ds-box-content__content-wrapper > .ds-box-content:nth-child(2) .ds-calendar-view-years .ds-calendar-years,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-calendar__wrapper > .ds-box-content__content-wrapper > .ds-box-content:nth-child(2) .ds-calendar-view-months,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-calendar__wrapper > .ds-box-content__content-wrapper > .ds-box-content:nth-child(2) .ds-calendar-view-months .ds-calendar-months {
+  height: 100%;
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-calendar__wrapper > .ds-box-content__content-wrapper > .ds-box-content:nth-child(2) .ds-calendar-week,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-calendar__wrapper > .ds-box-content__content-wrapper > .ds-box-content:nth-child(2) .ds-calendar-week {
+  max-width: var(--ds-shape-size-xmin-calendar-week);
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-calendar__wrapper > .ds-box-content__content-wrapper > .ds-box-content:nth-child(2) .ds-calendar-days-row,
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-calendar__wrapper > .ds-box-content__content-wrapper > .ds-box-content:nth-child(2) .ds-calendar-days-header,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-calendar__wrapper > .ds-box-content__content-wrapper > .ds-box-content:nth-child(2) .ds-calendar-days-row,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-calendar .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-calendar__wrapper > .ds-box-content__content-wrapper > .ds-box-content:nth-child(2) .ds-calendar-days-header {
+  grid-template-columns: 2fr 4fr 4fr 4fr 4fr 4fr 4fr 4fr;
+}
+
+:host(ds-drawer).ds-bottom-sheet--menu ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item,
+.ds-drawer.ds-bottom-sheet--menu ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item {
+  padding: var(--ds-space-stack-box-header-bsheet) var(--ds-space-inline-box-header-bsheet);
+}
+:host(ds-drawer).ds-bottom-sheet--menu ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions .ds-menu-in-bottom-sheet__back-item,
+.ds-drawer.ds-bottom-sheet--menu ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions .ds-menu-in-bottom-sheet__back-item {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  margin-left: var(--ds-space-inline-start-menu-bsheet-tlp);
+  margin-right: var(--ds-space-inline-end-menu-bsheet-tlp);
+}
+:host(ds-drawer).ds-bottom-sheet--menu ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions .ds-menu-in-bottom-sheet__back-item__button,
+.ds-drawer.ds-bottom-sheet--menu ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions .ds-menu-in-bottom-sheet__back-item__button {
+  margin-right: var(--ds-space-inline-gap-menu-bsheet-tlp);
+}
+:host(ds-drawer).ds-bottom-sheet--menu ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > ds-box-content > .ds-box-content__content-wrapper .ds-list-item:not(.ds-list-item__label--group),
+.ds-drawer.ds-bottom-sheet--menu ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > ds-box-content > .ds-box-content__content-wrapper .ds-list-item:not(.ds-list-item__label--group) {
+  --ds-shape-size-ymin-list-item: var(--ds-shape-size-ymin-list-item-large);
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-regular);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-regular);
+}
+:host(ds-drawer).ds-bottom-sheet--menu ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > ds-box-content > .ds-box-content__content-wrapper .ds-list-item:not(.ds-list-item__label--group) .ds-icon,
+.ds-drawer.ds-bottom-sheet--menu ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > ds-box-content > .ds-box-content__content-wrapper .ds-list-item:not(.ds-list-item__label--group) .ds-icon {
+  height: var(--ds-icon-size-medium);
+  width: var(--ds-icon-size-medium);
+  min-width: var(--ds-icon-size-medium);
+}
+
+/* this is always the same - START */
+:host(ds-drawer).ds-drawer--select ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item,
+.ds-drawer.ds-drawer--select ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item {
+  padding-bottom: 0px;
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions {
+  /* this is always the same - END */
+  /* this should be specific to the component - START */
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions {
+  flex: 1;
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > .ds-select-list__filter,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > .ds-select-list__filter {
+  position: relative;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--ds-color-surface-list-item-search);
+  min-height: var(--ds-space-10x);
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > .ds-select-list__filter > .ds-select-list__filter__icon,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > .ds-select-list__filter > .ds-select-list__filter__icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: var(--ds-space-inline-start-list-item);
+  pointer-events: none;
+  color: var(--ds-color-icon-list-item);
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > .ds-select-list__filter > input.ds-select-list__filter__input,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > .ds-select-list__filter > input.ds-select-list__filter__input {
+  width: 100%;
+  height: inherit;
+  border: 0;
+  background-color: transparent;
+  padding-left: calc(var(--ds-space-inline-start-list-item) + var(--ds-icon-size-small) + var(--ds-space-inline-couple-list-item));
+  padding-top: var(--ds-space-stack-start-list-item);
+  padding-right: var(--ds-space-inline-end-list-item);
+  padding-bottom: var(--ds-space-stack-end-list-item);
+  color: var(--ds-color-text-list-item);
+  font-family: var(--ds-font-family-list-item);
+  font-size: var(--ds-font-size-list-item);
+  font-weight: var(--ds-font-weight-list-item);
+  line-height: var(--ds-font-line-height-list-item);
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > .ds-select-list__filter > input.ds-select-list__filter__input::-webkit-input-placeholder, .ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > .ds-select-list__filter > input.ds-select-list__filter__input::-webkit-input-placeholder {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  color: var(--ds-color-text-input-placeholder);
+  font-size: var(--ds-font-size-input-placeholder);
+  font-style: var(--ds-font-style-input-placeholder);
+  font-style: italic;
+}
+
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > .ds-select-list__filter > input.ds-select-list__filter__input:-moz-placeholder, .ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > .ds-select-list__filter > input.ds-select-list__filter__input:-moz-placeholder {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  color: var(--ds-color-text-input-placeholder);
+  font-size: var(--ds-font-size-input-placeholder);
+  font-style: var(--ds-font-style-input-placeholder);
+  font-style: italic;
+}
+
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > .ds-select-list__filter > input.ds-select-list__filter__input::-moz-placeholder, .ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > .ds-select-list__filter > input.ds-select-list__filter__input::-moz-placeholder {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  color: var(--ds-color-text-input-placeholder);
+  font-size: var(--ds-font-size-input-placeholder);
+  font-style: var(--ds-font-style-input-placeholder);
+  font-style: italic;
+}
+
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > .ds-select-list__filter > input.ds-select-list__filter__input:-ms-input-placeholder, .ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > .ds-select-list__filter > input.ds-select-list__filter__input:-ms-input-placeholder {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  color: var(--ds-color-text-input-placeholder);
+  font-size: var(--ds-font-size-input-placeholder);
+  font-style: var(--ds-font-style-input-placeholder);
+  font-style: italic;
+}
+
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > .ds-select-list__filter > input.ds-select-list__filter__input:focus,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > .ds-select-list__filter > input.ds-select-list__filter__input:focus {
+  outline: 0;
+  box-shadow: var(--select-list-selected-bs);
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > .ds-select-list__filter > input.ds-select-list__filter__input--lg,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > .ds-select-list__filter > input.ds-select-list__filter__input--lg {
+  --ds-font-size-list-item: var(--ds-font-size-list-item-large);
+  --ds-font-line-height-list-item: var(--ds-font-line-height-list-item-large);
+  --ds-space-stack-start-list-item: var(--ds-space-stack-start-list-item-large);
+  --ds-space-stack-end-list-item: var(--ds-space-stack-end-list-item-large);
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > li,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > li {
+  list-style: none;
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > li .ds-select-list__select-all,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > li .ds-select-list__select-all {
+  padding: var(--ds-space-2x);
+  margin-bottom: 1px;
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > li .ds-select-list__select-all .ds-list-item__content-wrapper .ds-list-item__content,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > li .ds-select-list__select-all .ds-list-item__content-wrapper .ds-list-item__content {
+  max-height: var(--ds-typography-line-height-regular);
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > li .ds-select-list__select-all span,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > li .ds-select-list__select-all span {
+  width: auto;
+  font-size: var(--ds-font-size-list-item);
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > li .ds-select-list__select-all span:nth-child(1),
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > li .ds-select-list__select-all span:nth-child(1) {
+  padding-right: var(--ds-space-1x);
+  color: var(--ds-color-typography-action-active);
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > li .ds-select-list__select-all span:nth-child(2),
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions > .ds-select-list__drawer__actions > li .ds-select-list__select-all span:nth-child(2) {
+  padding-left: 0;
+  color: var(--ds-color-typography-neutral);
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions {
+  /* this should be specific to the component - END */
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-select-list > .ds-select-list__wrapper > .ds-box__wrapper > .ds-box__content-wrapper > .ds-box-content > .ds-box-content__content-wrapper > .ds-select-list__options-container > .ds-box-content__content-wrapper > .ds-select-list__options-container-list > .cdk-virtual-scroll-viewport > .cdk-virtual-scroll-content-wrapper > ul > li:first-child,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__main-content > .ds-box-content__content-wrapper > ds-select-list > .ds-select-list__wrapper > .ds-box__wrapper > .ds-box__content-wrapper > .ds-box-content > .ds-box-content__content-wrapper > .ds-select-list__options-container > .ds-box-content__content-wrapper > .ds-select-list__options-container-list > .cdk-virtual-scroll-viewport > .cdk-virtual-scroll-content-wrapper > ul > li:first-child {
+  padding-top: var(--ds-space-2x);
+}
+
+/* this is always the same - START */
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions {
+  /* this is always the same - END */
+  /* this should be specific to the component - START */
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions .ds-form-field__wrapper,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions .ds-form-field__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: var(--ds-space-inline-box-header-bsheet);
+  padding-right: var(--ds-space-inline-box-header-bsheet);
+  margin-bottom: var(--ds-space-2x);
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions .ds-form-field__wrapper .ds-input.ds-input-wrapper.ds-input-wrapper--invalid,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions .ds-form-field__wrapper .ds-input.ds-input-wrapper.ds-input-wrapper--invalid {
+  background-color: var(--ds-color-surface-input-error);
+  border-color: var(--ds-color-border-input-error);
+  color: var(--ds-color-text-input-error);
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions .ds-form-field__wrapper .ds-input.ds-input-wrapper.ds-input-wrapper--invalid input,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions .ds-form-field__wrapper .ds-input.ds-input-wrapper.ds-input-wrapper--invalid input {
+  color: var(--ds-color-text-input-error);
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions .ds-form-field__wrapper .ds-input.ds-input-wrapper.ds-input-wrapper--invalid.focused,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions .ds-form-field__wrapper .ds-input.ds-input-wrapper.ds-input-wrapper--invalid.focused {
+  background-color: var(--ds-color-surface-input-error);
+  border-color: var(--ds-color-border-input-error);
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions .ds-form-field__wrapper ::ng-deep .ds-input.focused.ds-input-wrapper,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions .ds-form-field__wrapper ::ng-deep .ds-input.focused.ds-input-wrapper {
+  border: 1px solid var(--ds-color-border-input-focus);
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions .ds-form-field__wrapper ::ng-deep .ds-input.focused.ds-input-wrapper:not(.ds-input-wrapper--non-typeable),
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions .ds-form-field__wrapper ::ng-deep .ds-input.focused.ds-input-wrapper:not(.ds-input-wrapper--non-typeable) {
+  background-color: var(--ds-color-surface-input);
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper--with-actions > .ds-box-header__actions {
+  /* this should be specific to the component - END */
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box {
+  width: 100%;
+}
+
+:host(ds-drawer).ds-drawer--timepicker ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item,
+.ds-drawer.ds-drawer--timepicker ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header > .ds-box-header__item {
+  padding-bottom: var(--ds-space-stack-box-header-bsheet);
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > ds-box-content > .ds-box-content__content-wrapper ::ng-deep > ds-time-value-picker,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > ds-box-content > .ds-box-content__content-wrapper ::ng-deep > ds-time-value-picker {
+  height: 100%;
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > ds-box-content > .ds-box-content__content-wrapper ::ng-deep > ds-time-value-picker ::ng-deep > ds-valuepicker,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > ds-box-content > .ds-box-content__content-wrapper ::ng-deep > ds-time-value-picker ::ng-deep > ds-valuepicker {
+  height: 100%;
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > ds-box-content > .ds-box-content__content-wrapper ::ng-deep > ds-time-value-picker ::ng-deep > ds-valuepicker ::ng-deep > ds-box,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > ds-box-content > .ds-box-content__content-wrapper ::ng-deep > ds-time-value-picker ::ng-deep > ds-valuepicker ::ng-deep > ds-box {
+  height: 100%;
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > ds-box-content > .ds-box-content__content-wrapper ::ng-deep > ds-time-value-picker ::ng-deep > ds-valuepicker ::ng-deep > ds-box > .ds-box__wrapper > .ds-box__content-wrapper,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > ds-box-content > .ds-box-content__content-wrapper ::ng-deep > ds-time-value-picker ::ng-deep > ds-valuepicker ::ng-deep > ds-box > .ds-box__wrapper > .ds-box__content-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+:host(ds-drawer).ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > ds-box-content > .ds-box-content__content-wrapper ::ng-deep > ds-time-value-picker ::ng-deep > ds-valuepicker ::ng-deep > ds-box > .ds-box__wrapper > .ds-box__content-wrapper > ds-box-content:first-of-type,
+.ds-drawer.ds-drawer ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > ds-box-content > .ds-box-content__content-wrapper ::ng-deep > ds-time-value-picker ::ng-deep > ds-valuepicker ::ng-deep > ds-box > .ds-box__wrapper > .ds-box__content-wrapper > ds-box-content:first-of-type {
+  flex: 1;
+}
+
+:host(ds-drawer).ds-drawer--popover ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__last-content,
+.ds-drawer.ds-drawer--popover ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__content-wrapper > .ds-drawer__box__last-content {
+  padding: var(--ds-space-2x);
+}
+
+/* this is always the same - START */
+:host(ds-drawer).ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item .ds-box-header__label-wrapper.ds-drawer--left,
+.ds-drawer.ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item .ds-box-header__label-wrapper.ds-drawer--left {
+  max-width: calc(var(--ds-shape-width-sidedrawer) - var(--ds-shape-max-width-header-label-wrapper-diff));
+}
+:host(ds-drawer).ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item .ds-box-header__label-wrapper.ds-drawer--left > span,
+.ds-drawer.ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item .ds-box-header__label-wrapper.ds-drawer--left > span {
+  color: var(--ds-color-typography-neutral);
+}
+:host(ds-drawer).ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper > .ds-box-header__label-wrapper.ds-drawer--left,
+.ds-drawer.ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item > .ds-box-header__header-wrapper > .ds-box-header__label-wrapper.ds-drawer--left {
+  order: 1;
+  padding: 10px 0;
+  text-transform: unset;
+}
+:host(ds-drawer).ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item > .ds-box-header__item__close-button-wrapper > .ds-box-header__item__close-button.ds-drawer--left,
+.ds-drawer.ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper > .ds-box__header-wrapper > ds-box-header.ds-box-header > .ds-box-header__item > .ds-box-header__item__close-button-wrapper > .ds-box-header__item__close-button.ds-drawer--left {
+  margin: 0px var(--ds-space-05x);
+}
+:host(ds-drawer).ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper,
+.ds-drawer.ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper {
+  /* this is always the same - END (Not this time actually) */
+}
+:host(ds-drawer).ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper .ds-navigation-bar__items--mobile,
+.ds-drawer.ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper .ds-navigation-bar__items--mobile {
+  padding: 0px;
+}
+:host(ds-drawer).ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper .ds-navigation-bar__actions.ds-navigation-bar__actions--mobile,
+.ds-drawer.ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper .ds-navigation-bar__actions.ds-navigation-bar__actions--mobile {
+  padding: 0px;
+}
+:host(ds-drawer).ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper .ds-navigation-bar__actions.ds-navigation-bar__actions--mobile.ds-navigation-bar__actions--expanded,
+.ds-drawer.ds-drawer--navigation-bar ::ng-deep > .ds-box > .ds-box__wrapper .ds-navigation-bar__actions.ds-navigation-bar__actions--mobile.ds-navigation-bar__actions--expanded {
+  margin-top: var(--ds-space-6x);
+}

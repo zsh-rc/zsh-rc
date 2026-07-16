@@ -1,0 +1,177 @@
+// Control the default styling of HTML elements by modifying these variables for reboot file.
+// SASS variables here reference global CSS Variables, therefore consider if you need change them instead first.
+@use 'sass:map';
+@use '../variables/sass-variables' as sass_vars;
+
+// Spacer
+$spacer: var(--#{sass_vars.$prefix}spacer) !default;
+
+// General Typography
+$fonts: (
+  'regular': (
+    'size': var(--#{sass_vars.$prefix}typography-size-regular),
+    'line-height': var(--#{sass_vars.$prefix}typography-line-height-regular),
+    'weight': var(--#{sass_vars.$prefix}typography-weight-regular),
+  ),
+  'paragraph': (
+    'size': var(--#{sass_vars.$prefix}typography-size-paragraph),
+    'line-height': var(--#{sass_vars.$prefix}typography-line-height-paragraph-paragraph),
+    'weight': var(--#{sass_vars.$prefix}typography-weight-regular),
+  ),
+  'label': (
+    'size': var(--#{sass_vars.$prefix}typography-size-label),
+    'line-height': var(--#{sass_vars.$prefix}typography-line-height-label),
+    'weight': var(--#{sass_vars.$prefix}typography-weight-regular),
+  ),
+  'smallprint': (
+    'size': var(--#{sass_vars.$prefix}typography-size-smallprint),
+    'line-height': var(--#{sass_vars.$prefix}typography-line-height-paragraph-smallprint),
+    'weight': var(--#{sass_vars.$prefix}typography-weight-regular),
+  ),
+  'title-xs': (
+    'size': var(--#{sass_vars.$prefix}typography-size-title-xs),
+    'line-height': var(--#{sass_vars.$prefix}typography-line-height-title-xs),
+    'weight': var(--#{sass_vars.$prefix}typography-weight-title-xs),
+  ),
+  'title-sm': (
+    'size': var(--#{sass_vars.$prefix}typography-size-title-sm),
+    'line-height': var(--#{sass_vars.$prefix}typography-line-height-title-sm),
+    'weight': var(--#{sass_vars.$prefix}typography-weight-title-sm),
+  ),
+  'title-md': (
+    'size': var(--#{sass_vars.$prefix}typography-size-title-md),
+    'line-height': var(--#{sass_vars.$prefix}typography-line-height-title-md),
+    'weight': var(--#{sass_vars.$prefix}typography-weight-title-md),
+  ),
+  'title-lg': (
+    'size': var(--#{sass_vars.$prefix}typography-size-title-lg),
+    'line-height': var(--#{sass_vars.$prefix}typography-line-height-title-lg),
+    'weight': var(--#{sass_vars.$prefix}typography-weight-title-lg),
+  )
+  /*
+  'code': (
+    'size': var(--#{sass_vars.$prefix}typography-size-code),
+    'line-height': var(--#{sass_vars.$prefix}typography-line-height-code),
+    'weight': var(--#{sass_vars.$prefix}typography-weight-regular)
+  ),
+  */,
+) !default;
+
+$font-size-root: map.get(map.get($fonts, 'paragraph'), 'size') !default;
+
+$font-family-base: var(--#{sass_vars.$prefix}typography-family-base) !default;
+$font-size-base: var(--#{sass_vars.$prefix}typography-size-regular) !default;
+$font-weight-base: map.get(map.get($fonts, 'regular'), 'weight') !default;
+$line-height-base: map.get(map.get($fonts, 'regular'), 'line-height') !default;
+
+$small-font-size: map.get(map.get($fonts, 'smallprint'), 'size') !default;
+
+$font-weight-bold: var(--#{sass_vars.$prefix}typography-weight-strong) !default;
+
+// b, strong
+$font-weight-bolder: var(--#{sass_vars.$prefix}typography-weight-strong) !default;
+
+// Alignment
+$body-typography-align: var(--#{sass_vars.$prefix}body-typography-align) !default;
+
+// General Headings
+$headings-margin-bottom: 0 !default;
+$headings-font-family: var(--#{sass_vars.$prefix}typography-family-base) !default;
+$headings-font-style: null !default;
+$headings-font-weight: var(--#{sass_vars.$prefix}typography-weight-regular) !default;
+$headings-line-height: var(--#{sass_vars.$prefix}typography-line-height-md) !default;
+$headings-color: null !default;
+
+// (Sass does not allow to access or create variables dynamically)
+$h1-font-size: map.get(map.get($fonts, 'title-lg'), 'size') !default;
+$h2-font-size: map.get(map.get($fonts, 'title-md'), 'size') !default;
+$h3-font-size: map.get(map.get($fonts, 'title-sm'), 'size') !default;
+$h4-font-size: map.get(map.get($fonts, 'title-xs'), 'size') !default;
+$h5-font-size: map.get(map.get($fonts, 'title-xs'), 'size') !default;
+$h6-font-size: map.get(map.get($fonts, 'title-xs'), 'size') !default;
+
+// General Colors
+$black: #000 !default;
+$text-muted: var(--#{sass_vars.$prefix}color-typography-neutral) !default;
+
+$body-color: var(--#{sass_vars.$prefix}color-typography-base) !default;
+$body-bg: var(--#{sass_vars.$prefix}color-surface-page) !default;
+
+// General Border
+$border-width: var(--#{sass_vars.$prefix}shape-line-divider) !default;
+
+// General Border Radius
+$border-radius-sm: var(--#{sass_vars.$prefix}shape-radius-base) !default;
+
+// Buttons
+$enable-button-pointers: true !default;
+
+// Scroll
+$enable-smooth-scroll: true !default;
+
+// HR
+$hr-margin-y: 0 !default;
+$hr-color: inherit !default;
+$hr-height: $border-width !default;
+$hr-opacity: 0.25 !default;
+
+// Paragraph
+$paragraph-margin-bottom: 0 !default;
+
+// Description List
+$dt-font-weight: var(--#{sass_vars.$prefix}typography-weight-strong) !default;
+
+// Mark
+$mark-padding: var(--#{sass_vars.$prefix}space-05x) !default;
+$mark-bg: var(--#{sass_vars.$prefix}color-yellow-300-alpha-30) !default;
+
+// Sub sup
+$sub-sup-font-size: var(--#{sass_vars.$prefix}sub-sup-font-size) !default;
+
+// Links
+$link-color: var(--#{sass_vars.$prefix}color-typography-action) !default;
+$link-hover-color: var(--#{sass_vars.$prefix}color-typography-action-hover) !default;
+$link-active-color: var(--#{sass_vars.$prefix}color-typography-action-active) !default;
+$link-visited-color: var(--#{sass_vars.$prefix}color-typography-action-visited) !default;
+$link-visited-hover-color: var(--#{sass_vars.$prefix}color-typography-action-visited-hover) !default;
+$link-visited-active-color: var(--#{sass_vars.$prefix}color-typography-action-visited-active) !default;
+
+$link-decoration: underline !default;
+$link-hover-decoration: underline !default;
+$link-active-decoration: underline !default;
+$link-visited-decoration: underline !default;
+$link-visited-hover-decoration: underline !default;
+$link-visited-active-decoration: underline !default;
+
+// Code
+$code-color: var(--#{sass_vars.$prefix}color-cool-grey-700) !default;
+
+$font-family-code: var(--#{sass_vars.$prefix}typography-family-code) !default;
+$code-font-size: map.get(map.get($fonts, 'regular'), 'size') !default;
+
+// Pre
+$pre-color: null !default;
+
+// KBD
+$kbd-color: var(--#{sass_vars.$prefix}color-typography-invert);
+$kbd-bg: var(--#{sass_vars.$prefix}color-surface-invert);
+
+$kbd-font-size: $code-font-size !default;
+
+$kbd-padding-y: var(--#{sass_vars.$prefix}space-05x) !default;
+$kbd-padding-x: var(--#{sass_vars.$prefix}space-1x) !default;
+
+$nested-kbd-font-weight: $font-weight-bold !default;
+
+// Tables
+$table-cell-padding-y: var(--#{sass_vars.$prefix}space-2x) !default;
+// $table-cell-padding-x:0.5rem !default;
+
+$table-caption-color: $text-muted !default;
+
+$table-th-font-weight: null !default;
+
+// Legend
+$legend-margin-bottom: 0 !default;
+$legend-font-size: var(--#{sass_vars.$prefix}typography-size-label) !default;
+$legend-font-weight: var(--#{sass_vars.$prefix}typography-line-height-label) !default;

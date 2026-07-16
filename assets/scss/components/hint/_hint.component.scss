@@ -1,0 +1,42 @@
+@use '../../density-styles-sass' as *;
+@use 'hint.states' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}hint),
+
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}hint {
+  @each $type, $states in $hint-states {
+    $selector: '&.#{$prefix}hint--#{$type}';
+    /*
+    *  Fallback tag type to "neutral" if type class doesn't exist
+    */
+    @if $type == 'neutral' {
+      $selector: '&,' + $selector;
+    }
+
+    #{$selector} {
+      @each $prop, $value in $states {
+        #{$prop}: #{$value};
+      }
+    }
+  }
+
+  .#{$prefix}hint-wrapper {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    & > #{$prefix}icon {
+      flex-shrink: 0;
+    }
+
+    & > span {
+      margin-left: var(--#{$prefix}space-1x);
+    }
+  }
+}

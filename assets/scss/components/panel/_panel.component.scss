@@ -1,0 +1,245 @@
+@use '../../density-styles-sass' as *;
+@use '../../mixins/placeholder' as *;
+@use '../../utilities/sass_utilities' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}panel-inline),
+:host(#{$prefix}panel-overlay),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}panel-inline,
+.#{$prefix}panel-overlay {
+  position: relative;
+  min-height: 0;
+  max-width: 50%;
+  flex: 0 1 0%;
+  min-width: 0px;
+  visibility: hidden;
+  opacity: 0;
+
+  &.#{$prefix}panel--open {
+    flex: 0 0 var(--panel-width);
+    min-width: var(--panel-min-width);
+    max-width: var(--panel-max-width);
+    visibility: visible;
+    opacity: 1;
+    transition:
+      flex var(--#{$prefix}motion-duration-standard) var(--#{$prefix}motion-timing-entrance),
+      min-width var(--#{$prefix}motion-duration-standard) var(--#{$prefix}motion-timing-entrance),
+      max-width var(--#{$prefix}motion-duration-standard) var(--#{$prefix}motion-timing-entrance),
+      opacity var(--#{$prefix}motion-duration-standard) var(--#{$prefix}motion-timing-entrance);
+  }
+
+  &.#{$prefix}panel--closing {
+    transition:
+      flex var(--#{$prefix}motion-duration-quick) var(--#{$prefix}motion-timing-exit),
+      min-width var(--#{$prefix}motion-duration-quick) var(--#{$prefix}motion-timing-exit),
+      max-width var(--#{$prefix}motion-duration-quick) var(--#{$prefix}motion-timing-exit),
+      opacity var(--#{$prefix}motion-duration-quick) var(--#{$prefix}motion-timing-exit);
+
+    &.#{$prefix}panel--overlay {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .#{$prefix}panel__backdrop {
+      animation-name: #{$prefix}animations-panel-backdrop-disappear;
+      animation-duration: var(--#{$prefix}motion-duration-standard);
+      animation-timing-function: var(--#{$prefix}motion-timing-standard);
+      animation-fill-mode: forwards;
+    }
+  }
+
+  &.#{$prefix}panel--overlay {
+    &.#{$prefix}panel--open {
+      flex: 0 0 0%;
+      min-width: 0;
+      transition: none;
+
+      .#{$prefix}panel__aside--overlay {
+        transform: translateX(0);
+        transition: transform var(--#{$prefix}motion-duration-standard) var(--#{$prefix}motion-timing-entrance);
+      }
+    }
+  }
+
+  &.#{$prefix}panel--origin-bottom {
+    flex: 0 0 0% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    visibility: visible;
+    opacity: 1;
+
+    .#{$prefix}panel__aside--overlay {
+      top: auto;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      max-height: calc(100% - var(--#{$prefix}space-stack-safe-box-bsheet));
+      border-radius: var(--#{$prefix}space-05x) var(--#{$prefix}space-05x) 0 0;
+      transform: translateY(100%);
+      transition: transform var(--#{$prefix}motion-duration-quick) var(--#{$prefix}motion-timing-exit);
+    }
+
+    &.#{$prefix}panel--open {
+      .#{$prefix}panel__aside--overlay {
+        transform: translateY(0);
+        transition: transform var(--#{$prefix}motion-duration-standard) var(--#{$prefix}motion-timing-entrance);
+      }
+    }
+
+    &.#{$prefix}panel--closing {
+      .#{$prefix}panel__aside--overlay {
+        transform: translateY(100%);
+        transition: transform var(--#{$prefix}motion-duration-quick) var(--#{$prefix}motion-timing-exit);
+      }
+    }
+  }
+
+  &.#{$prefix}panel--origin-left {
+    .#{$prefix}panel__aside {
+      left: 0;
+      right: auto;
+
+      &--overlay {
+        transform: translateX(-100%);
+      }
+
+      &__divider {
+        right: 0;
+        left: auto;
+        transform: translateX(50%);
+      }
+    }
+  }
+
+  &.#{$prefix}panel--origin-right {
+    .#{$prefix}panel__aside__divider {
+      left: 0;
+      right: auto;
+      transform: translateX(-50%);
+    }
+  }
+
+  &.#{$prefix}panel--dragging,
+  &.#{$prefix}no-motion {
+    transition: none !important;
+
+    .#{$prefix}panel__aside--overlay {
+      transition: none !important;
+    }
+
+    .#{$prefix}panel__backdrop {
+      animation: none !important;
+    }
+  }
+
+  .#{$prefix}panel__aside {
+    height: 100%;
+    z-index: z-index(base);
+
+    &--overlay {
+      position: fixed;
+      z-index: z-index(modal);
+      top: 0;
+      right: 0;
+      width: var(--panel-width);
+      box-shadow: var(--#{$prefix}elevation-modal);
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform var(--#{$prefix}motion-duration-quick) var(--#{$prefix}motion-timing-exit);
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow-y: auto;
+      padding: 0;
+
+      &--base {
+        background-color: var(--#{$prefix}color-surface-base);
+      }
+
+      &--neutral {
+        background-color: var(--#{$prefix}color-surface-neutral);
+      }
+
+      &--ghost {
+        background-color: var(--#{$prefix}color-surface-transparent);
+      }
+    }
+  }
+
+  .#{$prefix}panel__aside__divider {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: var(--#{$prefix}space-6x);
+    z-index: z-index(header);
+
+    &--resizable {
+      cursor: col-resize;
+
+      &:hover {
+        .#{$prefix}panel__aside__divider__line {
+          background-color: var(--#{$prefix}color-surface-neutral-strong);
+        }
+      }
+      &:active {
+        .#{$prefix}panel__aside__divider__line {
+          background-color: var(--#{$prefix}color-surface-neutral-strong);
+        }
+      }
+
+      &:focus-visible {
+        outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+        outline-offset: var(--#{$prefix}size-outline-offset);
+      }
+    }
+
+    .#{$prefix}panel__aside__divider__line {
+      width: 1px;
+      background-color: var(--#{$prefix}color-surface-neutral-mild);
+    }
+  }
+
+  .#{$prefix}panel__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--#{$prefix}color-surface-backdrop);
+    z-index: calc(z-index(modal) - 1);
+    cursor: default;
+    animation-name: #{$prefix}animations-panel-backdrop-appear;
+    animation-duration: var(--#{$prefix}motion-duration-slow);
+    animation-timing-function: var(--#{$prefix}motion-timing-standard);
+  }
+}
+
+@keyframes #{$prefix}animations-panel-backdrop-appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes #{$prefix}animations-panel-backdrop-disappear {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}

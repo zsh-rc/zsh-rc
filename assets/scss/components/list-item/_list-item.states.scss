@@ -1,0 +1,85 @@
+@use '../../density-styles-sass';
+
+/*
+ *  For focus states we use 'box-shadow' as it respects border-radius unlike 'outline'
+ */
+$list-item-states: (
+  'primary': (
+    'enabled': (
+      'background-color': var(--#{density-styles-sass.$prefix}color-surface-list-item),
+      'border-color': var(--#{density-styles-sass.$prefix}color-border-list-item),
+      'color': var(--#{density-styles-sass.$prefix}color-text-list-item),
+    ),
+    'disabled': (
+      'background-color': var(--#{density-styles-sass.$prefix}color-surface-list-item-disabled),
+      'color': var(--#{density-styles-sass.$prefix}color-text-list-item-disabled),
+    ),
+  ),
+  'hoverable': (
+    'hover': (
+      'cursor': 'pointer',
+      'background-color': var(--#{density-styles-sass.$prefix}color-surface-list-item-hover),
+    ),
+    'focus': (
+      'outline': var(--#{density-styles-sass.$prefix}size-outline-default) solid
+        var(--#{density-styles-sass.$prefix}color-outline-action),
+      'outline-offset': -2px,
+      //TODO: TEMPORARY UNTIL DESIGNERS STUDY THE IMPACT OF THE USER TO INCREASE THE OUTLINE OFFSET, TALK TO RSF FOR MORE INFO
+    ),
+    'disabled': (
+      'cursor': 'not-allowed',
+    ),
+  ),
+  'selectable': (
+    'hover': (
+      'cursor': 'pointer',
+      'background-color': var(--#{density-styles-sass.$prefix}color-surface-list-item-hover),
+    ),
+    'focus': (
+      'outline': var(--#{density-styles-sass.$prefix}size-outline-default) solid
+        var(--#{density-styles-sass.$prefix}color-outline-action),
+      'outline-offset': -2px,
+      //TODO: TEMPORARY UNTIL DESIGNERS STUDY THE IMPACT OF THE USER TO INCREASE THE OUTLINE OFFSET, TALK TO RSF FOR MORE INFO
+    ),
+    'disabled': (
+      'cursor': 'not-allowed',
+    ),
+  ),
+  'parent': (
+    'enabled': (
+      '--#{density-styles-sass.$prefix}color-surface-list-item-selected': var(
+          --#{density-styles-sass.$prefix}color-surface-list-item
+        ),
+      '--#{density-styles-sass.$prefix}color-surface-list-item-selected-hover': var(
+          --#{density-styles-sass.$prefix}color-surface-neutral
+        ),
+    ),
+  ),
+  'selected': (
+    'enabled': (
+      'background-color': var(--#{density-styles-sass.$prefix}color-surface-list-item-selected),
+      'color': var(--#{density-styles-sass.$prefix}color-text-list-item-active),
+    ),
+    'hover': (
+      'background-color': var(--#{density-styles-sass.$prefix}color-surface-list-item-selected-hover),
+    ),
+    'disabled': (
+      'cursor': 'not-allowed',
+    ),
+  ),
+  'lg': (
+    'enabled': (
+      'min-height': var(--#{density-styles-sass.$prefix}shape-size-ymin-list-item-large),
+      '--vertical-padding': calc(
+          (
+            (
+                var(--#{density-styles-sass.$prefix}shape-size-ymin-list-item-large) - var(
+                    --#{density-styles-sass.$prefix}font-line-height-list-item-large
+                  )
+              ) /
+              2
+          )
+        ),
+    ),
+  ),
+);

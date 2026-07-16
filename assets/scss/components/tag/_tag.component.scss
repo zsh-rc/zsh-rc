@@ -1,0 +1,234 @@
+@use 'sass:map';
+@use '../../density-styles-sass' as *;
+@use '../../utilities/sass_utilities' as *;
+@use 'tag.states' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}tag),
+:host(.#{$prefix}tag),
+
+ /* CSS selector for independent library use without Shadow DOM */
+ .#{$prefix}tag {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-self: flex-start;
+  z-index: z-index(content);
+  user-select: none;
+  max-width: 100%;
+  min-height: var(--#{$prefix}shape-size-y-tag);
+  border-radius: var(--#{$prefix}shape-radius-tag);
+  outline-color: var(--#{$prefix}color-outline-tag);
+
+  font-family: var(--#{$prefix}font-family-tag);
+  font-size: var(--#{$prefix}font-size-tag);
+  font-weight: var(--#{$prefix}font-weight-tag);
+  line-height: var(--#{$prefix}font-line-height-tag);
+  pointer-events: all;
+
+  color: var(--#{$prefix}color-text-tag);
+
+  &:not([disabled='true'])::after {
+    content: '';
+    position: absolute;
+    z-index: z-index(content);
+    border-style: solid;
+    border-width: var(--#{$prefix}border-width);
+    border-radius: var(--#{$prefix}shape-radius-tag);
+    inset: var(--#{$prefix}space-0x);
+    pointer-events: none;
+  }
+
+  &.#{$prefix}tag--default-template {
+    white-space: nowrap;
+  }
+
+  @each $type, $states in $tag-states {
+    $selector: '&.#{$prefix}tag--#{$type}';
+    /*
+    *  Fallback tag type to "brand" if type class doesn't exist
+    */
+    @if $type == 'brand' {
+      $selector: '&,' + $selector;
+    }
+
+    #{$selector} {
+      &:not([disabled='true']) {
+        @each $prop, $value in map.get($states, 'enabled') {
+          #{$prop}: #{$value};
+          &::after {
+            #{$prop}: #{$value};
+            background-color: transparent;
+          }
+        }
+
+        &.#{$prefix}tag--dismissable:not(.#{$prefix}tag--strong) {
+          .#{$prefix}tag__clear-area:hover {
+            @each $prop, $value in map.get($states, 'dismissable-hover') {
+              #{$prop}: #{$value};
+            }
+          }
+        }
+
+        &.#{$prefix}tag--interactive:not(.#{$prefix}tag--strong) {
+          @each $prop, $value in map.get($states, 'interactive') {
+            #{$prop}: #{$value};
+
+            &::after {
+              #{$prop}: #{$value};
+              background-color: transparent;
+            }
+          }
+          .#{$prefix}tag__action-area:hover,
+          .#{$prefix}tag__clear-area:hover {
+            @each $prop, $value in map.get($states, 'interactive-hover') {
+              #{$prop}: #{$value};
+            }
+          }
+        }
+
+        &.#{$prefix}tag--strong {
+          &:not(.#{$prefix}tag--caution) {
+            color: var(--#{$prefix}color-typography-invert);
+            .#{$prefix}tag__clear-area {
+              color: var(--#{$prefix}color-icon-invert);
+            }
+          }
+          @each $prop, $value in map.get($states, 'strong') {
+            #{$prop}: #{$value};
+          }
+
+          &.#{$prefix}tag--dismissable {
+            .#{$prefix}tag__clear-area:hover {
+              @each $prop, $value in map.get($states, 'strong-dismissable-hover') {
+                #{$prop}: #{$value};
+              }
+            }
+          }
+          &.#{$prefix}tag--interactive {
+            @each $prop, $value in map.get($states, 'strong-interactive') {
+              #{$prop}: #{$value};
+
+              &::after {
+                #{$prop}: #{$value};
+                background-color: transparent;
+              }
+            }
+          }
+          &.#{$prefix}tag--interactive .#{$prefix}tag__action-area:hover,
+          &.#{$prefix}tag--interactive .#{$prefix}tag__clear-area:hover {
+            @each $prop, $value in map.get($states, 'strong-hover') {
+              #{$prop}: #{$value};
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.#{$prefix}tag--lg {
+    min-height: var(--#{$prefix}shape-size-y-tag-large);
+    font-size: var(--#{$prefix}font-size-tag-large);
+    line-height: var(--#{$prefix}font-line-height-tag-large);
+
+    .#{$prefix}tag__action-area {
+      min-height: var(--#{$prefix}shape-size-y-tag-large);
+    }
+
+    .#{$prefix}tag__clear-area {
+      height: var(--#{$prefix}shape-size-y-tag-large);
+      min-width: var(--#{$prefix}shape-size-y-tag-large);
+    }
+  }
+
+  &:disabled,
+  &[disabled=''],
+  &[disabled='true'] {
+    background-color: var(--#{$prefix}color-surface-tag-disabled);
+    color: var(--#{$prefix}color-text-tag-disabled);
+    cursor: not-allowed;
+
+    .#{$prefix}tag__action-area {
+      pointer-events: none;
+    }
+
+    .#{$prefix}tag__clear-area {
+      color: var(--#{$prefix}color-typography-button-disabled);
+    }
+  }
+
+  &.#{$prefix}tag--dismissable .#{$prefix}tag__action-area {
+    padding-right: var(--#{$prefix}space-inline-couple-tag);
+    border-top-right-radius: var(--#{$prefix}space-0x);
+    border-bottom-right-radius: var(--#{$prefix}space-0x);
+  }
+
+  &.#{$prefix}tag--interactive .#{$prefix}tag__action-area {
+    border-radius: inherit;
+    cursor: pointer;
+
+    &:focus {
+      outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+      outline-offset: var(--#{$prefix}size-outline-offset);
+    }
+  }
+
+  &.#{$prefix}tag--dismissable.#{$prefix}tag--interactive .#{$prefix}tag__action-area {
+    border-top-left-radius: var(--#{$prefix}shape-radius-tag);
+    border-bottom-left-radius: var(--#{$prefix}shape-radius-tag);
+    border-top-right-radius: var(--#{$prefix}space-0x);
+    border-bottom-right-radius: var(--#{$prefix}space-0x);
+    padding-right: var(--#{$prefix}space-inline-couple-tag);
+  }
+
+  &.#{$prefix}tag--wrap .#{$prefix}tag__action-area .#{$prefix}tag__label {
+    white-space: normal;
+  }
+
+  .#{$prefix}tag__action-area {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    min-height: var(--#{$prefix}shape-size-y-tag);
+    height: 100%;
+    overflow: hidden;
+    padding-top: var(--#{$prefix}space-05x);
+    padding-bottom: var(--#{$prefix}space-05x);
+    padding-left: var(--#{$prefix}space-inline-start-tag);
+    padding-right: var(--#{$prefix}space-inline-end-tag);
+    outline: var(--#{$prefix}space-0x);
+
+    &.#{$prefix}tag--has-icon-and-label .#{$prefix}tag__leading-icon {
+      margin-right: var(--#{$prefix}space-inline-end-tag);
+    }
+
+    .#{$prefix}tag__label {
+      &--default-template {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .#{$prefix}tag__leading-icon {
+      display: inline-flex;
+      margin-top: var(--#{$prefix}space-05x);
+    }
+  }
+
+  .#{$prefix}tag__clear-area {
+    color: var(--#{$prefix}color-icon-base);
+    height: var(--#{$prefix}shape-size-y-tag);
+    min-width: var(--#{$prefix}shape-size-y-tag);
+    border-radius: var(--#{$prefix}space-0x) var(--#{$prefix}shape-radius-tag) var(--#{$prefix}shape-radius-tag)
+      var(--#{$prefix}space-0x);
+    &:hover {
+      color: unset;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}navigation-bar-top-action),
+.#{$prefix}navigation-bar-top-action {
+  display: flex;
+  height: var(--#{$prefix}space-10x);
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 calc(var(--#{$prefix}space-inline-start-nav-item) / 2);
+  cursor: pointer;
+
+  &:hover {
+    .#{$prefix}button {
+      background-color: var(--#{$prefix}color-surface-button-primary-hover);
+      border-color: var(--#{$prefix}color-border-button-primary-hover);
+      color: var(--#{$prefix}color-typography-button-primary);
+      text-decoration: none;
+      z-index: var(--#{$prefix}z-index-content-base);
+    }
+  }
+
+  & .#{$prefix}navigation-bar-top-action__button {
+    &--expanded {
+      width: 100%;
+    }
+  }
+
+  &:not(:first-of-type) {
+    display: none;
+    visibility: hidden;
+  }
+}

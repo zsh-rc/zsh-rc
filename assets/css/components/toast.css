@@ -1,0 +1,87 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-toast),
+.ds-toast {
+  --ds-toast-transition-timing-function: var(--ds-motion-timing-standard);
+  --ds-toast-transition-duration: var(--ds-motion-duration-standard);
+  --ds-toast-transition-delay: var(--ds-motion-delay-standard);
+  --ds-toast-transition-timing-function-entrance: var(--ds-motion-timing-entrance);
+  --ds-toast-transition-duration-entrance: var(--ds-motion-duration-quick);
+  --ds-toast-transition-delay-entrance: var(--ds-motion-delay-rapid);
+  --ds-toast-transition-timing-function-exit: var(--ds-motion-timing-exit);
+  --ds-toast-transition-duration-exit: var(--ds-motion-duration-quick);
+  --ds-toast-transition-delay-exit: var(--ds-motion-delay-rapid);
+  --ds-toast-accent-bar-color: var(--ds-color-elements-toast-neutral);
+  position: relative;
+  border-radius: var(--ds-shape-radius-toast);
+  box-shadow: var(--ds-elevation-toast);
+  overflow: hidden;
+}
+:host(ds-toast).ds-no-motion,
+.ds-toast.ds-no-motion {
+  --ds-toast-transition-duration: 0s;
+  --ds-toast-transition-duration-entrance: 0s;
+  --ds-toast-transition-duration-exit: 0s;
+}
+:host(ds-toast).ds-toast--neutral,
+.ds-toast.ds-toast--neutral {
+  --ds-toast-accent-bar-color: var(--ds-color-elements-toast-neutral);
+}
+:host(ds-toast).ds-toast--info,
+.ds-toast.ds-toast--info {
+  --ds-toast-accent-bar-color: var(--ds-color-elements-toast-info);
+}
+:host(ds-toast).ds-toast--positive,
+.ds-toast.ds-toast--positive {
+  --ds-toast-accent-bar-color: var(--ds-color-elements-toast-positive);
+}
+:host(ds-toast).ds-toast--caution,
+.ds-toast.ds-toast--caution {
+  --ds-toast-accent-bar-color: var(--ds-color-elements-toast-caution);
+}
+:host(ds-toast).ds-toast--critical,
+.ds-toast.ds-toast--critical {
+  --ds-toast-accent-bar-color: var(--ds-color-elements-toast-critical);
+}
+:host(ds-toast).ds-toast .ds-toast__accent-bar,
+.ds-toast.ds-toast .ds-toast__accent-bar {
+  position: absolute;
+  background-color: var(--ds-toast-accent-bar-color);
+  height: 100%;
+  width: var(--ds-shape-size-x-accent-bar);
+  left: 0;
+  z-index: var(--ds-z-index-content-base);
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-toast-queue),
+.ds-toast-queue {
+  display: block;
+  width: 100%;
+}
+:host(ds-toast-queue) .ds-toast-queue__wrapper,
+.ds-toast-queue .ds-toast-queue__wrapper {
+  --shape-size-x-toast: 400px;
+  display: flex;
+  flex-direction: column-reverse;
+  width: var(--shape-size-x-toast);
+}
+:host(ds-toast-queue) .ds-toast-queue__wrapper .ds-toast:not(:first-of-type),
+.ds-toast-queue .ds-toast-queue__wrapper .ds-toast:not(:first-of-type) {
+  margin-bottom: var(--ds-space-stack-gap-toast);
+}
+@media (max-width: 575.98px) {
+  :host(ds-toast-queue) .ds-toast-queue__wrapper,
+  .ds-toast-queue .ds-toast-queue__wrapper {
+    width: 100%;
+  }
+}

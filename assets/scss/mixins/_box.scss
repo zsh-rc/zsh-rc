@@ -1,0 +1,63 @@
+@use '../density-styles-sass' as *;
+
+@mixin box-header-tokens($prefix: $prefix) {
+  --#{$prefix}box-header-base-padding: 16px;
+  --#{$prefix}box-header-min-height: 56px;
+  --#{$prefix}box-header-font-size: 16px;
+  --#{$prefix}box-header-line-height: 24px;
+  --#{$prefix}box-header-font-weight: 600;
+  --#{$prefix}box-header-base-color: var(--#{$prefix}color-typography-base);
+  --#{$prefix}box-header-active-color: var(--#{$prefix}color-typography-action-active);
+  --#{$prefix}box-header-focus-outline: 2px solid var(--#{$prefix}color-outline-box);
+  --#{$prefix}box-header-actions-max-width: 80px;
+  --#{$prefix}box-header-arrow-width: 20px;
+  --#{$prefix}box-header-label-actions-break: var(--#{$prefix}space-inline-gap-box-header);
+  --#{$prefix}box-header-align-items: flex-start;
+
+  --#{$prefix}box-header-icon-right-margin: 8px;
+  --#{$prefix}box-header-icon-color: var(--#{$prefix}box-header-base-color);
+
+  --#{$prefix}box-header-small-padding: 12px var(--#{$prefix}box-header-base-padding);
+  --#{$prefix}box-header-small-header-min-height: 48px;
+  --#{$prefix}box-header-small-font-size: 12px;
+  --#{$prefix}box-header-small-text-transform: uppercase;
+  --#{$prefix}box-header-small-line-height: 16px;
+  --#{$prefix}box-header-small-font-weight: 600;
+  --#{$prefix}box-header-small-arrow-width: 16px;
+
+  --#{$prefix}box-header-icon-y-margin: 2px;
+  --#{$prefix}box-header-button-y-margin: -4px;
+  --#{$prefix}box-header-button-x-margin: -6px;
+}
+
+@mixin box-header-small-tokens($prefix: $prefix) {
+  --#{$prefix}box-header-small-padding: 12px var(--#{$prefix}box-header-base-padding);
+  --#{$prefix}box-header-small-header-min-height: 48px;
+  --#{$prefix}box-header-small-font-size: 12px;
+  --#{$prefix}box-header-small-text-transform: uppercase;
+  --#{$prefix}box-header-small-line-height: 16px;
+  --#{$prefix}box-header-small-font-weight: 600;
+  --#{$prefix}box-header-small-arrow-width: 16px;
+
+  --#{$prefix}box-header-icon-y-margin: 2px;
+  --#{$prefix}box-header-button-y-margin: -4px;
+  --#{$prefix}box-header-button-x-margin: -6px;
+}
+
+@mixin box-header-wrapper($prefix: $prefix) {
+  display: flex;
+  justify-content: flex-start;
+  align-items: var(--#{$prefix}box-header-align-items);
+  flex-grow: 1;
+  width: 100%;
+  overflow: hidden;
+
+  color: var(--#{$prefix}box-header-base-color);
+  font-size: var(--#{$prefix}box-header-font-size);
+  font-weight: var(--#{$prefix}box-header-font-weight);
+  line-height: var(--#{$prefix}box-header-line-height);
+
+  &--with-actions {
+    overflow: visible;
+  }
+}

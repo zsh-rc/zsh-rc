@@ -1,0 +1,40 @@
+@use '../../density-styles-sass' as *;
+
+input.#{$prefix}input[type='range'] {
+  appearance: none;
+  height: var(--#{$prefix}shape-size-y-range-track);
+  background: var(--#{$prefix}color-surface-range-track);
+  border-radius: 5px;
+  background-image: linear-gradient(
+    var(--#{$prefix}color-surface-range-trackfill),
+    var(--#{$prefix}color-surface-range-trackfill)
+  );
+  background-size: 70% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+input.#{$prefix}input[type='range']::-webkit-slider-runnable-track {
+  appearance: none;
+  height: var(--#{$prefix}shape-size-y-range-track);
+  box-shadow: none;
+  border: none;
+  background: transparent;
+  pointer-events: auto;
+}
+
+input.#{$prefix}input[type='range']::-webkit-slider-thumb {
+  appearance: none;
+  height: var(--#{$prefix}shape-size-y-range-handle);
+  width: var(--#{$prefix}shape-size-x-range-handle);
+  border-radius: var(--#{$prefix}shape-radius-range-handle);
+  background-color: var(--#{$prefix}color-surface-range-handle);
+  cursor: pointer;
+  box-shadow: var(--#{$prefix}elevation-range-handle);
+  transform: translate(0, -33%);
+  pointer-events: auto;
+
+  &:hover {
+    background-color: var(--#{$prefix}color-surface-range-handle-hover);
+  }
+}

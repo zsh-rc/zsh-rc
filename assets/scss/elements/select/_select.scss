@@ -1,0 +1,68 @@
+@use '../../density-styles-sass' as *;
+@forward '../../elements/input/input';
+
+select.#{$prefix}select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select.#{$prefix}select {
+  @extend input, [type='text'], .#{$prefix}input;
+
+  // Helper variable used to store the action button size based on select size to calculate the right side spacing.
+  --action-button-size: var(--#{$prefix}shape-size-ymin-button-sm);
+
+  // Helper variable used to store the right side spacing when select has only the open button.
+  --right-side-padding: calc(
+    var(--#{$prefix}space-inline-couple-input) + var(--action-button-size) + var(--#{$prefix}space-1x)
+  );
+
+  cursor: pointer;
+  background-color: var(--#{$prefix}color-surface-input-alt);
+  background-image: var(--#{$prefix}icon-disclosure);
+  background-size: var(--#{$prefix}icon-size-small) var(--#{$prefix}icon-size-small);
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-position-x: calc(100% - var(--#{$prefix}space-inline-end-input));
+  background-position-y: calc((var(--#{$prefix}shape-size-y-input) - var(--#{$prefix}font-line-height-input)) / 2);
+  padding-left: calc(var(--#{$prefix}space-inline-start-input) - 1px);
+  padding-right: calc(var(--right-side-padding) - 1px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  & > option {
+    background-color: var(--#{$prefix}color-surface-input);
+    color: var(--#{$prefix}color-text-input-value);
+    font-style: normal;
+  }
+
+  &:disabled {
+    background-image: var(--#{$prefix}icon-disclosure-disabled);
+  }
+
+  // Used as placeholder for the native select
+  &:invalid {
+    color: var(--#{$prefix}color-text-input-placeholder) !important;
+    font-style: var(--#{$prefix}font-style-input-placeholder);
+  }
+
+  &[readonly] {
+    cursor: default;
+    background-image: none;
+  }
+
+  &--lg {
+    --action-button-size: var(--#{$prefix}shape-size-ymin-button);
+
+    font-size: var(--#{$prefix}font-size-input-label-large);
+    line-height: var(--#{$prefix}font-line-height-input-large);
+    height: var(--#{$prefix}shape-size-y-input-large);
+
+    background-size: var(--#{$prefix}icon-size-medium) var(--#{$prefix}icon-size-medium);
+    background-position-y: calc(
+      (var(--#{$prefix}shape-size-y-input-large) - var(--#{$prefix}font-line-height-input-large)) / 2
+    );
+  }
+}

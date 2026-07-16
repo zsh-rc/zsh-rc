@@ -1,0 +1,44 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-banner),
+.ds-banner {
+  --ds-color-surface-message-neutral: var(--ds-color-surface-banner-neutral);
+  --ds-color-surface-message-info: var(--ds-color-surface-banner-info);
+  --ds-color-surface-message-positive: var(--ds-color-surface-banner-positive);
+  --ds-color-surface-message-caution: var(--ds-color-surface-banner-caution);
+  --ds-color-surface-message-critical: var(--ds-color-surface-banner-critical);
+  --ds-color-border-message-neutral: var(--ds-color-border-banner-neutral);
+  --ds-color-border-message-info: var(--ds-color-border-banner-info);
+  --ds-color-border-message-positive: var(--ds-color-border-banner-positive);
+  --ds-color-border-message-caution: var(--ds-color-border-banner-caution);
+  --ds-color-border-message-critical: var(--ds-color-border-banner-critical);
+  --ds-color-text-message: var(--ds-color-text-banner);
+  --ds-font-family-message: var(--ds-font-family-banner);
+  --ds-font-family-message-title: var(--ds-font-family-banner-title);
+  --ds-font-size-message: var(--ds-font-size-banner);
+  --ds-font-size-message-title: var(--ds-font-size-banner-title);
+  --ds-font-weight-message: var(--ds-font-weight-banner);
+  --ds-font-weight-message-title: var(--ds-font-weight-banner-title);
+  --ds-font-line-height-message: var(--ds-font-line-height-banner);
+  --ds-font-line-height-message-title: var(--ds-font-line-height-banner-title);
+  --ds-space-inset-message: var(--ds-space-inset-banner);
+  --ds-space-inset-message-regular: var(--ds-space-inset-banner);
+  --ds-space-inline-gap-message: var(--ds-space-inline-gap-banner);
+  --ds-space-inline-couple-message: var(--ds-space-inline-couple-banner);
+  --ds-space-stack-join-message: var(--ds-space-stack-join-banner);
+  --ds-shape-radius-message: 0;
+}
+:host(ds-banner) ds-message.ds-message > ::ng-deep .ds-box-header,
+.ds-banner ds-message.ds-message > ::ng-deep .ds-box-header {
+  border: none;
+}
+:host(ds-banner) ds-message.ds-message > ::ng-deep .ds-box-header > .ds-box-header__item,
+.ds-banner ds-message.ds-message > ::ng-deep .ds-box-header > .ds-box-header__item {
+  border-bottom: var(--ds-message-border-width) var(--ds-message-border-style) var(--ds-message-border-color);
+  padding-bottom: calc(var(--ds-box-header-base-padding) - 1px);
+}

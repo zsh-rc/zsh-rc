@@ -1,0 +1,13 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-imprint) .imprint-text,
+.ds-imprint .imprint-text {
+  font-size: var(--ds-typography-size-regular);
+}

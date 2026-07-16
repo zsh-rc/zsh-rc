@@ -1,0 +1,64 @@
+@use '../../density-styles-sass' as *;
+@use '../../utilities/typography-utilities' as typography;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}table-row),
+:host(.#{$prefix}table-row),
+
+
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}table-row {
+  td {
+    @include typography.text-regular;
+    @include typography.text-base;
+
+    // height/width for table cells works as min-height/min-width
+    // Table cells will grow when the content does not fit.
+    height: var(--#{$prefix}shape-size-ymin-table-cell);
+    width: var(--#{$prefix}shape-size-xmin-table-cell);
+
+    padding-left: var(--#{$prefix}space-inline-start-table-cell);
+    padding-right: var(--#{$prefix}space-inline-end-table-cell);
+
+    background-color: var(--#{$prefix}color-surface-table-cell);
+    border-right: 1px solid var(--#{$prefix}color-border-table-cell);
+    border-bottom: 1px solid var(--#{$prefix}color-border-table-cell);
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  &:last-child td {
+    border-bottom: none;
+  }
+
+  &.#{$prefix}table-row--zebra-odd {
+    background-color: var(--#{$prefix}color-surface-table-cell-odd);
+    border-color: var(--#{$prefix}color-border-table-cell-odd);
+  }
+
+  &.#{$prefix}table-row--zebra-even {
+    background-color: var(--#{$prefix}color-surface-table-cell-even);
+    border-color: var(--#{$prefix}color-border-table-cell-even);
+  }
+
+  &.#{$prefix}table-row--horizontal-divider td {
+    border-bottom-color: var(--#{$prefix}color-surface-table-dividers);
+  }
+
+  &:not(.#{$prefix}table-row--horizontal-divider) td {
+    border-bottom: none;
+  }
+
+  &.#{$prefix}table-row--vertical-divider td {
+    border-right-color: var(--#{$prefix}color-surface-table-dividers);
+  }
+
+  &:not(.#{$prefix}table-row--vertical-divider) td {
+    border-right: none;
+  }
+}

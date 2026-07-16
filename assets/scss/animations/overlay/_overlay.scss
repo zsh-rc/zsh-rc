@@ -1,0 +1,454 @@
+// CDK Overlay
+// ==========================================================================
+
+@use '../../variables/sass-variables' as *;
+
+// Variables
+$cdk-overlay-animation-timing: 200ms;
+$cdk-overlay-animation-function: ease-in-out;
+$cdk-overlay-animation-delay: 0ms;
+$cdk-overlay-modal-background: var(--#{$prefix}color-surface-backdrop);
+
+$cdk-overlay-tooltip-animation-timing: var(--#{$prefix}motion-duration-slow);
+$cdk-overlay-tooltip-animation-function: var(--#{$prefix}motion-timing-standard);
+$cdk-overlay-tooltip-animation-delay: var(--#{$prefix}motion-delay-rapid);
+
+@forward './overlay-prebuilt';
+
+.modal {
+  width: 100%;
+  height: 100%;
+  display: none;
+  pointer-events: none !important;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: fixed;
+
+  &.is-active {
+    display: flex;
+    padding: var(--#{$prefix}space-12x) var(--#{$prefix}space-6x);
+  }
+
+  & > * {
+    pointer-events: all;
+  }
+
+  // narrow screen
+  &--mobile {
+    align-items: flex-end;
+
+    .modal-content {
+      padding-top: 6px;
+      overflow: auto;
+      background-color: var(--#{$prefix}color-surface-base);
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+      max-height: calc(100vh - var(--#{$prefix}space-1x) * 28);
+      box-shadow: 0 -2px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  // if touch device (regular size screen)
+  @media (any-hover: none) {
+    // ...
+  }
+}
+
+.modal-content {
+  pointer-events: all !important;
+}
+
+.#{$prefix}generic-modal-background,
+.#{$prefix}drawer-background {
+  background: $cdk-overlay-modal-background;
+}
+
+.cdk-overlay-container {
+  --cdk-overlay-backdrop-transition-duration: var(--#{$prefix}motion-duration-slow);
+
+  &--for-badge {
+    position: absolute;
+  }
+}
+
+.cdk-overlay-pane--hidden {
+  display: none;
+}
+
+.cdk-overlay-backdrop {
+  transition: opacity var(--#{$prefix}motion-duration-slow) var(--#{$prefix}motion-timing-standard);
+
+  &.#{$prefix}no-motion {
+    transition: opacity 0s;
+  }
+
+  &--closing {
+    transition: opacity var(--#{$prefix}motion-duration-standard) var(--#{$prefix}motion-timing-standard);
+  }
+}
+
+.overlay-animation {
+  // this is used by the input menus
+  --overlay-menu-close-animation-duration: var(--#{$prefix}motion-duration-rapid);
+
+  animation-name: #{$prefix}animations-overlay-appear;
+
+  // entrance speed
+  animation-duration: var(--#{$prefix}motion-duration-quick);
+  animation-timing-function: var(--#{$prefix}motion-timing-entrance);
+  transform-origin: center bottom;
+  transition: opacity var(--#{$prefix}motion-duration-slow) var(--#{$prefix}motion-timing-standard);
+  transform: translateY(2px);
+
+  &.#{$prefix}no-motion {
+    transition-duration: 0s;
+    animation-name: none;
+  }
+
+  &-close {
+    opacity: 0;
+    animation-name: #{$prefix}animations-overlay-disappear;
+    animation-duration: var(--#{$prefix}motion-duration-rapid);
+    animation-timing-function: var(--#{$prefix}motion-timing-exit);
+    pointer-events: none;
+  }
+
+  &-close-modal {
+    opacity: 0;
+    animation-name: #{$prefix}animations-overlay-disappear;
+    animation-duration: var(--#{$prefix}motion-duration-quick);
+    animation-timing-function: var(--#{$prefix}motion-timing-exit);
+    pointer-events: none;
+  }
+}
+
+.overlay-animation-top {
+  // this is used by the input menus
+  --overlay-menu-close-animation-duration: var(--#{$prefix}motion-duration-rapid);
+
+  animation-name: #{$prefix}animations-overlay-appear-top;
+
+  // entrance speed
+  animation-duration: var(--#{$prefix}motion-duration-quick);
+  animation-timing-function: var(--#{$prefix}motion-timing-entrance);
+  transform-origin: center bottom;
+  transition: opacity var(--#{$prefix}motion-duration-slow) var(--#{$prefix}motion-timing-standard);
+  transform: translateY(2px);
+
+  &.#{$prefix}no-motion {
+    transition-duration: 0s;
+    animation-name: none;
+  }
+
+  &-close {
+    opacity: 0;
+    animation-name: #{$prefix}animations-overlay-disappear-top;
+    animation-duration: var(--#{$prefix}motion-duration-rapid);
+    animation-timing-function: var(--#{$prefix}motion-timing-exit);
+    pointer-events: none;
+  }
+
+  &-close-modal {
+    opacity: 0;
+    animation-name: #{$prefix}animations-overlay-disappear-top;
+    animation-duration: var(--#{$prefix}motion-duration-quick);
+    animation-timing-function: var(--#{$prefix}motion-timing-exit);
+    pointer-events: none;
+  }
+}
+
+@keyframes #{$prefix}animations-overlay-disappear {
+  0% {
+    transform: translateY(2px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-4px);
+    opacity: 0;
+  }
+}
+
+@keyframes #{$prefix}animations-overlay-appear {
+  0% {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(2px);
+    opacity: 1;
+  }
+}
+
+@keyframes #{$prefix}animations-overlay-disappear-top {
+  0% {
+    transform: translateY(-2px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+}
+
+@keyframes #{$prefix}animations-overlay-appear-top {
+  0% {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(-2px);
+    opacity: 1;
+  }
+}
+
+.overlay-animation-submenu {
+  --overlay-menu-close-animation-duration: var(--#{$prefix}motion-duration-rapid);
+
+  animation-name: #{$prefix}animations-overlay-appear-submenu;
+  animation-duration: var(--#{$prefix}motion-duration-quick);
+  animation-timing-function: var(--#{$prefix}motion-timing-entrance);
+  transform: translate(6px, -8px);
+
+  &.#{$prefix}no-motion {
+    transition-duration: 0s;
+    animation-name: none;
+  }
+
+  &-close {
+    animation-name: #{$prefix}animations-overlay-disappear-submenu;
+    animation-duration: var(--#{$prefix}motion-duration-rapid);
+    animation-timing-function: var(--#{$prefix}motion-timing-exit);
+  }
+}
+
+@keyframes #{$prefix}animations-overlay-appear-submenu {
+  0% {
+    transform: translate(0, -8px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(6px, -8px);
+    opacity: 1;
+  }
+}
+
+@keyframes #{$prefix}animations-overlay-disappear-submenu {
+  0% {
+    transform: translate(6px, -8px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(0, -8px);
+    opacity: 0;
+  }
+}
+
+.overlay-popover-animation {
+  // this is used by the input menus
+  --overlay-menu-close-animation-duration: var(--#{$prefix}motion-duration-rapid);
+
+  // entrance speed
+  transition: opacity var(--#{$prefix}motion-duration-rapid) var(--#{$prefix}motion-timing-entrance);
+  opacity: 1;
+
+  &.#{$prefix}no-motion {
+    transition-duration: 0s;
+    animation-name: none;
+  }
+
+  &--top {
+    & > .#{$prefix}popover-wrapper:first-child {
+      transform: translateY(0);
+    }
+
+    &--close {
+      opacity: 0;
+
+      & > .#{$prefix}popover-wrapper:first-child {
+        transform: translateY(4px);
+      }
+    }
+  }
+
+  &--right {
+    & > .#{$prefix}popover-wrapper:first-child {
+      transform: translateX(0);
+    }
+
+    &--close {
+      opacity: 0;
+
+      & > .#{$prefix}popover-wrapper:first-child {
+        transform: translateX(-4px);
+      }
+    }
+  }
+
+  &--bottom {
+    & > .#{$prefix}popover-wrapper:first-child {
+      transform: translateY(0);
+    }
+
+    &--close {
+      opacity: 0;
+
+      & > .#{$prefix}popover-wrapper:first-child {
+        transform: translateY(-4px);
+      }
+    }
+  }
+
+  &--left {
+    & > .#{$prefix}popover-wrapper:first-child {
+      transform: translateX(0);
+    }
+
+    &--close {
+      opacity: 0;
+
+      & > .#{$prefix}popover-wrapper:first-child {
+        transform: translateX(4px);
+      }
+    }
+  }
+
+  & > .#{$prefix}popover-wrapper:first-child {
+    transition: transform var(--#{$prefix}motion-duration-rapid) var(--#{$prefix}motion-timing-exit);
+  }
+}
+
+.overlay-tooltip-animation {
+  // this is used by the input menus
+  --overlay-menu-close-animation-duration: var(--#{$prefix}motion-duration-rapid);
+
+  // entrance speed
+  transition: opacity var(--#{$prefix}motion-duration-rapid) var(--#{$prefix}motion-timing-entrance);
+  opacity: 1;
+
+  &.#{$prefix}no-motion {
+    transition-duration: 0s;
+    animation-name: none;
+  }
+
+  &--top {
+    & > .#{$prefix}tooltip > .#{$prefix}tooltip-wrapper:first-child {
+      transform: translateY(0);
+    }
+
+    &--close {
+      opacity: 0;
+
+      & > .#{$prefix}tooltip > .#{$prefix}tooltip-wrapper:first-child {
+        transform: translateY(4px);
+      }
+    }
+  }
+
+  &--right {
+    & > .#{$prefix}tooltip > .#{$prefix}tooltip-wrapper:first-child {
+      transform: translateX(4px);
+    }
+
+    &--close {
+      opacity: 0;
+
+      & > .#{$prefix}tooltip > .#{$prefix}tooltip-wrapper:first-child {
+        transform: translateX(-4px);
+      }
+    }
+  }
+
+  &--bottom {
+    & > .#{$prefix}tooltip > .#{$prefix}tooltip-wrapper:first-child {
+      transform: translateY(0);
+    }
+
+    &--close {
+      opacity: 0;
+
+      & > .#{$prefix}tooltip > .#{$prefix}tooltip-wrapper:first-child {
+        transform: translateY(-4px);
+      }
+    }
+  }
+
+  &--left {
+    & > .#{$prefix}tooltip > .#{$prefix}tooltip-wrapper:first-child {
+      transform: translateX(0);
+    }
+
+    &--close {
+      opacity: 0;
+
+      & > .#{$prefix}tooltip > .#{$prefix}tooltip-wrapper:first-child {
+        transform: translateX(4px);
+      }
+    }
+  }
+
+  & > .#{$prefix}tooltip > .#{$prefix}tooltip-wrapper:first-child {
+    transition: transform var(--#{$prefix}motion-duration-rapid) var(--#{$prefix}motion-timing-entrance);
+  }
+}
+
+/* Drawer START */
+
+.#{$prefix}drawer-background {
+  // for code, this variable only change after the timing of the animation of the backdrop ends, which is when the bottom sheet appears
+  --#{$prefix}drawer-background-transition-duration: var(--#{$prefix}motion-duration-slow);
+
+  &.#{$prefix}drawer-background--left {
+    --#{$prefix}drawer-background-transition-duration: var(--#{$prefix}motion-duration-standard);
+  }
+
+  background-color: var(--#{$prefix}color-surface-backdrop);
+  transition: opacity var(--#{$prefix}drawer-background-transition-duration) var(--#{$prefix}motion-timing-standard);
+
+  &.#{$prefix}no-motion {
+    transition-duration: 0s;
+    animation-name: none;
+    --#{$prefix}drawer-background-transition-duration: 0s;
+  }
+
+  &--disappear {
+    --#{$prefix}drawer-background-transition-duration: var(--#{$prefix}motion-duration-standard);
+
+    &.#{$prefix}drawer-background--left {
+      --#{$prefix}drawer-background-transition-duration: var(--#{$prefix}motion-duration-quick);
+    }
+
+    &.#{$prefix}no-motion {
+      transition-duration: 0s;
+      animation-name: none;
+      --#{$prefix}drawer-background-transition-duration: 0s;
+    }
+  }
+}
+
+.#{$prefix}drawer-panel {
+  bottom: 0;
+  width: 100%;
+  max-height: calc(100% - var(--#{$prefix}space-stack-safe-box-bsheet));
+
+  &.#{$prefix}drawer--left {
+    width: var(--#{$prefix}shape-width-sidedrawer);
+    max-width: var(--#{$prefix}shape-width-sidedrawer);
+    height: 100%;
+    max-height: 100%;
+    bottom: unset;
+  }
+
+  &.#{$prefix}no-motion {
+    transition-duration: 0s;
+    animation-name: none;
+  }
+}
+
+/* Drawer END */

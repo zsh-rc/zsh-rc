@@ -1,0 +1,19 @@
+@use '../variables/sass-variables';
+@use 'ag-theme-density/ag-theme-density-v34' as v34;
+@use 'ag-theme-density/ag-theme-density-v35' as v35;
+
+@font-face {
+  font-display: block;
+  font-family: 'ag-grid-density';
+  font-style: normal;
+  font-weight: normal;
+  src: url('!correct-path!fonts/ag-grid-density.eot?10m643');
+  src:
+    url('!correct-path!fonts/ag-grid-density.eot?10m643#iefix') format('embedded-opentype'),
+    url('!correct-path!fonts/ag-grid-density.ttf?10m643') format('truetype'),
+    url('!correct-path!fonts/ag-grid-density.woff?10m643') format('woff'),
+    url('!correct-path!fonts/ag-grid-density.svg?10m643#ag-grid-density') format('svg');
+}
+
+@include v34.render-extras(sass-variables.$prefix);
+@include v35.render-extras-v35(sass-variables.$prefix);

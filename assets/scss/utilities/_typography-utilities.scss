@@ -1,0 +1,124 @@
+@use '../variables/sass-variables' as *;
+
+//Typography Utilities
+
+@mixin text-smallprint {
+  font-family: var(--#{$prefix}typography-family-base);
+  font-size: var(--#{$prefix}typography-size-smallprint);
+  font-weight: var(--#{$prefix}typography-weight-regular);
+  line-height: var(--#{$prefix}typography-line-height-smallprint);
+}
+
+@mixin text-label {
+  font-family: var(--#{$prefix}typography-family-base);
+  font-size: var(--#{$prefix}typography-size-label);
+  font-weight: var(--#{$prefix}typography-weight-regular);
+  line-height: var(--#{$prefix}typography-line-height-label);
+}
+
+@mixin text-regular {
+  font-family: var(--#{$prefix}typography-family-base);
+  font-size: var(--#{$prefix}typography-size-regular);
+  font-weight: var(--#{$prefix}typography-weight-regular);
+  line-height: var(--#{$prefix}typography-line-height-regular);
+}
+
+@mixin text-paragraph {
+  font-family: var(--#{$prefix}typography-family-base);
+  font-size: var(--#{$prefix}typography-size-paragraph);
+  font-weight: var(--#{$prefix}typography-weight-regular);
+  line-height: var(--#{$prefix}typography-line-height-paragraph);
+}
+
+@mixin text-base {
+  color: var(--#{$prefix}color-typography-base);
+}
+
+@mixin text-neutral {
+  color: var(--#{$prefix}color-typography-neutral);
+}
+
+@mixin text-invert {
+  color: var(--#{$prefix}color-typography-invert);
+}
+
+@mixin text-action {
+  color: var(--#{$prefix}color-typography-action);
+}
+
+@mixin text-action-hover {
+  color: var(--#{$prefix}color-typography-action-hover);
+}
+
+@mixin text-action-active {
+  color: var(--#{$prefix}color-typography-action-active);
+}
+
+.text {
+  &-smallprint {
+    font-family: var(--#{$prefix}typography-family-base);
+    font-size: var(--#{$prefix}typography-size-smallprint);
+    font-weight: var(--#{$prefix}typography-weight-regular);
+    line-height: var(--#{$prefix}typography-line-height-smallprint);
+  }
+
+  &-label {
+    font-family: var(--#{$prefix}typography-family-base);
+    font-size: var(--#{$prefix}typography-size-label);
+    font-weight: var(--#{$prefix}typography-weight-regular);
+    line-height: var(--#{$prefix}typography-line-height-label);
+  }
+
+  &-regular {
+    font-family: var(--#{$prefix}typography-family-base);
+    font-size: var(--#{$prefix}typography-size-regular);
+    font-weight: var(--#{$prefix}typography-weight-regular);
+    line-height: var(--#{$prefix}typography-line-height-regular);
+  }
+
+  &-paragraph {
+    font-family: var(--#{$prefix}typography-family-base);
+    font-size: var(--#{$prefix}typography-size-paragraph);
+    font-weight: var(--#{$prefix}typography-weight-regular);
+    line-height: var(--#{$prefix}typography-line-height-paragraph);
+  }
+}
+
+.title {
+  &-xs {
+    font-family: var(--#{$prefix}typography-family-base);
+    font-size: var(--#{$prefix}typography-size-title-xs);
+    font-weight: var(--#{$prefix}typography-weight-title-xs);
+    line-height: var(--#{$prefix}typography-line-height-title-xs);
+    text-transform: var(--#{$prefix}typography-transform-uppercase);
+  }
+
+  &-sm {
+    font-family: var(--#{$prefix}typography-family-base);
+    font-size: var(--#{$prefix}typography-size-title-sm);
+    font-weight: var(--#{$prefix}typography-weight-title-sm);
+    line-height: var(--#{$prefix}typography-line-height-title-sm);
+    text-transform: var(--#{$prefix}typography-transform-uppercase);
+  }
+
+  &-md {
+    font-family: var(--#{$prefix}typography-family-base);
+    font-size: var(--#{$prefix}typography-size-title-md);
+    font-weight: var(--#{$prefix}typography-weight-title-md);
+    line-height: var(--#{$prefix}typography-line-height-title-md);
+  }
+
+  &-lg {
+    font-family: var(--#{$prefix}typography-family-brand);
+    font-size: var(--#{$prefix}typography-size-title-lg);
+    font-weight: var(--#{$prefix}typography-weight-title-lg);
+    line-height: var(--#{$prefix}typography-line-height-title-lg);
+    text-transform: var(--#{$prefix}typography-transform-uppercase);
+  }
+}
+
+.truncated-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

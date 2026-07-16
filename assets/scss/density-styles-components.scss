@@ -1,0 +1,10 @@
+/*
+ * Styles required for just the Density components. 
+ * It does not affect elements outside the ones used in the components.
+ */
+
+@use './variables/variables' as *;
+@use './grid/grid' as *;
+@use './animations/animations' as *;
+@use './elements/elements' as *;
+@use './components/components' as *;

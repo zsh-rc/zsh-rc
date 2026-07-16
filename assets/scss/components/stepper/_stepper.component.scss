@@ -1,0 +1,19 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}stepper),
+
+  /* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}stepper {
+  &.#{$prefix}stepper-wrapper {
+    display: flex;
+    &--horizontal {
+      width: 100%;
+    }
+    &--vertical {
+      flex-direction: column;
+      height: 100%;
+      width: fit-content;
+    }
+  }
+}

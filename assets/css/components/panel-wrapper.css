@@ -1,0 +1,15 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-panel-wrapper),
+ds-panel-wrapper {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+}

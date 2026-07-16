@@ -1,0 +1,75 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-hint),
+.ds-hint {
+  /*
+  *  Fallback tag type to "neutral" if type class doesn't exist
+  */
+}
+:host(ds-hint), :host(ds-hint).ds-hint--neutral,
+.ds-hint,
+.ds-hint.ds-hint--neutral {
+  color: var(--ds-color-text-hint-neutral);
+}
+:host(ds-hint),
+.ds-hint {
+  /*
+  *  Fallback tag type to "neutral" if type class doesn't exist
+  */
+}
+:host(ds-hint).ds-hint--info,
+.ds-hint.ds-hint--info {
+  color: var(--ds-color-text-hint-info);
+}
+:host(ds-hint),
+.ds-hint {
+  /*
+  *  Fallback tag type to "neutral" if type class doesn't exist
+  */
+}
+:host(ds-hint).ds-hint--positive,
+.ds-hint.ds-hint--positive {
+  color: var(--ds-color-text-hint-positive);
+}
+:host(ds-hint),
+.ds-hint {
+  /*
+  *  Fallback tag type to "neutral" if type class doesn't exist
+  */
+}
+:host(ds-hint).ds-hint--caution,
+.ds-hint.ds-hint--caution {
+  color: var(--ds-color-text-hint-caution);
+}
+:host(ds-hint),
+.ds-hint {
+  /*
+  *  Fallback tag type to "neutral" if type class doesn't exist
+  */
+}
+:host(ds-hint).ds-hint--critical,
+.ds-hint.ds-hint--critical {
+  color: var(--ds-color-text-hint-critical);
+}
+:host(ds-hint) .ds-hint-wrapper,
+.ds-hint .ds-hint-wrapper {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+:host(ds-hint) .ds-hint-wrapper > ds-icon,
+.ds-hint .ds-hint-wrapper > ds-icon {
+  flex-shrink: 0;
+}
+:host(ds-hint) .ds-hint-wrapper > span,
+.ds-hint .ds-hint-wrapper > span {
+  margin-left: var(--ds-space-1x);
+}

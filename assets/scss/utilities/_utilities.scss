@@ -1,0 +1,55 @@
+@use 'sass:map';
+@use 'sass:meta';
+
+@use '../variables/sass-variables' as *;
+
+@use './density-utilities' as *;
+
+@use './typography-utilities' as *;
+
+@use '../mixins/utilities' as *;
+
+@use '../mixins/breakpoints' as *;
+
+@use '../mixins/a11y' as *;
+
+// Loop over each breakpoint
+@each $breakpoint in map.keys($grid-breakpoints) {
+  // Generate media query if needed
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    // Loop over each utility property
+    @each $key, $utility in $utilities {
+      // The utility can be disabled with `false`, thus check if the utility is a map first
+      // Only proceed if responsive media queries are enabled or if it's the base media query
+      @if meta.type-of($utility) == 'map' and (map.get($utility, responsive) or $infix == '') {
+        @include generate-utility($utility, $infix);
+      }
+    }
+  }
+}
+
+.#{$prefix}spaced-list-item + .#{$prefix}spaced-list-item {
+  margin-top: 1px;
+}
+
+.#{$prefix}force-no-motion {
+  --#{$prefix}motion-duration-rapid: 0s;
+  --#{$prefix}motion-duration-quick: 0s;
+  --#{$prefix}motion-duration-standard: 0s;
+  --#{$prefix}motion-duration-slow: 0s;
+
+  --#{$prefix}motion-timing-entrance: ease;
+  --#{$prefix}motion-timing-exit: ease;
+  --#{$prefix}motion-timing-standard: ease;
+
+  --#{$prefix}motion-delay-rapid: 0s;
+  --#{$prefix}motion-delay-quick: 0s;
+  --#{$prefix}motion-delay-standard: 0s;
+  --#{$prefix}motion-delay-slow: 0s;
+}
+
+.#{$prefix}visually-hidden {
+  @include ds-visually-hidden();
+}

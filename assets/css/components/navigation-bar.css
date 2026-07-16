@@ -1,0 +1,468 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+.text-smallprint {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-smallprint);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-smallprint);
+}
+.text-label, .ds-navigation-bar-item__label {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-label);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-label);
+}
+.text-regular, .ds-navigation-bar__items--mobile ::ng-deep ds-navigation-bar-item .ds-navigation-bar-item__label:not(.ds-navigation-bar-item__label--group) {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-regular);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-regular);
+}
+.text-paragraph {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-paragraph);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-paragraph);
+}
+
+.title-xs {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-title-xs);
+  font-weight: var(--ds-typography-weight-title-xs);
+  line-height: var(--ds-typography-line-height-title-xs);
+  text-transform: var(--ds-typography-transform-uppercase);
+}
+.title-sm {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-title-sm);
+  font-weight: var(--ds-typography-weight-title-sm);
+  line-height: var(--ds-typography-line-height-title-sm);
+  text-transform: var(--ds-typography-transform-uppercase);
+}
+.title-md {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-title-md);
+  font-weight: var(--ds-typography-weight-title-md);
+  line-height: var(--ds-typography-line-height-title-md);
+}
+.title-lg {
+  font-family: var(--ds-typography-family-brand);
+  font-size: var(--ds-typography-size-title-lg);
+  font-weight: var(--ds-typography-weight-title-lg);
+  line-height: var(--ds-typography-line-height-title-lg);
+  text-transform: var(--ds-typography-transform-uppercase);
+}
+
+.truncated-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-navigation-bar),
+.ds-navigation-bar {
+  --ds-navigation-bar-max-width: 240px;
+  --ds-navigation-bar-button-width: 40px;
+  --ds-navigation-bar-item-height: 40px;
+  --ds-navigation-bar-vertical-padding: var(--ds-space-2x) 0;
+  --ds-navigation-bar-drawer-transition-duration-entrance: var(--ds-motion-duration-standard);
+  --ds-navigation-bar-drawer-transition-duration-exit: var(--ds-motion-duration-quick);
+  --ds-navigation-bar-toggle-transition-duration: var(--ds-motion-duration-3);
+}
+:host(ds-navigation-bar).ds-no-motion,
+.ds-navigation-bar.ds-no-motion {
+  --ds-navigation-bar-drawer-transition-duration-entrance: 0s;
+  --ds-navigation-bar-drawer-transition-duration-exit: 0s;
+  --ds-navigation-bar-toggle-transition-duration: 0s;
+}
+:host(ds-navigation-bar).ds-navigation-bar,
+.ds-navigation-bar.ds-navigation-bar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background-color: var(--ds-color-surface-base);
+  width: var(--ds-navigation-bar-max-width);
+  max-width: var(--ds-navigation-bar-button-width);
+  padding: var(--ds-navigation-bar-vertical-padding);
+}
+:host(ds-navigation-bar).ds-navigation-bar.ds-navigation-bar--overflowing,
+.ds-navigation-bar.ds-navigation-bar.ds-navigation-bar--overflowing {
+  max-width: calc(var(--ds-space-10x) + var(--ds-space-3x));
+}
+:host(ds-navigation-bar).ds-navigation-bar.ds-navigation-bar--overflowing .ds-navigation-bar__items,
+.ds-navigation-bar.ds-navigation-bar.ds-navigation-bar--overflowing .ds-navigation-bar__items {
+  overflow-x: hidden;
+}
+:host(ds-navigation-bar).ds-navigation-bar.ds-navigation-bar--overflowing .ds-navigation-bar__items .ds-navigation-bar-item,
+:host(ds-navigation-bar).ds-navigation-bar.ds-navigation-bar--overflowing .ds-navigation-bar__items ::ng-deep .ds-navigation-bar-item,
+.ds-navigation-bar.ds-navigation-bar.ds-navigation-bar--overflowing .ds-navigation-bar__items .ds-navigation-bar-item,
+.ds-navigation-bar.ds-navigation-bar.ds-navigation-bar--overflowing .ds-navigation-bar__items ::ng-deep .ds-navigation-bar-item {
+  min-width: var(--ds-space-10x);
+  max-width: var(--ds-space-10x);
+}
+:host(ds-navigation-bar).ds-navigation-bar.ds-navigation-bar--overflowing .ds-navigation-bar__actions,
+.ds-navigation-bar.ds-navigation-bar.ds-navigation-bar--overflowing .ds-navigation-bar__actions {
+  max-width: var(--ds-space-10x);
+}
+:host(ds-navigation-bar).ds-navigation-bar--expanded,
+.ds-navigation-bar.ds-navigation-bar--expanded {
+  max-width: var(--ds-navigation-bar-max-width);
+  padding: var(--ds-space-inline-start-nav-item);
+}
+:host(ds-navigation-bar).ds-navigation-bar--expanded--animate,
+.ds-navigation-bar.ds-navigation-bar--expanded--animate {
+  transition: max-width var(--ds-navigation-bar-drawer-transition-duration-entrance) var(--ds-motion-timing-standard);
+}
+:host(ds-navigation-bar).ds-navigation-bar--resizable.ds-navigation-bar--expanded,
+.ds-navigation-bar.ds-navigation-bar--resizable.ds-navigation-bar--expanded {
+  resize: horizontal;
+  overflow: auto;
+  min-width: calc(var(--ds-navigation-bar-button-width) * 2);
+  max-width: none;
+}
+:host(ds-navigation-bar).ds-navigation-bar--resizable.ds-navigation-bar--expanded .ds-navigation-bar__vertical-divider,
+.ds-navigation-bar.ds-navigation-bar--resizable.ds-navigation-bar--expanded .ds-navigation-bar__vertical-divider {
+  right: 0;
+}
+:host(ds-navigation-bar).ds-navigation-bar--animate,
+.ds-navigation-bar.ds-navigation-bar--animate {
+  transition: max-width var(--ds-navigation-bar-drawer-transition-duration-exit) var(--ds-motion-timing-standard);
+}
+:host(ds-navigation-bar).ds-navigation-bar--mobile,
+.ds-navigation-bar.ds-navigation-bar--mobile {
+  height: initial;
+  padding: 0;
+  max-width: var(--ds-navigation-bar-max-width);
+}
+:host(ds-navigation-bar).ds-navigation-bar--hidden-by-header,
+.ds-navigation-bar.ds-navigation-bar--hidden-by-header {
+  display: none;
+}
+
+.ds-navigation-bar__items {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  flex: 1;
+}
+.ds-navigation-bar__items .ds-navigation-bar-item__label--group {
+  overflow-wrap: break-word;
+}
+.ds-navigation-bar__items--mobile {
+  background-color: var(--ds-color-surface-base);
+  padding: 0 var(--ds-space-indent-nav-item);
+  overflow: initial;
+}
+.ds-navigation-bar__items--mobile ::ng-deep ds-navigation-bar-item {
+  --ds-navigation-bar-item-max-height: 48px;
+}
+.ds-navigation-bar__actions {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: var(--ds-navigation-bar-item-height);
+  padding-top: var(--ds-space-inline-start-nav-item);
+}
+.ds-navigation-bar__actions--mobile {
+  padding: 0 var(--ds-space-indent-nav-item);
+}
+.ds-navigation-bar__actions--expanded {
+  display: block;
+}
+.ds-navigation-bar__actions__divider {
+  height: 1px;
+  margin: var(--ds-space-inline-start-nav-item) 0;
+}
+.ds-navigation-bar__actions__expand-toggle {
+  position: relative;
+  width: var(--ds-navigation-bar-button-width);
+  height: 32px;
+  z-index: calc(var(--ds-z-index-content-base) + 1);
+  align-items: center;
+}
+.ds-navigation-bar__actions__expand-toggle:focus-visible:not([disabled]) {
+  --ds-space-inline-end-list-item: 10px;
+  max-width: calc(var(--ds-navigation-bar-button-width) - var(--ds-space-05x) * 2);
+}
+.ds-navigation-bar__actions__expand-toggle ::ng-deep .ds-icon {
+  --ds-space-inline-couple-list-item: 0;
+  width: 100%;
+  transition: transform var(--ds-navigation-bar-toggle-transition-duration) var(--ds-motion-timing-2);
+  transform: rotate(-180deg);
+}
+.ds-navigation-bar__actions__expand-toggle--expanded {
+  position: absolute;
+  right: 0;
+  bottom: calc(var(--ds-space-inline-start-nav-item) / 2);
+}
+.ds-navigation-bar__actions__expand-toggle--expanded ::ng-deep .ds-icon {
+  transform: rotate(0deg);
+}
+
+.ds-navigation-bar__vertical-divider {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  right: -1px;
+  background-color: var(--ds-color-surface-nav-divider);
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-navigation-bar-item),
+.ds-navigation-bar-item {
+  --ds-navigation-bar-item-height: 40px;
+  --ds-navigation-bar-item-left-padding: 10px;
+  --ds-navigation-bar-item-parent-icon-right: 2px;
+  --ds-navigation-bar-item-motion-timing: var(--ds-motion-timing-entrance);
+  --ds-navigation-bar-item-motion-duration: 1ms;
+  --ds-navigation-bar-item-timing-function-entrance: var(--ds-motion-timing-entrance);
+  --ds-navigation-bar-item-duration-entrance: 1ms;
+  --ds-navigation-bar-item-timing-function-exit: var(--ds-motion-timing-exit);
+  --ds-navigation-bar-item-duration-exit: 1ms;
+}
+:host(ds-navigation-bar-item).ds-navigation-bar-item,
+.ds-navigation-bar-item.ds-navigation-bar-item {
+  position: relative;
+  display: block;
+}
+:host(ds-navigation-bar-item).ds-navigation-bar-item--hidden,
+.ds-navigation-bar-item.ds-navigation-bar-item--hidden {
+  display: none;
+  visibility: hidden;
+}
+:host(ds-navigation-bar-item).ds-navigation-bar-item > a,
+.ds-navigation-bar-item.ds-navigation-bar-item > a {
+  text-decoration: none;
+}
+:host(ds-navigation-bar-item).ds-navigation-bar-item:focus-visible,
+.ds-navigation-bar-item.ds-navigation-bar-item:focus-visible {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: -2px;
+}
+:host(ds-navigation-bar-item).ds-navigation-bar-item:focus:not(:focus-visible),
+.ds-navigation-bar-item.ds-navigation-bar-item:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.ds-navigation-bar-item__children__items:hover .ds-list-item:not(.ds-list-item--selected):hover::before {
+  content: " ";
+  position: absolute;
+  width: var(--ds-shape-size-x-nav-node-line);
+  height: 100%;
+  left: 1px;
+  background-color: var(--ds-color-surface-nav-divider);
+}
+
+.ds-navigation-bar-item__highlight-flag {
+  display: none;
+  visibility: hidden;
+}
+
+.ds-navigation-bar-item__label {
+  padding-right: var(--ds-space-inline-end-nav-item);
+  padding-left: var(--ds-navigation-bar-item-left-padding);
+  height: var(--ds-navigation-bar-item-height);
+  max-height: var(--ds-navigation-bar-item-height);
+  line-height: var(--ds-typography-line-height-regular);
+  align-items: center;
+  cursor: pointer;
+  --ds-color-surface-list-item: var(--ds-color-surface-nav-item);
+  --ds-color-surface-list-item-selected: var(--ds-color-surface-nav-item-selected);
+  --ds-space-inline-couple-list-item: var(--ds-space-inline-couple-nav-item);
+  --ds-color-icon-list-item: var(--ds-color-icon-list-item);
+  --ds-color-icon-list-item-selected: var(--ds-color-icon-list-item-active);
+  --ds-color-surface-list-item-selected-bar: var(--ds-color-surface-nav-item-selected-bar);
+  --ds-color-surface-list-item-selected-hover: var(--ds-color-surface-action-hover);
+}
+.ds-navigation-bar-item__label.ds-list-item--supress-parent {
+  --ds-color-surface-list-item-selected: var(--ds-color-surface-nav-item-selected);
+  --ds-color-surface-list-item-selected-hover: var(--ds-color-surface-action-hover);
+}
+.ds-navigation-bar-item__label:focus-visible:not([disabled]):not(.ds-navigation-bar-item__label--expanded) {
+  --ds-space-inline-end-list-item: 10px;
+}
+.ds-navigation-bar-item__label--expanded {
+  padding-left: var(--ds-space-inline-start-nav-item);
+  max-height: initial;
+}
+.ds-navigation-bar-item__label--expanded.ds-navigation-bar-item__label--active:not(.ds-list-item--selected) {
+  --ds-color-surface-list-item-selected: transparent;
+}
+.ds-navigation-bar-item__label--selected {
+  --ds-color-icon-list-item: var(--ds-color-icon-list-item-active);
+  --ds-color-text-list-item: var(--ds-color-text-list-item-active);
+}
+.ds-navigation-bar-item__label--group {
+  cursor: inherit;
+  color: var(--ds-color-typography-neutral);
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-title-xs);
+  font-weight: var(--ds-typography-weight-title-xs);
+  line-height: var(--ds-typography-line-height-title-xs);
+  text-transform: var(--ds-typography-transform-uppercase);
+  height: var(--ds-space-8x);
+}
+.ds-navigation-bar-item__label--hovered {
+  cursor: inherit;
+  background-color: var(--ds-color-surface-nav-item-hover);
+}
+.ds-navigation-bar-item__label--disabled {
+  cursor: no-drop;
+}
+.ds-navigation-bar-item__label__collapsed-parent-icon {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+.ds-navigation-bar-item__label.ds-no-motion {
+  --ds-navigation-bar-item-motion-duration: 0s;
+  --ds-navigation-bar-item-motion-timing: initial;
+}
+.ds-navigation-bar-item__label ::ng-deep .ds-list-item__content-wrapper ~ .icon-right.ds-icon {
+  margin-top: var(--ds-space-05x);
+}
+.ds-navigation-bar-item__label .ds-navigation-bar-item__collapsed-badge {
+  position: absolute;
+  top: 0;
+  right: var(--ds-space-05x);
+}
+.ds-navigation-bar-item__label .ds-navigation-bar-item__collapsed-badge--dot {
+  top: var(--ds-space-05x);
+}
+
+.ds-navigation-bar-item__children__items {
+  display: block;
+  position: relative;
+  margin: 1px 0 0 var(--ds-space-indent-nav-item);
+}
+.ds-navigation-bar-item__children__items--closed {
+  display: none;
+}
+.ds-navigation-bar-item__children__items ::ng-deep ds-list-item:not(.ds-list-item--selected) {
+  background-color: transparent;
+}
+.ds-navigation-bar-item__children__items ::ng-deep ds-list-item .ds-list-item__content-wrapper {
+  margin-left: var(--ds-space-indent-nav-item-label);
+}
+.ds-navigation-bar-item__children__items::before {
+  content: " ";
+  position: absolute;
+  width: var(--ds-shape-size-x-nav-node-line);
+  height: 100%;
+  left: 1px;
+  background-color: var(--ds-color-surface-nav-divider);
+}
+.ds-navigation-bar-item__children::after {
+  border-top: 0px;
+}
+
+.ds-navigation-bar-item__group-divider {
+  height: 1px;
+  margin: var(--ds-space-inline-start-nav-item) 0;
+}
+
+.ds-navigation-bar-item__tooltip-template {
+  color: var(--ds-color-text-tooltip);
+  font-family: var(--ds-font-family-tooltip);
+  line-height: var(--ds-font-line-height-tooltip);
+  font-size: var(--ds-font-size-tooltip);
+  font-weight: var(--ds-font-weight-tooltip);
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ds-navigation-bar-item__tooltip-template__badge {
+  margin-left: var(--ds-space-2x);
+}
+
+.ds-navigation-bar-item__list-item-template {
+  display: flex;
+  align-items: center;
+}
+.ds-navigation-bar-item__list-item-template__label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.ds-navigation-bar-item__list-item-template__badge {
+  margin-left: var(--ds-space-2x);
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-navigation-bar-meta-item),
+.ds-navigation-bar-meta-item {
+  --ds-navigation-bar-item-max-height: 40px;
+  --ds-navigation-bar-button-width: 40px;
+  --ds-navigation-bar-item-left-padding: 10px;
+}
+:host(ds-navigation-bar-meta-item).ds-navigation-bar-meta-item,
+.ds-navigation-bar-meta-item.ds-navigation-bar-meta-item {
+  position: relative;
+  width: 100%;
+}
+:host(ds-navigation-bar-meta-item).ds-navigation-bar-meta-item > a,
+.ds-navigation-bar-meta-item.ds-navigation-bar-meta-item > a {
+  text-decoration: none;
+}
+:host(ds-navigation-bar-meta-item).ds-navigation-bar-meta-item.ds-navigation-bar-meta-item--expanded:not(.ds-navigation-bar-meta-item--mobile):not(.ds-navigation-bar-meta-item__children):last-of-type ::ng-deep ds-list-item,
+.ds-navigation-bar-meta-item.ds-navigation-bar-meta-item.ds-navigation-bar-meta-item--expanded:not(.ds-navigation-bar-meta-item--mobile):not(.ds-navigation-bar-meta-item__children):last-of-type ::ng-deep ds-list-item {
+  max-width: calc(100% - var(--ds-navigation-bar-button-width));
+}
+
+.ds-navigation-bar-meta-item__list-item {
+  height: var(--ds-navigation-bar-item-max-height);
+  width: 100%;
+  padding-left: var(--ds-navigation-bar-item-left-padding);
+  line-height: var(--ds-typography-line-height-regular);
+  align-items: center;
+}
+.ds-navigation-bar-meta-item__list-item:focus-visible:not([disabled]):not(.ds-navigation-bar-meta-item__parent):not(.ds-navigation-bar-meta-item__child) {
+  --ds-space-inline-end-list-item: 10px;
+}
+.ds-navigation-bar-meta-item__list-item:focus-visible:not([disabled]):not(.ds-navigation-bar-meta-item__parent):not(.ds-navigation-bar-meta-item__child).ds-navigation-bar-meta-item__list-item--expanded {
+  max-width: calc(100% - var(--ds-navigation-bar-button-width));
+}
+.ds-navigation-bar-meta-item__list-item--expanded {
+  width: initial;
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-navigation-bar-top-action),
+.ds-navigation-bar-top-action {
+  display: flex;
+  height: var(--ds-space-10x);
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 calc(var(--ds-space-inline-start-nav-item) / 2);
+  cursor: pointer;
+}
+:host(ds-navigation-bar-top-action):hover .ds-button,
+.ds-navigation-bar-top-action:hover .ds-button {
+  background-color: var(--ds-color-surface-button-primary-hover);
+  border-color: var(--ds-color-border-button-primary-hover);
+  color: var(--ds-color-typography-button-primary);
+  text-decoration: none;
+  z-index: var(--ds-z-index-content-base);
+}
+:host(ds-navigation-bar-top-action) .ds-navigation-bar-top-action__button--expanded,
+.ds-navigation-bar-top-action .ds-navigation-bar-top-action__button--expanded {
+  width: 100%;
+}
+:host(ds-navigation-bar-top-action):not(:first-of-type),
+.ds-navigation-bar-top-action:not(:first-of-type) {
+  display: none;
+  visibility: hidden;
+}

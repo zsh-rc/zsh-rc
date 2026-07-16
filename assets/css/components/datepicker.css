@@ -1,0 +1,45 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+:host(ds-datepicker).ds-datepicker--non-typeable ::ng-deep .ds-input.ds-input-wrapper,
+.ds-datepicker.ds-datepicker--non-typeable ::ng-deep .ds-input.ds-input-wrapper {
+  cursor: pointer;
+  background-color: var(--ds-color-surface-input-alt);
+  transition: all 150ms ease-in-out;
+}
+:host(ds-datepicker).ds-datepicker--non-typeable ::ng-deep .ds-input.ds-input-wrapper:hover,
+.ds-datepicker.ds-datepicker--non-typeable ::ng-deep .ds-input.ds-input-wrapper:hover {
+  background-color: var(--ds-color-surface-input-hover);
+  border: 1px solid var(--ds-color-border-input-hover);
+  outline: 0;
+}
+:host(ds-datepicker).ds-datepicker--non-typeable ::ng-deep .ds-input.ds-input-wrapper input,
+.ds-datepicker.ds-datepicker--non-typeable ::ng-deep .ds-input.ds-input-wrapper input {
+  cursor: pointer;
+}
+:host(ds-datepicker).ds-datepicker--non-typeable--supressed-hover ::ng-deep .ds-input.ds-input-wrapper:hover,
+.ds-datepicker.ds-datepicker--non-typeable--supressed-hover ::ng-deep .ds-input.ds-input-wrapper:hover {
+  background-color: var(--ds-color-surface-input-alt);
+  border: 1px solid var(--ds-color-border-input);
+  outline: 0;
+}
+:host(ds-datepicker).ds-datepicker--non-typeable.ds-datepicker--readonly ::ng-deep .ds-input.ds-input-wrapper,
+.ds-datepicker.ds-datepicker--non-typeable.ds-datepicker--readonly ::ng-deep .ds-input.ds-input-wrapper {
+  cursor: default;
+}
+:host(ds-datepicker).ds-datepicker--non-typeable.ds-datepicker--readonly ::ng-deep .ds-input.ds-input-wrapper input,
+.ds-datepicker.ds-datepicker--non-typeable.ds-datepicker--readonly ::ng-deep .ds-input.ds-input-wrapper input {
+  cursor: default;
+}
+:host(ds-datepicker) input,
+.ds-datepicker input {
+  border: none;
+  background: transparent;
+}
+:host(ds-datepicker) ds-form-field,
+.ds-datepicker ds-form-field {
+  display: flex;
+}

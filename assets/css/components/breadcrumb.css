@@ -1,0 +1,87 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-breadcrumb),
+.ds-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-breadcrumb-item),
+.ds-breadcrumb-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  line-height: var(--ds-space-6x);
+  color: var(--ds-color-typography-neutral);
+  font-size: var(--ds-typography-size-label);
+  margin-right: var(--ds-space-1x);
+}
+:host(ds-breadcrumb-item).ds-breadcrumb-item--link:not(.ds-breadcrumb-item--non-clickable),
+.ds-breadcrumb-item.ds-breadcrumb-item--link:not(.ds-breadcrumb-item--non-clickable) {
+  cursor: pointer;
+  text-decoration: underline;
+}
+:host(ds-breadcrumb-item).ds-breadcrumb-item--link:not(.ds-breadcrumb-item--non-clickable) ::ng-deep a,
+.ds-breadcrumb-item.ds-breadcrumb-item--link:not(.ds-breadcrumb-item--non-clickable) ::ng-deep a {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: var(--ds-color-typography-neutral);
+}
+:host(ds-breadcrumb-item).ds-breadcrumb-item--link:not(.ds-breadcrumb-item--non-clickable) ::ng-deep a:focus-visible,
+.ds-breadcrumb-item.ds-breadcrumb-item--link:not(.ds-breadcrumb-item--non-clickable) ::ng-deep a:focus-visible {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+}
+:host(ds-breadcrumb-item).ds-breadcrumb-item--link:not(.ds-breadcrumb-item--non-clickable) ::ng-deep a:focus:not(:focus-visible),
+.ds-breadcrumb-item.ds-breadcrumb-item--link:not(.ds-breadcrumb-item--non-clickable) ::ng-deep a:focus:not(:focus-visible) {
+  outline: none;
+}
+:host(ds-breadcrumb-item).ds-breadcrumb-item--link:not(.ds-breadcrumb-item--non-clickable) .ds-breadcrumb-item__content:hover,
+.ds-breadcrumb-item.ds-breadcrumb-item--link:not(.ds-breadcrumb-item--non-clickable) .ds-breadcrumb-item__content:hover {
+  color: var(--ds-color-typography-action);
+}
+:host(ds-breadcrumb-item).ds-breadcrumb-item--link:not(.ds-breadcrumb-item--non-clickable) .ds-breadcrumb-item__content:hover ::ng-deep a,
+.ds-breadcrumb-item.ds-breadcrumb-item--link:not(.ds-breadcrumb-item--non-clickable) .ds-breadcrumb-item__content:hover ::ng-deep a {
+  color: var(--ds-color-typography-action);
+}
+:host(ds-breadcrumb-item).ds-breadcrumb-item--last,
+.ds-breadcrumb-item.ds-breadcrumb-item--last {
+  color: var(--ds-color-typography-base);
+  font-weight: var(--ds-typography-weight-strong);
+  pointer-events: none;
+}
+:host(ds-breadcrumb-item).ds-breadcrumb-item--last ::ng-deep a,
+.ds-breadcrumb-item.ds-breadcrumb-item--last ::ng-deep a {
+  display: block;
+  text-decoration: none;
+  color: var(--ds-color-typography-base);
+  pointer-events: none;
+}
+:host(ds-breadcrumb-item).ds-breadcrumb-item--hidden,
+.ds-breadcrumb-item.ds-breadcrumb-item--hidden {
+  display: none;
+}
+:host(ds-breadcrumb-item).ds-breadcrumb-item:focus-visible,
+.ds-breadcrumb-item.ds-breadcrumb-item:focus-visible {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+}
+:host(ds-breadcrumb-item).ds-breadcrumb-item:focus:not(:focus-visible),
+.ds-breadcrumb-item.ds-breadcrumb-item:focus:not(:focus-visible) {
+  outline: none;
+}
+:host(ds-breadcrumb-item).ds-breadcrumb-item .ds-breadcrumb-item__icon-box,
+.ds-breadcrumb-item.ds-breadcrumb-item .ds-breadcrumb-item__icon-box {
+  cursor: default;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--ds-space-1x);
+}

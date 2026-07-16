@@ -1,0 +1,19 @@
+@use '../../density-styles-sass' as *;
+
+$hint-states: (
+  'neutral': (
+    'color': var(--#{$prefix}color-text-hint-neutral),
+  ),
+  'info': (
+    'color': var(--#{$prefix}color-text-hint-info),
+  ),
+  'positive': (
+    'color': var(--#{$prefix}color-text-hint-positive),
+  ),
+  'caution': (
+    'color': var(--#{$prefix}color-text-hint-caution),
+  ),
+  'critical': (
+    'color': var(--#{$prefix}color-text-hint-critical),
+  ),
+);

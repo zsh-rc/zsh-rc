@@ -1,0 +1,105 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-icon),
+.ds-icon {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+}
+:host(ds-icon).ds-icon,
+.ds-icon.ds-icon {
+  align-items: center;
+  display: inline-flex;
+  fill: currentColor;
+  height: var(--ds-icon-size-medium);
+  justify-content: center;
+  width: var(--ds-icon-size-medium);
+}
+:host(ds-icon).ds-icon--xs,
+.ds-icon.ds-icon--xs {
+  height: var(--ds-icon-size-xsmall);
+  width: var(--ds-icon-size-xsmall);
+  min-width: var(--ds-icon-size-xsmall);
+}
+:host(ds-icon).ds-icon--sm,
+.ds-icon.ds-icon--sm {
+  height: var(--ds-icon-size-small);
+  width: var(--ds-icon-size-small);
+  min-width: var(--ds-icon-size-small);
+}
+:host(ds-icon).ds-icon--md,
+.ds-icon.ds-icon--md {
+  height: var(--ds-icon-size-medium);
+  width: var(--ds-icon-size-medium);
+  min-width: var(--ds-icon-size-medium);
+}
+:host(ds-icon).ds-icon--lg,
+.ds-icon.ds-icon--lg {
+  height: var(--ds-icon-size-large);
+  width: var(--ds-icon-size-large);
+  min-width: var(--ds-icon-size-large);
+}
+:host(ds-icon).ds-icon--tone-base,
+.ds-icon.ds-icon--tone-base {
+  color: var(--ds-color-icon-base);
+}
+:host(ds-icon).ds-icon--tone-invert,
+.ds-icon.ds-icon--tone-invert {
+  color: var(--ds-color-icon-invert);
+}
+:host(ds-icon).ds-icon--tone-neutral,
+.ds-icon.ds-icon--tone-neutral {
+  color: var(--ds-color-icon-neutral);
+}
+:host(ds-icon).ds-icon--tone-action,
+.ds-icon.ds-icon--tone-action {
+  color: var(--ds-color-icon-action);
+}
+:host(ds-icon).ds-icon--tone-info,
+.ds-icon.ds-icon--tone-info {
+  color: var(--ds-color-icon-info);
+}
+:host(ds-icon).ds-icon--tone-positive,
+.ds-icon.ds-icon--tone-positive {
+  color: var(--ds-color-icon-positive);
+}
+:host(ds-icon).ds-icon--tone-caution,
+.ds-icon.ds-icon--tone-caution {
+  color: var(--ds-color-icon-caution);
+}
+:host(ds-icon).ds-icon--tone-critical,
+.ds-icon.ds-icon--tone-critical {
+  color: var(--ds-color-icon-critical);
+}
+:host(ds-icon).ds-icon--tone-critical-active,
+.ds-icon.ds-icon--tone-critical-active {
+  color: var(--ds-color-icon-critical-active);
+}
+:host(ds-icon).ds-icon--tone-critical-hover,
+.ds-icon.ds-icon--tone-critical-hover {
+  color: var(--ds-color-icon-critical-hover);
+}
+:host(ds-icon).ds-icon--tone-custom,
+.ds-icon.ds-icon--tone-custom {
+  color: var(--ds-color-icon-custom);
+}
+:host(ds-icon).ds-icon--tone-disabled,
+.ds-icon.ds-icon--tone-disabled {
+  color: var(--ds-color-icon-disabled);
+}
+:host(ds-icon).ds-icon--tone-inherit,
+.ds-icon.ds-icon--tone-inherit {
+  color: currentColor;
+}
+:host(ds-icon).ds-icon svg,
+.ds-icon.ds-icon svg {
+  height: 100%;
+  width: 100%;
+}
+
+/* CSS selector for independent library use without Shadow DOM */

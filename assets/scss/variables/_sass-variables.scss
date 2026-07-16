@@ -1,0 +1,295 @@
+@use 'sass:map';
+@use '../functions/functions' as *;
+@use 'sass:math';
+@use 'sass:list';
+@use 'sass:string';
+
+// Whole or parts of this file is based on Bootstrap. Bootstrap is licensed MIT. https://github.com/twbs/bootstrap
+
+$prefix: ds- !default;
+
+$enable-negative-margins: true;
+
+// Position
+//
+// Define the edge positioning anchors of the position utilities.
+
+// scss-docs-start position-map
+$position-values: (
+  0: 0,
+  50: 50%,
+  100: 100%,
+) !default;
+// scss-docs-end position-map
+
+// scss-docs-start border-widths-map
+$border-widths: (
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px,
+  //extend with Density semantic
+  'divider': var(--#{$prefix}shape-line-divider),
+  'accent-bar': var(--#{$prefix}shape-line-accent-bar),
+) !default;
+// scss-docs-end border-widths-map
+
+// scss-docs-start theme-colors-map
+$theme-colors: (
+  'primary': var(--#{$prefix}color-primary),
+  'secondary': var(--#{$prefix}color-secondary),
+  'success': var(--#{$prefix}color-success),
+  'info': var(--#{$prefix}color-info),
+  'warning': var(--#{$prefix}color-warning),
+  'danger': var(--#{$prefix}color-danger),
+  'light': var(--#{$prefix}color-light),
+  'dark': var(--#{$prefix}color-dark),
+) !default;
+// scss-docs-end theme-colors-map
+
+// scss-docs-start border-colors-map
+$border-colors: (
+  'base': var(--#{$prefix}color-border-base),
+  'action': var(--#{$prefix}color-border-action),
+  'action-mild': var(--#{$prefix}color-border-action-mild),
+  'neutral': var(--#{$prefix}color-border-neutral),
+  'neutral-medium': var(--#{$prefix}color-border-neutral-medium),
+  'neutral-strong': var(--#{$prefix}color-border-neutral-strong),
+  'info': var(--#{$prefix}color-border-info),
+  'info-mild': var(--#{$prefix}color-border-info-mild),
+  'info-strong': var(--#{$prefix}color-border-info-strong),
+  'positive': var(--#{$prefix}color-border-positive),
+  'positive-mild': var(--#{$prefix}color-border-positive-mild),
+  'positive-strong': var(--#{$prefix}color-border-positive-strong),
+  'caution': var(--#{$prefix}color-border-caution),
+  'caution-mild': var(--#{$prefix}color-border-caution-mild),
+  'caution-strong': var(--#{$prefix}color-border-caution-strong),
+  'critical': var(--#{$prefix}color-border-critical),
+  'critical-mild': var(--#{$prefix}color-border-critical-mild),
+  'transparent': var(--#{$prefix}color-border-transparent),
+) !default;
+// scss-docs-end border-colors-map
+
+// scss-docs-start text-colors-map
+$text-colors: (
+  'base': var(--#{$prefix}color-typography-base),
+  'invert': var(--#{$prefix}color-typography-invert),
+  'action': var(--#{$prefix}color-typography-action),
+  'action-hover': var(--#{$prefix}color-typography-action-hover),
+  'action-active': var(--#{$prefix}color-typography-action-active),
+  'neutral': var(--#{$prefix}color-typography-neutral),
+  'info': var(--#{$prefix}color-typography-info),
+  'positive': var(--#{$prefix}color-typography-positive),
+  'caution': var(--#{$prefix}color-typography-caution),
+  'critical': var(--#{$prefix}color-typography-critical),
+  'critical-active': var(--#{$prefix}color-typography-critical-active),
+  'critical-hover': var(--#{$prefix}color-typography-critical-hover),
+  'disabled': var(--#{$prefix}color-typography-disabled),
+) !default;
+
+// scss-docs-start surface-colors-map
+$surface-colors: (
+  'base': var(--#{$prefix}color-surface-base),
+  'invert': var(--#{$prefix}color-surface-invert),
+  'page': var(--#{$prefix}color-surface-page),
+  'action': var(--#{$prefix}color-surface-action),
+  'action-hover': var(--#{$prefix}color-surface-action-hover),
+  'action-active': var(--#{$prefix}color-surface-action-active),
+  'action-mild': var(--#{$prefix}color-surface-action-mild),
+  'action-mild-hover': var(--#{$prefix}color-surface-action-mild-hover),
+  'action-strong': var(--#{$prefix}color-surface-action-strong),
+  'action-strong-hover': var(--#{$prefix}color-surface-action-strong-hover),
+  'action-strong-active': var(--#{$prefix}color-surface-action-strong-active),
+  'neutral': var(--#{$prefix}color-surface-neutral),
+  'neutral-mild': var(--#{$prefix}color-surface-neutral-mild),
+  'neutral-mild-hover': var(--#{$prefix}color-surface-neutral-mild-hover),
+  'neutral-strong': var(--#{$prefix}color-surface-neutral-strong),
+  'neutral-strong-hover': var(--#{$prefix}color-surface-neutral-strong-hover),
+  'info': var(--#{$prefix}color-surface-info),
+  'info-mild': var(--#{$prefix}color-surface-info-mild),
+  'info-mild-hover': var(--#{$prefix}color-surface-info-mild-hover),
+  'info-strong': var(--#{$prefix}color-surface-info-strong),
+  'info-strong-hover': var(--#{$prefix}color-surface-info-strong-hover),
+  'positive': var(--#{$prefix}color-surface-positive),
+  'positive-mild': var(--#{$prefix}color-surface-positive-mild),
+  'positive-mild-hover': var(--#{$prefix}color-surface-positive-mild-hover),
+  'positive-strong': var(--#{$prefix}color-surface-positive-strong),
+  'positive-strong-hover': var(--#{$prefix}color-surface-positive-strong-hover),
+  'caution': var(--#{$prefix}color-surface-caution),
+  'caution-mild': var(--#{$prefix}color-surface-caution-mild),
+  'caution-mild-hover': var(--#{$prefix}color-surface-caution-mild-hover),
+  'caution-strong': var(--#{$prefix}color-surface-caution-strong),
+  'caution-strong-hover': var(--#{$prefix}color-surface-caution-strong-hover),
+  'critical': var(--#{$prefix}color-surface-critical),
+  'critical-mild': var(--#{$prefix}color-surface-critical-mild),
+  'critical-mild-hover': var(--#{$prefix}color-surface-critical-mild-hover),
+  'critical-strong': var(--#{$prefix}color-surface-critical-strong),
+  'disabled': var(--#{$prefix}color-surface-disabled),
+  'transparent': var(--#{$prefix}color-surface-transparent),
+) !default;
+// scss-docs-end surface-colors-map
+
+// scss-docs-start elevation-map
+$elevation: (
+  '0': var(--#{$prefix}elevation-0),
+  '1': var(--#{$prefix}elevation-1),
+  '2': var(--#{$prefix}elevation-2),
+  '3': var(--#{$prefix}elevation-3),
+  '4': var(--#{$prefix}elevation-4),
+  '5': var(--#{$prefix}elevation-5),
+  '6': var(--#{$prefix}elevation-6),
+  '7': var(--#{$prefix}elevation-7),
+  '8': var(--#{$prefix}elevation-8),
+  'none': var(--#{$prefix}elevation-none),
+  'base': var(--#{$prefix}elevation-base),
+  'component': var(--#{$prefix}elevation-component),
+  'temporary': var(--#{$prefix}elevation-temporary),
+  'navigation': var(--#{$prefix}elevation-navigation),
+  'notification': var(--#{$prefix}elevation-notification),
+  'modal': var(--#{$prefix}elevation-modal),
+) !default;
+
+$elevation-effects: (
+  //This was edited a bit by hand to make it as close as possible with the look and feel of density
+  // [ (distance, blur, alpha), ...)]
+  '1': ((0, 1px, 0.15), (1px, 1px, 0.15)),
+  '2': ((0, 1px, 0.15), (2px, 2px, 0.11)),
+  '3': ((0, 1px, 0.2), (1px, 3px, 0.12), (2px, 7px, 0.12)),
+  '4': ((0, 1px, 0.2), (2px, 7px, 0.1), (8px, 14px, 0.1)),
+  '5': ((0, 1px, 0.2), (2px, 7px, 0.1), (4px, 15px, 0.1), (6px, 31px, 0.1)),
+  '6': ((0, 1px, 0.2), (4px, 15px, 0.1), (6px, 31px, 0.1), (8px, 39px, 0.1)),
+  '7': ((0, 1px, 0.2), (6px, 31px, 0.1), (8px, 39px, 0.1), (10px, 47px, 0.1)),
+  '8': ((0, 1px, 0.2), (8px, 39px, 0.1), (10px, 47px, 0.1), (12px, 55px, 0.1))
+);
+
+@function box-shadow-value($elevation-key, $xf: 0, $yf: 1, $max-parts: 10, $bf: 2) {
+  $parts: map.get($elevation-effects, $elevation-key);
+  $af: 1;
+  $end: min($max-parts, list.length($parts));
+  $res: '';
+  @for $i from 1 through $end {
+    $bs: list.nth($parts, $i);
+    $res: '#{$res},#{list.nth($bs, 1) * $xf} #{list.nth($bs, 1) * $yf} #{list.nth($bs, 2) * $bf} 0 rgba(0, 0, 0, #{list.nth($bs, 3) * $af})';
+  }
+  @return string.unquote(string.slice($res, 2));
+}
+
+// scss-docs-end elevation-map
+
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+
+// scss-docs-start spacer-variables-maps
+$spacers: (
+  '0x': var(--#{$prefix}space-0x),
+  '05x': var(--#{$prefix}space-05x),
+  '1x': var(--#{$prefix}space-1x),
+  '2x': var(--#{$prefix}space-2x),
+  '3x': var(--#{$prefix}space-3x),
+  '4x': var(--#{$prefix}space-4x),
+  '5x': var(--#{$prefix}space-5x),
+  '6x': var(--#{$prefix}space-6x),
+  '7x': var(--#{$prefix}space-7x),
+  '8x': var(--#{$prefix}space-8x),
+  '9x': var(--#{$prefix}space-9x),
+  '10x': var(--#{$prefix}space-10x),
+  '11x': var(--#{$prefix}space-11x),
+  '12x': var(--#{$prefix}space-12x),
+  '13x': var(--#{$prefix}space-13x),
+  '14x': var(--#{$prefix}space-14x),
+  '15x': var(--#{$prefix}space-15x),
+  '16x': var(--#{$prefix}space-16x),
+  '17x': var(--#{$prefix}space-17x),
+  '18x': var(--#{$prefix}space-18x),
+  //wip for global naming
+  'xs': var(--#{$prefix}space-2x),
+  'sm': var(--#{$prefix}space-4x),
+  'md': var(--#{$prefix}space-6x),
+  'lg': var(--#{$prefix}space-8x),
+  'xl': var(--#{$prefix}space-12x),
+) !default;
+
+$negative-spacers: null !default;
+@if $enable-negative-margins {
+  $negative-spacers: negativify-map($spacers);
+}
+// scss-docs-end spacer-variables-maps
+
+// scss-docs-start font-sizes
+$font-sizes: (
+  //map to vars
+  1: var(--#{$prefix}typography-size-01),
+  2: var(--#{$prefix}typography-size-02),
+  3: var(--#{$prefix}typography-size-03),
+  4: var(--#{$prefix}typography-size-04),
+  5: var(--#{$prefix}typography-size-05),
+  6: var(--#{$prefix}typography-size-06),
+  7: var(--#{$prefix}typography-size-07),
+  8: var(--#{$prefix}typography-size-08),
+  9: var(--#{$prefix}typography-size-09),
+  10: var(--#{$prefix}typography-size-10),
+  11: var(--#{$prefix}typography-size-11),
+  12: var(--#{$prefix}typography-size-12),
+  13: var(--#{$prefix}typography-size-13),
+  14: var(--#{$prefix}typography-size-14),
+  15: var(--#{$prefix}typography-size-15),
+  //map to globals
+  'smallprint': var(--#{$prefix}typography-size-smallprint),
+  'label': var(--#{$prefix}typography-size-label),
+  'regular': var(--#{$prefix}typography-size-regular),
+  'paragraph': var(--#{$prefix}typography-size-paragraph),
+  'title-xs': var(--#{$prefix}typography-size-title-xs),
+  'title-sm': var(--#{$prefix}typography-size-title-sm),
+  'title-md': var(--#{$prefix}typography-size-title-md),
+  'title-lg': var(--#{$prefix}typography-size-title-lg)
+) !default;
+// scss-docs-end font-sizes
+
+// scss-docs-start grid-breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+) !default;
+// scss-docs-end grid-breakpoints
+
+$enable-important-utilities: true !default;
+
+$enable-grid-classes: true !default;
+$grid-columns: 12 !default;
+$grid-row-columns: 6 !default;
+
+$gutters: (
+  0: 0,
+  2x: var(--#{$prefix}space-2x),
+  4x: var(--#{$prefix}space-4x),
+  6x: var(--#{$prefix}space-6x),
+  8x: var(--#{$prefix}space-8x),
+  10x: var(--#{$prefix}space-10x),
+  xs: var(--#{$prefix}space-2x),
+  sm: var(--#{$prefix}space-4x),
+  md: var(--#{$prefix}space-6x),
+  lg: var(--#{$prefix}space-8x),
+  xl: var(--#{$prefix}space-10x),
+) !default;
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+// scss-docs-start container-max-widths
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+) !default;
+// scss-docs-end container-max-widths

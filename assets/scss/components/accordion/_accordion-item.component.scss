@@ -1,0 +1,122 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}accordion-item),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}accordion-item {
+  --base-padding: 16px;
+  --icon-right-margin: 8px;
+  --header-min-height: 56px;
+  --font-size: 16px;
+  --line-height: 24px;
+  --font-weight: 600;
+  --base-border: 1px solid var(--#{$prefix}color-border-neutral);
+  --actions-max-width: 15%;
+  --arrow-width: 16px;
+  --label-actions-break: 8px;
+
+  --small-padding: 12px var(--base-padding);
+  --small-header-min-height: 48px;
+  --small-font-size: 12px;
+  --small-text-transform: uppercase;
+  --small-line-height: 16px;
+  --small-font-weight: 600;
+
+  --#{$prefix}accordion-item-transition-timing-function: var(--#{$prefix}motion-timing-entrance);
+  --#{$prefix}accordion-item-transition-duration: var(--#{$prefix}motion-duration-quick);
+
+  --#{$prefix}accordion-item-transition-timing-function-entrance: var(--#{$prefix}motion-timing-standard);
+  --#{$prefix}accordion-item-transition-duration-entrance: var(--#{$prefix}motion-duration-standard);
+  --#{$prefix}accordion-item-transition-timing-function-exit: var(--#{$prefix}motion-timing-standard);
+  --#{$prefix}accordion-item-transition-duration-exit: var(--#{$prefix}motion-duration-standard);
+
+  border-top: var(--base-border);
+
+  display: block;
+
+  &:first-of-type {
+    border-top: none;
+  }
+
+  &.#{$prefix}no-motion {
+    --#{$prefix}accordion-item-transition-duration: 0s;
+  }
+}
+
+.#{$prefix}accordion-item {
+  &__wrapper {
+    position: relative;
+
+    --#{$prefix}box-content-padding: 0px;
+    --#{$prefix}box-base-background-color: transparent;
+
+    & .#{$prefix}accordion-item__header {
+      cursor: pointer;
+      user-select: none;
+
+      // states
+      &:focus-visible {
+        outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+        outline-offset: -2px; //TODO: TEMPORARY UNTIL DESIGNERS STUDY THE IMPACT OF THE USER TO INCREASE THE OUTLINE OFFSET, TALK TO RSF FOR MORE INFO
+      }
+
+      &:focus:not(:focus-visible) {
+        outline: none;
+      }
+
+      &:hover {
+        background-color: var(--#{$prefix}color-surface-neutral);
+      }
+
+      &--disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+
+        &:hover {
+          background-color: inherit;
+        }
+      }
+
+      ::ng-deep > .#{$prefix}box-header__item > .#{$prefix}box-header__header-wrapper > .#{$prefix}box-header__arrow {
+        margin-right: var(--icon-right-margin);
+        transform: rotate(-90deg);
+        transition: transform var(--#{$prefix}accordion-item-transition-duration)
+          var(--#{$prefix}accordion-item-transition-timing-function);
+      }
+
+      &.#{$prefix}accordion-item__header--opened {
+        ::ng-deep {
+          color: var(--#{$prefix}box-header-active-color);
+
+          > .#{$prefix}box-header__item > .#{$prefix}box-header__header-wrapper > #{$prefix}icon {
+            --#{$prefix}box-header-icon-color: var(--#{$prefix}box-header-active-color);
+
+            &.#{$prefix}box-header__arrow {
+              transform: rotate(0deg);
+            }
+          }
+
+          .#{$prefix}box-header__header-wrapper {
+            color: var(--#{$prefix}box-header-active-color);
+          }
+
+          .#{$prefix}panel__header-wrapper {
+            color: var(--#{$prefix}box-header-active-color);
+          }
+        }
+      }
+    }
+  }
+
+  &__content {
+    &--disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    &--closed {
+      display: none;
+    }
+  }
+}

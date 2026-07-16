@@ -1,0 +1,102 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+:host(ds-timepicker),
+.ds-timepicker {
+  flex: 1 1 auto;
+}
+:host(ds-timepicker).ds-timepicker--non-typeable ::ng-deep .ds-input.ds-input-wrapper,
+.ds-timepicker.ds-timepicker--non-typeable ::ng-deep .ds-input.ds-input-wrapper {
+  cursor: pointer;
+  background-color: var(--ds-color-surface-input-alt);
+  transition: all 150ms ease-in-out;
+}
+:host(ds-timepicker).ds-timepicker--non-typeable ::ng-deep .ds-input.ds-input-wrapper:hover,
+.ds-timepicker.ds-timepicker--non-typeable ::ng-deep .ds-input.ds-input-wrapper:hover {
+  background-color: var(--ds-color-surface-input-hover);
+  border: 1px solid var(--ds-color-border-input-hover);
+  outline: 0;
+}
+:host(ds-timepicker).ds-timepicker--non-typeable ::ng-deep .ds-input.ds-input-wrapper input,
+.ds-timepicker.ds-timepicker--non-typeable ::ng-deep .ds-input.ds-input-wrapper input {
+  cursor: pointer;
+}
+:host(ds-timepicker).ds-timepicker--non-typeable--supressed-hover ::ng-deep .ds-input.ds-input-wrapper:hover,
+.ds-timepicker.ds-timepicker--non-typeable--supressed-hover ::ng-deep .ds-input.ds-input-wrapper:hover {
+  background-color: var(--ds-color-surface-input-alt);
+  border: 1px solid var(--ds-color-border-input);
+  outline: 0;
+}
+:host(ds-timepicker).ds-timepicker--non-typeable.ds-timepicker--readonly ::ng-deep .ds-input.ds-input-wrapper,
+.ds-timepicker.ds-timepicker--non-typeable.ds-timepicker--readonly ::ng-deep .ds-input.ds-input-wrapper {
+  cursor: default;
+}
+:host(ds-timepicker).ds-timepicker--non-typeable.ds-timepicker--readonly ::ng-deep .ds-input.ds-input-wrapper input,
+.ds-timepicker.ds-timepicker--non-typeable.ds-timepicker--readonly ::ng-deep .ds-input.ds-input-wrapper input {
+  cursor: default;
+}
+:host(ds-timepicker) ::ng-deep .ds-input.ds-input-wrapper > .ds-input,
+.ds-timepicker ::ng-deep .ds-input.ds-input-wrapper > .ds-input {
+  display: inline-flex;
+  align-items: center;
+  flex: 1 1 auto;
+}
+:host(ds-timepicker) ::ng-deep .ds-input.ds-input-wrapper > .ds-input > input,
+.ds-timepicker ::ng-deep .ds-input.ds-input-wrapper > .ds-input > input {
+  background: transparent;
+  border: 0;
+  height: auto;
+  box-shadow: none;
+  vertical-align: middle;
+  flex: 1 1 auto;
+  width: 100%;
+  color: var(--ds-color-text-input-value);
+}
+:host(ds-timepicker) ::ng-deep .ds-input.ds-input-wrapper > .ds-input > input:focus-visible,
+.ds-timepicker ::ng-deep .ds-input.ds-input-wrapper > .ds-input > input:focus-visible {
+  border: none;
+  outline: none;
+}
+:host(ds-timepicker) ::ng-deep input[disabled],
+.ds-timepicker ::ng-deep input[disabled] {
+  cursor: not-allowed;
+}
+:host(ds-timepicker) ::ng-deep .ds-date-range-separator,
+.ds-timepicker ::ng-deep .ds-date-range-separator {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ds-color-typography-neutral);
+  padding: 0 4px;
+}
+:host(ds-timepicker) ::ng-deep .ds-form-field--disabled .ds-date-range-separator,
+.ds-timepicker ::ng-deep .ds-form-field--disabled .ds-date-range-separator {
+  color: var(--ds-color-typography-button-disabled);
+}
+
+::ng-deep .ds-input.ds-input-wrapper > ds-timepicker,
+::ng-deep .ds-input.ds-input-wrapper .ds-timepicker {
+  height: 100%;
+}
+::ng-deep .ds-input.ds-input-wrapper > ds-timepicker > ds-form-field,
+::ng-deep .ds-input.ds-input-wrapper > ds-timepicker .ds-form-field,
+::ng-deep .ds-input.ds-input-wrapper .ds-timepicker > ds-form-field,
+::ng-deep .ds-input.ds-input-wrapper .ds-timepicker .ds-form-field {
+  height: 100%;
+}
+
+:host(ds-time-value-picker),
+.ds-time-value-picker {
+  display: block;
+  width: 160px;
+}
+:host(ds-time-value-picker) .ds-time-value-picker__menu-actions-wrapper,
+.ds-time-value-picker .ds-time-value-picker__menu-actions-wrapper {
+  padding: var(--ds-space-1x) var(--ds-space-2x);
+}
+:host(ds-time-value-picker).ds-time-value-picker--expand-width,
+.ds-time-value-picker.ds-time-value-picker--expand-width {
+  width: 100%;
+}

@@ -1,0 +1,69 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-tooltip),
+.ds-tooltip {
+  --ds-tooltip-base-padding: 8px;
+  --ds-tooltip-arrow-border-width: 12px;
+  --ds-tooltip-content-background-color: var(--ds-color-surface-tooltip);
+  --ds-tooltip-arrow-color: var(--ds-tooltip-content-background-color);
+  --ds-content-title-text-transform: uppercase;
+  --ds-tooltip-animation-duration: var(--ds-motion-duration-rapid);
+  --ds-tooltip-animation-timing: var(--ds-motion-timing-exit);
+  --ds-tooltip-animation-delay: 0ms;
+  display: flex;
+  pointer-events: auto;
+  width: fit-content;
+  opacity: 0;
+  transition: opacity var(--ds-tooltip-animation-duration) var(--ds-tooltip-animation-timing), transform var(--ds-tooltip-animation-duration) var(--ds-tooltip-animation-timing), visibility var(--ds-tooltip-animation-duration) var(--ds-tooltip-animation-timing);
+}
+:host(ds-tooltip).ds-tooltip--visible,
+.ds-tooltip.ds-tooltip--visible {
+  opacity: 1;
+  --ds-tooltip-animation-duration: var(--ds-motion-duration-rapid);
+  --ds-tooltip-animation-timing: var(--ds-motion-timing-entrance);
+  --ds-tooltip-animation-delay: 0ms;
+}
+:host(ds-tooltip).ds-no-motion,
+.ds-tooltip.ds-no-motion {
+  --ds-tooltip-animation-duration: 0s;
+}
+:host(ds-tooltip).ds-tooltip--defined-width,
+.ds-tooltip.ds-tooltip--defined-width {
+  width: 100%;
+}
+
+.ds-tooltip-wrapper {
+  position: relative;
+  flex: 1;
+  --ds-box-with-arrow-margin: var(--ds-tooltip-base-padding);
+}
+.ds-tooltip-wrapper__content {
+  height: 100%;
+  z-index: var(--ds-z-index-content-base);
+}
+.ds-tooltip-wrapper__title {
+  color: var(--ds-color-text-tooltip);
+  font-family: var(--ds-font-family-tooltip-title);
+  line-height: var(--ds-font-line-height-tooltip-title);
+  font-size: var(--ds-font-size-tooltip-title);
+  font-weight: var(--ds-font-weight-tooltip-title);
+  text-transform: var(--ds-content-title-text-transform);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ds-tooltip-wrapper__text {
+  color: var(--ds-color-text-tooltip);
+  font-family: var(--ds-font-family-tooltip);
+  line-height: var(--ds-font-line-height-tooltip);
+  font-size: var(--ds-font-size-tooltip);
+  font-weight: var(--ds-font-weight-tooltip);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

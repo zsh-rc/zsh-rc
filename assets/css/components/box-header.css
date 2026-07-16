@@ -1,0 +1,158 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-box-header),
+.ds-box-header {
+  --ds-box-header-base-padding: 16px;
+  --ds-box-header-min-height: 56px;
+  --ds-box-header-font-size: 16px;
+  --ds-box-header-line-height: 24px;
+  --ds-box-header-font-weight: 600;
+  --ds-box-header-base-color: var(--ds-color-typography-base);
+  --ds-box-header-active-color: var(--ds-color-typography-action-active);
+  --ds-box-header-focus-outline: 2px solid var(--ds-color-outline-box);
+  --ds-box-header-actions-max-width: 80px;
+  --ds-box-header-arrow-width: 20px;
+  --ds-box-header-label-actions-break: var(--ds-space-inline-gap-box-header);
+  --ds-box-header-align-items: flex-start;
+  --ds-box-header-icon-right-margin: 8px;
+  --ds-box-header-icon-color: var(--ds-box-header-base-color);
+  --ds-box-header-small-padding: 12px var(--ds-box-header-base-padding);
+  --ds-box-header-small-header-min-height: 48px;
+  --ds-box-header-small-font-size: 12px;
+  --ds-box-header-small-text-transform: uppercase;
+  --ds-box-header-small-line-height: 16px;
+  --ds-box-header-small-font-weight: 600;
+  --ds-box-header-small-arrow-width: 16px;
+  --ds-box-header-icon-y-margin: 2px;
+  --ds-box-header-button-y-margin: -4px;
+  --ds-box-header-button-x-margin: -6px;
+  --ds-box-header-small-padding: 12px var(--ds-box-header-base-padding);
+  --ds-box-header-small-header-min-height: 48px;
+  --ds-box-header-small-font-size: 12px;
+  --ds-box-header-small-text-transform: uppercase;
+  --ds-box-header-small-line-height: 16px;
+  --ds-box-header-small-font-weight: 600;
+  --ds-box-header-small-arrow-width: 16px;
+  --ds-box-header-icon-y-margin: 2px;
+  --ds-box-header-button-y-margin: -4px;
+  --ds-box-header-button-x-margin: -6px;
+  display: block;
+}
+:host(ds-box-header):first-of-type,
+.ds-box-header:first-of-type {
+  border-top: none;
+}
+
+.ds-box-header {
+  position: relative;
+}
+.ds-box-header__item {
+  width: 100%;
+  min-height: var(--ds-box-header-min-height);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: var(--ds-box-header-base-padding);
+  overflow: hidden;
+}
+.ds-box-header__item--with-actions {
+  justify-content: space-between;
+}
+.ds-box-header__item__close-button-wrapper {
+  display: flex;
+  margin-left: var(--ds-space-inline-couple-box-header);
+}
+.ds-box-header__item__close-button {
+  margin-top: var(--ds-box-header-button-y-margin);
+  margin-right: var(--ds-box-header-button-x-margin);
+  margin-bottom: var(--ds-box-header-button-y-margin);
+}
+.ds-box-header__item__close-button--with-label {
+  min-width: fit-content;
+}
+.ds-box-header__item .ds-box-header__header-wrapper > ds-icon {
+  fill: var(--ds-box-header-icon-color);
+  color: var(--ds-box-header-icon-color);
+  margin-right: var(--ds-box-header-icon-right-margin);
+  margin-top: var(--ds-box-header-icon-y-margin);
+  margin-bottom: var(--ds-box-header-icon-y-margin);
+}
+.ds-box-header__item .ds-box-header__header-wrapper > ds-icon.ds-box-header__arrow--only-child {
+  margin-right: 0;
+}
+.ds-box-header__item:focus {
+  outline: var(--ds-box-header-focus-outline);
+}
+.ds-box-header__item--allow-overflow {
+  overflow: visible;
+}
+.ds-box-header__item--disabled {
+  opacity: 0.5;
+}
+.ds-box-header__item--small {
+  min-height: var(--ds-box-header-small-header-min-height);
+  padding: var(--ds-box-header-small-padding);
+}
+.ds-box-header__item--small .ds-box-header__header-wrapper > ds-icon {
+  margin-top: calc((var(--ds-box-header-small-line-height) - var(--ds-box-header-small-font-weight)) / 2);
+  margin-bottom: 0;
+}
+.ds-box-header__item--small .ds-box-header__header-wrapper {
+  font-size: var(--ds-box-header-small-font-size);
+  font-weight: var(--ds-box-header-small-font-weight);
+  line-height: var(--ds-box-header-small-line-height);
+  text-transform: var(--ds-box-header-small-text-transform);
+}
+.ds-box-header__item--small .ds-box-header__label-wrapper {
+  max-width: calc(100% - var(--ds-box-header-small-arrow-width) - var(--ds-box-header-icon-right-margin));
+}
+.ds-box-header__actions {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: var(--ds-box-header-label-actions-break);
+  margin-top: var(--ds-box-header-button-y-margin);
+  margin-bottom: var(--ds-box-header-button-y-margin);
+}
+.ds-box-header__label-wrapper {
+  flex: 1 1 auto;
+}
+.ds-box-header__label-wrapper--truncate {
+  overflow: hidden;
+}
+.ds-box-header__label-wrapper--truncate ::ng-deep span,
+.ds-box-header__label-wrapper--truncate ::ng-deep h2,
+.ds-box-header__label-wrapper--truncate ::ng-deep h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ds-box-header__label-wrapper ::ng-deep span,
+.ds-box-header__label-wrapper ::ng-deep h2,
+.ds-box-header__label-wrapper ::ng-deep h3 {
+  color: inherit;
+  cursor: inherit;
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.ds-box-header__header-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: var(--ds-box-header-align-items);
+  flex-grow: 1;
+  width: 100%;
+  overflow: hidden;
+  color: var(--ds-box-header-base-color);
+  font-size: var(--ds-box-header-font-size);
+  font-weight: var(--ds-box-header-font-weight);
+  line-height: var(--ds-box-header-line-height);
+}
+.ds-box-header__header-wrapper--with-actions {
+  overflow: visible;
+}

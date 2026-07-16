@@ -1,0 +1,13 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-accordion),
+.ds-accordion {
+  display: block;
+}
+
+/* TODO */

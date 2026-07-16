@@ -1,0 +1,42 @@
+@use '../../density-styles-sass' as *;
+
+:host(#{$prefix}segmented-control),
+.#{$prefix}segmented-control {
+  background-color: var(--#{$prefix}color-surface-segmented-control-container);
+  border-radius: var(--#{$prefix}shape-radius-segmented-control-item);
+  height: var(--#{$prefix}shape-size-ymin-segmented-control-item);
+  border-color: var(--#{$prefix}color-border-segmented-control-container);
+  display: flex;
+  white-space: nowrap;
+
+  &.#{$prefix}segmented-control--sm {
+    height: var(--#{$prefix}shape-size-ymin-segmented-control-item-sm);
+  }
+
+  &.#{$prefix}segmented-control--lg {
+    height: var(--#{$prefix}shape-size-ymin-segmented-control-item-lg);
+  }
+
+  &.#{$prefix}segmented-control--fit-to-content {
+    width: fit-content;
+    max-width: -webkit-fill-available;
+    ::ng-deep .#{$prefix}segmented-control-item {
+      flex: 1 1 auto;
+      min-width: 0;
+
+      ::ng-deep .#{$prefix}button--toggle {
+        justify-content: center;
+
+        &.has-no-content.has-icon.#{$prefix}button--sm {
+          --#{$prefix}space-inline-couple-button: var(--#{$prefix}space-1x);
+        }
+        &.has-no-content.has-icon.#{$prefix}button--md {
+          --#{$prefix}space-inline-couple-button: calc(var(--#{$prefix}space-2x) - 2px);
+        }
+        &.has-no-content.has-icon.#{$prefix}button--lg {
+          --#{$prefix}space-inline-couple-button: var(--#{$prefix}space-2x);
+        }
+      }
+    }
+  }
+}

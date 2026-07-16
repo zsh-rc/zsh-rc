@@ -1,0 +1,22 @@
+@use 'sass:map';
+@use '../variables/sass-variables' as sass_vars;
+
+$z-indexes: (
+  content: var(--#{sass_vars.$prefix}z-index-content-base),
+  header: var(--#{sass_vars.$prefix}z-index-header-base),
+  tooltip: var(--#{sass_vars.$prefix}z-index-tooltip-base),
+  modal: var(--#{sass_vars.$prefix}z-index-modal-base),
+  sky: var(--#{sass_vars.$prefix}z-index-sky-base),
+  below: var(--#{sass_vars.$prefix}z-index-below),
+  above: var(--#{sass_vars.$prefix}z-index-above),
+);
+
+@function z-index($keys...) {
+  $value: $z-indexes;
+
+  @each $key in $keys {
+    $value: map.get($value, $key);
+  }
+
+  @return $value;
+}

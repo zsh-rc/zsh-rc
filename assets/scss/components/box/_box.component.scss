@@ -1,0 +1,550 @@
+@use '../../density-styles-sass' as *;
+@use '../box/box.utilities' as *;
+@use '../../utilities/sass_utilities' as *;
+
+@mixin arrow-shadows($elevation-key) {
+  > .#{$prefix}box__arrow {
+    &--left {
+      box-shadow: box-shadow-value($elevation-key, 0, -1, 2);
+    }
+
+    &--top {
+      box-shadow: box-shadow-value($elevation-key, -1, 1, 2);
+    }
+
+    &--right {
+      box-shadow: box-shadow-value($elevation-key, 1, 0, 2);
+    }
+
+    &--bottom {
+      box-shadow: box-shadow-value($elevation-key, 1, -1, 2);
+    }
+  }
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}box),
+
+  /* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}box {
+  --#{$prefix}box-base-padding: 16px;
+  --#{$prefix}box-content-padding: 16px;
+  --#{$prefix}box-footer-attached-background: var(--#{$prefix}color-surface-box-footer-attached);
+  --#{$prefix}box-footer-attached-divider: var(--#{$prefix}color-border-box-neutral);
+  --#{$prefix}box-footer-border-top: 1px solid var(--#{$prefix}box-footer-attached-divider);
+
+  --#{$prefix}box-accent-bar-base-width: 4px;
+  --#{$prefix}box-accent-bar-width: var(--#{$prefix}box-accent-bar-base-width);
+  --#{$prefix}box-accent-bar-style: solid;
+  --#{$prefix}box-accent-bar-color: transparent;
+
+  --#{$prefix}box-border-radius: var(--#{$prefix}shape-radius-box);
+  --#{$prefix}box-box-shadow: var(--#{$prefix}elevation-modal);
+  --#{$prefix}box-disabled-opacity: 0.5;
+  --#{$prefix}box-with-arrow-margin: var(--#{$prefix}box-base-padding);
+
+  --#{$prefix}box-arrow-size: var(--#{$prefix}space-3x);
+  --#{$prefix}box-arrow-offset-spacing: var(--#{$prefix}box-arrow-size);
+
+  --#{$prefix}box-base-background-color: var(--#{$prefix}color-surface-box-default);
+
+  --#{$prefix}box-color-positive: var(--#{$prefix}color-surface-positive-strong);
+  --#{$prefix}box-color-caution: var(--#{$prefix}color-surface-caution-strong);
+  --#{$prefix}box-color-critical: var(--#{$prefix}color-surface-critical-strong);
+  --#{$prefix}box-color-info: var(--#{$prefix}color-surface-info-strong);
+
+  --#{$prefix}box-arrow-border-color: transparent;
+
+  display: block;
+  position: relative;
+  border-radius: var(--#{$prefix}box-border-radius);
+  background-color: var(--#{$prefix}box-base-background-color);
+
+  &.#{$prefix}box {
+    filter: none !important;
+    will-change: auto !important;
+
+    &--with-arrow {
+      &--top {
+        margin-top: var(--#{$prefix}box-with-arrow-margin);
+      }
+
+      &--right {
+        margin-right: var(--#{$prefix}box-with-arrow-margin);
+      }
+
+      &--bottom {
+        margin-bottom: var(--#{$prefix}box-with-arrow-margin);
+      }
+
+      &--left {
+        margin-left: var(--#{$prefix}box-with-arrow-margin);
+      }
+    }
+
+    ::ng-deep #{$prefix}tabs-label #{$prefix}box-header {
+      --#{$prefix}box-header-icon-color: var(--#{$prefix}box-header-icon-color);
+    }
+
+    // accent-bar types
+    &--positive {
+      --#{$prefix}box-accent-bar-color: var(--#{$prefix}box-color-positive);
+      --#{$prefix}box-icon-color: var(--#{$prefix}box-color-positive);
+
+      ::ng-deep #{$prefix}box-header {
+        --#{$prefix}box-header-icon-color: var(--#{$prefix}color-elements-box-positive);
+      }
+    }
+
+    &--caution {
+      --#{$prefix}box-accent-bar-color: var(--#{$prefix}box-color-caution);
+    }
+
+    &--critical {
+      --#{$prefix}box-accent-bar-color: var(--#{$prefix}box-color-critical);
+      --#{$prefix}box-icon-color: var(--#{$prefix}box-color-critical);
+
+      ::ng-deep #{$prefix}box-header {
+        --#{$prefix}box-header-icon-color: var(--#{$prefix}color-elements-box-critical);
+      }
+    }
+
+    &--info {
+      --#{$prefix}box-accent-bar-color: var(--#{$prefix}box-color-info);
+      --#{$prefix}box-icon-color: var(--#{$prefix}box-color-info);
+
+      ::ng-deep #{$prefix}box-header {
+        --#{$prefix}box-header-icon-color: var(--#{$prefix}color-elements-box-info);
+      }
+    }
+
+    &--neutral {
+      --#{$prefix}box-accent-bar-color: var(--#{$prefix}color-elements-box-neutral);
+      --#{$prefix}box-icon-color: var(--#{$prefix}color-elements-box-neutral);
+
+      ::ng-deep #{$prefix}box-header {
+        --#{$prefix}box-header-icon-color: var(--#{$prefix}color-elements-box-neutral);
+      }
+    }
+
+    &--ghost {
+      --#{$prefix}box-accent-bar-color: var(--#{$prefix}color-elements-box-ghost);
+      --#{$prefix}box-icon-color: var(--#{$prefix}color-elements-box-ghost);
+
+      ::ng-deep #{$prefix}box-header {
+        --#{$prefix}box-header-icon-color: var(--#{$prefix}color-icon-base);
+      }
+    }
+
+    &--primary {
+      --#{$prefix}box-accent-bar-color: var(--#{$prefix}color-elements-box-primary);
+      --#{$prefix}box-icon-color: var(--#{$prefix}color-elements-box-primary);
+
+      ::ng-deep #{$prefix}box-header {
+        --#{$prefix}box-header-icon-color: var(--#{$prefix}color-elements-box-primary);
+      }
+    }
+
+    &--custom-accent-bar {
+      --#{$prefix}box-accent-bar-color: var(--#{$prefix}box-color-custom);
+      --#{$prefix}box-icon-color: var(--#{$prefix}box-color-custom);
+
+      ::ng-deep #{$prefix}box-header {
+        --#{$prefix}box-header-icon-color: var(--#{$prefix}color-elements-box-custom);
+      }
+    }
+
+    // shadow variant
+    &--shadow {
+      &-none {
+        box-shadow: var(--#{$prefix}elevation-none);
+      }
+
+      &-base {
+        box-shadow: var(--#{$prefix}elevation-base);
+        @include arrow-shadows('1');
+      }
+
+      &-component {
+        box-shadow: var(--#{$prefix}elevation-component);
+        @include arrow-shadows('2');
+      }
+
+      &-temporary {
+        box-shadow: var(--#{$prefix}elevation-temporary);
+        @include arrow-shadows('4');
+      }
+
+      &-navigation {
+        box-shadow: var(--#{$prefix}elevation-navigation);
+        @include arrow-shadows('5');
+      }
+
+      &-notification {
+        box-shadow: var(--#{$prefix}elevation-notification);
+        @include arrow-shadows('6');
+      }
+
+      &-modal {
+        box-shadow: var(--#{$prefix}elevation-modal);
+        @include arrow-shadows('8');
+      }
+    }
+
+    > .#{$prefix}box__arrow {
+      // clip disturbing shadow for arrows
+      clip-path: polygon(0px 0, 1px 0px, -40px -40px, 0px -80px, 80px 0px, 52px 52px, 12px 11px, 12px 12px);
+    }
+
+    // surface color variant
+    &--surface {
+      &-default {
+        --#{$prefix}box-base-background-color: var(--#{$prefix}color-surface-box-default);
+        --#{$prefix}box-header-background-color: var(--#{$prefix}color-surface-box-default);
+      }
+
+      &-neutral {
+        --#{$prefix}box-base-background-color: var(--#{$prefix}color-surface-box-neutral);
+        --#{$prefix}box-header-background-color: var(--#{$prefix}color-surface-box-neutral);
+      }
+
+      &-ghost {
+        --#{$prefix}box-base-background-color: var(--#{$prefix}color-surface-box-ghost);
+        --#{$prefix}box-header-background-color: var(--#{$prefix}color-surface-box-ghost);
+        --#{$prefix}box-footer-attached-background: var(--#{$prefix}color-surface-box-ghost);
+        --#{$prefix}box-footer-attached-divider: var(--#{$prefix}color-surface-box-ghost);
+        box-shadow: var(--#{$prefix}elevation-none);
+      }
+
+      &-invert {
+        --#{$prefix}box-base-background-color: var(--#{$prefix}color-surface-box-invert);
+        --#{$prefix}box-header-background-color: var(--#{$prefix}color-surface-box-invert);
+      }
+
+      &-primary {
+        --#{$prefix}box-base-background-color: var(--#{$prefix}color-surface-box-primary);
+        --#{$prefix}box-header-background-color: var(--#{$prefix}color-surface-box-primary);
+      }
+
+      &-info {
+        --#{$prefix}box-base-background-color: var(--#{$prefix}color-surface-box-info);
+        --#{$prefix}box-header-background-color: var(--#{$prefix}color-surface-box-info);
+      }
+
+      &-positive {
+        --#{$prefix}box-base-background-color: var(--#{$prefix}color-surface-box-positive);
+        --#{$prefix}box-header-background-color: var(--#{$prefix}color-surface-box-positive);
+      }
+
+      &-caution {
+        --#{$prefix}box-base-background-color: var(--#{$prefix}color-surface-box-caution);
+        --#{$prefix}box-header-background-color: var(--#{$prefix}color-surface-box-caution);
+      }
+
+      &-critical {
+        --#{$prefix}box-base-background-color: var(--#{$prefix}color-surface-box-critical);
+        --#{$prefix}box-header-background-color: var(--#{$prefix}color-surface-box-critical);
+      }
+
+      &-custom {
+        --#{$prefix}box-base-background-color: var(--#{$prefix}color-surface-box-custom);
+        --#{$prefix}box-header-background-color: var(--#{$prefix}color-surface-box-custom);
+      }
+    }
+
+    // border color variant
+    &--border {
+      &-default {
+        border: 1px solid var(--#{$prefix}color-border-box-default);
+        --#{$prefix}box-arrow-border-color: var(--#{$prefix}color-border-box-default);
+      }
+
+      &-neutral {
+        border: 1px solid var(--#{$prefix}color-border-box-neutral);
+        --#{$prefix}box-arrow-border-color: var(--#{$prefix}color-border-box-neutral);
+      }
+
+      &-ghost {
+        border: 1px solid var(--#{$prefix}color-border-box-ghost);
+        --#{$prefix}box-arrow-border-color: var(--#{$prefix}color-border-box-ghost);
+      }
+
+      &-invert {
+        border: 1px solid var(--#{$prefix}color-border-box-invert);
+        --#{$prefix}box-arrow-border-color: var(--#{$prefix}color-border-box-invert);
+      }
+
+      &-primary {
+        border: 1px solid var(--#{$prefix}color-border-box-primary);
+        --#{$prefix}box-arrow-border-color: var(--#{$prefix}color-border-box-primary);
+      }
+
+      &-info {
+        border: 1px solid var(--#{$prefix}color-border-box-info);
+        --#{$prefix}box-arrow-border-color: var(--#{$prefix}color-border-box-info);
+      }
+
+      &-positive {
+        border: 1px solid var(--#{$prefix}color-border-box-positive);
+        --#{$prefix}box-arrow-border-color: var(--#{$prefix}color-border-box-positive);
+      }
+
+      &-caution {
+        border: 1px solid var(--#{$prefix}color-border-box-caution);
+        --#{$prefix}box-arrow-border-color: var(--#{$prefix}color-border-box-caution);
+      }
+
+      &-critical {
+        border: 1px solid var(--#{$prefix}color-border-box-critical);
+        --#{$prefix}box-arrow-border-color: var(--#{$prefix}color-border-box-critical);
+      }
+
+      &-custom {
+        border: 1px solid var(--#{$prefix}color-border-box-custom);
+        --#{$prefix}box-arrow-border-color: var(--#{$prefix}color-border-box-custom);
+      }
+    }
+
+    &--clickable {
+      &:focus-visible {
+        outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+        outline-offset: var(--#{$prefix}size-outline-offset);
+      }
+
+      &:not(.#{$prefix}box--clickable--supressed-hover) {
+        cursor: pointer;
+
+        &.#{$prefix}box--clickable--no-color {
+          &.#{$prefix}box--surface {
+            &-default,
+            &-ghost,
+            &-neutral {
+              &:hover,
+              &:focus-visible {
+                & .#{$prefix}box__interaction-layer {
+                  @extend .#{$prefix}interaction-layer-hover;
+
+                  border-radius: var(--#{$prefix}box-border-radius);
+                }
+              }
+
+              &:focus-visible {
+                outline: none;
+              }
+            }
+          }
+        }
+
+        &:not(.#{$prefix}box--clickable--no-color) {
+          &:hover,
+          &:focus-visible {
+            @extend .#{$prefix}interaction-surface-blend;
+
+            --#{$prefix}box-header-background-color: transparent;
+
+            & .#{$prefix}box__interaction-layer {
+              // to try with mix-blend mode use @extend .#{$prefix}interaction-layer-border;
+              @extend .#{$prefix}interaction-layer-hover;
+
+              border-radius: var(--#{$prefix}box-border-radius);
+              background-color: var(--#{$prefix}color-surface-transparent) !important;
+            }
+
+            & .#{$prefix}box__footer-wrapper:not(.#{$prefix}box__footer-wrapper--detached)::after {
+              @extend .#{$prefix}interaction-layer-hover;
+
+              content: '';
+              border: none !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &::after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    border-top: var(--#{$prefix}box-accent-bar-width) var(--#{$prefix}box-accent-bar-style)
+      var(--#{$prefix}box-accent-bar-color);
+    border-top-right-radius: var(--#{$prefix}box-border-radius);
+    border-top-left-radius: var(--#{$prefix}box-border-radius);
+    z-index: calc(z-index(content) + 2);
+  }
+}
+
+.#{$prefix}box {
+  &__header-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: z-index(content);
+
+    &--detached {
+      position: relative;
+    }
+
+    &--with-shadow {
+      box-shadow: var(--#{$prefix}elevation-box-header-fixed);
+    }
+  }
+
+  &__content-wrapper {
+    overflow: auto;
+    flex: 1;
+
+    &:focus-visible {
+      outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+      outline-offset: var(--#{$prefix}size-outline-offset);
+      z-index: 10000;
+    }
+
+    &:focus-visible:not([tabindex='0']) {
+      outline: none;
+    }
+
+    &--with-detached-parts {
+      overflow: initial;
+      z-index: calc(z-index(content) - 1);
+    }
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__footer-wrapper {
+    z-index: calc(z-index(content) + 2);
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: var(--#{$prefix}box-footer-attached-background);
+
+    &--hidden {
+      display: none;
+    }
+
+    ::ng-deep .#{$prefix}box-footer__item {
+      border-top: var(--#{$prefix}box-footer-border-top);
+    }
+
+    &--detached {
+      position: relative;
+      background-color: transparent;
+
+      ::ng-deep .#{$prefix}box-footer__item {
+        border-top: none;
+      }
+    }
+  }
+
+  &__arrow {
+    --z-index-subtraction-for-box-arrow: 2;
+
+    position: absolute;
+    background-color: var(--#{$prefix}box-base-background-color);
+    width: var(--#{$prefix}box-arrow-size);
+    height: var(--#{$prefix}box-arrow-size);
+    z-index: calc(z-index(content) - var(--z-index-subtraction-for-box-arrow));
+    border-top: 1px solid var(--#{$prefix}box-arrow-border-color);
+    border-right: 1px solid var(--#{$prefix}box-arrow-border-color);
+    border-bottom: 1px solid transparent;
+    border-left: 1px solid transparent;
+    border-radius: 0 var(--#{$prefix}shape-radius-box-tip) 0 0;
+
+    &--top {
+      top: 0;
+      right: 50%;
+      transform: translate(50%, -50%) rotate(-45deg);
+      z-index: z-index(content);
+
+      &-start {
+        transform: translate(0, -50%) rotate(-45deg);
+        right: var(--#{$prefix}box-arrow-offset-spacing);
+      }
+
+      &-end {
+        transform: translate(0, -50%) rotate(-45deg);
+        right: initial;
+        left: var(--#{$prefix}box-arrow-offset-spacing);
+      }
+    }
+
+    &--right {
+      top: 50%;
+      right: 0;
+      transform: translate(50%, -50%) rotate(45deg);
+      z-index: calc(z-index(content) - var(--z-index-subtraction-for-box-arrow));
+
+      &-start {
+        transform: translate(50%, 0) rotate(45deg);
+        top: var(--#{$prefix}box-arrow-offset-spacing);
+      }
+
+      &-end {
+        transform: translate(50%, 0) rotate(45deg);
+        top: initial;
+        bottom: var(--#{$prefix}box-arrow-offset-spacing);
+      }
+    }
+
+    &--bottom {
+      bottom: 0;
+      right: 50%;
+      transform: translate(50%, 50%) rotate(135deg);
+      z-index: calc(z-index(content) - var(--z-index-subtraction-for-box-arrow));
+
+      &-start {
+        transform: translate(0, 50%) rotate(135deg);
+        right: var(--#{$prefix}box-arrow-offset-spacing);
+      }
+
+      &-end {
+        transform: translate(0, 50%) rotate(135deg);
+        right: initial;
+        left: var(--#{$prefix}box-arrow-offset-spacing);
+      }
+    }
+
+    &--left {
+      top: 50%;
+      left: 0;
+      transform: translate(-50%, -50%) rotate(-135deg);
+      z-index: calc(z-index(content) - var(--z-index-subtraction-for-box-arrow));
+
+      &-start {
+        transform: translate(-50%, 0) rotate(-135deg);
+        top: var(--#{$prefix}box-arrow-offset-spacing);
+      }
+
+      &-end {
+        transform: translate(-50%, 0) rotate(-135deg);
+        top: initial;
+        bottom: var(--#{$prefix}box-arrow-offset-spacing);
+      }
+    }
+  }
+}
+
+.#{$prefix}box__wrapper {
+  position: relative;
+  border-radius: var(--#{$prefix}box-border-radius);
+  height: 100%;
+  max-height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &--disabled {
+    cursor: no-drop;
+    opacity: var(--#{$prefix}box-disabled-opacity);
+
+    & * {
+      pointer-events: none;
+    }
+  }
+}

@@ -1,0 +1,154 @@
+@use '../../density-styles-sass' as *;
+@use '../../utilities/sass_utilities' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}empty-state),
+:host(.#{$prefix}empty-state),
+
+  /* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}empty-state-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: z-index(content);
+  width: 100%;
+  padding: var(--#{$prefix}space-12x);
+  background-color: var(--#{$prefix}color-surface-transparent);
+
+  .#{$prefix}empty-state-illustration-wrapper {
+    display: flex;
+    --illustration-wrapper-hight: '';
+
+    &__content {
+      --asset-illustration-image: '';
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: var(--asset-illustration-image);
+
+      &--lg {
+        width: 196px;
+        height: 196px;
+      }
+
+      &--sm {
+        width: var(--#{$prefix}space-12x);
+        height: var(--#{$prefix}space-12x);
+      }
+
+      &--create-lg {
+        --asset-illustration-image: var(--#{$prefix}illustration-create-lg);
+      }
+      &--create-sm {
+        --asset-illustration-image: var(--#{$prefix}illustration-create-sm);
+      }
+      &--create-2-lg {
+        --asset-illustration-image: var(--#{$prefix}illustration-create-2-lg);
+      }
+      &--create-2-sm {
+        --asset-illustration-image: var(--#{$prefix}illustration-create-2-sm);
+      }
+      &--database-lg {
+        --asset-illustration-image: var(--#{$prefix}illustration-database-lg);
+      }
+      &--database-sm {
+        --asset-illustration-image: var(--#{$prefix}illustration-database-sm);
+      }
+      &--database-2-lg {
+        --asset-illustration-image: var(--#{$prefix}illustration-database-2-lg);
+      }
+      &--database-2-sm {
+        --asset-illustration-image: var(--#{$prefix}illustration-database-2-sm);
+      }
+      &--empty-lg {
+        --asset-illustration-image: var(--#{$prefix}illustration-empty-lg);
+      }
+      &--empty-sm {
+        --asset-illustration-image: var(--#{$prefix}illustration-empty-sm);
+      }
+      &--error-lg {
+        --asset-illustration-image: var(--#{$prefix}illustration-error-lg);
+      }
+      &--error-sm {
+        --asset-illustration-image: var(--#{$prefix}illustration-error-sm);
+      }
+      &--error-2-lg {
+        --asset-illustration-image: var(--#{$prefix}illustration-error-2-lg);
+      }
+      &--error-2-sm {
+        --asset-illustration-image: var(--#{$prefix}illustration-error-2-sm);
+      }
+      &--error-3-lg {
+        --asset-illustration-image: var(--#{$prefix}illustration-error-3-lg);
+      }
+      &--error-3-sm {
+        --asset-illustration-image: var(--#{$prefix}illustration-error-3-sm);
+      }
+      &--padlock-lg {
+        --asset-illustration-image: var(--#{$prefix}illustration-padlock-lg);
+      }
+      &--padlock-sm {
+        --asset-illustration-image: var(--#{$prefix}illustration-padlock-sm);
+      }
+      &--select-lg {
+        --asset-illustration-image: var(--#{$prefix}illustration-select-lg);
+      }
+      &--select-sm {
+        --asset-illustration-image: var(--#{$prefix}illustration-select-sm);
+      }
+      &--signal-lg {
+        --asset-illustration-image: var(--#{$prefix}illustration-signal-lg);
+      }
+      &--signal-sm {
+        --asset-illustration-image: var(--#{$prefix}illustration-signal-sm);
+      }
+      &--success-lg {
+        --asset-illustration-image: var(--#{$prefix}illustration-success-lg);
+      }
+      &--success-sm {
+        --asset-illustration-image: var(--#{$prefix}illustration-success-sm);
+      }
+      &--success-2-lg {
+        --asset-illustration-image: var(--#{$prefix}illustration-success-2-lg);
+      }
+      &--success-2-sm {
+        --asset-illustration-image: var(--#{$prefix}illustration-success-2-sm);
+      }
+      &--success-3-lg {
+        --asset-illustration-image: var(--#{$prefix}illustration-success-3-lg);
+      }
+      &--success-3-sm {
+        --asset-illustration-image: var(--#{$prefix}illustration-success-3-sm);
+      }
+      &--wait-lg {
+        --asset-illustration-image: var(--#{$prefix}illustration-wait-lg);
+      }
+      &--wait-sm {
+        --asset-illustration-image: var(--#{$prefix}illustration-wait-sm);
+      }
+    }
+  }
+
+  .#{$prefix}empty-state-heading,
+  .#{$prefix}empty-state-description,
+  .#{$prefix}empty-state-footnote {
+    text-align: center;
+
+    ::ng-deep ul li,
+    ::ng-deep ol li {
+      text-align: left;
+    }
+  }
+
+  .#{$prefix}empty-state-action-buttons {
+    display: flex;
+    justify-content: center;
+
+    .#{$prefix}action-buttons-spacer {
+      margin-right: var(--#{$prefix}space-4x);
+    }
+  }
+}

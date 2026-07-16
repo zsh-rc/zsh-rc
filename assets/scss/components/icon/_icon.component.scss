@@ -1,0 +1,92 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}icon),
+.#{$prefix}icon {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+
+  &.#{$prefix}icon {
+    align-items: center;
+    display: inline-flex;
+    fill: currentColor;
+    height: var(--#{$prefix}icon-size-medium);
+    justify-content: center;
+    width: var(--#{$prefix}icon-size-medium);
+
+    &--xs {
+      height: var(--#{$prefix}icon-size-xsmall);
+      width: var(--#{$prefix}icon-size-xsmall);
+      min-width: var(--#{$prefix}icon-size-xsmall);
+    }
+
+    &--sm {
+      height: var(--#{$prefix}icon-size-small);
+      width: var(--#{$prefix}icon-size-small);
+      min-width: var(--#{$prefix}icon-size-small);
+    }
+
+    &--md {
+      height: var(--#{$prefix}icon-size-medium);
+      width: var(--#{$prefix}icon-size-medium);
+      min-width: var(--#{$prefix}icon-size-medium);
+    }
+
+    &--lg {
+      height: var(--#{$prefix}icon-size-large);
+      width: var(--#{$prefix}icon-size-large);
+      min-width: var(--#{$prefix}icon-size-large);
+    }
+
+    // tone variant
+    &--tone {
+      &-base {
+        color: var(--#{$prefix}color-icon-base);
+      }
+      &-invert {
+        color: var(--#{$prefix}color-icon-invert);
+      }
+      &-neutral {
+        color: var(--#{$prefix}color-icon-neutral);
+      }
+      &-action {
+        color: var(--#{$prefix}color-icon-action);
+      }
+      &-info {
+        color: var(--#{$prefix}color-icon-info);
+      }
+      &-positive {
+        color: var(--#{$prefix}color-icon-positive);
+      }
+      &-caution {
+        color: var(--#{$prefix}color-icon-caution);
+      }
+      &-critical {
+        color: var(--#{$prefix}color-icon-critical);
+      }
+      &-critical-active {
+        color: var(--#{$prefix}color-icon-critical-active);
+      }
+      &-critical-hover {
+        color: var(--#{$prefix}color-icon-critical-hover);
+      }
+      &-custom {
+        color: var(--#{$prefix}color-icon-custom);
+      }
+      &-disabled {
+        color: var(--#{$prefix}color-icon-disabled);
+      }
+      &-inherit {
+        color: currentColor;
+      }
+    }
+
+    & svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+/* CSS selector for independent library use without Shadow DOM */

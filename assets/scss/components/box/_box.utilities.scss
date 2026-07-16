@@ -1,0 +1,36 @@
+@use '../../density-styles-sass' as *;
+@use '../../utilities/sass_utilities' as *;
+
+.#{$prefix}interaction-hover-border {
+  //Todo: Missing Token
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  left: 0;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.#{$prefix}interaction-layer-hover {
+  background-color: var(--#{$prefix}color-surface-overlay-hover);
+  //Todo: Missing Token for border
+  border: 2px solid var(--#{$prefix}color-surface-overlay-hover);
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: z-index(sky);
+}
+
+.#{$prefix}interaction-surface-blend {
+  background-blend-mode: overlay;
+  background-image: linear-gradient(
+    0deg,
+    var(--#{$prefix}color-surface-overlay-blend) 0%,
+    var(--#{$prefix}color-surface-overlay-blend) 100%
+  );
+}

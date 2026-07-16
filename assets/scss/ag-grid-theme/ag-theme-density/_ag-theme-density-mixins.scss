@@ -1,0 +1,8 @@
+@mixin density-ag-grid-loading($prefix: ds-) {
+  background-color: var(--#{$prefix}color-surface-base);
+  line-height: 20px;
+  border: 1px solid var(--#{$prefix}color-border-base);
+  border-radius: 3px;
+  box-shadow: var(--#{$prefix}custom-box-shadow);
+  padding: var(--#{$prefix}ag-grid-size);
+}

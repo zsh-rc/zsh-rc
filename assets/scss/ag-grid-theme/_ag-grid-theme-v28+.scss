@@ -1,0 +1,11 @@
+@use 'sass:map';
+@use '../variables/sass-variables';
+@use 'ag-grid-community/styles' as ag;
+@use 'ag-theme-density/ag-theme-density-v28+' as v28;
+@use 'ag-theme-density/ag-theme-density-v32' as v32;
+
+$theme-params: map.merge(v28.get-theme-params(), v32.get-theme-params());
+
+@include ag.grid-styles($theme-params);
+@include v28.render-extras(sass-variables.$prefix);
+@include v32.render-extras(sass-variables.$prefix);

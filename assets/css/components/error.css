@@ -1,0 +1,32 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-error),
+.ds-error {
+  color: var(--ds-color-text-input-error);
+  font-size: var(--ds-font-size-input-label);
+  font-weight: var(--ds-font-weight-input);
+  line-height: var(--ds-font-line-height-input);
+}
+:host(ds-error) .ds-error-wrapper,
+.ds-error .ds-error-wrapper {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+:host(ds-error) .ds-error-wrapper > ds-icon,
+.ds-error .ds-error-wrapper > ds-icon {
+  flex-shrink: 0;
+  color: var(--ds-color-text-input-error);
+}
+:host(ds-error) .ds-error-wrapper > span,
+.ds-error .ds-error-wrapper > span {
+  margin-left: var(--ds-space-1x);
+}

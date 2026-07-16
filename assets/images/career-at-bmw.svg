@@ -1,0 +1,134 @@
+<svg viewBox="0 0 1040 270" width="1040" height="270" xmlns="http://www.w3.org/2000/svg"
+    data-fg-d3bl19="0.8:1.7282:/src/app/App.tsx:105:7:2903:3522:e:svg:xtetxtxtxtx"
+    data-fgid-d3bl19=":r1:"
+    style="font-family: &quot;Helvetica Neue&quot;, Arial, sans-serif; display: block;">
+    <rect width="1040" height="270" rx="10" fill="whitesmoke"
+        data-fg-d3bl21="0.8:1.7282:/src/app/App.tsx:113:9:3159:42:e:rect"></rect>
+    <line x1="170" y1="76" x2="330" y2="76" stroke="#e2e8f0" stroke-width="1.5"
+        data-fg-d3bl24="0.8:1.7282:/src/app/App.tsx:120:13:3394:270:e:line"></line>
+    <line x1="430" y1="76" x2="590" y2="76" stroke="#e2e8f0" stroke-width="1.5"
+        data-fg-d3bl24="0.8:1.7282:/src/app/App.tsx:120:13:3394:270:e:line"></line>
+    <line x1="690" y1="76" x2="850" y2="76" stroke="#e2e8f0" stroke-width="1.5"
+        stroke-dasharray="7 5" data-fg-d3bl24="0.8:1.7282:/src/app/App.tsx:120:13:3394:270:e:line"></line>
+    <g transform="translate(120, 76)"
+        data-fg-d3bl27="0.8:1.7282:/src/app/App.tsx:143:13:4222:2165:e:g:xtxtxtxtxtxtxtxtetxtetxtxtxtx">
+        <circle cx="0" cy="0" r="44" fill="#0f172a"
+            data-fg-d3bl31="0.8:1.7282:/src/app/App.tsx:154:17:4598:48:e:circle"></circle>
+        <g stroke="white" fill="none" stroke-width="1.6" stroke-linecap="round"
+            stroke-linejoin="round"
+            data-fg-d3bl0="0.8:1.7282:/src/app/App.tsx:56:5:1291:285:e:g:etete:1">
+            <rect x="-8" y="-14" width="16" height="28" rx="3"
+                data-fg-d3bl1="0.8:1.7282:/src/app/App.tsx:57:7:1391:53:e:rect"></rect>
+            <line x1="-2.5" y1="-11.5" x2="2.5" y2="-11.5"
+                data-fg-d3bl2="0.8:1.7282:/src/app/App.tsx:58:7:1451:49:e:line"></line>
+            <circle cx="0" cy="11" r="1.6" fill="white" stroke="none"
+                data-fg-d3bl3="0.8:1.7282:/src/app/App.tsx:59:7:1507:60:e:circle"></circle>
+        </g>
+        <text x="0" y="72" text-anchor="middle" font-size="13" fill="#0f172a" font-weight="700"
+            letter-spacing="-0.01em"
+            data-fg-d3bl42="0.8:1.7282:/src/app/App.tsx:164:15:5016:290:e:text:x">2017 – 2022</text>
+        <text x="0" y="92" text-anchor="middle" font-size="13" fill="#0f172a" font-weight="600"
+            data-fg-d3bl45="0.8:1.7282:/src/app/App.tsx:177:15:5350:250:e:text:x">BMW Mobile Apps</text>
+        <text x="0" y="109" text-anchor="middle" font-size="11" fill="#475569"
+            data-fg-d3bl49="0.8:1.7282:/src/app/App.tsx:190:17:5680:235:e:text:x">ConnectedDrive ·
+            MyBMW · MyMINI · Whisper</text>
+        <text x="0" y="128" text-anchor="middle" font-size="10.5" fill="#94a3b8"
+            letter-spacing="0.01em"
+            data-fg-d3bl53="0.8:1.7282:/src/app/App.tsx:203:17:6025:327:e:text:x">Program Manager</text>
+        <text x="0" y="145" text-anchor="middle" font-size="10.5" fill="#94a3b8"
+            letter-spacing="0.01em"
+            data-fg-d3bl53="0.8:1.7282:/src/app/App.tsx:203:17:6025:327:e:text:x">Group Management</text>
+        <text x="0" y="162" text-anchor="middle" font-size="10.5" fill="#94a3b8"
+            letter-spacing="0.01em"
+            data-fg-d3bl53="0.8:1.7282:/src/app/App.tsx:203:17:6025:327:e:text:x">Release Management</text>
+    </g>
+    <g transform="translate(380, 76)"
+        data-fg-d3bl27="0.8:1.7282:/src/app/App.tsx:143:13:4222:2165:e:g:xtxtxtxtxtxtxtxtetxtetxtxtxtx">
+        <circle cx="0" cy="0" r="44" fill="#0f172a"
+            data-fg-d3bl31="0.8:1.7282:/src/app/App.tsx:154:17:4598:48:e:circle"></circle>
+        <g stroke="white" fill="none" stroke-width="1.6" stroke-linecap="round"
+            stroke-linejoin="round"
+            data-fg-d3bl4="0.8:1.7282:/src/app/App.tsx:66:5:1651:204:e:g:e:1">
+            <path
+                d="M -9,5 a5,5 0 0,1 1,-10 a4.5,4.5 0 0,1 8.5,-1 a5,5 0 0,1 5.5,4.5 a4,4 0 0,1 -4,4 Z"
+                data-fg-d3bl5="0.8:1.7282:/src/app/App.tsx:67:7:1751:95:e:path"></path>
+        </g>
+        <text x="0" y="72" text-anchor="middle" font-size="13" fill="#0f172a" font-weight="700"
+            letter-spacing="-0.01em"
+            data-fg-d3bl42="0.8:1.7282:/src/app/App.tsx:164:15:5016:290:e:text:x">2023 – 2025</text>
+        <text x="0" y="92" text-anchor="middle" font-size="13" fill="#0f172a" font-weight="600"
+            data-fg-d3bl45="0.8:1.7282:/src/app/App.tsx:177:15:5350:250:e:text:x">Offboard Platform</text>
+        <text x="0" y="109" text-anchor="middle" font-size="11" fill="#475569"
+            data-fg-d3bl49="0.8:1.7282:/src/app/App.tsx:190:17:5680:235:e:text:x">Platform
+            Management</text>
+        <text x="0" y="128" text-anchor="middle" font-size="10.5" fill="#94a3b8"
+            letter-spacing="0.01em"
+            data-fg-d3bl53="0.8:1.7282:/src/app/App.tsx:203:17:6025:327:e:text:x">Group Lead</text>
+        <text x="0" y="145" text-anchor="middle" font-size="10.5" fill="#94a3b8"
+            letter-spacing="0.01em"
+            data-fg-d3bl53="0.8:1.7282:/src/app/App.tsx:203:17:6025:327:e:text:x">Cloud Platforms
+            Mgmt</text>
+        <text x="0" y="162" text-anchor="middle" font-size="10.5" fill="#94a3b8"
+            letter-spacing="0.01em"
+            data-fg-d3bl53="0.8:1.7282:/src/app/App.tsx:203:17:6025:327:e:text:x">Operations &amp;
+            Monitoring</text>
+    </g>
+    <g transform="translate(640, 76)"
+        data-fg-d3bl27="0.8:1.7282:/src/app/App.tsx:143:13:4222:2165:e:g:xtxtxtxtxtxtxtxtetxtetxtxtxtx">
+        <circle cx="0" cy="0" r="44" fill="#443deb"
+            data-fg-d3bl31="0.8:1.7282:/src/app/App.tsx:154:17:4598:48:e:circle"></circle>
+        <g stroke="white" fill="none" stroke-width="1.6" stroke-linecap="round"
+            stroke-linejoin="round"
+            data-fg-d3bl6="0.8:1.7282:/src/app/App.tsx:74:5:1928:406:e:g:xtetxtetxtetxte:1">
+            <path d="M -13,1 L -9,-6 L -4,-10 L 5,-10 L 9,-6 L 13,1 L 13,3 L -13,3 Z"
+                data-fg-d3bl8="0.8:1.7282:/src/app/App.tsx:76:7:2047:76:e:path"></path>
+            <path d="M -7,-1 L -4,-9 L 4,-9 L 7,-1 Z"
+                data-fg-d3bl10="0.8:1.7282:/src/app/App.tsx:78:7:2151:44:e:path"></path>
+            <circle cx="7.5" cy="6" r="4"
+                data-fg-d3bl12="0.8:1.7282:/src/app/App.tsx:80:7:2228:32:e:circle"></circle>
+            <circle cx="-7.5" cy="6" r="4"
+                data-fg-d3bl14="0.8:1.7282:/src/app/App.tsx:82:7:2292:33:e:circle"></circle>
+        </g>
+        <text x="0" y="72" text-anchor="middle" font-size="13" fill="#443deb" font-weight="700"
+            letter-spacing="-0.01em"
+            data-fg-d3bl42="0.8:1.7282:/src/app/App.tsx:164:15:5016:290:e:text:x">2026 – Present</text>
+        <text x="0" y="92" text-anchor="middle" font-size="13" fill="#443deb" font-weight="600"
+            data-fg-d3bl45="0.8:1.7282:/src/app/App.tsx:177:15:5350:250:e:text:x">Onboard Products</text>
+        <text x="0" y="109" text-anchor="middle" font-size="11" fill="#443deb"
+            data-fg-d3bl49="0.8:1.7282:/src/app/App.tsx:190:17:5680:235:e:text:x">Vehicle Software
+            &amp; Services</text>
+        <text x="0" y="128" text-anchor="middle" font-size="10.5" fill="#443deb"
+            letter-spacing="0.01em"
+            data-fg-d3bl53="0.8:1.7282:/src/app/App.tsx:203:17:6025:327:e:text:x">Personalisation CN
+            · Data Privacy</text>
+        <text x="0" y="145" text-anchor="middle" font-size="10.5" fill="#443deb"
+            letter-spacing="0.01em"
+            data-fg-d3bl53="0.8:1.7282:/src/app/App.tsx:203:17:6025:327:e:text:x">Vehicle Reset ·
+            Onboarding Wizard</text>
+        <text x="0" y="162" text-anchor="middle" font-size="10.5" fill="#443deb"
+            letter-spacing="0.01em"
+            data-fg-d3bl53="0.8:1.7282:/src/app/App.tsx:203:17:6025:327:e:text:x">Passenger Profile</text>
+    </g>
+    <g transform="translate(900, 76)"
+        data-fg-d3bl27="0.8:1.7282:/src/app/App.tsx:143:13:4222:2165:e:g:xtxtxtxtxtxtxtxtetxtetxtxtxtx">
+        <circle cx="0" cy="0" r="44" fill="none" stroke="#cbd5e1" stroke-width="1.5"
+            stroke-dasharray="7 5"
+            data-fg-d3bl30="0.8:1.7282:/src/app/App.tsx:146:17:4350:211:e:circle"></circle>
+        <g stroke="#cbd5e1" fill="none" stroke-width="1.6" stroke-linecap="round"
+            stroke-linejoin="round"
+            data-fg-d3bl15="0.8:1.7282:/src/app/App.tsx:89:5:2409:195:e:g:ete:1">
+            <line x1="-10" y1="0" x2="8" y2="0"
+                data-fg-d3bl16="0.8:1.7282:/src/app/App.tsx:90:7:2509:38:e:line"></line>
+            <polyline points="3,-5.5 10.5,0 3,5.5"
+                data-fg-d3bl17="0.8:1.7282:/src/app/App.tsx:91:7:2554:41:e:polyline"></polyline>
+        </g>
+        <text x="0" y="72" text-anchor="middle" font-size="13" fill="#b0bec5" font-weight="700"
+            letter-spacing="-0.01em"
+            data-fg-d3bl42="0.8:1.7282:/src/app/App.tsx:164:15:5016:290:e:text:x">Future</text>
+        <text x="0" y="92" text-anchor="middle" font-size="13" fill="#b0bec5" font-weight="600"
+            data-fg-d3bl45="0.8:1.7282:/src/app/App.tsx:177:15:5350:250:e:text:x">Next Chapter</text>
+        <text x="0" y="112" text-anchor="middle" font-size="10.5" fill="#b0bec5"
+            letter-spacing="0.01em"
+            data-fg-d3bl53="0.8:1.7282:/src/app/App.tsx:203:17:6025:327:e:text:x">· · ·</text>
+    </g>
+</svg>

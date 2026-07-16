@@ -1,0 +1,153 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-modal),
+.ds-modal {
+  --ds-modal-backdrop-transition-duration: var(--cdk-overlay-backdrop-transition-duration);
+  --ds-modal-animation-duration: var(--ds-motion-duration-quick);
+  --ds-modal-animation-timing: var(--ds-motion-timing-exit);
+  --ds-modal-animation-delay: 0ms;
+}
+
+.ds-modal-wrapper {
+  --ds-modal-backdrop-transition-duration: var(--cdk-overlay-backdrop-transition-duration);
+  --ds-modal-animation-duration: var(--ds-motion-duration-quick);
+  --ds-modal-animation-timing: var(--ds-motion-timing-exit);
+  --ds-modal-animation-delay: 0ms;
+  --ds-modal-border-radius: 2px;
+  --ds-modal-close-icon-size: 20px;
+  --ds-modal-content-padding: 16px;
+}
+.ds-modal-wrapper.ds-no-motion {
+  --ds-modal-animation-duration: 0s;
+}
+.ds-modal-wrapper {
+  position: relative;
+  border-radius: var(--ds-modal-border-radius);
+  width: 100%;
+  opacity: 0;
+  transition: opacity var(--ds-modal-animation-duration) var(--ds-modal-animation-timing) var(--ds-modal-animation-delay), transform var(--ds-modal-animation-duration) var(--ds-modal-animation-timing) var(--ds-modal-animation-delay), visibility var(--ds-modal-animation-duration) var(--ds-modal-animation-timing) var(--ds-modal-animation-delay);
+  transform: translateY(-24px);
+}
+.ds-modal-wrapper--in-modal {
+  flex: 1;
+  pointer-events: all;
+  user-select: text;
+}
+.ds-modal-wrapper--in-modal.ds-modal-wrapper--non-scrollable {
+  height: 100%;
+}
+.ds-modal-wrapper--size-sm {
+  max-width: 42%;
+}
+@media (max-width: 1199.98px) {
+  .ds-modal-wrapper--size-sm {
+    max-width: 50%;
+  }
+}
+@media (max-width: 767.98px) {
+  .ds-modal-wrapper--size-sm {
+    max-width: 58%;
+  }
+}
+@media (max-width: 575.98px) {
+  .ds-modal-wrapper--size-sm {
+    max-width: 100%;
+  }
+}
+.ds-modal-wrapper--size-md {
+  max-width: 58%;
+}
+@media (max-width: 1199.98px) {
+  .ds-modal-wrapper--size-md {
+    max-width: 66%;
+  }
+}
+@media (max-width: 767.98px) {
+  .ds-modal-wrapper--size-md {
+    max-width: 75%;
+  }
+}
+@media (max-width: 575.98px) {
+  .ds-modal-wrapper--size-md {
+    max-width: 100%;
+  }
+}
+.ds-modal-wrapper--size-lg {
+  max-width: 75%;
+}
+@media (max-width: 1199.98px) {
+  .ds-modal-wrapper--size-lg {
+    max-width: 83%;
+  }
+}
+@media (max-width: 767.98px) {
+  .ds-modal-wrapper--size-lg {
+    max-width: 92%;
+  }
+}
+@media (max-width: 575.98px) {
+  .ds-modal-wrapper--size-lg {
+    max-width: 100%;
+  }
+}
+@media (max-width: 575.98px) and (any-hover: none) {
+  .ds-modal-wrapper {
+    transform: translateY(100%);
+    max-width: none;
+    padding: 0 0;
+    margin-bottom: 0;
+  }
+}
+.ds-modal-wrapper--visible {
+  --ds-modal-animation-duration: var(--ds-motion-duration-standard);
+  --ds-modal-animation-timing: var(--ds-motion-timing-entrance);
+  transform: translateY(0);
+  opacity: 1;
+}
+@media (max-width: 575.98px) and (any-hover: none) {
+  .ds-modal-wrapper--visible {
+    transform: translateY(0);
+  }
+}
+.ds-modal-wrapper__header {
+  display: flex;
+  justify-content: space-between;
+}
+.ds-modal-wrapper__header ::ng-deep ds-box-header {
+  flex: 1;
+}
+.ds-modal-wrapper ::ng-deep .ds-box-footer .ds-box-footer__item {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.ds-modal-wrapper ::ng-deep .ds-box-header__item__close-button.ds-button:focus {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+}
+
+.ds-modal-wrapper__context {
+  width: 100%;
+  max-height: 100%;
+  display: inherit;
+  justify-content: inherit;
+  user-select: none;
+  overflow: visible;
+  padding: 0;
+}
+.ds-modal-wrapper__context--allow-overflow {
+  overflow: auto;
+}
+.ds-modal-wrapper__context--align-top {
+  align-self: flex-start;
+}
+@media (max-width: 575.98px) {
+  .ds-modal-wrapper__context {
+    align-self: initial;
+  }
+}

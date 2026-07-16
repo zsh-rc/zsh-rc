@@ -1,0 +1,305 @@
+@use '../../density-styles-sass' as *;
+@use '../../utilities/sass_utilities' as *;
+@use '../../animations/skeleton/skeleton' as skeleton;
+
+.#{$prefix}skeleton {
+  background-color: var(--#{$prefix}color-surface-skeleton-shell);
+  border-radius: var(--#{$prefix}shape-radius-base);
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  min-width: var(--#{$prefix}size-x-min-skeleton-shell);
+
+  &.#{$prefix}skeleton--shimmer::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      var(--#{$prefix}color-shimmer-1),
+      var(--#{$prefix}color-shimmer-2),
+      var(--#{$prefix}color-shimmer-3)
+    );
+    animation: skeleton.$shimmer-animation;
+  }
+
+  &.#{$prefix}skeleton--block {
+    background-color: var(--#{$prefix}color-surface-neutral-mild);
+
+    &-no-radius {
+      border-radius: 0;
+    }
+
+    &-predefined-height {
+      &-3x {
+        min-width: var(--#{$prefix}size-x-min-skeleton-block-3x);
+        width: var(--#{$prefix}size-x-min-skeleton-block-3x);
+        min-height: var(--#{$prefix}size-y-skeleton-block-3x);
+        height: var(--#{$prefix}size-y-skeleton-block-3x);
+      }
+      &-4x {
+        min-width: var(--#{$prefix}size-x-min-skeleton-block-4x);
+        width: var(--#{$prefix}size-x-min-skeleton-block-4x);
+        min-height: var(--#{$prefix}size-y-skeleton-block-4x);
+        height: var(--#{$prefix}size-y-skeleton-block-4x);
+      }
+      &-5x {
+        min-width: var(--#{$prefix}size-x-min-skeleton-block-5x);
+        width: var(--#{$prefix}size-x-min-skeleton-block-5x);
+        min-height: var(--#{$prefix}size-y-skeleton-block-5x);
+        height: var(--#{$prefix}size-y-skeleton-block-5x);
+      }
+      &-6x {
+        min-width: var(--#{$prefix}size-x-min-skeleton-block-6x);
+        width: var(--#{$prefix}size-x-min-skeleton-block-6x);
+        min-height: var(--#{$prefix}size-y-skeleton-block-6x);
+        height: var(--#{$prefix}size-y-skeleton-block-6x);
+      }
+      &-8x {
+        min-width: var(--#{$prefix}size-x-min-skeleton-block-8x);
+        width: var(--#{$prefix}size-x-min-skeleton-block-8x);
+        min-height: var(--#{$prefix}size-y-skeleton-block-8x);
+        height: var(--#{$prefix}size-y-skeleton-block-8x);
+      }
+      &-10x {
+        min-width: var(--#{$prefix}size-x-min-skeleton-block-10x);
+        width: var(--#{$prefix}size-x-min-skeleton-block-10x);
+        min-height: var(--#{$prefix}size-y-skeleton-block-10x);
+        height: var(--#{$prefix}size-y-skeleton-block-10x);
+      }
+    }
+  }
+
+  &.#{$prefix}skeleton--circle {
+    background-color: var(--#{$prefix}color-surface-neutral-mild);
+    border-radius: var(--#{$prefix}shape-radius-circle);
+
+    min-width: var(--#{$prefix}size-x-min-skeleton-circle);
+    min-height: var(--#{$prefix}size-y-min-skeleton-circle);
+
+    &-predefined-diameter {
+      &-3x {
+        width: var(--#{$prefix}size-diameter-skeleton-circle-3x);
+        height: var(--#{$prefix}size-diameter-skeleton-circle-3x);
+      }
+      &-4x {
+        width: var(--#{$prefix}size-diameter-skeleton-circle-4x);
+        height: var(--#{$prefix}size-diameter-skeleton-circle-4x);
+      }
+      &-5x {
+        width: var(--#{$prefix}size-diameter-skeleton-circle-5x);
+        height: var(--#{$prefix}size-diameter-skeleton-circle-5x);
+      }
+      &-6x {
+        width: var(--#{$prefix}size-diameter-skeleton-circle-6x);
+        height: var(--#{$prefix}size-diameter-skeleton-circle-6x);
+      }
+      &-8x {
+        width: var(--#{$prefix}size-diameter-skeleton-circle-8x);
+        height: var(--#{$prefix}size-diameter-skeleton-circle-8x);
+      }
+      &-10x {
+        width: var(--#{$prefix}size-diameter-skeleton-circle-10x);
+        height: var(--#{$prefix}size-diameter-skeleton-circle-10x);
+      }
+    }
+  }
+
+  &.#{$prefix}skeleton--text {
+    background-color: var(--#{$prefix}color-surface-skeleton-shell);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-title-lg {
+      padding: var(--#{$prefix}space-05x) 0;
+      height: var(--#{$prefix}size-y-skeleton-shell-title-lg);
+      &.#{$prefix}skeleton--shimmer::before {
+        content: '';
+        position: absolute;
+        height: var(--#{$prefix}size-y-skeleton-title-lg);
+        width: var(--#{$prefix}size-x-skeleton-text);
+        background: linear-gradient(
+          90deg,
+          var(--#{$prefix}color-shimmer-1),
+          var(--#{$prefix}color-shimmer-2),
+          var(--#{$prefix}color-shimmer-3)
+        );
+        animation: skeleton.$shimmer-animation;
+      }
+    }
+
+    &-title-md {
+      padding: var(--#{$prefix}space-1x) 0;
+      height: var(--#{$prefix}size-y-skeleton-shell-paragraph);
+      &.#{$prefix}skeleton--shimmer::before {
+        height: var(--#{$prefix}size-y-skeleton-title-md);
+        content: '';
+        position: absolute;
+        width: var(--#{$prefix}size-x-skeleton-text);
+        background: linear-gradient(
+          90deg,
+          var(--#{$prefix}color-shimmer-1),
+          var(--#{$prefix}color-shimmer-2),
+          var(--#{$prefix}color-shimmer-3)
+        );
+        animation: skeleton.$shimmer-animation;
+      }
+    }
+    &-paragraph {
+      padding: var(--#{$prefix}space-1x) 0;
+      height: var(--#{$prefix}size-y-skeleton-shell-paragraph);
+      &.#{$prefix}skeleton--shimmer::before {
+        height: var(--#{$prefix}size-y-skeleton-paragraph);
+        content: '';
+        position: absolute;
+        width: var(--#{$prefix}size-x-skeleton-text);
+        background: linear-gradient(
+          90deg,
+          var(--#{$prefix}color-shimmer-1),
+          var(--#{$prefix}color-shimmer-2),
+          var(--#{$prefix}color-shimmer-3)
+        );
+        animation: skeleton.$shimmer-animation;
+      }
+    }
+
+    &-title-sm {
+      padding: var(--#{$prefix}space-05x) 0;
+      height: var(--#{$prefix}size-y-skeleton-shell-label);
+      &.#{$prefix}skeleton--shimmer::before {
+        content: '';
+        position: absolute;
+        height: var(--#{$prefix}size-y-skeleton-title-sm);
+        width: var(--#{$prefix}size-x-skeleton-text);
+        background: linear-gradient(
+          90deg,
+          var(--#{$prefix}color-shimmer-1),
+          var(--#{$prefix}color-shimmer-2),
+          var(--#{$prefix}color-shimmer-3)
+        );
+        animation: skeleton.$shimmer-animation;
+      }
+    }
+    &-label {
+      padding: var(--#{$prefix}space-05x) 0;
+      height: var(--#{$prefix}size-y-skeleton-shell-label);
+      &.#{$prefix}skeleton--shimmer::before {
+        content: '';
+        position: absolute;
+        height: var(--#{$prefix}size-y-skeleton-label);
+        width: var(--#{$prefix}size-x-skeleton-text);
+        background: linear-gradient(
+          90deg,
+          var(--#{$prefix}color-shimmer-1),
+          var(--#{$prefix}color-shimmer-2),
+          var(--#{$prefix}color-shimmer-3)
+        );
+        animation: skeleton.$shimmer-animation;
+      }
+    }
+
+    &-title-xs {
+      padding: 1px 0;
+      height: var(--#{$prefix}size-y-skeleton-shell-smallprint);
+      &.#{$prefix}skeleton--shimmer::before {
+        content: '';
+        position: absolute;
+        height: var(--#{$prefix}size-y-skeleton-title-xs);
+        width: var(--#{$prefix}size-x-skeleton-text);
+        background: linear-gradient(
+          90deg,
+          var(--#{$prefix}color-shimmer-1),
+          var(--#{$prefix}color-shimmer-2),
+          var(--#{$prefix}color-shimmer-3)
+        );
+        animation: skeleton.$shimmer-animation;
+      }
+    }
+    &-smallprint {
+      padding: 1px 0;
+      height: var(--#{$prefix}size-y-skeleton-shell-smallprint);
+      &.#{$prefix}skeleton--shimmer::before {
+        content: '';
+        position: absolute;
+        height: var(--#{$prefix}size-y-skeleton-smallprint);
+        width: var(--#{$prefix}size-x-skeleton-text);
+        background: linear-gradient(
+          90deg,
+          var(--#{$prefix}color-shimmer-1),
+          var(--#{$prefix}color-shimmer-2),
+          var(--#{$prefix}color-shimmer-3)
+        );
+        animation: skeleton.$shimmer-animation;
+      }
+    }
+
+    &-regular {
+      padding: 3px 0;
+      height: var(--#{$prefix}size-y-skeleton-shell-regular);
+      &.#{$prefix}skeleton--shimmer::before {
+        content: '';
+        position: absolute;
+        height: var(--#{$prefix}size-y-skeleton-regular);
+        width: var(--#{$prefix}size-x-skeleton-text);
+        background: linear-gradient(
+          90deg,
+          var(--#{$prefix}color-shimmer-1),
+          var(--#{$prefix}color-shimmer-2),
+          var(--#{$prefix}color-shimmer-3)
+        );
+        animation: skeleton.$shimmer-animation;
+      }
+    }
+
+    .#{$prefix}skeleton--text-content {
+      border-radius: var(--#{$prefix}shape-radius-base);
+      height: 100%;
+      width: 100%;
+      background-color: var(--#{$prefix}color-surface-neutral-mild);
+
+      &-title-lg {
+        height: var(--#{$prefix}size-y-skeleton-title-lg);
+      }
+
+      &-title-md,
+      &-paragraph {
+        height: var(--#{$prefix}size-y-skeleton-paragraph);
+      }
+      &-title-md {
+        height: var(--#{$prefix}size-y-skeleton-title-md);
+        &.#{$prefix}skeleton--shimmer::before {
+          height: var(--#{$prefix}size-y-skeleton-title-md);
+        }
+      }
+
+      &-title-sm,
+      &-label {
+        height: var(--#{$prefix}size-y-skeleton-label);
+      }
+      &-title-sm {
+        height: var(--#{$prefix}size-y-skeleton-title-sm);
+        &.#{$prefix}skeleton--shimmer::before {
+          height: var(--#{$prefix}size-y-skeleton-title-sm);
+        }
+      }
+
+      &-title-xs,
+      &-smallprint {
+        height: var(--#{$prefix}size-y-skeleton-smallprint);
+      }
+      &-title-xs {
+        height: var(--#{$prefix}size-y-skeleton-title-xs);
+        &.#{$prefix}skeleton--shimmer::before {
+          height: var(--#{$prefix}size-y-skeleton-title-xs);
+        }
+      }
+
+      &-regular {
+        height: var(--#{$prefix}size-y-skeleton-regular);
+      }
+    }
+  }
+}

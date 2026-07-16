@@ -1,0 +1,33 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}box-footer),
+
+  /* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}box-footer {
+  --#{$prefix}box-footer-min-height: 56px;
+  --#{$prefix}box-footer-small-min-height: 48px;
+  --#{$prefix}box-footer-border-top: 1px solid var(--#{$prefix}box-footer-attached-divider);
+
+  position: relative;
+  display: block;
+  flex: 1;
+  width: 100%;
+
+  .#{$prefix}box-footer__item {
+    display: flex;
+    align-items: center;
+    min-height: var(--#{$prefix}box-footer-min-height);
+    justify-content: inherit;
+    width: 100%;
+    padding: var(--#{$prefix}space-stack-start-box-footer-regular) var(--#{$prefix}space-inline-end-box-footer)
+      var(--#{$prefix}space-stack-end-box-footer-regular) var(--#{$prefix}space-inline-start-box-footer);
+
+    // modifiers
+    &--small {
+      min-height: var(--#{$prefix}box-footer-small-min-height);
+      padding: var(--#{$prefix}space-stack-start-box-footer-slim) var(--#{$prefix}space-inline-end-box-footer)
+        var(--#{$prefix}space-stack-end-box-footer-slim) var(--#{$prefix}space-inline-start-box-footer);
+    }
+  }
+}

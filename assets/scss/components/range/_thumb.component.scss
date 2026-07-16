@@ -1,0 +1,149 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}range-slider-thumb),
+
+
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}range-slider-thumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--#{$prefix}shape-size-y-range-handle-area);
+  width: var(--#{$prefix}shape-size-x-range-handle-area);
+  cursor: pointer;
+  z-index: 1;
+  flex-direction: column;
+
+  .#{$prefix}range-slider-thumb-indicator {
+    font-size: var(--#{$prefix}typography-size-label);
+    position: absolute;
+    bottom: 22px; //hardcoded value because there is no token for this
+    line-height: var(--#{$prefix}typography-line-height-label);
+    color: var(--Typography-base, var(--#{$prefix}color-typography-base));
+    user-select: none;
+  }
+
+  &.#{$prefix}range-slider-thumb--lg {
+    --#{$prefix}shape-size-y-range-handle-area: var(--#{$prefix}shape-size-y-range-handle-area-lg);
+    --#{$prefix}shape-size-x-range-handle-area: var(--#{$prefix}shape-size-x-range-handle-area-lg);
+    --#{$prefix}shape-size-x-range-handle: var(--#{$prefix}shape-size-x-range-handle-lg);
+    --#{$prefix}shape-size-y-range-handle: var(--#{$prefix}shape-size-y-range-handle-lg);
+    --#{$prefix}shape-radius-range-handle: var(--#{$prefix}shape-radius-range-handle-lg);
+
+    .#{$prefix}range-slider-thumb-indicator {
+      font-size: var(--#{$prefix}typography-size-regular);
+      line-height: var(--#{$prefix}typography-line-height-regular);
+      bottom: 30px; //hardcoded value because there is no token for this
+    }
+
+    &.#{$prefix}range-slider-thumb--vertical {
+      .#{$prefix}range-slider-thumb-indicator {
+        font-size: var(--#{$prefix}typography-size-label);
+        line-height: var(--#{$prefix}typography-line-height-label);
+        bottom: unset;
+        left: var(--#{$prefix}space-8x);
+      }
+    }
+  }
+
+  &.#{$prefix}range-slider-thumb--vertical {
+    height: var(--#{$prefix}shape-size-x-range-handle-area);
+    width: var(--#{$prefix}shape-size-y-range-handle-area);
+    flex-direction: row;
+
+    .#{$prefix}range-slider-thumb-indicator {
+      font-size: var(--#{$prefix}typography-size-label);
+      line-height: var(--#{$prefix}typography-line-height-label);
+      bottom: unset;
+      left: var(--#{$prefix}space-6x);
+    }
+  }
+
+  &.#{$prefix}range-slider-thumb--readonly {
+    cursor: initial;
+
+    & > .#{$prefix}range-slider-thumb__ball {
+      background-color: var(--#{$prefix}color-surface-range-handle-readonly);
+      box-shadow: var(--#{$prefix}elevation-none);
+    }
+  }
+
+  &.#{$prefix}range-slider-thumb--disabled {
+    cursor: no-drop;
+
+    .#{$prefix}range-slider-thumb-indicator {
+      color: var(--#{$prefix}color-typography-disabled);
+    }
+
+    & > .#{$prefix}range-slider-thumb__ball {
+      &::before {
+        content: ' ';
+        position: absolute;
+        background-color: #cecdcd;
+        width: var(--#{$prefix}shape-size-x-range-handle);
+        height: var(--#{$prefix}shape-size-y-range-handle);
+        border-radius: var(--#{$prefix}shape-radius-range-handle);
+      }
+
+      background-color: var(--#{$prefix}color-surface-range-handle-disabled);
+      box-shadow: var(--#{$prefix}elevation-none);
+    }
+  }
+
+  &:hover:not(.#{$prefix}range-slider-thumb--readonly):not(.#{$prefix}range-slider-thumb--disabled),
+  &.#{$prefix}range-slider-thumb--active:not(.#{$prefix}range-slider-thumb--readonly):not(
+      .#{$prefix}range-slider-thumb--disabled
+    ) {
+    & > .#{$prefix}range-slider-thumb__ball {
+      background-color: var(--#{$prefix}color-surface-range-handle-hover);
+    }
+  }
+
+  & > .#{$prefix}range-slider-thumb__ball {
+    pointer-events: auto;
+    background-color: var(--#{$prefix}color-surface-range-handle);
+    width: var(--#{$prefix}shape-size-x-range-handle);
+    height: var(--#{$prefix}shape-size-y-range-handle);
+    border-radius: var(--#{$prefix}shape-radius-range-handle);
+    box-shadow: var(--#{$prefix}elevation-range-handle);
+
+    &:focus-visible,
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+  }
+
+  &:has(> .#{$prefix}range-slider-thumb__ball:focus-visible) {
+    outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+    outline-offset: var(--#{$prefix}size-outline-offset);
+  }
+}
+
+// This is an component exception for Dark theme. The decision is to not create specific tokens for that,
+// hardcode the values directly.
+
+:root:has(.#{$prefix}dark) {
+  .#{$prefix}range-slider-thumb {
+    &.#{$prefix}range-slider-thumb--readonly {
+      & > .#{$prefix}range-slider-thumb__ball {
+        background-color: var(--#{$prefix}color-cool-grey-600);
+      }
+    }
+    &:hover:not(.#{$prefix}range-slider-thumb--readonly):not(.#{$prefix}range-slider-thumb--disabled),
+    &.#{$prefix}range-slider-thumb--active:not(.#{$prefix}range-slider-thumb--readonly):not(
+        .#{$prefix}range-slider-thumb--disabled
+      ) {
+      & > .#{$prefix}range-slider-thumb__ball {
+        background-color: var(--#{$prefix}color-ocean-200);
+      }
+    }
+
+    & > .#{$prefix}range-slider-thumb__ball {
+      background-color: var(--#{$prefix}color-white);
+    }
+  }
+}

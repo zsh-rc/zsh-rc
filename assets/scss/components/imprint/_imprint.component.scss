@@ -1,0 +1,13 @@
+@use '../../density-styles-sass' as *;
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}imprint),
+
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}imprint {
+  .imprint-text {
+    font-size: var(--#{$prefix}typography-size-regular);
+  }
+}

@@ -1,0 +1,93 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+.text-smallprint {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-smallprint);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-smallprint);
+}
+.text-label {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-label);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-label);
+}
+.text-regular {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-regular);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-regular);
+}
+.text-paragraph {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-paragraph);
+  font-weight: var(--ds-typography-weight-regular);
+  line-height: var(--ds-typography-line-height-paragraph);
+}
+
+.title-xs, ds-box.ds-box.ds-menu-box label {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-title-xs);
+  font-weight: var(--ds-typography-weight-title-xs);
+  line-height: var(--ds-typography-line-height-title-xs);
+  text-transform: var(--ds-typography-transform-uppercase);
+}
+.title-sm {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-title-sm);
+  font-weight: var(--ds-typography-weight-title-sm);
+  line-height: var(--ds-typography-line-height-title-sm);
+  text-transform: var(--ds-typography-transform-uppercase);
+}
+.title-md {
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-title-md);
+  font-weight: var(--ds-typography-weight-title-md);
+  line-height: var(--ds-typography-line-height-title-md);
+}
+.title-lg {
+  font-family: var(--ds-typography-family-brand);
+  font-size: var(--ds-typography-size-title-lg);
+  font-weight: var(--ds-typography-weight-title-lg);
+  line-height: var(--ds-typography-line-height-title-lg);
+  text-transform: var(--ds-typography-transform-uppercase);
+}
+
+.truncated-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* We do not target :host element as we are styling only template provided by this component */
+ds-box.ds-box.ds-menu-box {
+  --ds-menu-transition-duration: var(--ds-motion-duration-3);
+  width: 100%;
+  max-height: 100vh;
+}
+ds-box.ds-box.ds-menu-box .ds-menu-content {
+  overflow: visible;
+}
+ds-box.ds-box.ds-menu-box label {
+  display: block;
+  color: var(--ds-color-typography-neutral);
+}
+ds-box.ds-box.ds-menu-box.ds-no-motion {
+  --ds-menu-transition-duration: 0s;
+}
+
+.ds-menu-box--hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity var(--ds-menu-transition-duration) var(--ds-motion-timing-2);
+}
+
+.ds-menu-box--showing {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity var(--ds-menu-transition-duration) var(--ds-motion-timing-2);
+}

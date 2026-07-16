@@ -1,0 +1,50 @@
+@use '../../utilities/typography-utilities' as *;
+@use '../../density-styles-sass' as *;
+
+/* this is always the same - START */
+:host(#{$prefix}drawer),
+.#{$prefix}drawer {
+  &.#{$prefix}drawer--navigation-bar ::ng-deep > .#{$prefix}box > .#{$prefix}box__wrapper {
+    > .#{$prefix}box__header-wrapper > #{$prefix}box-header.#{$prefix}box-header > .#{$prefix}box-header__item {
+      .#{$prefix}box-header__label-wrapper.#{$prefix}drawer--left {
+        @extend .text-regular;
+        max-width: calc(
+          var(--#{$prefix}shape-width-sidedrawer) - var(--#{$prefix}shape-max-width-header-label-wrapper-diff)
+        );
+
+        > span {
+          @extend .truncated-text;
+          color: var(--#{$prefix}color-typography-neutral);
+        }
+      }
+      & > .#{$prefix}box-header__header-wrapper {
+        & > .#{$prefix}box-header__label-wrapper {
+          &.#{$prefix}drawer--left {
+            order: 1;
+            padding: 10px 0;
+            text-transform: unset;
+          }
+        }
+      }
+      & > .#{$prefix}box-header__item__close-button-wrapper {
+        > .#{$prefix}box-header__item__close-button {
+          &.#{$prefix}drawer--left {
+            margin: 0px var(--#{$prefix}space-05x);
+          }
+        }
+      }
+    }
+    /* this is always the same - END (Not this time actually) */
+
+    .#{$prefix}navigation-bar__items--mobile {
+      padding: 0px;
+    }
+    .#{$prefix}navigation-bar__actions.#{$prefix}navigation-bar__actions--mobile {
+      padding: 0px;
+
+      &.#{$prefix}navigation-bar__actions--expanded {
+        margin-top: var(--#{$prefix}space-6x);
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}error),
+
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}error {
+  color: var(--#{$prefix}color-text-input-error);
+  font-size: var(--#{$prefix}font-size-input-label);
+  font-weight: var(--#{$prefix}font-weight-input);
+  line-height: var(--#{$prefix}font-line-height-input);
+
+  .#{$prefix}error-wrapper {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    & > #{$prefix}icon {
+      flex-shrink: 0;
+      color: var(--#{$prefix}color-text-input-error);
+    }
+
+    & > span {
+      margin-left: var(--#{$prefix}space-1x);
+    }
+  }
+}

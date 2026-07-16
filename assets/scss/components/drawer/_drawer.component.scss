@@ -1,0 +1,193 @@
+@use '../../density-styles-sass' as *;
+@use '../../utilities/typography-utilities' as *;
+@use '../../elements/button/button.states' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}drawer),
+
+/* The Drawer Component and it's Backdrop work together, there is an order in which they appear
+ * for both Bottom Sheet and Side Drawer behaviors:
+ *
+ * 1. Backdrop appears (overlay.scss)
+ * 2. Drawer appears (&--visible)
+ * When the Drawer disappears there is an order in which they disappear
+ * 3. Drawer disappears
+ * 4. Backdrop disappears (&--disappears)
+ * When the Drawer appears there are some variables that change because
+ * we need to set they're values to the moving out ones  */
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}drawer {
+  box-sizing: border-box;
+
+  // for code, this variables only change after the timing of the animation of the backdrop ends, which is when the bottom sheet appears
+  // Animation variables/properties with Move OUT values
+  --#{$prefix}drawer-background-transition-duration: var(--#{$prefix}motion-duration-2);
+  --#{$prefix}drawer-animation-duration-out: var(--#{$prefix}motion-duration-quick);
+
+  // used vars
+  // Animation variables/properties with Move OUT values
+  --#{$prefix}drawer-animation-duration: var(--#{$prefix}motion-duration-quick);
+  --#{$prefix}drawer-animation-function: var(--#{$prefix}motion-timing-exit);
+  --#{$prefix}drawer-animation-delay: 0s;
+
+  width: 100%;
+
+  &.#{$prefix}drawer--left {
+    // for code, this variables only change after the timing of the animation of the backdrop ends, which is when the bottom sheet appears
+    --#{$prefix}drawer-background-transition-duration: var(--#{$prefix}motion-duration-quick);
+    --#{$prefix}drawer-animation-duration-out: var(--#{$prefix}motion-duration-rapid);
+
+    // used vars
+    // Animation variables/properties with Move Out values
+    --#{$prefix}drawer-animation-duration: var(--#{$prefix}motion-duration-rapid);
+    --#{$prefix}drawer-animation-function: var(--#{$prefix}motion-timing-exit);
+    --#{$prefix}drawer-animation-delay: 0s;
+  }
+
+  opacity: 0;
+  transition:
+    opacity var(--#{$prefix}drawer-animation-duration) var(--#{$prefix}drawer-animation-function)
+      var(--#{$prefix}drawer-animation-delay),
+    transform var(--#{$prefix}drawer-animation-duration) var(--#{$prefix}drawer-animation-function)
+      var(--#{$prefix}drawer-animation-delay),
+    visibility var(--#{$prefix}drawer-animation-duration) var(--#{$prefix}drawer-animation-function)
+      var(--#{$prefix}drawer-animation-delay);
+
+  &.#{$prefix}no-motion {
+    --#{$prefix}drawer-animation-duration: 0s;
+    --#{$prefix}drawer-animation-delay: 0s;
+    --cdk-overlay-backdrop-transition-duration: 0s;
+    --#{$prefix}drawer-background-transition-duration: 0s;
+    --#{$prefix}drawer-animation-duration-out: 0s;
+  }
+
+  &.#{$prefix}drawer {
+    display: flex;
+    max-width: none;
+    padding: 0;
+    transform: translateY(var(--#{$prefix}space-6x));
+    --#{$prefix}box-header-min-height: 56px;
+
+    &.#{$prefix}drawer--left {
+      transform: translateX(calc(-1 * var(--#{$prefix}space-6x)));
+    }
+
+    &--visible {
+      // Animation variables/properties with Move In values
+      --#{$prefix}drawer-animation-duration: var(--#{$prefix}motion-duration-2);
+      --#{$prefix}drawer-animation-function: var(--#{$prefix}motion-timing-0);
+      --#{$prefix}drawer-animation-delay: 0s;
+      opacity: 1;
+      transform: translateY(0);
+
+      &.#{$prefix}drawer--left {
+        // Animation variables/properties with Move In values
+        transform: translateX(0);
+        --#{$prefix}drawer-animation-duration: var(--#{$prefix}motion-duration-quick);
+        --#{$prefix}drawer-animation-function: var(--#{$prefix}motion-timing-0);
+        --#{$prefix}drawer-animation-delay: 0s;
+      }
+
+      &.#{$prefix}no-motion {
+        --#{$prefix}drawer-animation-duration: 0s;
+        --#{$prefix}drawer-animation-delay: 0s;
+        --cdk-overlay-backdrop-transition-duration: 0s;
+        --#{$prefix}drawer-background-transition-duration: 0s;
+        --#{$prefix}drawer-animation-duration-out: 0s;
+      }
+    }
+
+    & > .#{$prefix}drawer__box {
+      &--max-height {
+        min-height: calc(100dvh - var(--#{$prefix}space-stack-safe-box-bsheet));
+      }
+    }
+  }
+
+  & ::ng-deep > .#{$prefix}box {
+    flex: 1;
+    --#{$prefix}box-border-radius: var(--#{$prefix}shape-radius-box) var(--#{$prefix}shape-radius-box) 0 0;
+
+    & > .#{$prefix}box__wrapper > .#{$prefix}box__header-wrapper {
+      z-index: calc(var(--#{$prefix}z-index-content-base) + 1);
+      > #{$prefix}box-header.#{$prefix}box-header {
+        > .#{$prefix}box-header__item {
+          padding: var(--#{$prefix}space-stack-box-header-bsheet) var(--#{$prefix}space-inline-box-header-bsheet) 0
+            var(--#{$prefix}space-inline-box-header-bsheet);
+
+          &.#{$prefix}drawer--left {
+            --#{$prefix}box-header-min-height: var(--#{$prefix}shape-max-height-header-item);
+            max-height: var(--#{$prefix}shape-max-height-header-item);
+            padding: var(--#{$prefix}space-1x) var(--#{$prefix}space-2x);
+
+            div.#{$prefix}box-header__item__close-button-wrapper {
+              height: var(--#{$prefix}shape-max-height-header-item);
+              padding: var(--#{$prefix}space-1x) 0;
+              max-width: var(--#{$prefix}space-9x);
+              margin-left: 0;
+
+              button.#{$prefix}button {
+                padding: 0px 6px;
+                @each $prop, $value in map-get($button-states, 'ghost-muted', 'enabled') {
+                  #{$prop}: #{$value};
+                }
+              }
+            }
+          }
+
+          & > .#{$prefix}box-header__header-wrapper {
+            & > .#{$prefix}box-header__label-wrapper {
+              font-size: var(--#{$prefix}box-header-small-font-size);
+              font-weight: var(--#{$prefix}box-header-small-font-weight);
+              line-height: var(--#{$prefix}box-header-small-line-height);
+              text-transform: var(--#{$prefix}box-header-small-text-transform);
+              padding: 8px 0;
+            }
+
+            & > .#{$prefix}box-header__item__close-button-wrapper {
+              > .#{$prefix}box-header__item__close-button {
+                margin: 0;
+              }
+            }
+          }
+
+          & > .#{$prefix}box-header__header-wrapper--with-actions {
+            flex-wrap: wrap;
+
+            & > .#{$prefix}box-header__actions {
+              width: calc(100% + var(--#{$prefix}space-inline-box-header-bsheet) * 2);
+
+              margin: var(--#{$prefix}space-stack-box-header-bsheet)
+                calc(var(--#{$prefix}space-inline-box-header-bsheet) * -1) 0
+                calc(var(--#{$prefix}space-inline-box-header-bsheet) * -1);
+              order: 99;
+              justify-content: flex-start;
+
+              &:empty {
+                margin: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    & > .#{$prefix}box__wrapper > .#{$prefix}box__content-wrapper {
+      display: flex;
+      flex-direction: column;
+
+      & > .#{$prefix}drawer__box__main-content {
+        flex: 1;
+        overflow: auto;
+      }
+
+      & > .#{$prefix}drawer__box__last-content {
+        padding: var(--#{$prefix}space-1x) var(--#{$prefix}space-2x);
+        width: 100%;
+        background-color: var(--#{$prefix}color-surface-base);
+      }
+    }
+  }
+}

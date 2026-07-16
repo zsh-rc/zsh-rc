@@ -1,0 +1,155 @@
+@use '../../density-styles-sass' as *;
+@use '../../utilities/sass_utilities' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}tabs),
+
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}tabs {
+  --#{$prefix}tabs-labels-max-height: 62px;
+  --#{$prefix}tabs-label-three-dots-width: 32px;
+  --#{$prefix}tabs-label-three-dots-border-width: var(--#{$prefix}shape-size-x-tab-divider);
+  --#{$prefix}tabs-label-three-dots-border-color: var(--#{$prefix}color-surface-tab-dividers);
+  --#{$prefix}tabs-label-min-width: 48px;
+  --#{$prefix}tabs-slider-transition: all var(--#{$prefix}motion-duration-standard)
+    var(--#{$prefix}motion-timing-standard);
+
+  --#{$prefix}tabs-base-background-color: transparent;
+
+  &.#{$prefix}no-motion {
+    --#{$prefix}tabs-slider-transition: all 0s;
+  }
+
+  width: 100%;
+  min-height: 0;
+  flex-direction: column;
+  display: flex;
+  position: relative;
+}
+
+.#{$prefix}tabs-wrapper {
+  height: 100%;
+
+  &--hiding-box {
+    --#{$prefix}box-base-background-color: var(--#{$prefix}tabs-base-background-color);
+    --#{$prefix}box-box-shadow: none;
+  }
+
+  &__header {
+    &--justify {
+      &-end {
+        display: flex;
+        justify-content: flex-end;
+      }
+      &-center {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+
+  &__labels {
+    max-width: 100%;
+    max-height: var(--#{$prefix}tabs-labels-max-height);
+    overflow-x: auto;
+    position: relative;
+    display: flex;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &--overflowing {
+      max-width: calc(100% - var(--#{$prefix}tabs-label-three-dots-width));
+
+      ::ng-deep #{$prefix}tabs-label {
+        max-width: calc(100% - var(--#{$prefix}tabs-label-min-width));
+      }
+    }
+
+    &--grow-labels {
+      width: 100%;
+      ::ng-deep #{$prefix}tabs-label {
+        flex: 1;
+
+        ::ng-deep #{$prefix}box-header {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__divider {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: var(--#{$prefix}shape-size-y-tab-divider);
+    background-color: var(--#{$prefix}color-border-tab-divider);
+    z-index: calc(z-index(content) + 1);
+  }
+
+  &__three-dots {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--#{$prefix}tabs-label-three-dots-width);
+    height: 100%;
+    cursor: pointer;
+
+    background-color: var(--#{$prefix}color-surface-tab-enabled);
+
+    &--empty {
+      display: none;
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    &:hover {
+      background-color: var(--#{$prefix}color-surface-tab-hover);
+      border-color: var(--#{$prefix}color-surface-tab-hover);
+      // color: var(--#{$prefix}color-surface-tab-hover);
+    }
+
+    &::before {
+      position: absolute;
+      top: 8px;
+      left: 0;
+      content: ' ';
+      height: calc(100% - 16px);
+      width: var(--#{$prefix}tabs-label-three-dots-border-width);
+      background-color: var(--#{$prefix}color-surface-tab-dividers);
+    }
+  }
+
+  &__slider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    // TODO: use token when value is correct
+    height: 2px; //var(--#{$prefix}shape-size-y-tab-accent-bar);
+    overflow: hidden;
+    z-index: calc(z-index(content) + 2);
+
+    &__bar {
+      content: ' ';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      // TODO: use token when value is correct
+      height: 2px; //var(--#{$prefix}shape-size-y-tab-accent-bar);
+      background-color: var(--#{$prefix}color-surface-tab-selected-accent);
+      border-radius: var(--#{$prefix}shape-radius-tab-accent-bar) var(--#{$prefix}shape-radius-tab-accent-bar) 0px 0px;
+      transition: var(--#{$prefix}tabs-slider-transition);
+    }
+  }
+}

@@ -1,0 +1,71 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}generic-modal),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}generic-modal {
+  --#{$prefix}generic-modal-animation-timing: var(--#{$prefix}motion-duration-3);
+  --#{$prefix}generic-modal-animation-function: var(--#{$prefix}motion-timing-2);
+  --#{$prefix}generic-modal-animation-delay: var(--#{$prefix}motion-delay-0);
+
+  --#{$prefix}generic-modal-backdrop-transition-duration: var(--cdk-overlay-backdrop-transition-duration);
+
+  width: 100%;
+  opacity: 0;
+  transition:
+    opacity var(--#{$prefix}generic-modal-animation-timing) var(--#{$prefix}generic-modal-animation-function)
+      var(--#{$prefix}generic-modal-animation-delay),
+    transform var(--#{$prefix}generic-modal-animation-timing) var(--#{$prefix}generic-modal-animation-function)
+      var(--#{$prefix}generic-modal-animation-delay),
+    visibility var(--#{$prefix}generic-modal-animation-timing) var(--#{$prefix}generic-modal-animation-function)
+      var(--#{$prefix}generic-modal-animation-delay);
+
+  &.#{$prefix}no-motion {
+    --#{$prefix}generic-modal-animation-timing: 0s;
+    --#{$prefix}generic-modal-animation-delay: 0s;
+    --cdk-overlay-backdrop-transition-duration: 0s;
+  }
+
+  &.#{$prefix}generic-modal {
+    // narrow screen
+    @include media-breakpoint-down(sm) {
+      // if touch device
+      @media (any-hover: none) {
+        transform: translateY(100%);
+        max-width: none;
+        padding: 0 0;
+      }
+    }
+
+    // if touch device (regular size screen)
+    @media (any-hover: none) {
+    }
+
+    &--visible {
+      opacity: 1;
+
+      // narrow screen
+      @include media-breakpoint-down(sm) {
+        // if touch device
+        @media (any-hover: none) {
+          transform: translateY(0);
+        }
+      }
+
+      // if touch device (regular size screen)
+      @media (any-hover: none) {
+      }
+    }
+  }
+}
+
+.#{$prefix}generic-modal__close-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 var(--#{$prefix}space-indent-nav-item);
+
+  ::ng-deep #{$prefix}icon {
+    color: var(--#{$prefix}color-typography-neutral);
+  }
+}

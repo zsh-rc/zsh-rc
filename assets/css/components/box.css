@@ -1,0 +1,881 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+.ds-interaction-hover-border {
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  left: 0;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.ds-interaction-layer-hover, :host(ds-box-content).ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover).ds-box-content--clickable--no-color.ds-box-content--surface-default:hover .ds-box-content__interaction-layer, :host(ds-box-content).ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover).ds-box-content--clickable--no-color.ds-box-content--surface-default:focus-visible .ds-box-content__interaction-layer, :host(ds-box-content).ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover).ds-box-content--clickable--no-color.ds-box-content--surface-ghost:hover .ds-box-content__interaction-layer, :host(ds-box-content).ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover).ds-box-content--clickable--no-color.ds-box-content--surface-ghost:focus-visible .ds-box-content__interaction-layer, :host(ds-box-content).ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover).ds-box-content--clickable--no-color.ds-box-content--surface-neutral:hover .ds-box-content__interaction-layer, :host(ds-box-content).ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover).ds-box-content--clickable--no-color.ds-box-content--surface-neutral:focus-visible .ds-box-content__interaction-layer,
+.ds-box-content.ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover).ds-box-content--clickable--no-color.ds-box-content--surface-default:hover .ds-box-content__interaction-layer,
+.ds-box-content.ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover).ds-box-content--clickable--no-color.ds-box-content--surface-default:focus-visible .ds-box-content__interaction-layer,
+.ds-box-content.ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover).ds-box-content--clickable--no-color.ds-box-content--surface-ghost:hover .ds-box-content__interaction-layer,
+.ds-box-content.ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover).ds-box-content--clickable--no-color.ds-box-content--surface-ghost:focus-visible .ds-box-content__interaction-layer,
+.ds-box-content.ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover).ds-box-content--clickable--no-color.ds-box-content--surface-neutral:hover .ds-box-content__interaction-layer,
+.ds-box-content.ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover).ds-box-content--clickable--no-color.ds-box-content--surface-neutral:focus-visible .ds-box-content__interaction-layer, :host(ds-box-content).ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover):not(.ds-box-content--clickable--no-color):hover .ds-box-content__interaction-layer, :host(ds-box-content).ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover):not(.ds-box-content--clickable--no-color):focus-visible .ds-box-content__interaction-layer,
+.ds-box-content.ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover):not(.ds-box-content--clickable--no-color):hover .ds-box-content__interaction-layer,
+.ds-box-content.ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover):not(.ds-box-content--clickable--no-color):focus-visible .ds-box-content__interaction-layer, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-default:hover .ds-box__interaction-layer, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-default:focus-visible .ds-box__interaction-layer, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-ghost:hover .ds-box__interaction-layer, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-ghost:focus-visible .ds-box__interaction-layer, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-neutral:hover .ds-box__interaction-layer, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-neutral:focus-visible .ds-box__interaction-layer,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-default:hover .ds-box__interaction-layer,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-default:focus-visible .ds-box__interaction-layer,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-ghost:hover .ds-box__interaction-layer,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-ghost:focus-visible .ds-box__interaction-layer,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-neutral:hover .ds-box__interaction-layer,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-neutral:focus-visible .ds-box__interaction-layer, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):hover .ds-box__interaction-layer, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):focus-visible .ds-box__interaction-layer,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):hover .ds-box__interaction-layer,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):focus-visible .ds-box__interaction-layer, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):hover .ds-box__footer-wrapper:not(.ds-box__footer-wrapper--detached)::after, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):focus-visible .ds-box__footer-wrapper:not(.ds-box__footer-wrapper--detached)::after,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):hover .ds-box__footer-wrapper:not(.ds-box__footer-wrapper--detached)::after,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):focus-visible .ds-box__footer-wrapper:not(.ds-box__footer-wrapper--detached)::after {
+  background-color: var(--ds-color-surface-overlay-hover);
+  border: 2px solid var(--ds-color-surface-overlay-hover);
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: var(--ds-z-index-sky-base);
+}
+
+.ds-interaction-surface-blend, :host(ds-box-content).ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover):not(.ds-box-content--clickable--no-color):hover, :host(ds-box-content).ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover):not(.ds-box-content--clickable--no-color):focus-visible,
+.ds-box-content.ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover):not(.ds-box-content--clickable--no-color):hover,
+.ds-box-content.ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover):not(.ds-box-content--clickable--no-color):focus-visible, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):hover, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):focus-visible,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):hover,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):focus-visible {
+  background-blend-mode: overlay;
+  background-image: linear-gradient(0deg, var(--ds-color-surface-overlay-blend) 0%, var(--ds-color-surface-overlay-blend) 100%);
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-box),
+.ds-box {
+  --ds-box-base-padding: 16px;
+  --ds-box-content-padding: 16px;
+  --ds-box-footer-attached-background: var(--ds-color-surface-box-footer-attached);
+  --ds-box-footer-attached-divider: var(--ds-color-border-box-neutral);
+  --ds-box-footer-border-top: 1px solid var(--ds-box-footer-attached-divider);
+  --ds-box-accent-bar-base-width: 4px;
+  --ds-box-accent-bar-width: var(--ds-box-accent-bar-base-width);
+  --ds-box-accent-bar-style: solid;
+  --ds-box-accent-bar-color: transparent;
+  --ds-box-border-radius: var(--ds-shape-radius-box);
+  --ds-box-box-shadow: var(--ds-elevation-modal);
+  --ds-box-disabled-opacity: 0.5;
+  --ds-box-with-arrow-margin: var(--ds-box-base-padding);
+  --ds-box-arrow-size: var(--ds-space-3x);
+  --ds-box-arrow-offset-spacing: var(--ds-box-arrow-size);
+  --ds-box-base-background-color: var(--ds-color-surface-box-default);
+  --ds-box-color-positive: var(--ds-color-surface-positive-strong);
+  --ds-box-color-caution: var(--ds-color-surface-caution-strong);
+  --ds-box-color-critical: var(--ds-color-surface-critical-strong);
+  --ds-box-color-info: var(--ds-color-surface-info-strong);
+  --ds-box-arrow-border-color: transparent;
+  display: block;
+  position: relative;
+  border-radius: var(--ds-box-border-radius);
+  background-color: var(--ds-box-base-background-color);
+}
+:host(ds-box).ds-box,
+.ds-box.ds-box {
+  filter: none !important;
+  will-change: auto !important;
+}
+:host(ds-box).ds-box--with-arrow--top,
+.ds-box.ds-box--with-arrow--top {
+  margin-top: var(--ds-box-with-arrow-margin);
+}
+:host(ds-box).ds-box--with-arrow--right,
+.ds-box.ds-box--with-arrow--right {
+  margin-right: var(--ds-box-with-arrow-margin);
+}
+:host(ds-box).ds-box--with-arrow--bottom,
+.ds-box.ds-box--with-arrow--bottom {
+  margin-bottom: var(--ds-box-with-arrow-margin);
+}
+:host(ds-box).ds-box--with-arrow--left,
+.ds-box.ds-box--with-arrow--left {
+  margin-left: var(--ds-box-with-arrow-margin);
+}
+:host(ds-box).ds-box ::ng-deep ds-tabs-label ds-box-header,
+.ds-box.ds-box ::ng-deep ds-tabs-label ds-box-header {
+  --ds-box-header-icon-color: var(--ds-box-header-icon-color);
+}
+:host(ds-box).ds-box--positive,
+.ds-box.ds-box--positive {
+  --ds-box-accent-bar-color: var(--ds-box-color-positive);
+  --ds-box-icon-color: var(--ds-box-color-positive);
+}
+:host(ds-box).ds-box--positive ::ng-deep ds-box-header,
+.ds-box.ds-box--positive ::ng-deep ds-box-header {
+  --ds-box-header-icon-color: var(--ds-color-elements-box-positive);
+}
+:host(ds-box).ds-box--caution,
+.ds-box.ds-box--caution {
+  --ds-box-accent-bar-color: var(--ds-box-color-caution);
+}
+:host(ds-box).ds-box--critical,
+.ds-box.ds-box--critical {
+  --ds-box-accent-bar-color: var(--ds-box-color-critical);
+  --ds-box-icon-color: var(--ds-box-color-critical);
+}
+:host(ds-box).ds-box--critical ::ng-deep ds-box-header,
+.ds-box.ds-box--critical ::ng-deep ds-box-header {
+  --ds-box-header-icon-color: var(--ds-color-elements-box-critical);
+}
+:host(ds-box).ds-box--info,
+.ds-box.ds-box--info {
+  --ds-box-accent-bar-color: var(--ds-box-color-info);
+  --ds-box-icon-color: var(--ds-box-color-info);
+}
+:host(ds-box).ds-box--info ::ng-deep ds-box-header,
+.ds-box.ds-box--info ::ng-deep ds-box-header {
+  --ds-box-header-icon-color: var(--ds-color-elements-box-info);
+}
+:host(ds-box).ds-box--neutral,
+.ds-box.ds-box--neutral {
+  --ds-box-accent-bar-color: var(--ds-color-elements-box-neutral);
+  --ds-box-icon-color: var(--ds-color-elements-box-neutral);
+}
+:host(ds-box).ds-box--neutral ::ng-deep ds-box-header,
+.ds-box.ds-box--neutral ::ng-deep ds-box-header {
+  --ds-box-header-icon-color: var(--ds-color-elements-box-neutral);
+}
+:host(ds-box).ds-box--ghost,
+.ds-box.ds-box--ghost {
+  --ds-box-accent-bar-color: var(--ds-color-elements-box-ghost);
+  --ds-box-icon-color: var(--ds-color-elements-box-ghost);
+}
+:host(ds-box).ds-box--ghost ::ng-deep ds-box-header,
+.ds-box.ds-box--ghost ::ng-deep ds-box-header {
+  --ds-box-header-icon-color: var(--ds-color-icon-base);
+}
+:host(ds-box).ds-box--primary,
+.ds-box.ds-box--primary {
+  --ds-box-accent-bar-color: var(--ds-color-elements-box-primary);
+  --ds-box-icon-color: var(--ds-color-elements-box-primary);
+}
+:host(ds-box).ds-box--primary ::ng-deep ds-box-header,
+.ds-box.ds-box--primary ::ng-deep ds-box-header {
+  --ds-box-header-icon-color: var(--ds-color-elements-box-primary);
+}
+:host(ds-box).ds-box--custom-accent-bar,
+.ds-box.ds-box--custom-accent-bar {
+  --ds-box-accent-bar-color: var(--ds-box-color-custom);
+  --ds-box-icon-color: var(--ds-box-color-custom);
+}
+:host(ds-box).ds-box--custom-accent-bar ::ng-deep ds-box-header,
+.ds-box.ds-box--custom-accent-bar ::ng-deep ds-box-header {
+  --ds-box-header-icon-color: var(--ds-color-elements-box-custom);
+}
+:host(ds-box).ds-box--shadow-none,
+.ds-box.ds-box--shadow-none {
+  box-shadow: var(--ds-elevation-none);
+}
+:host(ds-box).ds-box--shadow-base,
+.ds-box.ds-box--shadow-base {
+  box-shadow: var(--ds-elevation-base);
+}
+:host(ds-box).ds-box--shadow-base > .ds-box__arrow--left,
+.ds-box.ds-box--shadow-base > .ds-box__arrow--left {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15),0px -1px 2px 0 rgba(0, 0, 0, 0.15);
+}
+:host(ds-box).ds-box--shadow-base > .ds-box__arrow--top,
+.ds-box.ds-box--shadow-base > .ds-box__arrow--top {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15),-1px 1px 2px 0 rgba(0, 0, 0, 0.15);
+}
+:host(ds-box).ds-box--shadow-base > .ds-box__arrow--right,
+.ds-box.ds-box--shadow-base > .ds-box__arrow--right {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15),1px 0px 2px 0 rgba(0, 0, 0, 0.15);
+}
+:host(ds-box).ds-box--shadow-base > .ds-box__arrow--bottom,
+.ds-box.ds-box--shadow-base > .ds-box__arrow--bottom {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15),1px -1px 2px 0 rgba(0, 0, 0, 0.15);
+}
+:host(ds-box).ds-box--shadow-component,
+.ds-box.ds-box--shadow-component {
+  box-shadow: var(--ds-elevation-component);
+}
+:host(ds-box).ds-box--shadow-component > .ds-box__arrow--left,
+.ds-box.ds-box--shadow-component > .ds-box__arrow--left {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15),0px -2px 4px 0 rgba(0, 0, 0, 0.11);
+}
+:host(ds-box).ds-box--shadow-component > .ds-box__arrow--top,
+.ds-box.ds-box--shadow-component > .ds-box__arrow--top {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15),-2px 2px 4px 0 rgba(0, 0, 0, 0.11);
+}
+:host(ds-box).ds-box--shadow-component > .ds-box__arrow--right,
+.ds-box.ds-box--shadow-component > .ds-box__arrow--right {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15),2px 0px 4px 0 rgba(0, 0, 0, 0.11);
+}
+:host(ds-box).ds-box--shadow-component > .ds-box__arrow--bottom,
+.ds-box.ds-box--shadow-component > .ds-box__arrow--bottom {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15),2px -2px 4px 0 rgba(0, 0, 0, 0.11);
+}
+:host(ds-box).ds-box--shadow-temporary,
+.ds-box.ds-box--shadow-temporary {
+  box-shadow: var(--ds-elevation-temporary);
+}
+:host(ds-box).ds-box--shadow-temporary > .ds-box__arrow--left,
+.ds-box.ds-box--shadow-temporary > .ds-box__arrow--left {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2),0px -2px 14px 0 rgba(0, 0, 0, 0.1);
+}
+:host(ds-box).ds-box--shadow-temporary > .ds-box__arrow--top,
+.ds-box.ds-box--shadow-temporary > .ds-box__arrow--top {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2),-2px 2px 14px 0 rgba(0, 0, 0, 0.1);
+}
+:host(ds-box).ds-box--shadow-temporary > .ds-box__arrow--right,
+.ds-box.ds-box--shadow-temporary > .ds-box__arrow--right {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2),2px 0px 14px 0 rgba(0, 0, 0, 0.1);
+}
+:host(ds-box).ds-box--shadow-temporary > .ds-box__arrow--bottom,
+.ds-box.ds-box--shadow-temporary > .ds-box__arrow--bottom {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2),2px -2px 14px 0 rgba(0, 0, 0, 0.1);
+}
+:host(ds-box).ds-box--shadow-navigation,
+.ds-box.ds-box--shadow-navigation {
+  box-shadow: var(--ds-elevation-navigation);
+}
+:host(ds-box).ds-box--shadow-navigation > .ds-box__arrow--left,
+.ds-box.ds-box--shadow-navigation > .ds-box__arrow--left {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2),0px -2px 14px 0 rgba(0, 0, 0, 0.1);
+}
+:host(ds-box).ds-box--shadow-navigation > .ds-box__arrow--top,
+.ds-box.ds-box--shadow-navigation > .ds-box__arrow--top {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2),-2px 2px 14px 0 rgba(0, 0, 0, 0.1);
+}
+:host(ds-box).ds-box--shadow-navigation > .ds-box__arrow--right,
+.ds-box.ds-box--shadow-navigation > .ds-box__arrow--right {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2),2px 0px 14px 0 rgba(0, 0, 0, 0.1);
+}
+:host(ds-box).ds-box--shadow-navigation > .ds-box__arrow--bottom,
+.ds-box.ds-box--shadow-navigation > .ds-box__arrow--bottom {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2),2px -2px 14px 0 rgba(0, 0, 0, 0.1);
+}
+:host(ds-box).ds-box--shadow-notification,
+.ds-box.ds-box--shadow-notification {
+  box-shadow: var(--ds-elevation-notification);
+}
+:host(ds-box).ds-box--shadow-notification > .ds-box__arrow--left,
+.ds-box.ds-box--shadow-notification > .ds-box__arrow--left {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2),0px -4px 30px 0 rgba(0, 0, 0, 0.1);
+}
+:host(ds-box).ds-box--shadow-notification > .ds-box__arrow--top,
+.ds-box.ds-box--shadow-notification > .ds-box__arrow--top {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2),-4px 4px 30px 0 rgba(0, 0, 0, 0.1);
+}
+:host(ds-box).ds-box--shadow-notification > .ds-box__arrow--right,
+.ds-box.ds-box--shadow-notification > .ds-box__arrow--right {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2),4px 0px 30px 0 rgba(0, 0, 0, 0.1);
+}
+:host(ds-box).ds-box--shadow-notification > .ds-box__arrow--bottom,
+.ds-box.ds-box--shadow-notification > .ds-box__arrow--bottom {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2),4px -4px 30px 0 rgba(0, 0, 0, 0.1);
+}
+:host(ds-box).ds-box--shadow-modal,
+.ds-box.ds-box--shadow-modal {
+  box-shadow: var(--ds-elevation-modal);
+}
+:host(ds-box).ds-box--shadow-modal > .ds-box__arrow--left,
+.ds-box.ds-box--shadow-modal > .ds-box__arrow--left {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2),0px -8px 78px 0 rgba(0, 0, 0, 0.1);
+}
+:host(ds-box).ds-box--shadow-modal > .ds-box__arrow--top,
+.ds-box.ds-box--shadow-modal > .ds-box__arrow--top {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2),-8px 8px 78px 0 rgba(0, 0, 0, 0.1);
+}
+:host(ds-box).ds-box--shadow-modal > .ds-box__arrow--right,
+.ds-box.ds-box--shadow-modal > .ds-box__arrow--right {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2),8px 0px 78px 0 rgba(0, 0, 0, 0.1);
+}
+:host(ds-box).ds-box--shadow-modal > .ds-box__arrow--bottom,
+.ds-box.ds-box--shadow-modal > .ds-box__arrow--bottom {
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2),8px -8px 78px 0 rgba(0, 0, 0, 0.1);
+}
+:host(ds-box).ds-box > .ds-box__arrow,
+.ds-box.ds-box > .ds-box__arrow {
+  clip-path: polygon(0px 0, 1px 0px, -40px -40px, 0px -80px, 80px 0px, 52px 52px, 12px 11px, 12px 12px);
+}
+:host(ds-box).ds-box--surface-default,
+.ds-box.ds-box--surface-default {
+  --ds-box-base-background-color: var(--ds-color-surface-box-default);
+  --ds-box-header-background-color: var(--ds-color-surface-box-default);
+}
+:host(ds-box).ds-box--surface-neutral,
+.ds-box.ds-box--surface-neutral {
+  --ds-box-base-background-color: var(--ds-color-surface-box-neutral);
+  --ds-box-header-background-color: var(--ds-color-surface-box-neutral);
+}
+:host(ds-box).ds-box--surface-ghost,
+.ds-box.ds-box--surface-ghost {
+  --ds-box-base-background-color: var(--ds-color-surface-box-ghost);
+  --ds-box-header-background-color: var(--ds-color-surface-box-ghost);
+  --ds-box-footer-attached-background: var(--ds-color-surface-box-ghost);
+  --ds-box-footer-attached-divider: var(--ds-color-surface-box-ghost);
+  box-shadow: var(--ds-elevation-none);
+}
+:host(ds-box).ds-box--surface-invert,
+.ds-box.ds-box--surface-invert {
+  --ds-box-base-background-color: var(--ds-color-surface-box-invert);
+  --ds-box-header-background-color: var(--ds-color-surface-box-invert);
+}
+:host(ds-box).ds-box--surface-primary,
+.ds-box.ds-box--surface-primary {
+  --ds-box-base-background-color: var(--ds-color-surface-box-primary);
+  --ds-box-header-background-color: var(--ds-color-surface-box-primary);
+}
+:host(ds-box).ds-box--surface-info,
+.ds-box.ds-box--surface-info {
+  --ds-box-base-background-color: var(--ds-color-surface-box-info);
+  --ds-box-header-background-color: var(--ds-color-surface-box-info);
+}
+:host(ds-box).ds-box--surface-positive,
+.ds-box.ds-box--surface-positive {
+  --ds-box-base-background-color: var(--ds-color-surface-box-positive);
+  --ds-box-header-background-color: var(--ds-color-surface-box-positive);
+}
+:host(ds-box).ds-box--surface-caution,
+.ds-box.ds-box--surface-caution {
+  --ds-box-base-background-color: var(--ds-color-surface-box-caution);
+  --ds-box-header-background-color: var(--ds-color-surface-box-caution);
+}
+:host(ds-box).ds-box--surface-critical,
+.ds-box.ds-box--surface-critical {
+  --ds-box-base-background-color: var(--ds-color-surface-box-critical);
+  --ds-box-header-background-color: var(--ds-color-surface-box-critical);
+}
+:host(ds-box).ds-box--surface-custom,
+.ds-box.ds-box--surface-custom {
+  --ds-box-base-background-color: var(--ds-color-surface-box-custom);
+  --ds-box-header-background-color: var(--ds-color-surface-box-custom);
+}
+:host(ds-box).ds-box--border-default,
+.ds-box.ds-box--border-default {
+  border: 1px solid var(--ds-color-border-box-default);
+  --ds-box-arrow-border-color: var(--ds-color-border-box-default);
+}
+:host(ds-box).ds-box--border-neutral,
+.ds-box.ds-box--border-neutral {
+  border: 1px solid var(--ds-color-border-box-neutral);
+  --ds-box-arrow-border-color: var(--ds-color-border-box-neutral);
+}
+:host(ds-box).ds-box--border-ghost,
+.ds-box.ds-box--border-ghost {
+  border: 1px solid var(--ds-color-border-box-ghost);
+  --ds-box-arrow-border-color: var(--ds-color-border-box-ghost);
+}
+:host(ds-box).ds-box--border-invert,
+.ds-box.ds-box--border-invert {
+  border: 1px solid var(--ds-color-border-box-invert);
+  --ds-box-arrow-border-color: var(--ds-color-border-box-invert);
+}
+:host(ds-box).ds-box--border-primary,
+.ds-box.ds-box--border-primary {
+  border: 1px solid var(--ds-color-border-box-primary);
+  --ds-box-arrow-border-color: var(--ds-color-border-box-primary);
+}
+:host(ds-box).ds-box--border-info,
+.ds-box.ds-box--border-info {
+  border: 1px solid var(--ds-color-border-box-info);
+  --ds-box-arrow-border-color: var(--ds-color-border-box-info);
+}
+:host(ds-box).ds-box--border-positive,
+.ds-box.ds-box--border-positive {
+  border: 1px solid var(--ds-color-border-box-positive);
+  --ds-box-arrow-border-color: var(--ds-color-border-box-positive);
+}
+:host(ds-box).ds-box--border-caution,
+.ds-box.ds-box--border-caution {
+  border: 1px solid var(--ds-color-border-box-caution);
+  --ds-box-arrow-border-color: var(--ds-color-border-box-caution);
+}
+:host(ds-box).ds-box--border-critical,
+.ds-box.ds-box--border-critical {
+  border: 1px solid var(--ds-color-border-box-critical);
+  --ds-box-arrow-border-color: var(--ds-color-border-box-critical);
+}
+:host(ds-box).ds-box--border-custom,
+.ds-box.ds-box--border-custom {
+  border: 1px solid var(--ds-color-border-box-custom);
+  --ds-box-arrow-border-color: var(--ds-color-border-box-custom);
+}
+:host(ds-box).ds-box--clickable:focus-visible,
+.ds-box.ds-box--clickable:focus-visible {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+}
+:host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover),
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover) {
+  cursor: pointer;
+}
+:host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-default:hover .ds-box__interaction-layer, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-default:focus-visible .ds-box__interaction-layer, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-ghost:hover .ds-box__interaction-layer, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-ghost:focus-visible .ds-box__interaction-layer, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-neutral:hover .ds-box__interaction-layer, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-neutral:focus-visible .ds-box__interaction-layer,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-default:hover .ds-box__interaction-layer,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-default:focus-visible .ds-box__interaction-layer,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-ghost:hover .ds-box__interaction-layer,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-ghost:focus-visible .ds-box__interaction-layer,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-neutral:hover .ds-box__interaction-layer,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-neutral:focus-visible .ds-box__interaction-layer {
+  border-radius: var(--ds-box-border-radius);
+}
+:host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-default:focus-visible, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-ghost:focus-visible, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-neutral:focus-visible,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-default:focus-visible,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-ghost:focus-visible,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover).ds-box--clickable--no-color.ds-box--surface-neutral:focus-visible {
+  outline: none;
+}
+:host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):hover, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):focus-visible,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):hover,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):focus-visible {
+  --ds-box-header-background-color: transparent;
+}
+:host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):hover .ds-box__interaction-layer, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):focus-visible .ds-box__interaction-layer,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):hover .ds-box__interaction-layer,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):focus-visible .ds-box__interaction-layer {
+  border-radius: var(--ds-box-border-radius);
+  background-color: var(--ds-color-surface-transparent) !important;
+}
+:host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):hover .ds-box__footer-wrapper:not(.ds-box__footer-wrapper--detached)::after, :host(ds-box).ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):focus-visible .ds-box__footer-wrapper:not(.ds-box__footer-wrapper--detached)::after,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):hover .ds-box__footer-wrapper:not(.ds-box__footer-wrapper--detached)::after,
+.ds-box.ds-box--clickable:not(.ds-box--clickable--supressed-hover):not(.ds-box--clickable--no-color):focus-visible .ds-box__footer-wrapper:not(.ds-box__footer-wrapper--detached)::after {
+  content: "";
+  border: none !important;
+}
+:host(ds-box)::after,
+.ds-box::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  border-top: var(--ds-box-accent-bar-width) var(--ds-box-accent-bar-style) var(--ds-box-accent-bar-color);
+  border-top-right-radius: var(--ds-box-border-radius);
+  border-top-left-radius: var(--ds-box-border-radius);
+  z-index: calc(var(--ds-z-index-content-base) + 2);
+}
+
+.ds-box__header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: var(--ds-z-index-content-base);
+}
+.ds-box__header-wrapper--detached {
+  position: relative;
+}
+.ds-box__header-wrapper--with-shadow {
+  box-shadow: var(--ds-elevation-box-header-fixed);
+}
+.ds-box__content-wrapper {
+  overflow: auto;
+  flex: 1;
+}
+.ds-box__content-wrapper:focus-visible {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+  z-index: 10000;
+}
+.ds-box__content-wrapper:focus-visible:not([tabindex="0"]) {
+  outline: none;
+}
+.ds-box__content-wrapper--with-detached-parts {
+  overflow: initial;
+  z-index: calc(var(--ds-z-index-content-base) - 1);
+}
+.ds-box__content-wrapper--hidden {
+  display: none;
+}
+.ds-box__footer-wrapper {
+  z-index: calc(var(--ds-z-index-content-base) + 2);
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background-color: var(--ds-box-footer-attached-background);
+}
+.ds-box__footer-wrapper--hidden {
+  display: none;
+}
+.ds-box__footer-wrapper ::ng-deep .ds-box-footer__item {
+  border-top: var(--ds-box-footer-border-top);
+}
+.ds-box__footer-wrapper--detached {
+  position: relative;
+  background-color: transparent;
+}
+.ds-box__footer-wrapper--detached ::ng-deep .ds-box-footer__item {
+  border-top: none;
+}
+.ds-box__arrow {
+  --z-index-subtraction-for-box-arrow: 2;
+  position: absolute;
+  background-color: var(--ds-box-base-background-color);
+  width: var(--ds-box-arrow-size);
+  height: var(--ds-box-arrow-size);
+  z-index: calc(var(--ds-z-index-content-base) - var(--z-index-subtraction-for-box-arrow));
+  border-top: 1px solid var(--ds-box-arrow-border-color);
+  border-right: 1px solid var(--ds-box-arrow-border-color);
+  border-bottom: 1px solid transparent;
+  border-left: 1px solid transparent;
+  border-radius: 0 var(--ds-shape-radius-box-tip) 0 0;
+}
+.ds-box__arrow--top {
+  top: 0;
+  right: 50%;
+  transform: translate(50%, -50%) rotate(-45deg);
+  z-index: var(--ds-z-index-content-base);
+}
+.ds-box__arrow--top-start {
+  transform: translate(0, -50%) rotate(-45deg);
+  right: var(--ds-box-arrow-offset-spacing);
+}
+.ds-box__arrow--top-end {
+  transform: translate(0, -50%) rotate(-45deg);
+  right: initial;
+  left: var(--ds-box-arrow-offset-spacing);
+}
+.ds-box__arrow--right {
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%) rotate(45deg);
+  z-index: calc(var(--ds-z-index-content-base) - var(--z-index-subtraction-for-box-arrow));
+}
+.ds-box__arrow--right-start {
+  transform: translate(50%, 0) rotate(45deg);
+  top: var(--ds-box-arrow-offset-spacing);
+}
+.ds-box__arrow--right-end {
+  transform: translate(50%, 0) rotate(45deg);
+  top: initial;
+  bottom: var(--ds-box-arrow-offset-spacing);
+}
+.ds-box__arrow--bottom {
+  bottom: 0;
+  right: 50%;
+  transform: translate(50%, 50%) rotate(135deg);
+  z-index: calc(var(--ds-z-index-content-base) - var(--z-index-subtraction-for-box-arrow));
+}
+.ds-box__arrow--bottom-start {
+  transform: translate(0, 50%) rotate(135deg);
+  right: var(--ds-box-arrow-offset-spacing);
+}
+.ds-box__arrow--bottom-end {
+  transform: translate(0, 50%) rotate(135deg);
+  right: initial;
+  left: var(--ds-box-arrow-offset-spacing);
+}
+.ds-box__arrow--left {
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%) rotate(-135deg);
+  z-index: calc(var(--ds-z-index-content-base) - var(--z-index-subtraction-for-box-arrow));
+}
+.ds-box__arrow--left-start {
+  transform: translate(-50%, 0) rotate(-135deg);
+  top: var(--ds-box-arrow-offset-spacing);
+}
+.ds-box__arrow--left-end {
+  transform: translate(-50%, 0) rotate(-135deg);
+  top: initial;
+  bottom: var(--ds-box-arrow-offset-spacing);
+}
+
+.ds-box__wrapper {
+  position: relative;
+  border-radius: var(--ds-box-border-radius);
+  height: 100%;
+  max-height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ds-box__wrapper--disabled {
+  cursor: no-drop;
+  opacity: var(--ds-box-disabled-opacity);
+}
+.ds-box__wrapper--disabled * {
+  pointer-events: none;
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-box-content),
+.ds-box-content {
+  display: flex;
+  position: relative;
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-default);
+}
+:host(ds-box-content).ds-box-content--divider-full::before,
+.ds-box-content.ds-box-content--divider-full::before {
+  width: 100%;
+}
+:host(ds-box-content).ds-box-content--divider-lg::before,
+.ds-box-content.ds-box-content--divider-lg::before {
+  content: " ";
+  width: calc(100% - var(--ds-space-8x) * 2);
+}
+:host(ds-box-content).ds-box-content--divider-md::before,
+.ds-box-content.ds-box-content--divider-md::before {
+  content: " ";
+  width: calc(100% - var(--ds-space-inset-box-content) * 2);
+}
+:host(ds-box-content).ds-box-content--divider-sm::before,
+.ds-box-content.ds-box-content--divider-sm::before {
+  content: " ";
+  width: calc(100% - var(--ds-space-2x) * 2);
+}
+:host(ds-box-content).ds-box-content--spacing-regular,
+.ds-box-content.ds-box-content--spacing-regular {
+  padding: var(--ds-space-inset-box-content);
+}
+:host(ds-box-content).ds-box-content--spacing-lg,
+.ds-box-content.ds-box-content--spacing-lg {
+  padding: 32px;
+}
+:host(ds-box-content).ds-box-content--spacing-md,
+.ds-box-content.ds-box-content--spacing-md {
+  padding: var(--ds-space-inset-box-content);
+}
+:host(ds-box-content).ds-box-content--spacing-sm,
+.ds-box-content.ds-box-content--spacing-sm {
+  padding: 8px;
+}
+:host(ds-box-content).ds-box-content--spacing-none,
+.ds-box-content.ds-box-content--spacing-none {
+  padding: 0;
+}
+:host(ds-box-content).ds-box-content--spacing-top-sm,
+.ds-box-content.ds-box-content--spacing-top-sm {
+  padding-top: 8px;
+}
+:host(ds-box-content).ds-box-content--spacing-top-md,
+.ds-box-content.ds-box-content--spacing-top-md {
+  padding-top: var(--ds-space-inset-box-content);
+}
+:host(ds-box-content).ds-box-content--spacing-top-lg,
+.ds-box-content.ds-box-content--spacing-top-lg {
+  padding-top: 32px;
+}
+:host(ds-box-content).ds-box-content--spacing-top-none,
+.ds-box-content.ds-box-content--spacing-top-none {
+  padding-top: 0;
+}
+:host(ds-box-content).ds-box-content--spacing-bottom-sm,
+.ds-box-content.ds-box-content--spacing-bottom-sm {
+  padding-bottom: 8px;
+}
+:host(ds-box-content).ds-box-content--spacing-bottom-md,
+.ds-box-content.ds-box-content--spacing-bottom-md {
+  padding-bottom: var(--ds-space-inset-box-content);
+}
+:host(ds-box-content).ds-box-content--spacing-bottom-lg,
+.ds-box-content.ds-box-content--spacing-bottom-lg {
+  padding-bottom: 32px;
+}
+:host(ds-box-content).ds-box-content--spacing-bottom-none,
+.ds-box-content.ds-box-content--spacing-bottom-none {
+  padding-bottom: 0;
+}
+:host(ds-box-content).ds-box-content--spacing-left-sm,
+.ds-box-content.ds-box-content--spacing-left-sm {
+  padding-left: 8px;
+}
+:host(ds-box-content).ds-box-content--spacing-left-md,
+.ds-box-content.ds-box-content--spacing-left-md {
+  padding-left: var(--ds-space-inset-box-content);
+}
+:host(ds-box-content).ds-box-content--spacing-left-lg,
+.ds-box-content.ds-box-content--spacing-left-lg {
+  padding-left: 32px;
+}
+:host(ds-box-content).ds-box-content--spacing-left-none,
+.ds-box-content.ds-box-content--spacing-left-none {
+  padding-left: 0;
+}
+:host(ds-box-content).ds-box-content--spacing-right-sm,
+.ds-box-content.ds-box-content--spacing-right-sm {
+  padding-right: 8px;
+}
+:host(ds-box-content).ds-box-content--spacing-right-md,
+.ds-box-content.ds-box-content--spacing-right-md {
+  padding-right: var(--ds-space-inset-box-content);
+}
+:host(ds-box-content).ds-box-content--spacing-right-lg,
+.ds-box-content.ds-box-content--spacing-right-lg {
+  padding-right: 32px;
+}
+:host(ds-box-content).ds-box-content--spacing-right-none,
+.ds-box-content.ds-box-content--spacing-right-none {
+  padding-right: 0;
+}
+:host(ds-box-content).ds-box-content--surface-default,
+.ds-box-content.ds-box-content--surface-default {
+  background-color: transparent;
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-default);
+}
+:host(ds-box-content).ds-box-content--surface-invert,
+.ds-box-content.ds-box-content--surface-invert {
+  background-color: var(--ds-color-surface-box-invert);
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-invert);
+}
+:host(ds-box-content).ds-box-content--surface-primary,
+.ds-box-content.ds-box-content--surface-primary {
+  background-color: var(--ds-color-surface-box-primary);
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-primary);
+}
+:host(ds-box-content).ds-box-content--surface-info,
+.ds-box-content.ds-box-content--surface-info {
+  background-color: var(--ds-color-surface-box-info);
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-info);
+}
+:host(ds-box-content).ds-box-content--surface-positive,
+.ds-box-content.ds-box-content--surface-positive {
+  background-color: var(--ds-color-surface-box-positive);
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-positive);
+}
+:host(ds-box-content).ds-box-content--surface-caution,
+.ds-box-content.ds-box-content--surface-caution {
+  background-color: var(--ds-color-surface-box-caution);
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-caution);
+}
+:host(ds-box-content).ds-box-content--surface-critical,
+.ds-box-content.ds-box-content--surface-critical {
+  background-color: var(--ds-color-surface-box-critical);
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-critical);
+}
+:host(ds-box-content).ds-box-content--surface-neutral,
+.ds-box-content.ds-box-content--surface-neutral {
+  background-color: var(--ds-color-surface-box-neutral);
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-neutral);
+}
+:host(ds-box-content).ds-box-content--surface-custom,
+.ds-box-content.ds-box-content--surface-custom {
+  background-color: var(--ds-color-surface-box-custom);
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-custom);
+}
+:host(ds-box-content).ds-box-content--accent-bar-default,
+.ds-box-content.ds-box-content--accent-bar-default {
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-default);
+}
+:host(ds-box-content).ds-box-content--accent-bar-invert,
+.ds-box-content.ds-box-content--accent-bar-invert {
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-invert);
+}
+:host(ds-box-content).ds-box-content--accent-bar-primary,
+.ds-box-content.ds-box-content--accent-bar-primary {
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-primary);
+}
+:host(ds-box-content).ds-box-content--accent-bar-info,
+.ds-box-content.ds-box-content--accent-bar-info {
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-info);
+}
+:host(ds-box-content).ds-box-content--accent-bar-positive,
+.ds-box-content.ds-box-content--accent-bar-positive {
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-positive);
+}
+:host(ds-box-content).ds-box-content--accent-bar-caution,
+.ds-box-content.ds-box-content--accent-bar-caution {
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-caution);
+}
+:host(ds-box-content).ds-box-content--accent-bar-critical,
+.ds-box-content.ds-box-content--accent-bar-critical {
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-critical);
+}
+:host(ds-box-content).ds-box-content--accent-bar-neutral,
+.ds-box-content.ds-box-content--accent-bar-neutral {
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-neutral);
+}
+:host(ds-box-content).ds-box-content--accent-bar-ghost,
+.ds-box-content.ds-box-content--accent-bar-ghost {
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-ghost);
+}
+:host(ds-box-content).ds-box-content--accent-bar-custom,
+.ds-box-content.ds-box-content--accent-bar-custom {
+  --ds-box-content-accent-bar-color: var(--ds-color-elements-box-custom);
+}
+:host(ds-box-content).ds-box-content--with-accent-bar::after,
+.ds-box-content.ds-box-content--with-accent-bar::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--ds-shape-size-x-box-content-accent-bar);
+  height: 100%;
+  background-color: var(--ds-box-content-accent-bar-color);
+}
+:host(ds-box-content).ds-box-content--clickable:focus-visible,
+.ds-box-content.ds-box-content--clickable:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ds-color-outline-tag);
+}
+:host(ds-box-content).ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover):focus-visible,
+.ds-box-content.ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover):focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--ds-color-outline-tag);
+}
+:host(ds-box-content).ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover),
+.ds-box-content.ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover) {
+  cursor: pointer;
+}
+:host(ds-box-content).ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover):not(.ds-box-content--clickable--no-color):hover .ds-box-content__interaction-layer, :host(ds-box-content).ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover):not(.ds-box-content--clickable--no-color):focus-visible .ds-box-content__interaction-layer,
+.ds-box-content.ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover):not(.ds-box-content--clickable--no-color):hover .ds-box-content__interaction-layer,
+.ds-box-content.ds-box-content--clickable:not(.ds-box-content--clickable--without-border):not(.ds-box-content--clickable--supressed-hover):not(.ds-box-content--clickable--no-color):focus-visible .ds-box-content__interaction-layer {
+  background-color: var(--ds-color-surface-transparent) !important;
+}
+
+.ds-box-content__selectable-wrapper {
+  padding-right: 8px;
+}
+
+.ds-box-content__content-wrapper {
+  width: 100%;
+}
+
+.ds-box-content__content-title {
+  padding-bottom: var(--ds-space-2x);
+}
+
+.ds-box-content-divider-basics, :host(ds-box-content).ds-box-content--divider-full::before,
+.ds-box-content.ds-box-content--divider-full::before, :host(ds-box-content).ds-box-content--divider-lg::before,
+.ds-box-content.ds-box-content--divider-lg::before, :host(ds-box-content).ds-box-content--divider-md::before,
+.ds-box-content.ds-box-content--divider-md::before, :host(ds-box-content).ds-box-content--divider-sm::before,
+.ds-box-content.ds-box-content--divider-sm::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--ds-color-surface-box-content-divider);
+  height: var(--ds-shape-size-y-box-content-divider);
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-box-footer),
+.ds-box-footer {
+  --ds-box-footer-min-height: 56px;
+  --ds-box-footer-small-min-height: 48px;
+  --ds-box-footer-border-top: 1px solid var(--ds-box-footer-attached-divider);
+  position: relative;
+  display: block;
+  flex: 1;
+  width: 100%;
+}
+:host(ds-box-footer) .ds-box-footer__item,
+.ds-box-footer .ds-box-footer__item {
+  display: flex;
+  align-items: center;
+  min-height: var(--ds-box-footer-min-height);
+  justify-content: inherit;
+  width: 100%;
+  padding: var(--ds-space-stack-start-box-footer-regular) var(--ds-space-inline-end-box-footer) var(--ds-space-stack-end-box-footer-regular) var(--ds-space-inline-start-box-footer);
+}
+:host(ds-box-footer) .ds-box-footer__item--small,
+.ds-box-footer .ds-box-footer__item--small {
+  min-height: var(--ds-box-footer-small-min-height);
+  padding: var(--ds-space-stack-start-box-footer-slim) var(--ds-space-inline-end-box-footer) var(--ds-space-stack-end-box-footer-slim) var(--ds-space-inline-start-box-footer);
+}

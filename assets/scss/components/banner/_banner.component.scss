@@ -1,0 +1,48 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}banner),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}banner {
+  --#{$prefix}color-surface-message-neutral: var(--#{$prefix}color-surface-banner-neutral);
+  --#{$prefix}color-surface-message-info: var(--#{$prefix}color-surface-banner-info);
+  --#{$prefix}color-surface-message-positive: var(--#{$prefix}color-surface-banner-positive);
+  --#{$prefix}color-surface-message-caution: var(--#{$prefix}color-surface-banner-caution);
+  --#{$prefix}color-surface-message-critical: var(--#{$prefix}color-surface-banner-critical);
+
+  --#{$prefix}color-border-message-neutral: var(--#{$prefix}color-border-banner-neutral);
+  --#{$prefix}color-border-message-info: var(--#{$prefix}color-border-banner-info);
+  --#{$prefix}color-border-message-positive: var(--#{$prefix}color-border-banner-positive);
+  --#{$prefix}color-border-message-caution: var(--#{$prefix}color-border-banner-caution);
+  --#{$prefix}color-border-message-critical: var(--#{$prefix}color-border-banner-critical);
+
+  --#{$prefix}color-text-message: var(--#{$prefix}color-text-banner);
+
+  --#{$prefix}font-family-message: var(--#{$prefix}font-family-banner);
+  --#{$prefix}font-family-message-title: var(--#{$prefix}font-family-banner-title);
+  --#{$prefix}font-size-message: var(--#{$prefix}font-size-banner);
+  --#{$prefix}font-size-message-title: var(--#{$prefix}font-size-banner-title);
+  --#{$prefix}font-weight-message: var(--#{$prefix}font-weight-banner);
+  --#{$prefix}font-weight-message-title: var(--#{$prefix}font-weight-banner-title);
+  --#{$prefix}font-line-height-message: var(--#{$prefix}font-line-height-banner);
+  --#{$prefix}font-line-height-message-title: var(--#{$prefix}font-line-height-banner-title);
+
+  --#{$prefix}space-inset-message: var(--#{$prefix}space-inset-banner);
+  --#{$prefix}space-inset-message-regular: var(--#{$prefix}space-inset-banner);
+  --#{$prefix}space-inline-gap-message: var(--#{$prefix}space-inline-gap-banner);
+  --#{$prefix}space-inline-couple-message: var(--#{$prefix}space-inline-couple-banner);
+  --#{$prefix}space-stack-join-message: var(--#{$prefix}space-stack-join-banner);
+
+  --#{$prefix}shape-radius-message: 0;
+
+  #{$prefix}message.#{$prefix}message > ::ng-deep .#{$prefix}box-header {
+    border: none;
+
+    & > .#{$prefix}box-header__item {
+      border-bottom: var(--#{$prefix}message-border-width) var(--#{$prefix}message-border-style)
+        var(--#{$prefix}message-border-color);
+      padding-bottom: calc(var(--#{$prefix}box-header-base-padding) - 1px);
+    }
+  }
+}

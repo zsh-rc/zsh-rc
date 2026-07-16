@@ -1,0 +1,553 @@
+@use 'sass:map';
+@use '../ag-grid-theme-icon-variables' as icons;
+
+$-theme-params: (
+  theme: density,
+  extend-theme: alpine,
+);
+
+@function get-theme-params() {
+  @return map.merge($-theme-params, icons.$theme-params-icons);
+}
+
+@mixin render-extras($prefix: ds-) {
+  @include icons.render-font-face;
+
+  .ag-theme-density {
+    // Color
+    --ag-alpine-active-color: var(--#{$prefix}color-typography-action-active);
+    --ag-selected-row-background-color: var(--row-selected-background-color);
+    --ag-input-focus-border-color: var(--#{$prefix}color-outline-input);
+    --ag-input-disabled-background-color: var(--#{$prefix}color-surface-input-disabled);
+    --ag-input-disabled-border-color: var(--#{$prefix}color-border-input-disabled);
+    --ag-row-hover-color: var(--#{$prefix}color-surface-table-cell-hover);
+    --ag-selected-tab-underline-color: var(--#{$prefix}color-surface-table-cell-selected);
+    --ag-range-selection-border-color: var(--#{$prefix}color-outline-input);
+    --ag-range-selection-background-color: var(--row-selected-background-color);
+    --ag-range-selection-background-color-2: var(--row-selected-background-color);
+    --ag-range-selection-background-color-3: var(--row-selected-background-color);
+    --ag-range-selection-background-color-4: var(--row-selected-background-color);
+    --ag-value-change-value-highlight-background-color: var(--#{$prefix}color-surface-mark);
+    --ag-background-color: var(--#{$prefix}color-surface-table-cell);
+    --ag-control-panel-background-color: var(--#{$prefix}color-surface-base);
+    --ag-header-background-color: var(--#{$prefix}color-surface-table-header);
+    --ag-header-cell-hover-background-color: var(--#{$prefix}color-surface-table-header-hover);
+    --ag-header-column-resize-handle-color: var(--#{$prefix}color-border-base);
+    --ag-subheader-background-color: var(--#{$prefix}color-surface-table-header);
+    --ag-odd-row-background-color: var(--#{$prefix}color-surface-table-cell);
+    --ag-modal-overlay-background-color: var(--#{$prefix}color-surface-backdrop);
+    --ag-border-color: var(--#{$prefix}color-border-base);
+    --ag-column-hover-color: var(--#{$prefix}color-typography-action-active);
+    --ag-row-border-color: var(--#{$prefix}color-surface-table-dividers);
+    --ag-secondary-border-color: var(--#{$prefix}color-surface-table-dividers);
+    // Text color
+    --ag-header-foreground-color: var(--#{$prefix}color-typography-neutral);
+    --ag-foreground-color: var(--#{$prefix}color-typography-base);
+    --ag-secondary-foreground-color: var(--#{$prefix}color-typography-neutral);
+    --ag-disabled-foreground-color: var(--#{$prefix}color-typography-disabled);
+    // Fonts
+    --ag-font-family: var(--#{$prefix}font-family-list-item);
+    --ag-font-size: var(--#{$prefix}font-size-list-item);
+    // Height
+    --ag-header-height: 56px;
+    --ag-row-height: 32px;
+    // Width
+    --ag-header-column-resize-handle-width: 1px;
+    // Checkbox
+    --ag-checkbox-background-color: transparent;
+    --ag-checkbox-border-radius: var(--#{$prefix}shape-radius-input);
+    --ag-checkbox-checked-color: var(--#{$prefix}color-surface-input-active);
+    --ag-checkbox-unchecked-color: var(--#{$prefix}color-border-input);
+    --ag-checkbox-indeterminate-color: var(--ag-checkbox-checked-color);
+    // Switch
+    --ag-toggle-button-on-background-color: var(--#{$prefix}color-surface-input-active);
+    --ag-toggle-button-switch-background-color: var(--#{$prefix}color-surface-input-handle);
+    // Icon
+    --ag-icon-font-color: var(--#{$prefix}color-typography-neutral);
+    --ag-icon-font-color-asc: var(--#{$prefix}color-typography-action-active);
+    --ag-icon-font-color-desc: var(--#{$prefix}color-typography-action-active);
+    // Chip
+    --ag-chip-background-color: var(--#{$prefix}color-surface-tag-brand);
+
+    line-height: var(--#{$prefix}typography-line-height-regular);
+
+    --row-selected-background-color: var(--#{$prefix}color-surface-table-cell-selected);
+
+    &.zebra {
+      --ag-odd-row-background-color: var(--#{$prefix}color-surface-page);
+
+      & .ag-details-row {
+        & .ag-header-row {
+          background-color: var(--#{$prefix}color-surface-page);
+        }
+
+        // because css counts children from 1 upwards, 'odd' and 'even' need to be the reverse of ag-grid
+        & .ag-row:nth-child(odd) {
+          background-color: var(--#{$prefix}color-surface-base);
+
+          &.ag-row-selected {
+            background-color: var(--row-selected-background-color);
+          }
+        }
+
+        & .ag-row:nth-child(even) {
+          background-color: var(--#{$prefix}color-surface-page);
+        }
+      }
+
+      .ag-row.ag-row-even {
+        background: var(--#{$prefix}color-surface-base);
+
+        &.ag-row-selected {
+          background-color: var(--row-selected-background-color);
+        }
+      }
+
+      .ag-row.ag-row-odd {
+        &.ag-row-selected {
+          background-color: var(--row-selected-background-color);
+        }
+      }
+
+      &:has(.ag-details-row) {
+        & .ag-center-cols-container:has(.ag-row.ag-row-group-expanded) {
+          // because css counts children from 1 upwards, 'odd' and 'even' need to be the reverse of ag-grid
+          & .ag-row:nth-child(odd) {
+            background-color: var(--#{$prefix}color-surface-base);
+
+            &.ag-row-selected {
+              background-color: var(--row-selected-background-color);
+            }
+          }
+
+          & .ag-row:nth-child(even) {
+            background-color: var(--#{$prefix}color-surface-page);
+          }
+        }
+      }
+    }
+
+    &:not(.zebra) {
+      .ag-sticky-top {
+        background-color: var(--#{$prefix}color-surface-page);
+
+        .ag-row.ag-row-group {
+          background-color: var(--#{$prefix}color-surface-page);
+        }
+      }
+    }
+
+    & .ag-row.ag-row-selected {
+      background-color: var(--row-selected-background-color);
+    }
+
+    & .ag-row {
+      font-size: var(--#{$prefix}font-size-list-item);
+    }
+
+    // TODO remove code block after changing icon-font to SVG
+    // --- Workaround to get two colors in the asc/desc sort icons  --- //
+    .ag-header-cell-sortable {
+      // Show unsorted icon
+      .ag-header-cell-sorted-none,
+      [class='ag-cell-label-container'] {
+        & .ag-sort-none-icon {
+          display: block !important;
+          color: var(--#{$prefix}color-icon-table-header-sort-non-active);
+
+          & > .ag-icon-none {
+            color: var(--#{$prefix}color-icon-table-header-sort-non-active);
+          }
+        }
+
+        & span:not(.ag-hidden) ~ .ag-sort-none-icon {
+          display: none !important;
+        }
+      }
+
+      // Increase sort icon size to 24px
+      .ag-sort-none-icon,
+      .ag-sort-ascending-icon,
+      .ag-sort-descending-icon {
+        & > .ag-icon {
+          font-size: var(--#{$prefix}icon-size-large);
+        }
+      }
+
+      // Position upper part of sort icon as absolute to make align both parts of the icon
+      .ag-sort-ascending-icon,
+      .ag-sort-descending-icon {
+        & > .ag-icon::before {
+          position: absolute;
+        }
+      }
+
+      // Set color on the unactive part of the sort icon when the header cell is hovered
+      &:hover {
+        .ag-sort-none-icon > .ag-icon::before {
+          color: var(--#{$prefix}color-icon-table-header-sort-non-active-hover);
+        }
+
+        .ag-sort-ascending-icon,
+        .ag-sort-descending-icon {
+          & > .ag-icon::after {
+            color: var(--#{$prefix}color-icon-table-header-sort-non-active-hover);
+          }
+        }
+      }
+    }
+
+    .ag-icon {
+      &.ag-icon-asc::after {
+        box-sizing: border-box;
+        outline: none;
+        content: '\e935';
+        color: var(--#{$prefix}color-icon-table-header-sort-non-active);
+      }
+
+      &.ag-icon-desc::after {
+        box-sizing: border-box;
+        outline: none;
+        content: '\e936';
+        color: var(--#{$prefix}color-icon-table-header-sort-non-active);
+      }
+    }
+
+    // Increase sort icon size to 24px
+    .ag-menu-option {
+      .ag-menu-option-icon {
+        &:has(> .ag-icon-asc),
+        &:has(> .ag-icon-desc),
+        &:has(> .ag-icon-none) {
+          padding-left: 8px;
+        }
+
+        .ag-icon-none {
+          color: var(--#{$prefix}color-icon-table-header-sort-non-active-hover);
+        }
+
+        & > span.ag-icon-asc::before,
+        & > span.ag-icon-desc::before,
+        & > span.ag-icon-asc::after,
+        & > span.ag-icon-desc::after,
+        & > span.ag-icon-none::before {
+          font-size: var(--#{$prefix}icon-size-large);
+        }
+
+        & > span.ag-icon-asc::after,
+        & > span.ag-icon-desc::after {
+          color: var(--#{$prefix}color-icon-table-header-sort-non-active-hover);
+        }
+      }
+    }
+
+    // ---------------------------------------------------------------- //
+
+    // ------------------------------------------ //
+
+    // ------------- Header Row ------------- //
+    .ag-header-row {
+      font-weight: 500;
+    }
+
+    .ag-header-cell-sorted-asc,
+    .ag-header-cell-sorted-desc {
+      color: var(--#{$prefix}color-icon-table-header-sort-active);
+
+      .ag-header-icon {
+        color: var(--#{$prefix}color-icon-table-header-sort-active);
+      }
+    }
+
+    // ------------------------------------------ //
+
+    // ------------- Sidebar ------------- //
+    .ag-side-buttons {
+      color: var(--#{$prefix}color-typography-neutral);
+
+      .ag-selected {
+        color: var(--#{$prefix}color-typography-action-active);
+
+        .ag-icon {
+          color: var(--#{$prefix}color-typography-action-active);
+        }
+      }
+    }
+
+    .ag-rtl .ag-side-bar-left,
+    .ag-ltr .ag-side-bar-right {
+      .ag-side-button-button {
+        border: none;
+        position: relative;
+      }
+
+      .ag-selected .ag-side-button-button:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: var(--#{$prefix}shape-line-2);
+        background-color: var(--#{$prefix}color-surface-list-item-selected-bar);
+        border-top-right-radius: var(--#{$prefix}shape-radius-base);
+        border-bottom-right-radius: var(--#{$prefix}shape-radius-base);
+      }
+    }
+
+    // ----------------------------------------- //
+
+    // ------------- Control panel ------------- //
+    .ag-tool-panel-wrapper,
+    .ag-filter-toolpanel-instance-filter,
+    .ag-column-drop-horizontal {
+      background-color: transparent;
+    }
+
+    // ----------------------------------------- //
+
+    // ----------------- Inputs ----------------- //
+
+    input[class^='ag-']:not([type]),
+    input[class^='ag-'][type='text'],
+    input[class^='ag-'][type='number'],
+    input[class^='ag-'][type='tel'],
+    input[class^='ag-'][type='date'],
+    input[class^='ag-'][type='datetime-local'],
+    textarea[class^='ag-'] {
+      background-color: var(--#{$prefix}color-surface-input);
+      min-height: var(--#{$prefix}shape-size-y-input);
+      border-radius: var(--#{$prefix}shape-radius-input);
+
+      &:focus {
+        outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+        outline-offset: var(--#{$prefix}size-outline-offset);
+        border-color: var(--#{$prefix}color-border-input-focus);
+        box-shadow: unset;
+      }
+    }
+
+    // ------------------------------------------ //
+
+    // ----------------- Select ----------------- //
+
+    .ag-select .ag-picker-field-wrapper {
+      min-height: var(--#{$prefix}shape-size-y-input);
+    }
+
+    .ag-picker-field-wrapper {
+      border-radius: var(--#{$prefix}shape-radius-input);
+
+      &:focus {
+        outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+        outline-offset: var(--#{$prefix}size-outline-offset);
+        border-color: var(--#{$prefix}color-border-input-focus);
+        box-shadow: unset;
+      }
+    }
+
+    .ag-select-list {
+      background-color: var(--#{$prefix}color-surface-base);
+    }
+
+    // ------------------------------------------ //
+
+    // ------------ Loading Overlay ------------ //
+
+    .ag-overlay-loading-center {
+      background-color: var(--#{$prefix}color-surface-base);
+    }
+
+    // ----------------------------------------- //
+
+    // ---------- Default cell editor ---------- //
+    .ag-cell-edit-wrapper {
+      input[class^='ag-']:not([type]),
+      input[class^='ag-'][type='text'],
+      input[class^='ag-'][type='number'],
+      input[class^='ag-'][type='tel'],
+      input[class^='ag-'][type='date'],
+      input[class^='ag-'][type='datetime-local'],
+      textarea[class^='ag-'],
+      .ag-picker-field-wrapper {
+        min-height: unset;
+      }
+    }
+
+    // ------------------------------------------ //
+
+    // ---------------- Checkbox ---------------- //
+    .ag-checkbox-input-wrapper {
+      // Unchecked
+      &:not(.ag-checked):not(.ag-indeterminate) {
+        &:hover {
+          background-color: var(--#{$prefix}color-surface-input-hover);
+
+          &::after {
+            border-color: var(--#{$prefix}color-border-input-hover);
+          }
+        }
+
+        &::after {
+          border: 1px solid var(--#{$prefix}color-border-input);
+          border-radius: var(--#{$prefix}shape-radius-input);
+          content: '';
+          height: 100%;
+          width: 100%;
+        }
+
+        &:focus-within::after,
+        &:active::after {
+          border-color: var(--#{$prefix}color-border-input-focus);
+          box-shadow: unset;
+        }
+      }
+
+      // General focus style
+      &:focus-within,
+      &:active {
+        outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+        outline-offset: var(--#{$prefix}size-outline-offset);
+        box-shadow: unset;
+      }
+    }
+
+    // ------------------------------------------ //
+
+    // ----------------- Switch ----------------- //
+    .ag-toggle-button-input-wrapper {
+      height: var(--#{$prefix}shape-size-y-input-track);
+      width: var(--#{$prefix}shape-size-x-input-track);
+      transition: background-color 100ms ease-in-out;
+
+      &::before {
+        top: 1px;
+        left: 1px;
+        height: var(--#{$prefix}shape-size-y-input-handle);
+        width: var(--#{$prefix}shape-size-x-input-handle);
+        border: none;
+        box-shadow: var(--#{$prefix}elevation-base);
+      }
+
+      &.ag-checked::before {
+        left: calc(100% - var(--#{$prefix}shape-size-x-input-handle) - 1px);
+      }
+
+      &:focus-within,
+      &:active {
+        border-color: var(--#{$prefix}color-border-input-track-active-hover);
+        outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+        outline-offset: var(--#{$prefix}size-outline-offset);
+        box-shadow: unset;
+
+        &:not(.ag-checked) {
+          background-color: var(--#{$prefix}color-surface-input-track);
+          border-color: var(--#{$prefix}color-border-input-track-focus);
+        }
+      }
+
+      &:hover:not(.ag-checked) {
+        background-color: var(--#{$prefix}color-surface-input-track-hover);
+        border-color: var(--#{$prefix}color-border-input-track-hover);
+      }
+    }
+
+    .ag-toggle-button.ag-selected > .ag-toggle-button-label {
+      color: var(--#{$prefix}color-text-input-label-active);
+    }
+
+    // ------------------------------------------ //
+
+    // ------------ Selected row bar ------------ //
+    .ag-pinned-left-cols-container,
+    .ag-pinned-left-cols-container.ag-hidden + .ag-center-cols-clipper,
+    .ag-pinned-left-cols-container.ag-hidden + .ag-center-cols-viewport {
+      .ag-row-selected::before {
+        background-color: var(--#{$prefix}color-surface-list-item-selected-bar);
+        background-image: none;
+        content: '';
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: var(--#{$prefix}shape-line-2);
+      }
+    }
+
+    // ------------------------------------------ //
+
+    // ------------------ Tab ------------------ //
+    .ag-tab-selected {
+      border: none;
+
+      .ag-icon {
+        color: var(--ag-alpine-active-color);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: var(--#{$prefix}shape-line-2);
+        background-color: var(--#{$prefix}color-surface-list-item-selected-bar);
+        bottom: 0;
+        border-top-right-radius: var(--#{$prefix}shape-radius-base);
+        border-top-left-radius: var(--#{$prefix}shape-radius-base);
+      }
+    }
+
+    // ------------------------------------------ //
+
+    .ag-cell,
+    .ag-full-width-row .ag-cell-wrapper.ag-row-group,
+    .ag-column-drop-empty-message {
+      border-radius: var(--#{$prefix}shape-radius-base);
+    }
+
+    .ag-column-drop-cell {
+      border-radius: var(--#{$prefix}shape-radius-base);
+    }
+
+    // ---------- Draggable container ---------- //
+    &.ag-dnd-ghost {
+      background-color: var(--#{$prefix}color-surface-base);
+    }
+
+    // ----------------------------------------- //
+  }
+
+  // Rule for cases where gridOptions.popupParent is being used. Setting the property moves the ag grid popups to the defined origin element (it usually is the <body>)
+  .ag-popup {
+    // apply same styles as Density tooltip, without arrow
+    .ag-tooltip {
+      background-color: var(--#{$prefix}color-surface-tooltip);
+
+      padding: var(--#{$prefix}space-inset-tooltip);
+      border: none;
+      border-radius: var(--#{$prefix}shape-radius-tooltip);
+
+      color: var(--#{$prefix}color-text-tooltip);
+      font-family: var(--#{$prefix}font-family-tooltip);
+      line-height: var(--#{$prefix}font-line-height-tooltip);
+      font-size: var(--#{$prefix}font-size-tooltip);
+      font-weight: var(--#{$prefix}font-weight-tooltip);
+
+      box-shadow: var(--#{$prefix}elevation-notification);
+    }
+
+    .ag-rich-select-virtual-list-viewport {
+      background-color: var(--#{$prefix}color-surface-base);
+    }
+  }
+
+  .ag-center-cols-viewport {
+    position: static;
+  }
+
+  .ag-body-viewport {
+    .ag-center-cols-container,
+    .ag-pinned-left-cols-container,
+    .ag-pinned-right-cols-container {
+      margin-right: 0px !important; // !important is required here because AG Grid sets a value for margin-right in the inline-style
+    }
+  }
+}

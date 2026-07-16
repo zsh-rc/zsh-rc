@@ -1,0 +1,55 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}loading-area),
+
+
+ /* CSS selector for independent library use without Shadow DOM */
+ .#{$prefix}loading-area {
+  width: 100%;
+  height: 100%;
+
+  .#{$prefix}loading-area__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: var(--#{$prefix}space-inset-loading-area);
+    background-color: var(--#{$prefix}color-surface-loading-area-translucent);
+    color: var(--#{$prefix}color-icon-loading-area-translucent);
+
+    &__title-wrapper,
+    &__text-wrapper,
+    &__actions-template {
+      margin-top: var(--#{$prefix}space-stack-join-loading-area);
+    }
+
+    &__title-wrapper + .#{$prefix}loading-area__wrapper__text-wrapper {
+      margin-top: 0px;
+    }
+
+    .#{$prefix}progress-circle {
+      color: currentColor;
+    }
+  }
+
+  &.#{$prefix}loading-area--solid {
+    .#{$prefix}loading-area__wrapper {
+      background-color: var(--#{$prefix}color-surface-loading-area-solid);
+      color: var(--#{$prefix}color-icon-loading-area-solid);
+    }
+  }
+
+  &.#{$prefix}loading-area--in-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: calc(var(--#{$prefix}z-index-header-base) - 1);
+  }
+}

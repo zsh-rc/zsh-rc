@@ -1,0 +1,44 @@
+@use '../../mixins/placeholder' as *;
+@use '../../density-styles-sass' as *;
+
+:host(#{$prefix}drawer),
+.#{$prefix}drawer {
+  &.#{$prefix}drawer--timepicker
+    ::ng-deep
+    > .#{$prefix}box
+    > .#{$prefix}box__wrapper
+    > .#{$prefix}box__header-wrapper
+    > #{$prefix}box-header
+    > .#{$prefix}box-header__item {
+    padding-bottom: var(--#{$prefix}space-stack-box-header-bsheet);
+  }
+
+  &.#{$prefix}drawer
+    ::ng-deep
+    > .#{$prefix}box
+    > .#{$prefix}box__wrapper
+    > .#{$prefix}box__content-wrapper
+    > #{$prefix}box-content
+    > .#{$prefix}box-content__content-wrapper {
+    & ::ng-deep > #{$prefix}time-value-picker {
+      height: 100%;
+
+      & ::ng-deep > #{$prefix}valuepicker {
+        height: 100%;
+
+        & ::ng-deep > #{$prefix}box {
+          height: 100%;
+
+          & > .#{$prefix}box__wrapper > .#{$prefix}box__content-wrapper {
+            display: flex;
+            flex-direction: column;
+
+            & > #{$prefix}box-content:first-of-type {
+              flex: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}

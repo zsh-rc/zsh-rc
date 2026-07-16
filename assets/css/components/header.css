@@ -1,0 +1,223 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-header),
+.ds-header {
+  z-index: var(--ds-z-index-header-base);
+  position: sticky;
+  top: 0;
+}
+:host(ds-header) .ds-header__wrapper,
+.ds-header .ds-header__wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: var(--ds-shape-size-y-header);
+  background-color: var(--ds-color-surface-header);
+  padding-left: var(--ds-space-inline-start-header);
+  padding-right: var(--ds-space-inline-end-header);
+}
+:host(ds-header) .ds-header__wrapper:focus,
+.ds-header .ds-header__wrapper:focus {
+  outline: 0;
+}
+:host(ds-header) .ds-header__wrapper__application,
+.ds-header .ds-header__wrapper__application {
+  display: flex;
+  align-items: center;
+  height: inherit;
+  overflow: hidden;
+  padding-left: var(--ds-space-05x);
+  padding-right: var(--ds-space-05x);
+}
+:host(ds-header) .ds-header__wrapper__application__menu-icon,
+.ds-header .ds-header__wrapper__application__menu-icon {
+  margin-left: var(--ds-space-05x);
+  margin-right: var(--ds-space-05x);
+}
+:host(ds-header) .ds-header__wrapper__application .ds-header__logos-wrapper,
+.ds-header .ds-header__wrapper__application .ds-header__logos-wrapper {
+  display: flex;
+  align-items: center;
+  height: inherit;
+}
+:host(ds-header) .ds-header__wrapper__application .ds-header__logos-wrapper__content,
+.ds-header .ds-header__wrapper__application .ds-header__logos-wrapper__content {
+  --asset-brand-logos-image: var(--ds-logo-bmwgroup-bmw-mini);
+  height: var(--ds-space-5x);
+  background-image: var(--asset-brand-logos-image);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+:host(ds-header) .ds-header__wrapper__application .ds-header__logos-wrapper__content--default,
+.ds-header .ds-header__wrapper__application .ds-header__logos-wrapper__content--default {
+  --asset-brand-logos-image: var(--ds-logo-bmwgroup-bmw-mini);
+  width: 126px;
+  background-image: var(--asset-brand-logos-image);
+}
+:host(ds-header) .ds-header__wrapper__application .ds-header__logos-wrapper__content--bmwgroup,
+.ds-header .ds-header__wrapper__application .ds-header__logos-wrapper__content--bmwgroup {
+  --asset-brand-logos-image: var(--ds-logo-bmwgroup);
+  width: 38px;
+  background-image: var(--asset-brand-logos-image);
+}
+:host(ds-header) .ds-header__wrapper__application .ds-header__logos-wrapper__content--bmw,
+.ds-header .ds-header__wrapper__application .ds-header__logos-wrapper__content--bmw {
+  --asset-brand-logos-image: var(--ds-logo-bmwgroup-bmw);
+  width: 89px;
+  background-image: var(--asset-brand-logos-image);
+}
+:host(ds-header) .ds-header__wrapper__application .ds-header__logos-wrapper__content--mini,
+.ds-header .ds-header__wrapper__application .ds-header__logos-wrapper__content--mini {
+  --asset-brand-logos-image: var(--ds-logo-bmwgroup-mini);
+  width: 100px;
+  background-image: var(--asset-brand-logos-image);
+}
+:host(ds-header) .ds-header__wrapper__application .ds-header__logos-wrapper__content--rr,
+.ds-header .ds-header__wrapper__application .ds-header__logos-wrapper__content--rr {
+  --asset-brand-logos-image: var(--ds-logo-bmwgroup-bmw-mini-rr);
+  width: 175px;
+  background-image: var(--asset-brand-logos-image);
+}
+:host(ds-header) .ds-header__wrapper__application .ds-header__logos-wrapper__content--bmw-i,
+.ds-header .ds-header__wrapper__application .ds-header__logos-wrapper__content--bmw-i {
+  --asset-brand-logos-image: var(--ds-logo-bmwgroup-bmw-i);
+  width: 113px;
+  background-image: var(--asset-brand-logos-image);
+}
+:host(ds-header) .ds-header__wrapper__application .ds-header__logos-wrapper__content--bmw-m,
+.ds-header .ds-header__wrapper__application .ds-header__logos-wrapper__content--bmw-m {
+  --asset-brand-logos-image: var(--ds-logo-bmwgroup-bmw-m);
+  width: 123px;
+  background-image: var(--asset-brand-logos-image);
+}
+:host(ds-header) .ds-header__wrapper__application .ds-header__logos-wrapper__content--bmw-motorrad,
+.ds-header .ds-header__wrapper__application .ds-header__logos-wrapper__content--bmw-motorrad {
+  --asset-brand-logos-image: var(--ds-logo-bmwgroup-bmw-motorrad);
+  width: 162px;
+  background-image: var(--asset-brand-logos-image);
+}
+:host(ds-header) .ds-header__wrapper__application .ds-header__logos-wrapper__content--mini-jcw,
+.ds-header .ds-header__wrapper__application .ds-header__logos-wrapper__content--mini-jcw {
+  --asset-brand-logos-image: var(--ds-logo-bmwgroup-bmw-mini-jcw);
+  width: 149px;
+  background-image: var(--asset-brand-logos-image);
+}
+:host(ds-header) .ds-header__wrapper__application .ds-header__app-name-wrapper,
+.ds-header .ds-header__wrapper__application .ds-header__app-name-wrapper {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+:host(ds-header) .ds-header__wrapper__application .ds-header__env-tag,
+.ds-header .ds-header__wrapper__application .ds-header__env-tag {
+  align-self: center;
+  margin-left: var(--ds-space-inline-couple-header);
+}
+:host(ds-header) .ds-header__wrapper__content,
+.ds-header .ds-header__wrapper__content {
+  margin: 0 var(--ds-space-inline-content-header);
+}
+:host(ds-header) .ds-header__wrapper__utilities,
+.ds-header .ds-header__wrapper__utilities {
+  height: inherit;
+}
+:host(ds-header) .ds-header__wrapper__utilities__user-menu,
+.ds-header .ds-header__wrapper__utilities__user-menu {
+  display: inline-flex;
+  align-items: center;
+  height: inherit;
+}
+:host(ds-header) .ds-header__wrapper__utilities__user-menu .user-menu__button-content,
+.ds-header .ds-header__wrapper__utilities__user-menu .user-menu__button-content {
+  display: inline-flex;
+  align-items: center;
+  height: var(--ds-shape-size-ymin-button);
+}
+:host(ds-header) .ds-header__wrapper__utilities__user-menu .user-menu__button-content__avatar,
+.ds-header .ds-header__wrapper__utilities__user-menu .user-menu__button-content__avatar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ds-shape-size-avatar-header);
+  height: var(--ds-shape-size-avatar-header);
+  background-color: var(--ds-color-surface-avatar-header);
+  border-radius: var(--ds-shape-radius-avatar-header);
+}
+:host(ds-header) .ds-header__wrapper__utilities__user-menu .user-menu__button-content__avatar__profile-image,
+.ds-header .ds-header__wrapper__utilities__user-menu .user-menu__button-content__avatar__profile-image {
+  width: 100%;
+  border-radius: var(--ds-shape-radius-avatar-header);
+}
+:host(ds-header) .ds-header__wrapper__utilities__user-menu .user-menu__button-content__avatar__sso-badge,
+.ds-header .ds-header__wrapper__utilities__user-menu .user-menu__button-content__avatar__sso-badge {
+  --shape-size-sso-badge-header: 10px;
+  --space-inline-sso-badge-header: -4px;
+  box-sizing: content-box;
+  position: absolute;
+  bottom: var(--space-inline-sso-badge-header);
+  right: var(--space-inline-sso-badge-header);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--shape-size-sso-badge-header);
+  height: var(--shape-size-sso-badge-header);
+  background-color: var(--ds-color-surface-sso-badge-header);
+  border-radius: var(--ds-shape-radius-sso-badge-header);
+  border: 1px solid var(--ds-color-white);
+  color: var(--ds-color-surface-header);
+}
+:host(ds-header) .ds-header__wrapper__utilities__theme, :host(ds-header) .ds-header__wrapper__utilities__options-menu,
+.ds-header .ds-header__wrapper__utilities__theme,
+.ds-header .ds-header__wrapper__utilities__options-menu {
+  display: inline-flex;
+  align-items: center;
+  height: inherit;
+}
+:host(ds-header) .ds-header__wrapper__utilities__locale,
+.ds-header .ds-header__wrapper__utilities__locale {
+  display: inline-flex;
+  align-items: center;
+  height: inherit;
+}
+:host(ds-header) .ds-header__wrapper__utilities__locale__wrapper .ds-select,
+.ds-header .ds-header__wrapper__utilities__locale__wrapper .ds-select {
+  min-width: var(--ds-shape-size-xmin-input);
+}
+:host(ds-header) .ds-header__wrapper__utilities__imprint,
+.ds-header .ds-header__wrapper__utilities__imprint {
+  display: inline-flex;
+  align-items: center;
+  height: inherit;
+}
+:host(ds-header) .ds-header__wrapper .ds-header__vertical-divider,
+.ds-header .ds-header__wrapper .ds-header__vertical-divider {
+  position: relative;
+  width: var(--ds-space-divider-header);
+  height: inherit;
+}
+:host(ds-header) .ds-header__wrapper .ds-header__vertical-divider::before,
+.ds-header .ds-header__wrapper .ds-header__vertical-divider::before {
+  content: "";
+  position: absolute;
+  width: var(--ds-space-divider-header);
+  height: calc(100% - 2 * var(--ds-space-divider-header));
+  margin-top: var(--ds-space-divider-header);
+  background: linear-gradient(var(--ds-color-divider-header), var(--ds-color-divider-header)) no-repeat center/1px 100%;
+}
+:host(ds-header) .ds-header__wrapper::after,
+.ds-header .ds-header__wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: calc(-1 * var(--ds-shape-divider-header));
+  left: 0;
+  height: var(--ds-shape-divider-header);
+  width: 100%;
+  background-color: var(--ds-color-divider-header);
+}

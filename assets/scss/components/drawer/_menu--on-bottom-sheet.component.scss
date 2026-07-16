@@ -1,0 +1,43 @@
+@use '../../mixins/placeholder' as *;
+@use '../../density-styles-sass' as *;
+
+:host(#{$prefix}drawer),
+.#{$prefix}drawer {
+  &.#{$prefix}bottom-sheet--menu ::ng-deep > .#{$prefix}box > .#{$prefix}box__wrapper {
+    & > .#{$prefix}box__header-wrapper > #{$prefix}box-header > .#{$prefix}box-header__item {
+      padding: var(--#{$prefix}space-stack-box-header-bsheet) var(--#{$prefix}space-inline-box-header-bsheet);
+
+      & > .#{$prefix}box-header__header-wrapper--with-actions > .#{$prefix}box-header__actions {
+        .#{$prefix}menu-in-bottom-sheet__back-item {
+          display: flex;
+          flex: 1;
+          align-items: center;
+          margin-left: var(--#{$prefix}space-inline-start-menu-bsheet-tlp);
+          margin-right: var(--#{$prefix}space-inline-end-menu-bsheet-tlp);
+
+          &__button {
+            margin-right: var(--#{$prefix}space-inline-gap-menu-bsheet-tlp);
+          }
+        }
+      }
+    }
+
+    &
+      > .#{$prefix}box__content-wrapper
+      > #{$prefix}box-content
+      > .#{$prefix}box-content__content-wrapper
+      .#{$prefix}list-item:not(.#{$prefix}list-item__label--group) {
+      --#{$prefix}shape-size-ymin-list-item: var(--#{$prefix}shape-size-ymin-list-item-large);
+      font-family: var(--#{$prefix}typography-family-base);
+      font-size: var(--#{$prefix}typography-size-regular);
+      font-weight: var(--#{$prefix}typography-weight-regular);
+      line-height: var(--#{$prefix}typography-line-height-regular);
+
+      .#{$prefix}icon {
+        height: var(--#{$prefix}icon-size-medium);
+        width: var(--#{$prefix}icon-size-medium);
+        min-width: var(--#{$prefix}icon-size-medium);
+      }
+    }
+  }
+}

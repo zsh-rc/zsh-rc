@@ -1,0 +1,25 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}tree),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}tree {
+  --#{$prefix}tree-item-transition-timing-function: var(--#{$prefix}motion-timing-entrance);
+  --#{$prefix}tree-item-transition-duration: var(--#{$prefix}motion-duration-quick);
+
+  --#{$prefix}tree-item-transition-timing-function-entrance: var(--#{$prefix}motion-timing-standard);
+  --#{$prefix}tree-item-transition-duration-entrance: var(--#{$prefix}motion-duration-standard);
+  --#{$prefix}tree-item-transition-timing-function-exit: var(--#{$prefix}motion-timing-standard);
+  --#{$prefix}tree-item-transition-duration-exit: var(--#{$prefix}motion-duration-standard);
+
+  display: block;
+
+  &.#{$prefix}tree {
+    & ul {
+      //resets ul style
+      list-style: none;
+      padding-left: 0;
+    }
+  }
+}

@@ -1,0 +1,98 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-tree),
+.ds-tree {
+  --ds-tree-item-transition-timing-function: var(--ds-motion-timing-entrance);
+  --ds-tree-item-transition-duration: var(--ds-motion-duration-quick);
+  --ds-tree-item-transition-timing-function-entrance: var(--ds-motion-timing-standard);
+  --ds-tree-item-transition-duration-entrance: var(--ds-motion-duration-standard);
+  --ds-tree-item-transition-timing-function-exit: var(--ds-motion-timing-standard);
+  --ds-tree-item-transition-duration-exit: var(--ds-motion-duration-standard);
+  display: block;
+}
+:host(ds-tree).ds-tree ul,
+.ds-tree.ds-tree ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-tree-item),
+.ds-tree-item {
+  --ds-tree-item-transition-timing-function: var(--ds-motion-timing-entrance);
+  --ds-tree-item-transition-duration: var(--ds-motion-duration-quick);
+  --ds-tree-item-transition-timing-function-entrance: var(--ds-motion-timing-standard);
+  --ds-tree-item-transition-duration-entrance: var(--ds-motion-duration-standard);
+  --ds-tree-item-transition-timing-function-exit: var(--ds-motion-timing-standard);
+  --ds-tree-item-transition-duration-exit: var(--ds-motion-duration-standard);
+  display: block;
+}
+:host(ds-tree-item).ds-no-motion,
+.ds-tree-item.ds-no-motion {
+  --ds-tree-item-transition-duration: 0s;
+}
+:host(ds-tree-item).ds-tree-item ul,
+.ds-tree-item.ds-tree-item ul {
+  list-style: none;
+  padding-left: 0;
+}
+:host(ds-tree-item).ds-tree-item .ds-tree-item__children-list,
+.ds-tree-item.ds-tree-item .ds-tree-item__children-list {
+  padding-left: var(--ds-space-inline-indent-list-item);
+  margin-top: var(--ds-space-1x);
+  margin-bottom: var(--ds-space-1x);
+}
+:host(ds-tree-item).ds-tree-item .ds-tree-item__children-list--closed,
+.ds-tree-item.ds-tree-item .ds-tree-item__children-list--closed {
+  display: none;
+}
+:host(ds-tree-item).ds-tree-item .ds-tree-item__list-item,
+.ds-tree-item.ds-tree-item .ds-tree-item__list-item {
+  padding-left: 0;
+  padding-right: var(--ds-space-inline-end-list-item);
+  margin-top: 1px;
+}
+:host(ds-tree-item).ds-tree-item .ds-tree-item__list-item:focus-visible.ds-tree-item__list-item,
+.ds-tree-item.ds-tree-item .ds-tree-item__list-item:focus-visible.ds-tree-item__list-item {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: -2px;
+}
+:host(ds-tree-item).ds-tree-item .ds-tree-item__list-item:focus-visible.ds-tree-item__list-item--without-top-margin,
+.ds-tree-item.ds-tree-item .ds-tree-item__list-item:focus-visible.ds-tree-item__list-item--without-top-margin {
+  margin-top: 0;
+}
+:host(ds-tree-item).ds-tree-item .ds-tree-item__list-item.ds-list-item--lg ::ng-deep > .ds-list-item__checkbox-wrapper,
+.ds-tree-item.ds-tree-item .ds-tree-item__list-item.ds-list-item--lg ::ng-deep > .ds-list-item__checkbox-wrapper {
+  width: var(--ds-shape-size-x-checkboxarea-list-item-large);
+  margin-left: 0;
+}
+:host(ds-tree-item).ds-tree-item .ds-tree-item__list-item--without-top-margin,
+.ds-tree-item.ds-tree-item .ds-tree-item__list-item--without-top-margin {
+  margin-top: 0;
+}
+:host(ds-tree-item).ds-tree-item .ds-tree-item__parent-item--highlighted-background,
+.ds-tree-item.ds-tree-item .ds-tree-item__parent-item--highlighted-background {
+  --ds-color-surface-list-item: var(--ds-color-surface-list-item-selected);
+}
+:host(ds-tree-item).ds-tree-item .ds-tree-item__parent-item--highlighted-background:hover,
+.ds-tree-item.ds-tree-item .ds-tree-item__parent-item--highlighted-background:hover {
+  --ds-color-surface-list-item-hover: var(--ds-color-surface-list-item-selected-hover);
+}
+:host(ds-tree-item).ds-tree-item .ds-tree-item__item--active-text,
+.ds-tree-item.ds-tree-item .ds-tree-item__item--active-text {
+  --ds-color-text-list-item: var(--ds-color-text-list-item-active);
+}
+:host(ds-tree-item).ds-tree-item .ds-tree-item__item--active-text ::ng-deep .icon-left,
+.ds-tree-item.ds-tree-item .ds-tree-item__item--active-text ::ng-deep .icon-left {
+  --ds-color-icon-list-item: var(--ds-color-icon-list-item-active);
+}
+:host(ds-tree-item).ds-tree-item .ds-tree-item__item--open ::ng-deep > ds-icon,
+.ds-tree-item.ds-tree-item .ds-tree-item__item--open ::ng-deep > ds-icon {
+  transform: rotate(90deg);
+  transition: transform var(--ds-tree-item-transition-duration) var(--ds-tree-item-transition-timing-function);
+}

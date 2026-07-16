@@ -1,0 +1,333 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-range-slider),
+.ds-range-slider {
+  display: block;
+  height: var(--ds-shape-size-y-range);
+}
+:host(ds-range-slider).ds-range-slider.ds-range-slider--lg,
+.ds-range-slider.ds-range-slider.ds-range-slider--lg {
+  --ds-shape-size-y-range: var(--ds-shape-size-y-range-lg);
+}
+:host(ds-range-slider).ds-range-slider.ds-range-slider--vertical,
+.ds-range-slider.ds-range-slider.ds-range-slider--vertical {
+  height: 100%;
+}
+:host(ds-range-slider).ds-range-slider .ds-range-slider__inputs,
+.ds-range-slider.ds-range-slider .ds-range-slider__inputs {
+  display: none;
+  visibility: hidden;
+  width: 100%;
+}
+:host(ds-range-slider).ds-range-slider .ds-range-slider__inputs ::ng-deep > input,
+.ds-range-slider.ds-range-slider .ds-range-slider__inputs ::ng-deep > input {
+  width: 100%;
+  appearance: auto;
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-range-slider-thumb),
+.ds-range-slider-thumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--ds-shape-size-y-range-handle-area);
+  width: var(--ds-shape-size-x-range-handle-area);
+  cursor: pointer;
+  z-index: 1;
+  flex-direction: column;
+}
+:host(ds-range-slider-thumb) .ds-range-slider-thumb-indicator,
+.ds-range-slider-thumb .ds-range-slider-thumb-indicator {
+  font-size: var(--ds-typography-size-label);
+  position: absolute;
+  bottom: 22px;
+  line-height: var(--ds-typography-line-height-label);
+  color: var(--Typography-base, var(--ds-color-typography-base));
+  user-select: none;
+}
+:host(ds-range-slider-thumb).ds-range-slider-thumb--lg,
+.ds-range-slider-thumb.ds-range-slider-thumb--lg {
+  --ds-shape-size-y-range-handle-area: var(--ds-shape-size-y-range-handle-area-lg);
+  --ds-shape-size-x-range-handle-area: var(--ds-shape-size-x-range-handle-area-lg);
+  --ds-shape-size-x-range-handle: var(--ds-shape-size-x-range-handle-lg);
+  --ds-shape-size-y-range-handle: var(--ds-shape-size-y-range-handle-lg);
+  --ds-shape-radius-range-handle: var(--ds-shape-radius-range-handle-lg);
+}
+:host(ds-range-slider-thumb).ds-range-slider-thumb--lg .ds-range-slider-thumb-indicator,
+.ds-range-slider-thumb.ds-range-slider-thumb--lg .ds-range-slider-thumb-indicator {
+  font-size: var(--ds-typography-size-regular);
+  line-height: var(--ds-typography-line-height-regular);
+  bottom: 30px;
+}
+:host(ds-range-slider-thumb).ds-range-slider-thumb--lg.ds-range-slider-thumb--vertical .ds-range-slider-thumb-indicator,
+.ds-range-slider-thumb.ds-range-slider-thumb--lg.ds-range-slider-thumb--vertical .ds-range-slider-thumb-indicator {
+  font-size: var(--ds-typography-size-label);
+  line-height: var(--ds-typography-line-height-label);
+  bottom: unset;
+  left: var(--ds-space-8x);
+}
+:host(ds-range-slider-thumb).ds-range-slider-thumb--vertical,
+.ds-range-slider-thumb.ds-range-slider-thumb--vertical {
+  height: var(--ds-shape-size-x-range-handle-area);
+  width: var(--ds-shape-size-y-range-handle-area);
+  flex-direction: row;
+}
+:host(ds-range-slider-thumb).ds-range-slider-thumb--vertical .ds-range-slider-thumb-indicator,
+.ds-range-slider-thumb.ds-range-slider-thumb--vertical .ds-range-slider-thumb-indicator {
+  font-size: var(--ds-typography-size-label);
+  line-height: var(--ds-typography-line-height-label);
+  bottom: unset;
+  left: var(--ds-space-6x);
+}
+:host(ds-range-slider-thumb).ds-range-slider-thumb--readonly,
+.ds-range-slider-thumb.ds-range-slider-thumb--readonly {
+  cursor: initial;
+}
+:host(ds-range-slider-thumb).ds-range-slider-thumb--readonly > .ds-range-slider-thumb__ball,
+.ds-range-slider-thumb.ds-range-slider-thumb--readonly > .ds-range-slider-thumb__ball {
+  background-color: var(--ds-color-surface-range-handle-readonly);
+  box-shadow: var(--ds-elevation-none);
+}
+:host(ds-range-slider-thumb).ds-range-slider-thumb--disabled,
+.ds-range-slider-thumb.ds-range-slider-thumb--disabled {
+  cursor: no-drop;
+}
+:host(ds-range-slider-thumb).ds-range-slider-thumb--disabled .ds-range-slider-thumb-indicator,
+.ds-range-slider-thumb.ds-range-slider-thumb--disabled .ds-range-slider-thumb-indicator {
+  color: var(--ds-color-typography-disabled);
+}
+:host(ds-range-slider-thumb).ds-range-slider-thumb--disabled > .ds-range-slider-thumb__ball::before,
+.ds-range-slider-thumb.ds-range-slider-thumb--disabled > .ds-range-slider-thumb__ball::before {
+  content: " ";
+  position: absolute;
+  background-color: #cecdcd;
+  width: var(--ds-shape-size-x-range-handle);
+  height: var(--ds-shape-size-y-range-handle);
+  border-radius: var(--ds-shape-radius-range-handle);
+}
+:host(ds-range-slider-thumb).ds-range-slider-thumb--disabled > .ds-range-slider-thumb__ball,
+.ds-range-slider-thumb.ds-range-slider-thumb--disabled > .ds-range-slider-thumb__ball {
+  background-color: var(--ds-color-surface-range-handle-disabled);
+  box-shadow: var(--ds-elevation-none);
+}
+:host(ds-range-slider-thumb):hover:not(.ds-range-slider-thumb--readonly):not(.ds-range-slider-thumb--disabled) > .ds-range-slider-thumb__ball, :host(ds-range-slider-thumb).ds-range-slider-thumb--active:not(.ds-range-slider-thumb--readonly):not(.ds-range-slider-thumb--disabled) > .ds-range-slider-thumb__ball,
+.ds-range-slider-thumb:hover:not(.ds-range-slider-thumb--readonly):not(.ds-range-slider-thumb--disabled) > .ds-range-slider-thumb__ball,
+.ds-range-slider-thumb.ds-range-slider-thumb--active:not(.ds-range-slider-thumb--readonly):not(.ds-range-slider-thumb--disabled) > .ds-range-slider-thumb__ball {
+  background-color: var(--ds-color-surface-range-handle-hover);
+}
+:host(ds-range-slider-thumb) > .ds-range-slider-thumb__ball,
+.ds-range-slider-thumb > .ds-range-slider-thumb__ball {
+  pointer-events: auto;
+  background-color: var(--ds-color-surface-range-handle);
+  width: var(--ds-shape-size-x-range-handle);
+  height: var(--ds-shape-size-y-range-handle);
+  border-radius: var(--ds-shape-radius-range-handle);
+  box-shadow: var(--ds-elevation-range-handle);
+}
+:host(ds-range-slider-thumb) > .ds-range-slider-thumb__ball:focus-visible, :host(ds-range-slider-thumb) > .ds-range-slider-thumb__ball:focus:not(:focus-visible),
+.ds-range-slider-thumb > .ds-range-slider-thumb__ball:focus-visible,
+.ds-range-slider-thumb > .ds-range-slider-thumb__ball:focus:not(:focus-visible) {
+  outline: none;
+}
+:host(ds-range-slider-thumb):has(> .ds-range-slider-thumb__ball:focus-visible),
+.ds-range-slider-thumb:has(> .ds-range-slider-thumb__ball:focus-visible) {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+}
+
+:root:has(.ds-dark) .ds-range-slider-thumb.ds-range-slider-thumb--readonly > .ds-range-slider-thumb__ball {
+  background-color: var(--ds-color-cool-grey-600);
+}
+:root:has(.ds-dark) .ds-range-slider-thumb:hover:not(.ds-range-slider-thumb--readonly):not(.ds-range-slider-thumb--disabled) > .ds-range-slider-thumb__ball, :root:has(.ds-dark) .ds-range-slider-thumb.ds-range-slider-thumb--active:not(.ds-range-slider-thumb--readonly):not(.ds-range-slider-thumb--disabled) > .ds-range-slider-thumb__ball {
+  background-color: var(--ds-color-ocean-200);
+}
+:root:has(.ds-dark) .ds-range-slider-thumb > .ds-range-slider-thumb__ball {
+  background-color: var(--ds-color-white);
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-range-slider-track),
+.ds-range-slider-track {
+  display: flex;
+  justify-content: initial;
+  align-items: center;
+  position: relative;
+  height: var(--ds-shape-size-y-range-handle-area);
+  cursor: pointer;
+  scroll-margin-top: inherit;
+}
+:host(ds-range-slider-track):focus:not(:focus-visible), :host(ds-range-slider-track):focus-visible,
+.ds-range-slider-track:focus:not(:focus-visible),
+.ds-range-slider-track:focus-visible {
+  outline: none;
+}
+:host(ds-range-slider-track).ds-range-slider-track--lg,
+.ds-range-slider-track.ds-range-slider-track--lg {
+  --ds-shape-size-y-range-handle-area: var(--ds-shape-size-y-range-lg);
+  --ds-shape-size-y-range-track: var(--ds-shape-size-y-range-track-lg);
+  --ds-shape-radius-range-track: var(--ds-shape-radius-range-track-lg);
+  --ds-shape-size-y-range-trackfill: var(--ds-shape-size-y-range-trackfill-lg);
+  --ds-shape-size-y-range-track: var(--ds-shape-size-y-range-track-lg);
+  --ds-shape-radius-range-trackfill: var(--ds-shape-radius-range-trackfill-lg);
+  --ds-space-stack-join-range-tickmark: var(--ds-space-stack-join-range-tickmark-lg);
+}
+:host(ds-range-slider-track).ds-range-slider-track--readonly,
+.ds-range-slider-track.ds-range-slider-track--readonly {
+  cursor: initial;
+}
+:host(ds-range-slider-track).ds-range-slider-track--disabled,
+.ds-range-slider-track.ds-range-slider-track--disabled {
+  cursor: no-drop;
+}
+:host(ds-range-slider-track) .ds-range-slider-track__track,
+.ds-range-slider-track .ds-range-slider-track__track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--ds-color-surface-range-track);
+  width: 100%;
+  height: var(--ds-shape-size-y-range-track);
+  border-radius: var(--ds-shape-size-y-range-track) var(--ds-shape-radius-range-track);
+}
+:host(ds-range-slider-track) .ds-range-slider-track__track--readonly,
+.ds-range-slider-track .ds-range-slider-track__track--readonly {
+  background-color: var(--ds-color-surface-range-track-readonly);
+}
+:host(ds-range-slider-track) .ds-range-slider-track__track--readonly .ds-range-slider-track__fill,
+.ds-range-slider-track .ds-range-slider-track__track--readonly .ds-range-slider-track__fill {
+  background-color: var(--ds-color-surface-range-trackfill-readonly);
+}
+:host(ds-range-slider-track) .ds-range-slider-track__track--disabled,
+.ds-range-slider-track .ds-range-slider-track__track--disabled {
+  background-color: var(--ds-color-surface-range-track-disabled);
+}
+:host(ds-range-slider-track) .ds-range-slider-track__track--disabled .ds-range-slider-track__fill,
+.ds-range-slider-track .ds-range-slider-track__track--disabled .ds-range-slider-track__fill {
+  background-color: var(--ds-color-surface-range-trackfill-disabled);
+  border-radius: var(--ds-shape-size-y-range-track) var(--ds-shape-radius-range-track);
+}
+:host(ds-range-slider-track) .ds-range-slider-track__fill-wrapper,
+.ds-range-slider-track .ds-range-slider-track__fill-wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--ds-shape-size-y-range-track) var(--ds-shape-radius-range-track);
+}
+:host(ds-range-slider-track) .ds-range-slider-track__fill,
+.ds-range-slider-track .ds-range-slider-track__fill {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transform-origin: left;
+  background-color: var(--ds-color-surface-range-trackfill);
+}
+:host(ds-range-slider-track) .ds-range-slider-track__tick-marks,
+.ds-range-slider-track .ds-range-slider-track__tick-marks {
+  position: absolute;
+  top: calc(100% + var(--ds-space-stack-join-range-tickmark));
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+:host(ds-range-slider-track) .ds-range-slider-track__tick-marks__tick,
+.ds-range-slider-track .ds-range-slider-track__tick-marks__tick {
+  position: absolute;
+  width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+:host(ds-range-slider-track) .ds-range-slider-track__tick-marks__tick--disabled,
+.ds-range-slider-track .ds-range-slider-track__tick-marks__tick--disabled {
+  --ds-color-surface-range-tickmark: var(--ds-color-surface-range-tickmark-disabled);
+}
+:host(ds-range-slider-track) .ds-range-slider-track__tick-marks__tick--readonly,
+.ds-range-slider-track .ds-range-slider-track__tick-marks__tick--readonly {
+  --ds-color-surface-range-tickmark: var(--ds-color-surface-range-tickmark-readonly);
+}
+:host(ds-range-slider-track) .ds-range-slider-track__tick-marks__tick::before,
+.ds-range-slider-track .ds-range-slider-track__tick-marks__tick::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: var(--ds-shape-size-x-range-tickmark);
+  height: var(--ds-shape-size-y-range-tickmark);
+  border-radius: var(--ds-shape-radius-range-tickmark);
+  background-color: var(--ds-color-surface-range-tickmark);
+  transform: translate(-50%, 0);
+}
+:host(ds-range-slider-track) .ds-range-slider-track__tick-marks__tick__text,
+.ds-range-slider-track .ds-range-slider-track__tick-marks__tick__text {
+  margin-top: calc(var(--ds-space-stack-offset-range-tickmark) * -1);
+}
+:host(ds-range-slider-track) .ds-range-slider-track__tick-marks__tick__text--vertical,
+.ds-range-slider-track .ds-range-slider-track__tick-marks__tick__text--vertical {
+  width: 0;
+  margin-top: calc(var(--ds-space-stack-join-range-tickmark) * -1 - var(--ds-space-stack-offset-range-tickmark));
+  transform: rotate(90deg) translate(0, -1px);
+}
+:host(ds-range-slider-track).ds-range-slider-track--vertical,
+.ds-range-slider-track.ds-range-slider-track--vertical {
+  width: var(--ds-shape-size-y-range-handle-area);
+  height: 100%;
+  justify-content: center;
+  align-items: initial;
+}
+:host(ds-range-slider-track).ds-range-slider-track--vertical .ds-range-slider-track__track,
+.ds-range-slider-track.ds-range-slider-track--vertical .ds-range-slider-track__track {
+  flex-direction: column;
+  justify-content: flex-end;
+  width: var(--ds-shape-size-y-range-track);
+  height: 100%;
+}
+:host(ds-range-slider-track).ds-range-slider-track--vertical .ds-range-slider-track__fill,
+.ds-range-slider-track.ds-range-slider-track--vertical .ds-range-slider-track__fill {
+  transform-origin: bottom;
+}
+:host(ds-range-slider-track).ds-range-slider-track--vertical .ds-range-slider-track__tick-marks,
+.ds-range-slider-track.ds-range-slider-track--vertical .ds-range-slider-track__tick-marks {
+  top: 0;
+  left: calc((100% + var(--ds-space-stack-join-range-tickmark)) * -1);
+}
+:host(ds-range-slider-track).ds-range-slider-track--vertical .ds-range-slider-track__tick-marks__tick,
+.ds-range-slider-track.ds-range-slider-track--vertical .ds-range-slider-track__tick-marks__tick {
+  align-items: center;
+  justify-content: flex-end;
+  top: 0;
+  right: 0;
+  width: initial;
+  height: 0;
+}
+:host(ds-range-slider-track).ds-range-slider-track--vertical .ds-range-slider-track__tick-marks__tick::before,
+.ds-range-slider-track.ds-range-slider-track--vertical .ds-range-slider-track__tick-marks__tick::before {
+  top: 0;
+  right: 0;
+  left: auto;
+  transform: translate(0, 0) rotate(90deg);
+}
+:host(ds-range-slider-track).ds-range-slider-track--vertical .ds-range-slider-track__tick-marks__tick__text,
+.ds-range-slider-track.ds-range-slider-track--vertical .ds-range-slider-track__tick-marks__tick__text {
+  margin-right: calc(var(--ds-space-stack-offset-range-tickmark) * -2);
+}
+:host(ds-range-slider-track).ds-range-slider-track--vertical .ds-range-slider-track__tick-marks__tick__text--vertical,
+.ds-range-slider-track.ds-range-slider-track--vertical .ds-range-slider-track__tick-marks__tick__text--vertical {
+  width: initial;
+  transform: none;
+  margin-top: 0;
+}

@@ -1,0 +1,32 @@
+@use '../../density-styles-sass' as *;
+
+:host(#{$prefix}menu-group),
+#{$prefix}menu-group {
+  display: block;
+  margin-left: calc(-1 * var(--#{$prefix}space-2x));
+  margin-right: calc(-1 * var(--#{$prefix}space-2x));
+}
+
+#{$prefix}menu-item + #{$prefix}menu-group,
+#{$prefix}list-item + #{$prefix}menu-group,
+#{$prefix}label + #{$prefix}menu-group,
+#{$prefix}menu-group + #{$prefix}list-item,
+#{$prefix}menu-group + #{$prefix}menu-item,
+#{$prefix}menu-group + #{$prefix}label {
+  margin-top: var(--#{$prefix}space-2x);
+}
+
+#{$prefix}menu-group:first-child {
+  #{$prefix}box-content {
+    padding-top: 0 !important;
+    &:before {
+      display: none;
+    }
+  }
+}
+
+#{$prefix}menu-group:last-child {
+  #{$prefix}box-content {
+    padding-bottom: 0 !important;
+  }
+}

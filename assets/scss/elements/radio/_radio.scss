@@ -1,0 +1,338 @@
+@use '../../density-styles-sass' as *;
+
+.#{$prefix}radio-group {
+  color: var(--#{$prefix}color-text-input-value);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--#{$prefix}space-between-base);
+  font-family: var(--#{$prefix}font-family-input);
+  font-size: var(--#{$prefix}font-size-input-label);
+  font-weight: var(--#{$prefix}font-weight-input);
+  line-height: var(--#{$prefix}font-line-height-input);
+
+  --radio-button-border-width: 1px;
+  --#{$prefix}space-between-base: var(--#{$prefix}space-4x);
+
+  .#{$prefix}radio-button-wrapper {
+    display: inline-block;
+    line-height: 0;
+    position: relative;
+
+    &:not(:first-child) {
+      margin-left: var(--#{$prefix}space-2x);
+    }
+
+    & + * {
+      margin-left: var(--#{$prefix}space-2x);
+    }
+  }
+
+  & > label {
+    align-items: flex-start;
+    display: inline-flex;
+    width: fit-content;
+    cursor: pointer;
+
+    &.#{$prefix}radio-button__implicit-label:not(:first-of-type) {
+      margin-bottom: 0;
+    }
+
+    &.#{$prefix}radio-button__implicit-label {
+      &:has(input[type='radio']:focus-visible) {
+        outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+        outline-offset: var(--#{$prefix}size-outline-offset);
+      }
+
+      &--readonly {
+        pointer-events: none;
+      }
+
+      &--disabled {
+        pointer-events: initial;
+        cursor: not-allowed;
+        color: var(--#{$prefix}color-text-input-disabled);
+      }
+    }
+  }
+
+  & > .#{$prefix}radio-button__explicit-label {
+    display: flex;
+    align-items: flex-start;
+    width: fit-content;
+
+    & > label {
+      cursor: pointer;
+    }
+
+    &:has(input[type='radio']:focus-visible) {
+      outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+      outline-offset: var(--#{$prefix}size-outline-offset);
+    }
+
+    &:not(:first-of-type) {
+      margin-bottom: 0;
+    }
+
+    & > label:not(:first-child) {
+      padding-left: var(--#{$prefix}space-2x);
+    }
+
+    & > label:first-child ~ * {
+      margin-left: var(--#{$prefix}space-2x);
+    }
+
+    &--disabled,
+    &--disabled > label {
+      pointer-events: initial;
+      cursor: not-allowed;
+      color: var(--#{$prefix}color-text-input-disabled);
+    }
+  }
+
+  &--block {
+    display: block;
+    margin-top: var(--#{$prefix}space-2x);
+    margin-bottom: var(--#{$prefix}space-2x);
+    --#{$prefix}space-between-base: var(--#{$prefix}space-3x);
+
+    & > label.#{$prefix}radio-button__implicit-label,
+    & > .#{$prefix}radio-button__explicit-label {
+      display: flex;
+
+      &:not(:first-of-type) {
+        margin-left: 0;
+      }
+
+      &:not(:last-of-type) {
+        margin-bottom: var(--#{$prefix}space-between-base);
+      }
+    }
+  }
+
+  &--is-block {
+    --#{$prefix}space-between-base: var(--#{$prefix}space-2x);
+    margin-top: var(--#{$prefix}space-1x);
+    margin-bottom: var(--#{$prefix}space-1x);
+    &.#{$prefix}radio-group--block {
+      & .#{$prefix}radio-button__explicit-label,
+      & .#{$prefix}radio-button__implicit-label {
+        width: 100%;
+      }
+    }
+
+    &.#{$prefix}radio-group--lg {
+      --#{$prefix}space-stack-start-input-block: var(--#{$prefix}space-stack-start-input-block-large);
+      --#{$prefix}space-inline-start-input-block: var(--#{$prefix}space-inline-start-input-block-large);
+      --#{$prefix}space-stack-end-input-block: var(--#{$prefix}space-stack-end-input-block-large);
+      --#{$prefix}space-inline-end-input-block: var(--#{$prefix}space-inline-end-input-block-large);
+    }
+
+    & .#{$prefix}radio-button__explicit-label,
+    & .#{$prefix}radio-button__implicit-label {
+      border-radius: var(--#{$prefix}shape-radius-input-block);
+      // removing 1px to account for the border
+      padding: calc(var(--#{$prefix}space-stack-start-input-block) - 1px)
+        calc(var(--#{$prefix}space-inline-start-input-block) - 1px)
+        calc(var(--#{$prefix}space-stack-end-input-block) - 1px)
+        calc(var(--#{$prefix}space-inline-end-input-block) - 1px);
+      background-color: var(--#{$prefix}color-surface-input-block);
+      border: var(--radio-button-border-width) solid var(--#{$prefix}color-border-input-block);
+
+      --#{$prefix}color-border-input-hover: var(--#{$prefix}color-border-input);
+
+      &.#{$prefix}radio-button__explicit-label:not(.#{$prefix}radio-button__explicit-label--disabled),
+      &.#{$prefix}radio-button__implicit-label:not(.#{$prefix}radio-button__implicit-label--disabled) {
+        &:hover {
+          background-color: var(--#{$prefix}color-surface-input-block-hover);
+          border: var(--radio-button-border-width) solid var(--#{$prefix}color-border-input-block-hover);
+          cursor: pointer;
+
+          --#{$prefix}color-surface-input-block-active: var(--#{$prefix}color-surface-input-block-hover);
+        }
+
+        &:focus-visible {
+          border: var(--radio-button-border-width) solid var(--#{$prefix}color-border-input-block-focus);
+          outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+          outline-offset: var(--#{$prefix}size-outline-offset);
+
+          --#{$prefix}color-border-input-block-active: var(--#{$prefix}color-border-input-block-focus);
+        }
+
+        &:has(input.#{$prefix}input:checked) {
+          background-color: var(--#{$prefix}color-surface-input-block-active);
+          border: var(--radio-button-border-width) solid var(--#{$prefix}color-border-input-block-active);
+          cursor: initial;
+        }
+
+        & input.#{$prefix}input[type='radio']:not(:checked) {
+          background-color: var(--#{$prefix}color-surface-base);
+        }
+      }
+
+      &.#{$prefix}radio-button__explicit-label--disabled,
+      &.#{$prefix}radio-button__implicit-label--disabled {
+        background-color: var(--#{$prefix}color-surface-input-block-disabled);
+        border: var(--radio-button-border-width) solid var(--#{$prefix}color-border-input-block-disabled);
+      }
+    }
+
+    &.#{$prefix}radio-group--readonly {
+      & .#{$prefix}radio-button__explicit-label,
+      & .#{$prefix}radio-button__implicit-label {
+        background-color: var(--#{$prefix}color-surface-input-block-readonly);
+        border: var(--radio-button-border-width) solid var(--#{$prefix}color-border-input-block-readonly);
+
+        &:has(input.#{$prefix}input:checked) {
+          background-color: var(--#{$prefix}color-surface-input-block-readonly);
+          border: var(--radio-button-border-width) solid var(--#{$prefix}color-border-input-block-readonly);
+
+          --#{$prefix}color-surface-input-block-active: var(--#{$prefix}color-surface-input-block-readonly);
+          --#{$prefix}color-border-input-block-active: var(--#{$prefix}color-border-input-block-readonly);
+        }
+
+        &.#{$prefix}radio-button__explicit-label:not(.#{$prefix}radio-button__explicit-label--disabled),
+        &.#{$prefix}radio-button__implicit-label:not(.#{$prefix}radio-button__implicit-label--disabled) {
+          & input.#{$prefix}input:not(:checked) {
+            background-color: var(--#{$prefix}color-surface-input-readonly);
+            border: var(--radio-button-border-width) solid var(--#{$prefix}color-border-input-radio-readonly);
+          }
+        }
+      }
+    }
+  }
+
+  &--readonly {
+    pointer-events: none;
+
+    input[type='radio'].#{$prefix}input {
+      background-color: var(--#{$prefix}color-surface-input-readonly);
+      border: var(--radio-button-border-width) solid var(--#{$prefix}color-border-input-radio-readonly);
+
+      &:hover,
+      &:focus {
+        background-color: var(--#{$prefix}color-surface-input-readonly);
+        border: var(--radio-button-border-width) solid var(--#{$prefix}color-border-input-radio-readonly);
+      }
+
+      &:checked:not(:disabled) {
+        background-color: var(--#{$prefix}color-surface-input-readonly);
+        border: var(--radio-button-border-width) solid var(--#{$prefix}color-border-input-radio-readonly);
+
+        &:focus {
+          background-color: var(--#{$prefix}color-surface-input-readonly);
+          border: var(--radio-button-border-width) solid var(--#{$prefix}color-border-input-radio-readonly);
+        }
+
+        &::after {
+          background-color: var(--#{$prefix}color-icon-input-readonly);
+          border-radius: var(--#{$prefix}shape-radius-radiobutton);
+        }
+      }
+    }
+  }
+
+  &--lg {
+    font-family: var(--#{$prefix}font-family-input);
+    font-size: var(--#{$prefix}font-size-input-label-large);
+    font-weight: var(--#{$prefix}font-weight-input);
+    line-height: var(--#{$prefix}font-line-height-input-large);
+
+    input[type='radio'].#{$prefix}input {
+      height: var(--#{$prefix}shape-size-x-radiobutton-large);
+      width: var(--#{$prefix}shape-size-y-radiobutton-large);
+
+      &:checked {
+        &::after {
+          height: var(--size-radiobutton-checked-indicator-large);
+          left: var(--space-inline-start-radiobutton-checked-indicator-large);
+          top: var(--space-inline-start-radiobutton-checked-indicator-large);
+          width: var(--size-radiobutton-checked-indicator-large);
+        }
+      }
+    }
+  }
+}
+
+input[type='radio'].#{$prefix}input {
+  --size-radiobutton-checked-indicator: calc(
+    var(--#{$prefix}shape-size-y-radiobutton) / 2 - var(--#{$prefix}space-05x)
+  );
+  --space-inline-start-radiobutton-checked-indicator: calc(
+    (var(--#{$prefix}shape-size-y-radiobutton) - var(--size-radiobutton-checked-indicator)) /
+      2 - var(--radio-button-border-width)
+  );
+  --size-radiobutton-checked-indicator-large: calc(
+    var(--#{$prefix}shape-size-y-radiobutton-large) / 2 - var(--#{$prefix}space-05x)
+  );
+  --space-inline-start-radiobutton-checked-indicator-large: calc(
+    (var(--#{$prefix}shape-size-y-radiobutton-large) - var(--size-radiobutton-checked-indicator-large)) /
+      2 - var(--radio-button-border-width)
+  );
+  background-color: var(--#{$prefix}color-surface-input);
+
+  position: relative;
+  height: var(--#{$prefix}shape-size-x-radiobutton);
+  width: var(--#{$prefix}shape-size-y-radiobutton);
+  border: var(--radio-button-border-width) solid var(--#{$prefix}color-border-input);
+  border-radius: var(--#{$prefix}shape-radius-radiobutton);
+  cursor: pointer;
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: var(--#{$prefix}color-surface-input-hover);
+    border-color: var(--#{$prefix}color-border-input-hover);
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:checked::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    height: var(--size-radiobutton-checked-indicator);
+    left: var(--space-inline-start-radiobutton-checked-indicator);
+    top: var(--space-inline-start-radiobutton-checked-indicator);
+    width: var(--size-radiobutton-checked-indicator);
+  }
+
+  &:checked:not(:disabled) {
+    background-color: var(--#{$prefix}color-surface-input-active);
+    border: var(--radio-button-border-width) solid var(--#{$prefix}color-border-input-active);
+    cursor: default;
+
+    &::after {
+      background-color: var(--#{$prefix}color-icon-input-active);
+      border-radius: var(--#{$prefix}shape-radius-radiobutton);
+    }
+
+    &:hover,
+    &:focus {
+      background-color: var(--#{$prefix}color-surface-input-active);
+      border: var(--radio-button-border-width) solid var(--#{$prefix}color-border-input-active);
+    }
+
+    & + * {
+      cursor: default;
+    }
+  }
+
+  &:disabled {
+    background-color: var(--#{$prefix}color-surface-input-disabled);
+    border: var(--radio-button-border-width) solid var(--#{$prefix}color-border-input-disabled);
+    cursor: not-allowed;
+
+    &:hover,
+    &:focus {
+      background-color: var(--#{$prefix}color-surface-input-disabled);
+    }
+
+    &:checked {
+      &::after {
+        background-color: var(--#{$prefix}color-icon-input-disabled);
+        border-radius: var(--#{$prefix}shape-radius-radiobutton);
+      }
+    }
+  }
+}

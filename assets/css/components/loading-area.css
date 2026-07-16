@@ -1,0 +1,54 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-loading-area),
+.ds-loading-area {
+  width: 100%;
+  height: 100%;
+}
+:host(ds-loading-area) .ds-loading-area__wrapper,
+.ds-loading-area .ds-loading-area__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: var(--ds-space-inset-loading-area);
+  background-color: var(--ds-color-surface-loading-area-translucent);
+  color: var(--ds-color-icon-loading-area-translucent);
+}
+:host(ds-loading-area) .ds-loading-area__wrapper__title-wrapper, :host(ds-loading-area) .ds-loading-area__wrapper__text-wrapper, :host(ds-loading-area) .ds-loading-area__wrapper__actions-template,
+.ds-loading-area .ds-loading-area__wrapper__title-wrapper,
+.ds-loading-area .ds-loading-area__wrapper__text-wrapper,
+.ds-loading-area .ds-loading-area__wrapper__actions-template {
+  margin-top: var(--ds-space-stack-join-loading-area);
+}
+:host(ds-loading-area) .ds-loading-area__wrapper__title-wrapper + .ds-loading-area__wrapper__text-wrapper,
+.ds-loading-area .ds-loading-area__wrapper__title-wrapper + .ds-loading-area__wrapper__text-wrapper {
+  margin-top: 0px;
+}
+:host(ds-loading-area) .ds-loading-area__wrapper .ds-progress-circle,
+.ds-loading-area .ds-loading-area__wrapper .ds-progress-circle {
+  color: currentColor;
+}
+:host(ds-loading-area).ds-loading-area--solid .ds-loading-area__wrapper,
+.ds-loading-area.ds-loading-area--solid .ds-loading-area__wrapper {
+  background-color: var(--ds-color-surface-loading-area-solid);
+  color: var(--ds-color-icon-loading-area-solid);
+}
+:host(ds-loading-area).ds-loading-area--in-container,
+.ds-loading-area.ds-loading-area--in-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: calc(var(--ds-z-index-header-base) - 1);
+}

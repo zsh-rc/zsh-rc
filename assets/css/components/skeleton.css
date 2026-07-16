@@ -1,0 +1,246 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Shimmer animation */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+/* Shimmer variables */
+.ds-skeleton {
+  background-color: var(--ds-color-surface-skeleton-shell);
+  border-radius: var(--ds-shape-radius-base);
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  min-width: var(--ds-size-x-min-skeleton-shell);
+}
+.ds-skeleton.ds-skeleton--shimmer::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--ds-color-shimmer-1), var(--ds-color-shimmer-2), var(--ds-color-shimmer-3));
+  animation: shimmer 2s infinite;
+}
+.ds-skeleton.ds-skeleton--block {
+  background-color: var(--ds-color-surface-neutral-mild);
+}
+.ds-skeleton.ds-skeleton--block-no-radius {
+  border-radius: 0;
+}
+.ds-skeleton.ds-skeleton--block-predefined-height-3x {
+  min-width: var(--ds-size-x-min-skeleton-block-3x);
+  width: var(--ds-size-x-min-skeleton-block-3x);
+  min-height: var(--ds-size-y-skeleton-block-3x);
+  height: var(--ds-size-y-skeleton-block-3x);
+}
+.ds-skeleton.ds-skeleton--block-predefined-height-4x {
+  min-width: var(--ds-size-x-min-skeleton-block-4x);
+  width: var(--ds-size-x-min-skeleton-block-4x);
+  min-height: var(--ds-size-y-skeleton-block-4x);
+  height: var(--ds-size-y-skeleton-block-4x);
+}
+.ds-skeleton.ds-skeleton--block-predefined-height-5x {
+  min-width: var(--ds-size-x-min-skeleton-block-5x);
+  width: var(--ds-size-x-min-skeleton-block-5x);
+  min-height: var(--ds-size-y-skeleton-block-5x);
+  height: var(--ds-size-y-skeleton-block-5x);
+}
+.ds-skeleton.ds-skeleton--block-predefined-height-6x {
+  min-width: var(--ds-size-x-min-skeleton-block-6x);
+  width: var(--ds-size-x-min-skeleton-block-6x);
+  min-height: var(--ds-size-y-skeleton-block-6x);
+  height: var(--ds-size-y-skeleton-block-6x);
+}
+.ds-skeleton.ds-skeleton--block-predefined-height-8x {
+  min-width: var(--ds-size-x-min-skeleton-block-8x);
+  width: var(--ds-size-x-min-skeleton-block-8x);
+  min-height: var(--ds-size-y-skeleton-block-8x);
+  height: var(--ds-size-y-skeleton-block-8x);
+}
+.ds-skeleton.ds-skeleton--block-predefined-height-10x {
+  min-width: var(--ds-size-x-min-skeleton-block-10x);
+  width: var(--ds-size-x-min-skeleton-block-10x);
+  min-height: var(--ds-size-y-skeleton-block-10x);
+  height: var(--ds-size-y-skeleton-block-10x);
+}
+.ds-skeleton.ds-skeleton--circle {
+  background-color: var(--ds-color-surface-neutral-mild);
+  border-radius: var(--ds-shape-radius-circle);
+  min-width: var(--ds-size-x-min-skeleton-circle);
+  min-height: var(--ds-size-y-min-skeleton-circle);
+}
+.ds-skeleton.ds-skeleton--circle-predefined-diameter-3x {
+  width: var(--ds-size-diameter-skeleton-circle-3x);
+  height: var(--ds-size-diameter-skeleton-circle-3x);
+}
+.ds-skeleton.ds-skeleton--circle-predefined-diameter-4x {
+  width: var(--ds-size-diameter-skeleton-circle-4x);
+  height: var(--ds-size-diameter-skeleton-circle-4x);
+}
+.ds-skeleton.ds-skeleton--circle-predefined-diameter-5x {
+  width: var(--ds-size-diameter-skeleton-circle-5x);
+  height: var(--ds-size-diameter-skeleton-circle-5x);
+}
+.ds-skeleton.ds-skeleton--circle-predefined-diameter-6x {
+  width: var(--ds-size-diameter-skeleton-circle-6x);
+  height: var(--ds-size-diameter-skeleton-circle-6x);
+}
+.ds-skeleton.ds-skeleton--circle-predefined-diameter-8x {
+  width: var(--ds-size-diameter-skeleton-circle-8x);
+  height: var(--ds-size-diameter-skeleton-circle-8x);
+}
+.ds-skeleton.ds-skeleton--circle-predefined-diameter-10x {
+  width: var(--ds-size-diameter-skeleton-circle-10x);
+  height: var(--ds-size-diameter-skeleton-circle-10x);
+}
+.ds-skeleton.ds-skeleton--text {
+  background-color: var(--ds-color-surface-skeleton-shell);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ds-skeleton.ds-skeleton--text-title-lg {
+  padding: var(--ds-space-05x) 0;
+  height: var(--ds-size-y-skeleton-shell-title-lg);
+}
+.ds-skeleton.ds-skeleton--text-title-lg.ds-skeleton--shimmer::before {
+  content: "";
+  position: absolute;
+  height: var(--ds-size-y-skeleton-title-lg);
+  width: var(--ds-size-x-skeleton-text);
+  background: linear-gradient(90deg, var(--ds-color-shimmer-1), var(--ds-color-shimmer-2), var(--ds-color-shimmer-3));
+  animation: shimmer 2s infinite;
+}
+.ds-skeleton.ds-skeleton--text-title-md {
+  padding: var(--ds-space-1x) 0;
+  height: var(--ds-size-y-skeleton-shell-paragraph);
+}
+.ds-skeleton.ds-skeleton--text-title-md.ds-skeleton--shimmer::before {
+  height: var(--ds-size-y-skeleton-title-md);
+  content: "";
+  position: absolute;
+  width: var(--ds-size-x-skeleton-text);
+  background: linear-gradient(90deg, var(--ds-color-shimmer-1), var(--ds-color-shimmer-2), var(--ds-color-shimmer-3));
+  animation: shimmer 2s infinite;
+}
+.ds-skeleton.ds-skeleton--text-paragraph {
+  padding: var(--ds-space-1x) 0;
+  height: var(--ds-size-y-skeleton-shell-paragraph);
+}
+.ds-skeleton.ds-skeleton--text-paragraph.ds-skeleton--shimmer::before {
+  height: var(--ds-size-y-skeleton-paragraph);
+  content: "";
+  position: absolute;
+  width: var(--ds-size-x-skeleton-text);
+  background: linear-gradient(90deg, var(--ds-color-shimmer-1), var(--ds-color-shimmer-2), var(--ds-color-shimmer-3));
+  animation: shimmer 2s infinite;
+}
+.ds-skeleton.ds-skeleton--text-title-sm {
+  padding: var(--ds-space-05x) 0;
+  height: var(--ds-size-y-skeleton-shell-label);
+}
+.ds-skeleton.ds-skeleton--text-title-sm.ds-skeleton--shimmer::before {
+  content: "";
+  position: absolute;
+  height: var(--ds-size-y-skeleton-title-sm);
+  width: var(--ds-size-x-skeleton-text);
+  background: linear-gradient(90deg, var(--ds-color-shimmer-1), var(--ds-color-shimmer-2), var(--ds-color-shimmer-3));
+  animation: shimmer 2s infinite;
+}
+.ds-skeleton.ds-skeleton--text-label {
+  padding: var(--ds-space-05x) 0;
+  height: var(--ds-size-y-skeleton-shell-label);
+}
+.ds-skeleton.ds-skeleton--text-label.ds-skeleton--shimmer::before {
+  content: "";
+  position: absolute;
+  height: var(--ds-size-y-skeleton-label);
+  width: var(--ds-size-x-skeleton-text);
+  background: linear-gradient(90deg, var(--ds-color-shimmer-1), var(--ds-color-shimmer-2), var(--ds-color-shimmer-3));
+  animation: shimmer 2s infinite;
+}
+.ds-skeleton.ds-skeleton--text-title-xs {
+  padding: 1px 0;
+  height: var(--ds-size-y-skeleton-shell-smallprint);
+}
+.ds-skeleton.ds-skeleton--text-title-xs.ds-skeleton--shimmer::before {
+  content: "";
+  position: absolute;
+  height: var(--ds-size-y-skeleton-title-xs);
+  width: var(--ds-size-x-skeleton-text);
+  background: linear-gradient(90deg, var(--ds-color-shimmer-1), var(--ds-color-shimmer-2), var(--ds-color-shimmer-3));
+  animation: shimmer 2s infinite;
+}
+.ds-skeleton.ds-skeleton--text-smallprint {
+  padding: 1px 0;
+  height: var(--ds-size-y-skeleton-shell-smallprint);
+}
+.ds-skeleton.ds-skeleton--text-smallprint.ds-skeleton--shimmer::before {
+  content: "";
+  position: absolute;
+  height: var(--ds-size-y-skeleton-smallprint);
+  width: var(--ds-size-x-skeleton-text);
+  background: linear-gradient(90deg, var(--ds-color-shimmer-1), var(--ds-color-shimmer-2), var(--ds-color-shimmer-3));
+  animation: shimmer 2s infinite;
+}
+.ds-skeleton.ds-skeleton--text-regular {
+  padding: 3px 0;
+  height: var(--ds-size-y-skeleton-shell-regular);
+}
+.ds-skeleton.ds-skeleton--text-regular.ds-skeleton--shimmer::before {
+  content: "";
+  position: absolute;
+  height: var(--ds-size-y-skeleton-regular);
+  width: var(--ds-size-x-skeleton-text);
+  background: linear-gradient(90deg, var(--ds-color-shimmer-1), var(--ds-color-shimmer-2), var(--ds-color-shimmer-3));
+  animation: shimmer 2s infinite;
+}
+.ds-skeleton.ds-skeleton--text .ds-skeleton--text-content {
+  border-radius: var(--ds-shape-radius-base);
+  height: 100%;
+  width: 100%;
+  background-color: var(--ds-color-surface-neutral-mild);
+}
+.ds-skeleton.ds-skeleton--text .ds-skeleton--text-content-title-lg {
+  height: var(--ds-size-y-skeleton-title-lg);
+}
+.ds-skeleton.ds-skeleton--text .ds-skeleton--text-content-title-md, .ds-skeleton.ds-skeleton--text .ds-skeleton--text-content-paragraph {
+  height: var(--ds-size-y-skeleton-paragraph);
+}
+.ds-skeleton.ds-skeleton--text .ds-skeleton--text-content-title-md {
+  height: var(--ds-size-y-skeleton-title-md);
+}
+.ds-skeleton.ds-skeleton--text .ds-skeleton--text-content-title-md.ds-skeleton--shimmer::before {
+  height: var(--ds-size-y-skeleton-title-md);
+}
+.ds-skeleton.ds-skeleton--text .ds-skeleton--text-content-title-sm, .ds-skeleton.ds-skeleton--text .ds-skeleton--text-content-label {
+  height: var(--ds-size-y-skeleton-label);
+}
+.ds-skeleton.ds-skeleton--text .ds-skeleton--text-content-title-sm {
+  height: var(--ds-size-y-skeleton-title-sm);
+}
+.ds-skeleton.ds-skeleton--text .ds-skeleton--text-content-title-sm.ds-skeleton--shimmer::before {
+  height: var(--ds-size-y-skeleton-title-sm);
+}
+.ds-skeleton.ds-skeleton--text .ds-skeleton--text-content-title-xs, .ds-skeleton.ds-skeleton--text .ds-skeleton--text-content-smallprint {
+  height: var(--ds-size-y-skeleton-smallprint);
+}
+.ds-skeleton.ds-skeleton--text .ds-skeleton--text-content-title-xs {
+  height: var(--ds-size-y-skeleton-title-xs);
+}
+.ds-skeleton.ds-skeleton--text .ds-skeleton--text-content-title-xs.ds-skeleton--shimmer::before {
+  height: var(--ds-size-y-skeleton-title-xs);
+}
+.ds-skeleton.ds-skeleton--text .ds-skeleton--text-content-regular {
+  height: var(--ds-size-y-skeleton-regular);
+}

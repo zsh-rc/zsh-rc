@@ -1,0 +1,250 @@
+@use '../../density-styles-sass' as *;
+@use '../../mixins/placeholder' as *;
+@use '../../utilities/sass_utilities' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}select-list),
+
+
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}select-list {
+  display: block;
+  width: 100%;
+  margin-top: 0;
+
+  --#{$prefix}tree-item-transition-timing-function: var(--#{$prefix}motion-timing-entrance);
+  --#{$prefix}tree-item-transition-duration: var(--#{$prefix}motion-duration-quick);
+
+  --select-list-selected-bs: 0 0 0 2px inset rgba(var(--#{$prefix}color-blue-500), 0.3);
+  --fg-transition: all 150ms ease-in-out;
+
+  &.#{$prefix}no-motion {
+    --#{$prefix}tree-item-transition-duration: 0s;
+  }
+
+  .#{$prefix}select-list__wrapper {
+    height: 100%;
+  }
+
+  .#{$prefix}select-list__options-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  ul {
+    //resets ul style
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    min-height: var(--#{$prefix}shape-size-ymin-list-item);
+  }
+
+  label {
+    min-height: var(--#{$prefix}shape-size-ymin-list-item);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 0;
+    cursor: pointer;
+    outline: 0;
+
+    > span {
+      position: relative;
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      white-space: pre;
+      font-size: var(--#{$prefix}font-size-list-item);
+      color: var(--#{$prefix}color-text-list-item);
+      padding: var(--#{$prefix}space-2x);
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .truncate > div {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .wrap {
+      align-items: flex-start;
+      & > div {
+        width: 100%;
+        white-space: normal;
+      }
+    }
+  }
+
+  .body-label {
+    color: var(--#{$prefix}color-text-list-item);
+    font-family: var(--#{$prefix}font-family-list-item);
+    font-size: var(--#{$prefix}font-size-list-item);
+    font-weight: var(--#{$prefix}font-weight-list-item);
+    line-height: var(--#{$prefix}font-line-height-list-item);
+  }
+
+  .#{$prefix}select-list__select-all {
+    margin-bottom: 1px;
+
+    .#{$prefix}list-item__content-wrapper .#{$prefix}list-item__content {
+      max-height: var(--#{$prefix}typography-line-height-regular);
+    }
+
+    span {
+      width: auto;
+      font-size: var(--#{$prefix}font-size-list-item);
+    }
+
+    span:nth-child(1) {
+      padding-right: var(--#{$prefix}space-1x);
+
+      // TODO tokens. Replace with component token
+      color: var(--#{$prefix}color-typography-action-active);
+    }
+
+    span:nth-child(2) {
+      padding-left: 0;
+
+      // TODO tokens. Replace with component token
+      color: var(--#{$prefix}color-typography-neutral);
+    }
+  }
+
+  input {
+    display: inline;
+    width: 0;
+    height: 0;
+
+    & ~ span {
+      background-color: var(--#{$prefix}color-surface-list-item);
+    }
+
+    &:hover ~ span {
+      background-color: var(--#{$prefix}color-surface-list-item-hover);
+    }
+
+    &:focus ~ span {
+      background-color: var(--#{$prefix}color-surface-list-item-hover);
+      box-shadow: var(--select-list-selected-bs);
+    }
+
+    &.disabled {
+      & ~ span {
+        color: var(--#{$prefix}color-cool-grey-400);
+        cursor: not-allowed;
+
+        &:hover {
+          background-color: white;
+        }
+
+        &::before {
+          background-color: var(--#{$prefix}color-cool-grey-100);
+          border-color: var(--#{$prefix}color-cool-grey-100);
+        }
+        &::after {
+          display: none;
+        }
+      }
+    }
+
+    &.selected {
+      & ~ span {
+        background-color: var(--#{$prefix}color-surface-list-item-selected);
+      }
+
+      &:hover ~ span {
+        background-color: var(--#{$prefix}color-surface-list-item-selected-hover);
+      }
+
+      &:focus ~ span {
+        outline: 0;
+        box-shadow: var(--select-list-selected-bs);
+      }
+    }
+  }
+
+  .#{$prefix}select-list__filter {
+    position: relative;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--#{$prefix}color-surface-list-item-search);
+
+    &__icon {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: var(--#{$prefix}space-inline-start-list-item);
+      pointer-events: none;
+      color: var(--#{$prefix}color-icon-list-item);
+    }
+
+    input.#{$prefix}select-list__filter__input {
+      width: 100%;
+      height: inherit;
+      border: 0;
+      background-color: transparent;
+
+      padding-left: calc(
+        var(--#{$prefix}space-inline-start-list-item) + var(--#{$prefix}icon-size-small) +
+          var(--#{$prefix}space-inline-couple-list-item)
+      );
+      padding-top: var(--#{$prefix}space-stack-start-list-item);
+      padding-right: var(--#{$prefix}space-inline-end-list-item);
+      padding-bottom: var(--#{$prefix}space-stack-end-list-item);
+      color: var(--#{$prefix}color-text-list-item);
+      font-family: var(--#{$prefix}font-family-list-item);
+      font-size: var(--#{$prefix}font-size-list-item);
+      font-weight: var(--#{$prefix}font-weight-list-item);
+      line-height: var(--#{$prefix}font-line-height-list-item);
+
+      @include placeholder {
+        display: flex;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        color: var(--#{$prefix}color-text-input-placeholder);
+        font-size: var(--#{$prefix}font-size-input-placeholder);
+        font-style: var(--#{$prefix}font-style-input-placeholder);
+        font-style: italic;
+      }
+
+      &:focus {
+        outline: 0;
+        box-shadow: var(--select-list-selected-bs);
+      }
+
+      &--lg {
+        --#{$prefix}font-size-list-item: var(--#{$prefix}font-size-list-item-large);
+        --#{$prefix}font-line-height-list-item: var(--#{$prefix}font-line-height-list-item-large);
+        --#{$prefix}space-stack-start-list-item: var(--#{$prefix}space-stack-start-list-item-large);
+        --#{$prefix}space-stack-end-list-item: var(--#{$prefix}space-stack-end-list-item-large);
+      }
+    }
+  }
+
+  ::ng-deep .cdk-virtual-scroll-content-wrapper {
+    width: 100%;
+  }
+
+  ::ng-deep .#{$prefix}select-list-item .#{$prefix}list-item__overlay--disabled {
+    pointer-events: none;
+  }
+}

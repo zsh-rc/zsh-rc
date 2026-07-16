@@ -1,0 +1,181 @@
+@use '../../density-styles-sass' as *;
+@use '../../utilities/sass_utilities' as *;
+@use '../../utilities/typography-utilities' as typography;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}table-head),
+:host(.#{$prefix}table-head),
+
+
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}table-head {
+  th {
+    @include typography.text-regular;
+    @include typography.text-neutral;
+
+    color: var(--#{$prefix}color-typography-neutral) !important;
+
+    // height for table cells works as min-height
+    // Table cells will grow when the content does not fit.
+    height: var(--#{$prefix}shape-size-ymin-table-header);
+    min-width: var(--#{$prefix}shape-size-xmin-table-header);
+
+    padding-left: var(--#{$prefix}space-inline-start-table-header);
+    padding-right: var(--#{$prefix}space-inline-end-table-header);
+
+    background-color: var(--#{$prefix}color-surface-table-header);
+    border-right: 1px solid var(--#{$prefix}color-border-table-header);
+    border-bottom: 1px solid var(--#{$prefix}color-border-table-header);
+
+    font-weight: var(--#{$prefix}font-weight-table-header);
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  &.#{$prefix}table-head--hidden {
+    display: none;
+  }
+
+  &.#{$prefix}table-head--slim th {
+    height: var(--#{$prefix}shape-size-ymin-table-header-slim);
+  }
+
+  &.#{$prefix}table-head--sticky {
+    tr {
+      position: sticky;
+      top: 0px;
+      z-index: z-index(content);
+
+      // Token starts as undefined.
+      // The token's value can be set by user to apply a background color to a sticky header
+      background-color: var(--#{$prefix}color-surface-table-header-sticky);
+    }
+
+    &.#{$prefix}table-head--fixed tr {
+      box-shadow: var(--#{$prefix}elevation-table-header-fixed);
+    }
+  }
+
+  &.#{$prefix}table-head--sortable th.#{$prefix}table-sort-header {
+    padding: 0;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--#{$prefix}color-surface-table-header-hover);
+
+      .#{$prefix}table-sort-header__sort-icon {
+        g,
+        path {
+          fill: var(--#{$prefix}color-icon-table-header-sort-non-active-hover);
+        }
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: none;
+
+      .#{$prefix}table-sort-header__wrapper {
+        position: relative;
+
+        &::after {
+          position: absolute;
+          content: '';
+          top: calc(-1 * var(--table-sort-header-outer-divider-offset));
+          left: calc(-1 * var(--table-sort-header-column-divider-offset));
+          height: calc(
+            100% + var(--table-sort-header-outer-divider-offset) + var(--table-sort-header-row-divider-offset)
+          );
+          width: calc(
+            100% + var(--table-sort-header-column-divider-offset) + var(--table-sort-header-column-divider-offset)
+          );
+          border: 1px solid transparent;
+          border-radius: var(--#{$prefix}shape-radius-table);
+          box-shadow: 0 0 0 2px var(--#{$prefix}color-outline-action);
+        }
+      }
+    }
+
+    &:first-child:focus-visible .#{$prefix}table-sort-header__wrapper::after {
+      left: calc(-1 * var(--table-sort-header-outer-divider-offset));
+      width: calc(
+        100% + var(--table-sort-header-outer-divider-offset) + var(--table-sort-header-column-divider-offset)
+      );
+    }
+
+    &:last-child:focus-visible .#{$prefix}table-sort-header__wrapper::after {
+      width: calc(
+        100% + var(--table-sort-header-outer-divider-offset) + var(--table-sort-header-column-divider-offset)
+      );
+    }
+
+    .#{$prefix}table-sort-header__wrapper {
+      display: flex;
+      align-items: center;
+
+      height: 100%;
+      padding-left: var(--#{$prefix}space-inline-start-table-header);
+      padding-right: var(--#{$prefix}space-inline-end-table-header);
+
+      &__content {
+        width: 100%;
+        margin-right: var(--#{$prefix}space-inline-join-table-header);
+
+        &--active {
+          @include typography.text-action-active;
+        }
+      }
+
+      .#{$prefix}icon {
+        flex-shrink: 0;
+        margin-right: calc(-1 * var(--#{$prefix}space-inline-end-table-header));
+      }
+    }
+
+    .#{$prefix}table-sort-header__sort-icon {
+      path {
+        fill: var(--#{$prefix}color-icon-table-header-sort-non-active);
+      }
+
+      &--asc {
+        path:first-child {
+          fill: var(--#{$prefix}color-icon-table-header-sort-active);
+        }
+      }
+
+      &--desc {
+        path:last-child {
+          fill: var(--#{$prefix}color-icon-table-header-sort-active);
+        }
+      }
+    }
+  }
+
+  &.#{$prefix}table-head--horizontal-divider th {
+    border-bottom-color: var(--#{$prefix}color-surface-table-dividers);
+
+    --table-sort-header-row-divider-offset: 1px;
+  }
+
+  &:not(.#{$prefix}table-head--horizontal-divider) th {
+    border-bottom: none;
+  }
+
+  &.#{$prefix}table-head--vertical-divider th {
+    border-right-color: var(--#{$prefix}color-surface-table-dividers);
+
+    --table-sort-header-column-divider-offset: 1px;
+  }
+
+  &:not(.#{$prefix}table-head--vertical-divider) th {
+    border-right: none;
+  }
+}

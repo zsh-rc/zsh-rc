@@ -1,0 +1,142 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}message),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}message {
+  --#{$prefix}message-border-color: var(--#{$prefix}color-border-message-neutral);
+  --#{$prefix}message-border-width: 1px;
+  --#{$prefix}message-border-style: solid;
+  --#{$prefix}message-icon-color: var(--#{$prefix}color-icon-message-neutral);
+  --#{$prefix}message-translate-distance: -8px;
+  --#{$prefix}message-motion-duration: var(--#{$prefix}motion-duration-quick);
+
+  display: none;
+  position: relative;
+  border-radius: var(--#{$prefix}shape-radius-message);
+  box-shadow: var(--#{$prefix}elevation-none);
+  // overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+
+  &.#{$prefix}message {
+    &--elevation-none {
+      box-shadow: var(--#{$prefix}elevation-none);
+    }
+    &--elevation-base {
+      box-shadow: var(--#{$prefix}elevation-base);
+    }
+    &--elevation-component {
+      box-shadow: var(--#{$prefix}elevation-component);
+    }
+    &--elevation-temporary {
+      box-shadow: var(--#{$prefix}elevation-temporary);
+    }
+    &--elevation-navigation {
+      box-shadow: var(--#{$prefix}elevation-navigation);
+    }
+    &--elevation-notification {
+      box-shadow: var(--#{$prefix}elevation-notification);
+    }
+    &--elevation-modal {
+      box-shadow: var(--#{$prefix}elevation-modal);
+    }
+  }
+
+  &.#{$prefix}no-motion {
+    --#{$prefix}message-motion-duration: 0s;
+  }
+
+  &.#{$prefix}message {
+    transform: translateY(var(--#{$prefix}message-translate-distance));
+
+    &--visible {
+      visibility: visible;
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    &--loaded {
+      transition: all var(--#{$prefix}message-motion-duration) var(--#{$prefix}motion-timing-exit)
+        var(--#{$prefix}motion-delay-rapid);
+    }
+
+    .#{$prefix}message__wrapper {
+      border: var(--#{$prefix}message-border-width) var(--#{$prefix}message-border-style)
+        var(--#{$prefix}message-border-color);
+      border-radius: var(--#{$prefix}shape-radius-message);
+
+      &--neutral {
+        background-color: var(--#{$prefix}color-surface-message-neutral);
+        --#{$prefix}message-icon-color: var(--#{$prefix}color-icon-message-neutral);
+        --#{$prefix}message-border-color: var(--#{$prefix}color-border-message-neutral);
+      }
+      &--info {
+        background-color: var(--#{$prefix}color-surface-message-info);
+        --#{$prefix}message-icon-color: var(--#{$prefix}color-icon-message-info);
+        --#{$prefix}message-border-color: var(--#{$prefix}color-border-message-info);
+      }
+      &--positive {
+        background-color: var(--#{$prefix}color-surface-message-positive);
+        --#{$prefix}message-icon-color: var(--#{$prefix}color-icon-message-positive);
+        --#{$prefix}message-border-color: var(--#{$prefix}color-border-message-positive);
+      }
+      &--caution {
+        background-color: var(--#{$prefix}color-surface-message-caution);
+        --#{$prefix}message-icon-color: var(--#{$prefix}color-icon-message-caution);
+        --#{$prefix}message-border-color: var(--#{$prefix}color-border-message-caution);
+      }
+      &--critical {
+        background-color: var(--#{$prefix}color-surface-message-critical);
+        --#{$prefix}message-icon-color: var(--#{$prefix}color-icon-message-critical);
+        --#{$prefix}message-border-color: var(--#{$prefix}color-border-message-critical);
+      }
+      &--custom {
+        background-color: var(--#{$prefix}color-surface-message-custom);
+        --#{$prefix}message-icon-color: var(--#{$prefix}color-icon-message-custom);
+        --#{$prefix}message-border-color: var(--#{$prefix}color-border-message-custom);
+      }
+    }
+
+    ::ng-deep #{$prefix}box-header {
+      --#{$prefix}box-header-line-height: var(--#{$prefix}font-line-height-message-title);
+      --#{$prefix}box-header-button-y-margin: -6px;
+      --#{$prefix}box-header-icon-y-margin: 0;
+
+      & > .#{$prefix}box-header__item {
+        min-height: calc(
+          var(--#{$prefix}font-line-height-message-title) + 2 * var(--#{$prefix}space-inset-message-regular)
+        );
+        --#{$prefix}box-header-icon-color: var(--#{$prefix}message-icon-color);
+      }
+
+      &.#{$prefix}message__wrapper--slim {
+        & > .#{$prefix}box-header__item {
+          min-height: calc(
+            var(--#{$prefix}font-line-height-message-title) + 2 * var(--#{$prefix}space-inset-message-slim)
+          );
+          padding: var(--#{$prefix}space-inset-message-slim);
+        }
+      }
+    }
+
+    & .#{$prefix}message__text-wrapper {
+      color: var(--#{$prefix}color-text-message);
+      font-family: var(--#{$prefix}font-family-message);
+      font-size: var(--#{$prefix}font-size-message);
+      font-weight: var(--#{$prefix}font-weight-message);
+      line-height: var(--#{$prefix}font-line-height-message);
+    }
+
+    & .#{$prefix}message__title-wrapper {
+      color: var(--#{$prefix}color-text-message);
+      font-family: var(--#{$prefix}font-family-message-title);
+      font-size: var(--#{$prefix}font-size-message-title);
+      font-weight: var(--#{$prefix}font-weight-message-title);
+      line-height: var(--#{$prefix}font-line-height-message-title);
+
+      margin-bottom: var(--#{$prefix}space-stack-join-message);
+    }
+  }
+}

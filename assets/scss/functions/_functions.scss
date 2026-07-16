@@ -1,0 +1,21 @@
+// Internal Density function to turn maps into its negative variant.
+// It prefixes the keys with `n` and makes the value negative.
+// It differs from the Bootstrap one by using CSS variables and calc() function.
+@use 'sass:meta';
+@use 'sass:map';
+@use 'sass:string';
+
+@function negativify-map($spacers) {
+  $result: ();
+  @if meta.variable-exists(spacers) {
+    @each $key, $value in $spacers {
+      // @warn $value;
+      @if $key != 0 {
+        $result: map.merge($result, ('n' + $key: string.unquote('calc(#{$value} * -1)')));
+      }
+    }
+  } @else {
+    @warn 'spacers don\'t exist';
+  }
+  @return $result;
+}

@@ -1,0 +1,87 @@
+@use 'sass-variables' as *;
+@use './dark' as *;
+@use '../../../density-tokens/dist/scss/variables' as *;
+
+:root,
+:host {
+  --#{$prefix}color-white-hsl: 0, 100%, 100%;
+  --#{$prefix}color-black-hsl: 0, 100%, 0%;
+  --#{$prefix}gradient: linear-gradient(
+    180deg,
+    hsla(var(--#{$prefix}color-white-hsl), 0.15),
+    hsla(var(--#{$prefix}color-white-hsl), 0)
+  );
+
+  --#{$prefix}body-color: var(--#{$prefix}color-black);
+  --#{$prefix}body-bg: var(--#{$prefix}color-white);
+  --#{$prefix}body-typography-align: left;
+
+  --#{$prefix}text-muted: var(--#{$prefix}color-cool-grey-600);
+
+  --#{$prefix}font-weight-light: 300;
+  --#{$prefix}font-weight-lighter: lighter;
+  --#{$prefix}font-weight-normal: 400;
+  --#{$prefix}font-weight-bold: 700;
+  --#{$prefix}font-weight-bolder: bolder;
+
+  --#{$prefix}line-height-base: 1.5;
+  --#{$prefix}line-height-sm: 1.25;
+  --#{$prefix}line-height-lg: 2;
+
+  --#{$prefix}border-radius: 0.25rem;
+  --#{$prefix}border-radius-sm: 0.2rem;
+  --#{$prefix}border-radius-lg: 0.3rem;
+  --#{$prefix}border-radius-pill: 50rem;
+
+  --#{$prefix}box-shadow: 0 0.5rem 1rem rgba(var(--#{$prefix}color-cool-grey-950), 0.15);
+  --#{$prefix}box-shadow-sm: 0 0.125rem 0.25rem rgba(var(--#{$prefix}color-cool-grey-950), 0.075);
+  --#{$prefix}box-shadow-lg: 0 1rem 3rem rgba(var(--#{$prefix}color-cool-grey-950), 0.175);
+  --#{$prefix}box-shadow-inset: inset 0 1px 2px rgba(var(--#{$prefix}color-cool-grey-950), 0.075);
+
+  --#{$prefix}border-color: var(--#{$prefix}color-cool-grey-300);
+  --#{$prefix}border-width: 1px;
+
+  --#{$prefix}spacer: 1rem;
+
+  --#{$prefix}hr-opacity: 0.25;
+
+  --#{$prefix}mark-padding: 0.2em;
+  --#{$prefix}mark-bg: var(--#{$prefix}color-yellow-100);
+
+  --#{$prefix}sub-sup-font-size: 0.75em;
+
+  --#{$prefix}link-color: var(--#{$prefix}color-ocean-600);
+  --#{$prefix}link-color-hover: var(--#{$prefix}color-ocean-700);
+  --#{$prefix}link-decoration: underline;
+  --#{$prefix}link-decoration-hover: underline;
+
+  --#{$prefix}code-color: var(--#{$prefix}color-cool-grey-700);
+
+  --#{$prefix}kbd-padding-y: 0.2rem;
+  --#{$prefix}kbd-padding-x: 0.4rem;
+  --#{$prefix}kbd-color: var(--#{$prefix}color-cool-grey-200);
+  --#{$prefix}kbd-bg: var(--#{$prefix}color-cool-grey-800);
+
+  --#{$prefix}table-cell-padding-y: 0.5rem;
+
+  --#{$prefix}legend-font-size: 1.5rem;
+
+  --#{$prefix}gutter: 24px;
+  --#{$prefix}gutter-x: 24px;
+  --#{$prefix}gutter-y: 0;
+
+  --#{$prefix}container-max-width-sm: 540px;
+  --#{$prefix}container-max-width-md: 720px;
+  --#{$prefix}container-max-width-lg: 960px;
+  --#{$prefix}container-max-width-xl: 1140px;
+  --#{$prefix}container-max-width-xxl: 1320px;
+
+  --#{$prefix}z-index-content-base: 20;
+  --#{$prefix}z-index-header-base: 40;
+  --#{$prefix}z-index-tooltip-base: 50;
+  --#{$prefix}z-index-tooltip-popup: 60;
+  --#{$prefix}z-index-modal-base: 120;
+  --#{$prefix}z-index-sky-base: 999;
+  --#{$prefix}z-index-below: -2147483647;
+  --#{$prefix}z-index-above: 2147483647;
+}

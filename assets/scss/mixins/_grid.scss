@@ -1,0 +1,176 @@
+// Whole or parts of this file is based on Bootstrap. Bootstrap is licensed MIT. https://github.com/twbs/bootstrap
+/// Grid system
+//
+// Generate semantic grid columns with these mixins.
+
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
+
+@use '../density-styles-sass' as *;
+
+:root,
+:host {
+  --gutter: var(--#{$prefix}space-6x);
+  --gutter-x: var(--#{$prefix}space-6x);
+  --gutter-y: 0;
+}
+
+@mixin make-row() {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(var(--gutter-x) / -2); // stylelint-disable-line function-disallowed-list
+  margin-right: calc(var(--gutter-x) / -2); // stylelint-disable-line function-disallowed-list
+  margin-top: calc(var(--gutter-y) * -1); // stylelint-disable-line function-disallowed-list
+}
+
+@mixin make-col-ready() {
+  // Add box sizing if only the grid is loaded
+  @if meta.variable-exists(include-column-box-sizing) and $include-column-box-sizing {
+    box-sizing: border-box;
+  }
+  // Prevent columns from becoming too narrow when at smaller grid tiers by
+  // always setting `width: 100%;`. This works because we set the width
+  // later on to override this initial width.
+  flex-shrink: 0;
+  margin-top: var(--gutter-y);
+  max-width: 100%; // Prevent `.col-auto`, `.col` (& responsive variants) from breaking out the grid
+  padding-left: calc(var(--gutter-x) / 2); // stylelint-disable-line function-disallowed-list
+  padding-right: calc(var(--gutter-x) / 2); // stylelint-disable-line function-disallowed-list
+  width: 100%;
+}
+
+@mixin make-col($size, $columns: $grid-columns) {
+  flex: 0 0 auto;
+  width: math.percentage(math.div($size, $columns));
+}
+
+@mixin make-col-auto() {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+@mixin make-col-offset($size, $columns: $grid-columns) {
+  $num: math.div($size, $columns);
+  @if $num == 0 {
+    margin-left: 0;
+  } @else {
+    margin-left: math.percentage($num);
+  }
+}
+
+// Row columns
+//
+// Specify on a parent element(e.g., .row) to force immediate children into NN
+// numberof columns. Supports wrapping to new lines, but does not do a Masonry
+// style grid.
+@mixin row-cols($count) {
+  > * {
+    flex: 0 0 auto;
+    width: math.div(100%, $count);
+  }
+}
+
+// Framework grid generation
+//
+// Used only by Bootstrap to generate the correct number of grid classes given
+// any value of `$grid-columns`.
+
+@mixin make-grid-columns($columns: $grid-columns, $breakpoints: $grid-breakpoints) {
+  @each $breakpoint in map.keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+      .col#{$infix} {
+        flex: 1 0 0%; // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+      }
+
+      .row-cols#{$infix}-auto > * {
+        @include make-col-auto();
+      }
+
+      @if $grid-row-columns > 0 {
+        @for $i from 1 through $grid-row-columns {
+          .row-cols#{$infix}-#{$i} {
+            @include row-cols($i);
+          }
+        }
+      }
+
+      .col#{$infix}-auto {
+        @include make-col-auto();
+      }
+
+      @if $columns > 0 {
+        @for $i from 1 through $columns {
+          .col#{$infix}-#{$i} {
+            @include make-col($i, $columns);
+          }
+        }
+
+        // `$columns - 1` because offsetting by the width of an entire row isn't possible
+        @for $i from 0 through ($columns - 1) {
+          @if not($infix == '' and $i == 0) {
+            // Avoid emitting useless .offset-0
+            .offset#{$infix}-#{$i} {
+              @include make-col-offset($i, $columns);
+            }
+          }
+        }
+      }
+
+      // Gutters // TODO: Document how to implement with CSS vars only and remove
+      //
+      // Make use of `.g-*`, `.gx-*` or `.gy-*` utilities to change spacing between the columns.
+      @each $key, $value in $gutters {
+        .g#{$infix}-#{$key},
+        .gx#{$infix}-#{$key} {
+          --gutter-x: #{$value};
+        }
+
+        .g#{$infix}-#{$key},
+        .gy#{$infix}-#{$key} {
+          --gutter-y: #{$value};
+        }
+      }
+    }
+  }
+}
+
+// Container mixins
+@mixin make-container() {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--gutter-x, var(--gutter));
+  padding-right: var(--gutter-x, var(--gutter));
+  width: 100%;
+}
+
+@mixin make-ds-container() {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--#{$prefix}space-4x) !important;
+  padding-right: var(--#{$prefix}space-4x) !important;
+  padding-top: var(--#{$prefix}space-4x);
+  padding-bottom: var(--#{$prefix}space-4x);
+  width: 100%;
+  --gutter: var(--#{$prefix}space-4x);
+  --gutter-x: var(--#{$prefix}space-4x);
+  --gutter-y: var(--#{$prefix}space-4x);
+  overflow: hidden;
+
+  @media (min-width: breakpoint-min(md, $grid-breakpoints)) {
+    --gutter: var(--#{$prefix}space-6x);
+    --gutter-x: var(--#{$prefix}space-6x);
+    --gutter-y: var(--#{$prefix}space-6x);
+    padding-left: var(--#{$prefix}space-6x) !important;
+    padding-right: var(--#{$prefix}space-6x) !important;
+    padding-top: var(--#{$prefix}space-6x);
+    padding-bottom: var(--#{$prefix}space-6x);
+  }
+
+  .row:not(:first-child) {
+    margin-top: 0;
+  }
+}

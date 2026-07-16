@@ -1,0 +1,138 @@
+@use '../../density-styles-sass' as *;
+@use '../../mixins/box' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}box-header),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}box-header {
+  @include box-header-tokens();
+  @include box-header-small-tokens();
+
+  display: block;
+
+  &:first-of-type {
+    border-top: none;
+  }
+}
+
+.#{$prefix}box-header {
+  position: relative;
+
+  &__item {
+    width: 100%;
+    min-height: var(--#{$prefix}box-header-min-height);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: var(--#{$prefix}box-header-base-padding);
+    overflow: hidden;
+
+    &--with-actions {
+      justify-content: space-between;
+    }
+
+    &__close-button-wrapper {
+      display: flex;
+      margin-left: var(--#{$prefix}space-inline-couple-box-header);
+    }
+
+    &__close-button {
+      margin-top: var(--#{$prefix}box-header-button-y-margin);
+      margin-right: var(--#{$prefix}box-header-button-x-margin);
+      margin-bottom: var(--#{$prefix}box-header-button-y-margin);
+
+      &--with-label {
+        min-width: fit-content;
+      }
+    }
+
+    // children
+    & .#{$prefix}box-header__header-wrapper > #{$prefix}icon {
+      fill: var(--#{$prefix}box-header-icon-color);
+      color: var(--#{$prefix}box-header-icon-color);
+      margin-right: var(--#{$prefix}box-header-icon-right-margin);
+      margin-top: var(--#{$prefix}box-header-icon-y-margin);
+      margin-bottom: var(--#{$prefix}box-header-icon-y-margin);
+
+      &.#{$prefix}box-header__arrow--only-child {
+        margin-right: 0;
+      }
+    }
+
+    // states
+    &:focus {
+      outline: var(--#{$prefix}box-header-focus-outline);
+    }
+
+    // modifiers
+    &--allow-overflow {
+      overflow: visible;
+    }
+
+    &--disabled {
+      opacity: 0.5;
+    }
+    &--small {
+      min-height: var(--#{$prefix}box-header-small-header-min-height);
+      padding: var(--#{$prefix}box-header-small-padding);
+
+      & .#{$prefix}box-header__header-wrapper > #{$prefix}icon {
+        margin-top: calc(
+          (var(--#{$prefix}box-header-small-line-height) - var(--#{$prefix}box-header-small-font-weight)) / 2
+        );
+        margin-bottom: 0;
+      }
+
+      & .#{$prefix}box-header__header-wrapper {
+        font-size: var(--#{$prefix}box-header-small-font-size);
+        font-weight: var(--#{$prefix}box-header-small-font-weight);
+        line-height: var(--#{$prefix}box-header-small-line-height);
+        text-transform: var(--#{$prefix}box-header-small-text-transform);
+      }
+      & .#{$prefix}box-header__label-wrapper {
+        max-width: calc(
+          100% - var(--#{$prefix}box-header-small-arrow-width) - var(--#{$prefix}box-header-icon-right-margin)
+        );
+      }
+    }
+  }
+
+  &__actions {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: var(--#{$prefix}box-header-label-actions-break);
+    margin-top: var(--#{$prefix}box-header-button-y-margin);
+    margin-bottom: var(--#{$prefix}box-header-button-y-margin);
+  }
+
+  &__label-wrapper {
+    flex: 1 1 auto;
+
+    &--truncate {
+      overflow: hidden;
+      ::ng-deep span,
+      ::ng-deep h2,
+      ::ng-deep h3 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    ::ng-deep span,
+    ::ng-deep h2,
+    ::ng-deep h3 {
+      color: inherit;
+      cursor: inherit;
+      display: block;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  &__header-wrapper {
+    @include box-header-wrapper();
+  }
+}

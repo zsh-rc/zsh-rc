@@ -1,0 +1,74 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-progress-bar),
+.ds-progress-bar {
+  display: block;
+}
+:host(ds-progress-bar).ds-progress-bar,
+.ds-progress-bar.ds-progress-bar {
+  height: var(--ds-shape-size-y-progress-bar-track);
+}
+:host(ds-progress-bar).ds-progress-bar--sm,
+.ds-progress-bar.ds-progress-bar--sm {
+  --ds-shape-size-y-progress-bar-track: var(--ds-shape-size-y-progress-bar-track-sm);
+  --ds-shape-size-y-progress-bar-fill: var(--ds-shape-size-y-progress-bar-fill-sm);
+  --ds-shape-radius-progress-bar-track: var(--ds-shape-radius-progress-bar-track-sm);
+  --ds-shape-radius-progress-bar-fill: var(--ds-shape-radius-progress-bar-fill-sm);
+}
+:host(ds-progress-bar).ds-progress-bar--lg,
+.ds-progress-bar.ds-progress-bar--lg {
+  --ds-shape-size-y-progress-bar-track: var(--ds-shape-size-y-progress-bar-track-lg);
+  --ds-shape-size-y-progress-bar-fill: var(--ds-shape-size-y-progress-bar-fill-lg);
+  --ds-shape-radius-progress-bar-track: var(--ds-shape-radius-progress-bar-track-lg);
+  --ds-shape-radius-progress-bar-fill: var(--ds-shape-radius-progress-bar-fill-lg);
+}
+:host(ds-progress-bar).ds-progress-bar .ds-progress-bar__track,
+.ds-progress-bar.ds-progress-bar .ds-progress-bar__track {
+  position: relative;
+  height: var(--ds-shape-size-y-progress-bar-track);
+  border-radius: var(--ds-shape-size-y-progress-bar-track) var(--ds-shape-radius-progress-bar-track);
+  overflow: hidden;
+}
+:host(ds-progress-bar).ds-progress-bar .ds-progress-bar__background,
+.ds-progress-bar.ds-progress-bar .ds-progress-bar__background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--ds-color-surface-progress-bar-track);
+  opacity: 0.2;
+}
+:host(ds-progress-bar).ds-progress-bar .ds-progress-bar__fill,
+.ds-progress-bar.ds-progress-bar .ds-progress-bar__fill {
+  height: 100%;
+  background-color: var(--ds-color-surface-progress-bar-fill);
+  transform-origin: left;
+  transition: transform var(--ds-motion-duration-rapid) var(--ds-motion-timing-standard);
+}
+:host(ds-progress-bar).ds-progress-bar .ds-progress-bar__fill--indeterminate,
+.ds-progress-bar.ds-progress-bar .ds-progress-bar__fill--indeterminate {
+  border-radius: var(--ds-shape-size-y-progress-bar-fill) var(--ds-shape-radius-progress-bar-fill);
+  animation: ds-progress-bar-indeterminate-animation 1s linear infinite;
+  width: 33%;
+}
+@keyframes ds-progress-bar-indeterminate-animation {
+  0% {
+    transform: translate(-100%) scaleX(1);
+    border-radius: var(--ds-shape-size-y-progress-bar-fill) var(--ds-shape-radius-progress-bar-fill);
+  }
+  30% {
+    transform: translate(0%) scaleX(1.25);
+  }
+  50% {
+    transform: translate(70.5128205128%) scaleX(1.5);
+    border-radius: calc(var(--ds-shape-radius-progress-bar-fill) / 1.5)/var(--ds-shape-radius-progress-bar-fill);
+  }
+  100% {
+    transform: translate(303.0303030303%) scaleX(1);
+    border-radius: var(--ds-shape-size-y-progress-bar-fill) var(--ds-shape-radius-progress-bar-fill);
+  }
+}

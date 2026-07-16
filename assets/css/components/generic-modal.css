@@ -1,0 +1,49 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-generic-modal),
+.ds-generic-modal {
+  --ds-generic-modal-animation-timing: var(--ds-motion-duration-3);
+  --ds-generic-modal-animation-function: var(--ds-motion-timing-2);
+  --ds-generic-modal-animation-delay: var(--ds-motion-delay-0);
+  --ds-generic-modal-backdrop-transition-duration: var(--cdk-overlay-backdrop-transition-duration);
+  width: 100%;
+  opacity: 0;
+  transition: opacity var(--ds-generic-modal-animation-timing) var(--ds-generic-modal-animation-function) var(--ds-generic-modal-animation-delay), transform var(--ds-generic-modal-animation-timing) var(--ds-generic-modal-animation-function) var(--ds-generic-modal-animation-delay), visibility var(--ds-generic-modal-animation-timing) var(--ds-generic-modal-animation-function) var(--ds-generic-modal-animation-delay);
+}
+:host(ds-generic-modal).ds-no-motion,
+.ds-generic-modal.ds-no-motion {
+  --ds-generic-modal-animation-timing: 0s;
+  --ds-generic-modal-animation-delay: 0s;
+  --cdk-overlay-backdrop-transition-duration: 0s;
+}
+@media (max-width: 575.98px) and (any-hover: none) {
+  :host(ds-generic-modal).ds-generic-modal,
+  .ds-generic-modal.ds-generic-modal {
+    transform: translateY(100%);
+    max-width: none;
+    padding: 0 0;
+  }
+}
+:host(ds-generic-modal).ds-generic-modal--visible,
+.ds-generic-modal.ds-generic-modal--visible {
+  opacity: 1;
+}
+@media (max-width: 575.98px) and (any-hover: none) {
+  :host(ds-generic-modal).ds-generic-modal--visible,
+  .ds-generic-modal.ds-generic-modal--visible {
+    transform: translateY(0);
+  }
+}
+.ds-generic-modal__close-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 var(--ds-space-indent-nav-item);
+}
+.ds-generic-modal__close-header ::ng-deep ds-icon {
+  color: var(--ds-color-typography-neutral);
+}

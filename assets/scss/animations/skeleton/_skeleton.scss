@@ -1,0 +1,23 @@
+@use '../../variables/sass-variables' as *;
+@use '../../density-styles-sass' as *;
+@use '../../utilities/sass_utilities' as *;
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Shimmer variables */
+
+$shimmer-animation: shimmer 2s infinite;
+$shimmer-dark-background: linear-gradient(
+  90deg,
+  var(--#{$prefix}color-shimmer-1),
+  var(--#{$prefix}color-shimmer-2),
+  var(--#{$prefix}color-shimmer-3)
+);

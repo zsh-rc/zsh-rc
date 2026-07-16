@@ -1,0 +1,15 @@
+@use '../../density-styles-sass' as *;
+@use '../../mixins/placeholder' as *;
+@use '../../utilities/sass_utilities' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}panel-wrapper),
+
+//* CSS selector for independent library use without Shadow DOM *!
+#{$prefix}panel-wrapper {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+}

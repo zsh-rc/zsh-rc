@@ -1,0 +1,107 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-autosuggest-item),
+.ds-autosuggest-item {
+  --a: var(--ds-space-inline-couple-list-item);
+  font-family: var(--ds-font-family-list-item);
+  font-size: var(--ds-font-size-list-item);
+  font-weight: var(--ds-font-weight-list-item);
+  line-height: var(--ds-font-line-height-list-item);
+  color: var(--ds-color-text-list-item);
+  margin: var(--ds-space-1x);
+  display: block;
+}
+:host(ds-autosuggest-item) > ::ng-deep ds-list-item > .ds-list-item__content-wrapper > .ds-list-item__content,
+.ds-autosuggest-item > ::ng-deep ds-list-item > .ds-list-item__content-wrapper > .ds-list-item__content {
+  overflow: hidden;
+}
+
+.ds-autosuggest-item__option {
+  width: 100%;
+  min-height: var(--ds-shape-size-ymin-list-item);
+  padding-left: var(--ds-space-inline-start-list-item);
+  padding-right: var(--ds-space-inline-end-list-item);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 0;
+  cursor: pointer;
+  outline: 0;
+  outline-color: var(--ds-color-outline-list-item);
+  background-color: var(--ds-color-surface-list-item);
+  box-shadow: 0px 0px 0px transparent;
+  border: var(--ds-color-border-list-item);
+  text-shadow: 0px 0px 0px transparent;
+}
+.ds-autosuggest-item__option--group {
+  cursor: inherit;
+  color: var(--ds-color-typography-neutral);
+  font-family: var(--ds-typography-family-base);
+  font-size: var(--ds-typography-size-title-xs);
+  font-weight: var(--ds-typography-weight-title-xs);
+  line-height: var(--ds-typography-line-height-title-xs);
+  text-transform: var(--ds-typography-transform-uppercase);
+  min-height: var(--ds-space-3x);
+  padding: var(--ds-space-2x) 0;
+}
+.ds-autosuggest-item__option--group.ds-autosuggest-item__option--first {
+  padding: 0 0 var(--ds-space-2x);
+}
+.ds-autosuggest-item__option--focused {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+}
+.ds-autosuggest-item__option--focused:hover:not(.ds-autosuggest-item__option--group) {
+  background-color: var(--ds-color-surface-list-item-hover);
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: var(--ds-size-outline-offset);
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-autosuggest-suggestion-box),
+.ds-autosuggest-suggestion-box {
+  --ds-autosuggest-suggestion-box-animation-timing: var(--ds-motion-duration-slow);
+  --ds-autosuggest-suggestion-box-animation-function: var(--ds-motion-timing-standard);
+  --ds-autosuggest-suggestion-box-animation-delay: var(--ds-motion-delay-rapid);
+  display: block;
+  width: 100%;
+}
+:host(ds-autosuggest-suggestion-box).ds-no-motion,
+.ds-autosuggest-suggestion-box.ds-no-motion {
+  --ds-autosuggest-suggestion-box-animation-timing: 0s;
+}
+:host(ds-autosuggest-suggestion-box).ds-autosuggest-suggestion-box--hidden,
+.ds-autosuggest-suggestion-box.ds-autosuggest-suggestion-box--hidden {
+  visibility: hidden;
+}
+:host(ds-autosuggest-suggestion-box) .ds-box,
+.ds-autosuggest-suggestion-box .ds-box {
+  height: 100%;
+}
+
+.ds-autosuggest-suggestion-box__wrapper {
+  width: 100%;
+}
+.ds-autosuggest-suggestion-box__wrapper--hide {
+  display: none;
+  padding: 0;
+}
+.ds-autosuggest-suggestion-box ds-autosuggest-item {
+  margin: 0px var(--ds-space-1x);
+}
+.ds-autosuggest-suggestion-box ds-autosuggest-item:first-child {
+  margin: var(--ds-space-1x);
+}
+.ds-autosuggest-suggestion-box ds-autosuggest-item:last-child {
+  margin: var(--ds-space-1x);
+}
+.ds-autosuggest-suggestion-box__suggestions {
+  max-height: 100%;
+  overflow: auto;
+}

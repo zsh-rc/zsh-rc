@@ -1,0 +1,111 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+:host(ds-valuepicker),
+.ds-valuepicker {
+  display: block;
+}
+:host(ds-valuepicker) .ds-valuepicker-grid,
+.ds-valuepicker .ds-valuepicker-grid {
+  display: grid;
+  height: 256px;
+}
+:host(ds-valuepicker) .ds-valuepicker-grid--lg,
+.ds-valuepicker .ds-valuepicker-grid--lg {
+  height: 320px;
+}
+:host(ds-valuepicker) .ds-valuepicker-grid--ignore-height,
+.ds-valuepicker .ds-valuepicker-grid--ignore-height {
+  height: 100%;
+}
+:host(ds-valuepicker) .ds-valuepicker-row,
+.ds-valuepicker .ds-valuepicker-row {
+  margin: 0px var(--ds-space-1x);
+}
+:host(ds-valuepicker) .ds-valuepicker-row .ds-valuepicker-value:first-child,
+.ds-valuepicker .ds-valuepicker-row .ds-valuepicker-value:first-child {
+  margin-top: var(--ds-space-1x);
+}
+:host(ds-valuepicker) .ds-valuepicker-cols-1,
+.ds-valuepicker .ds-valuepicker-cols-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+:host(ds-valuepicker) .ds-valuepicker-cols-2,
+.ds-valuepicker .ds-valuepicker-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+:host(ds-valuepicker) .ds-valuepicker-cols-3,
+.ds-valuepicker .ds-valuepicker-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+:host(ds-valuepicker) .ds-valuepicker-cols-4,
+.ds-valuepicker .ds-valuepicker-cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+:host(ds-valuepicker) .ds-valuepicker-cols-5,
+.ds-valuepicker .ds-valuepicker-cols-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+:host(ds-valuepicker) .ds-valuepicker-cols-6,
+.ds-valuepicker .ds-valuepicker-cols-6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+:host(ds-valuepicker) .ds-valuepicker-cols-7,
+.ds-valuepicker .ds-valuepicker-cols-7 {
+  grid-template-columns: repeat(7, 1fr);
+}
+:host(ds-valuepicker) .ds-valuepicker-cols-8,
+.ds-valuepicker .ds-valuepicker-cols-8 {
+  grid-template-columns: repeat(8, 1fr);
+}
+:host(ds-valuepicker) .ds-valuepicker-cols-9,
+.ds-valuepicker .ds-valuepicker-cols-9 {
+  grid-template-columns: repeat(9, 1fr);
+}
+:host(ds-valuepicker) .ds-valuepicker-cols-10,
+.ds-valuepicker .ds-valuepicker-cols-10 {
+  grid-template-columns: repeat(10, 1fr);
+}
+:host(ds-valuepicker) .ds-valuepicker-selected,
+.ds-valuepicker .ds-valuepicker-selected {
+  background: green;
+}
+:host(ds-valuepicker) .ds-valuepicker-col-scroll-viewport,
+.ds-valuepicker .ds-valuepicker-col-scroll-viewport {
+  height: 100%;
+}
+@media (hover: hover) {
+  :host(ds-valuepicker) .ds-valuepicker-col-scroll-viewport,
+  .ds-valuepicker .ds-valuepicker-col-scroll-viewport {
+    overflow: hidden;
+  }
+  :host(ds-valuepicker) .ds-valuepicker-col-scroll-viewport:hover,
+  .ds-valuepicker .ds-valuepicker-col-scroll-viewport:hover {
+    overflow-y: auto;
+  }
+}
+:host(ds-valuepicker) .ds-valuepicker-col,
+.ds-valuepicker .ds-valuepicker-col {
+  border-right: 1px solid var(--ds-color-surface-box-content-divider);
+  margin-bottom: -8px;
+  padding-bottom: 8px;
+}
+:host(ds-valuepicker) .ds-valuepicker-col:last-of-type,
+.ds-valuepicker .ds-valuepicker-col:last-of-type {
+  border-right: 1px solid transparent;
+}
+:host(ds-valuepicker) .ds-valuepicker-col:not(:first-child) ds-list-item:before,
+.ds-valuepicker .ds-valuepicker-col:not(:first-child) ds-list-item:before {
+  display: none;
+}
+:host(ds-valuepicker) .ds-valuepicker-col:not(:first-child, :last-child) ds-list-item,
+.ds-valuepicker .ds-valuepicker-col:not(:first-child, :last-child) ds-list-item {
+  border-radius: 0;
+}
+:host(ds-valuepicker) .ds-valuepicker-value,
+.ds-valuepicker .ds-valuepicker-value {
+  height: 100%;
+}

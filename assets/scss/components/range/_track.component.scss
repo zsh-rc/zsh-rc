@@ -1,0 +1,186 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}range-slider-track),
+
+
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}range-slider-track {
+  display: flex;
+  justify-content: initial;
+  align-items: center;
+  position: relative;
+  height: var(--#{$prefix}shape-size-y-range-handle-area);
+  cursor: pointer;
+  scroll-margin-top: inherit;
+
+  &:focus:not(:focus-visible),
+  &:focus-visible {
+    outline: none;
+  }
+
+  &.#{$prefix}range-slider-track--lg {
+    --#{$prefix}shape-size-y-range-handle-area: var(--#{$prefix}shape-size-y-range-lg);
+    --#{$prefix}shape-size-y-range-track: var(--#{$prefix}shape-size-y-range-track-lg);
+    --#{$prefix}shape-radius-range-track: var(--#{$prefix}shape-radius-range-track-lg);
+    --#{$prefix}shape-size-y-range-trackfill: var(--#{$prefix}shape-size-y-range-trackfill-lg);
+    --#{$prefix}shape-size-y-range-track: var(--#{$prefix}shape-size-y-range-track-lg);
+    --#{$prefix}shape-radius-range-trackfill: var(--#{$prefix}shape-radius-range-trackfill-lg);
+    --#{$prefix}space-stack-join-range-tickmark: var(--#{$prefix}space-stack-join-range-tickmark-lg);
+  }
+
+  &.#{$prefix}range-slider-track--readonly {
+    cursor: initial;
+  }
+
+  &.#{$prefix}range-slider-track--disabled {
+    cursor: no-drop;
+  }
+
+  & .#{$prefix}range-slider-track__track {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: var(--#{$prefix}color-surface-range-track);
+    width: 100%;
+    height: var(--#{$prefix}shape-size-y-range-track);
+    border-radius: var(--#{$prefix}shape-size-y-range-track) var(--#{$prefix}shape-radius-range-track);
+
+    &--readonly {
+      background-color: var(--#{$prefix}color-surface-range-track-readonly);
+
+      & .#{$prefix}range-slider-track__fill {
+        background-color: var(--#{$prefix}color-surface-range-trackfill-readonly);
+      }
+    }
+
+    &--disabled {
+      background-color: var(--#{$prefix}color-surface-range-track-disabled);
+
+      & .#{$prefix}range-slider-track__fill {
+        background-color: var(--#{$prefix}color-surface-range-trackfill-disabled);
+        border-radius: var(--#{$prefix}shape-size-y-range-track) var(--#{$prefix}shape-radius-range-track);
+      }
+    }
+  }
+
+  & .#{$prefix}range-slider-track__fill-wrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--#{$prefix}shape-size-y-range-track) var(--#{$prefix}shape-radius-range-track);
+  }
+
+  & .#{$prefix}range-slider-track__fill {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transform-origin: left;
+    background-color: var(--#{$prefix}color-surface-range-trackfill);
+  }
+
+  & .#{$prefix}range-slider-track__tick-marks {
+    position: absolute;
+    top: calc(100% + var(--#{$prefix}space-stack-join-range-tickmark));
+    left: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    z-index: 0;
+
+    &__tick {
+      position: absolute;
+      width: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+
+      &--disabled {
+        --#{$prefix}color-surface-range-tickmark: var(--#{$prefix}color-surface-range-tickmark-disabled);
+      }
+
+      &--readonly {
+        --#{$prefix}color-surface-range-tickmark: var(--#{$prefix}color-surface-range-tickmark-readonly);
+      }
+
+      &::before {
+        content: ' ';
+
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: var(--#{$prefix}shape-size-x-range-tickmark);
+        height: var(--#{$prefix}shape-size-y-range-tickmark);
+        border-radius: var(--#{$prefix}shape-radius-range-tickmark);
+        background-color: var(--#{$prefix}color-surface-range-tickmark);
+        transform: translate(-50%, 0);
+      }
+
+      &__text {
+        margin-top: calc(var(--#{$prefix}space-stack-offset-range-tickmark) * -1);
+
+        &--vertical {
+          width: 0;
+          margin-top: calc(
+            var(--#{$prefix}space-stack-join-range-tickmark) * -1 - var(--#{$prefix}space-stack-offset-range-tickmark)
+          );
+          transform: rotate(90deg) translate(0, -1px);
+        }
+      }
+    }
+  }
+
+  // VERTICAL TRACK
+  &.#{$prefix}range-slider-track--vertical {
+    width: var(--#{$prefix}shape-size-y-range-handle-area);
+    height: 100%;
+    justify-content: center;
+    align-items: initial;
+
+    & .#{$prefix}range-slider-track__track {
+      flex-direction: column;
+      justify-content: flex-end;
+      width: var(--#{$prefix}shape-size-y-range-track);
+      height: 100%;
+    }
+
+    & .#{$prefix}range-slider-track__fill {
+      transform-origin: bottom;
+    }
+
+    & .#{$prefix}range-slider-track__tick-marks {
+      top: 0;
+      left: calc((100% + var(--#{$prefix}space-stack-join-range-tickmark)) * -1);
+
+      &__tick {
+        align-items: center;
+        justify-content: flex-end;
+        top: 0;
+        right: 0;
+        width: initial;
+        height: 0;
+
+        &::before {
+          top: 0;
+          right: 0;
+          left: auto;
+          transform: translate(0, 0) rotate(90deg);
+        }
+
+        &__text {
+          margin-right: calc(var(--#{$prefix}space-stack-offset-range-tickmark) * -2);
+
+          &--vertical {
+            width: initial;
+            transform: none;
+            margin-top: 0;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,415 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}stepper-item),
+.#{$prefix}stepper-item {
+  display: contents;
+  width: 100%;
+
+  .#{$prefix}stepper-item__wrapper {
+    display: grid;
+    flex: 1 1 0;
+
+    &--horizontal {
+      grid-template-columns: 1fr var(--#{$prefix}space-8x) 1fr;
+      grid-template-rows: var(--#{$prefix}space-8x) auto;
+      min-width: 80px;
+
+      &:has(> .#{$prefix}stepper-item__indicator-block-wrapper--horizontal-dot) {
+        grid-template-columns: 1fr var(--#{$prefix}space-5x) 1fr;
+      }
+
+      &-inline {
+        grid-template-columns: var(--#{$prefix}space-8x) minmax(128px, auto);
+        grid-template-rows: auto 1fr;
+        min-width: 160px;
+        &:has(> .#{$prefix}stepper-item__indicator-block-wrapper--horizontal-dot) {
+          grid-template-columns: var(--#{$prefix}space-5x) minmax(128px, auto);
+        }
+      }
+    }
+    &--vertical {
+      grid-template-columns: var(--#{$prefix}space-8x) 1fr;
+      grid-template-rows: var(--#{$prefix}space-8x) 1fr var(--#{$prefix}space-9x);
+      min-height: 72px;
+      max-width: 320px;
+      min-width: 160px;
+
+      &:has(> .#{$prefix}stepper-item__indicator-block-wrapper--vertical-dot) {
+        min-height: 60px;
+        grid-template-rows: var(--#{$prefix}space-5x) 1fr var(--#{$prefix}space-9x);
+      }
+
+      &.#{$prefix}stepper-item__wrapper--last-item {
+        grid-template-rows: var(--#{$prefix}space-8x) 1fr;
+
+        &:has(> .#{$prefix}stepper-item__indicator-block-wrapper--vertical-dot) {
+          grid-template-rows: var(--#{$prefix}space-5x) 1fr;
+        }
+      }
+
+      &-stacked {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr var(--#{$prefix}space-8x) auto 1fr;
+        justify-items: center;
+        min-height: 72px;
+        max-width: 280px;
+        min-width: 160px;
+
+        &:has(> .#{$prefix}stepper-item__indicator-block-wrapper--vertical-dot) {
+          min-height: 60px;
+          grid-template-rows: 1fr var(--#{$prefix}space-5x) auto 1fr;
+        }
+      }
+    }
+    &--fit-to-content {
+      flex: 0 0 auto;
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+      outline-offset: var(--#{$prefix}size-outline-offset);
+    }
+
+    &--enabled:hover,
+    &--enabled:active {
+      cursor: pointer;
+
+      .#{$prefix}stepper-item__indicator {
+        &--primary--enabled {
+          background-color: var(--#{$prefix}color-surface-stepper-item-primary-enabled-hover);
+          border: var(--#{$prefix}space-05x) solid var(--#{$prefix}color-border-stepper-item-primary-enabled-hover);
+          color: var(--#{$prefix}color-text-stepper-item-primary-enabled-hover);
+        }
+        &--info--enabled {
+          background-color: var(--#{$prefix}color-surface-stepper-item-info-enabled-hover);
+          border: var(--#{$prefix}space-05x) solid var(--#{$prefix}color-border-stepper-item-info-enabled-hover);
+          color: var(--#{$prefix}color-text-stepper-item-info-enabled-hover);
+        }
+
+        &--positive--enabled {
+          background-color: var(--#{$prefix}color-surface-stepper-item-positive-enabled-hover);
+          border: var(--#{$prefix}space-05x) solid var(--#{$prefix}color-border-stepper-item-positive-enabled-hover);
+          color: var(--#{$prefix}color-text-stepper-item-positive-enabled-hover);
+        }
+
+        &--caution--enabled {
+          background-color: var(--#{$prefix}color-surface-stepper-item-caution-enabled-hover);
+          border: var(--#{$prefix}space-05x) solid var(--#{$prefix}color-border-stepper-item-caution-enabled-hover);
+          color: var(--#{$prefix}color-text-stepper-item-caution-enabled-hover);
+        }
+
+        &--critical--enabled {
+          background-color: var(--#{$prefix}color-surface-stepper-item-critical-enabled-hover);
+          border: var(--#{$prefix}space-05x) solid var(--#{$prefix}color-border-stepper-item-critical-enabled-hover);
+          color: var(--#{$prefix}color-text-stepper-item-critical-enabled-hover);
+        }
+      }
+    }
+  }
+
+  .#{$prefix}stepper-item__indicator-block-wrapper {
+    &--vertical {
+      grid-row-start: 1;
+      justify-self: center;
+      align-self: center;
+      &-stacked {
+        grid-row-start: 2;
+        align-self: center;
+      }
+      &-dot {
+        margin: 0 6px;
+      }
+    }
+    &--horizontal {
+      grid-column-start: 2;
+      &-inline {
+        grid-column-start: 1;
+      }
+      &-dot {
+        margin: 6px 0;
+      }
+    }
+  }
+
+  .#{$prefix}stepper-item__indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--#{$prefix}space-8x);
+    height: var(--#{$prefix}space-8x);
+    border-radius: 50%;
+
+    &--dot {
+      width: var(--#{$prefix}space-5x);
+      height: var(--#{$prefix}space-5x);
+    }
+
+    &--primary {
+      &--enabled {
+        background-color: var(--#{$prefix}color-surface-stepper-item-primary-enabled);
+        border: var(--#{$prefix}space-05x) solid var(--#{$prefix}color-border-stepper-item-primary-enabled);
+        color: var(--#{$prefix}color-text-stepper-item-primary-enabled);
+      }
+
+      &--selected {
+        background-color: var(--#{$prefix}color-surface-stepper-item-primary-selected);
+        border: var(--#{$prefix}space-05x) solid var(--#{$prefix}color-border-stepper-item-primary-selected);
+        color: var(--#{$prefix}color-text-stepper-item-primary-selected);
+      }
+
+      &--readonly {
+        background-color: var(--#{$prefix}color-surface-stepper-item-primary-readonly);
+        border: 2px solid var(--#{$prefix}color-border-stepper-item-primary-readonly);
+        color: var(--#{$prefix}color-text-stepper-item-primary-readonly);
+      }
+    }
+
+    &--info {
+      &--enabled {
+        background-color: var(--#{$prefix}color-surface-stepper-item-info-enabled);
+        border: var(--#{$prefix}space-05x) solid var(--#{$prefix}color-border-stepper-item-info-enabled);
+        color: var(--#{$prefix}color-text-stepper-item-info-enabled);
+      }
+
+      &--selected {
+        background-color: var(--#{$prefix}color-surface-stepper-item-info-selected);
+        border: 2px solid var(--#{$prefix}color-border-stepper-item-info-selected);
+        color: var(--#{$prefix}color-text-stepper-item-info-selected);
+      }
+
+      &--readonly {
+        background-color: var(--#{$prefix}color-surface-stepper-item-info-readonly);
+        border: 2px solid var(--#{$prefix}color-border-stepper-item-info-readonly);
+        color: var(--#{$prefix}color-text-stepper-item-info-readonly);
+      }
+    }
+
+    &--positive {
+      &--enabled {
+        background-color: var(--#{$prefix}color-surface-stepper-item-positive-enabled);
+        border: var(--#{$prefix}space-05x) solid var(--#{$prefix}color-border-stepper-item-positive-enabled);
+        color: var(--#{$prefix}color-text-stepper-item-positive-enabled);
+      }
+
+      &--selected {
+        background-color: var(--#{$prefix}color-surface-stepper-item-positive-selected);
+        border: 2px solid var(--#{$prefix}color-border-stepper-item-positive-selected);
+        color: var(--#{$prefix}color-text-stepper-item-positive-selected);
+      }
+
+      &--readonly {
+        background-color: var(--#{$prefix}color-surface-stepper-item-positive-readonly);
+        border: 2px solid var(--#{$prefix}color-border-stepper-item-positive-readonly);
+        color: var(--#{$prefix}color-text-stepper-item-positive-readonly);
+      }
+    }
+
+    &--caution {
+      &--enabled {
+        background-color: var(--#{$prefix}color-surface-stepper-item-caution-enabled);
+        border: var(--#{$prefix}space-05x) solid var(--#{$prefix}color-border-stepper-item-caution-enabled);
+        color: var(--#{$prefix}color-text-stepper-item-caution-enabled);
+      }
+
+      &--selected {
+        background-color: var(--#{$prefix}color-surface-stepper-item-caution-selected);
+        border: 2px solid var(--#{$prefix}color-border-stepper-item-caution-selected);
+        color: var(--#{$prefix}color-text-stepper-item-caution-selected);
+      }
+
+      &--readonly {
+        background-color: var(--#{$prefix}color-surface-stepper-item-caution-readonly);
+        border: var(--#{$prefix}space-05x) solid var(--#{$prefix}color-border-stepper-item-caution-readonly);
+        color: var(--#{$prefix}color-text-stepper-item-caution-readonly);
+      }
+    }
+
+    &--critical {
+      &--enabled {
+        background-color: var(--#{$prefix}color-surface-stepper-item-critical-enabled);
+        border: var(--#{$prefix}space-05x) solid var(--#{$prefix}color-border-stepper-item-critical-enabled);
+        color: var(--#{$prefix}color-text-stepper-item-critical-enabled);
+      }
+
+      &--selected {
+        background-color: var(--#{$prefix}color-surface-stepper-item-critical-selected);
+        border: 2px solid var(--#{$prefix}color-border-stepper-item-critical-selected);
+        color: var(--#{$prefix}color-text-stepper-item-critical-selected);
+      }
+
+      &--readonly {
+        background-color: var(--#{$prefix}color-surface-stepper-item-critical-readonly);
+        border: var(--#{$prefix}space-05x) solid var(--#{$prefix}color-border-stepper-item-critical-readonly);
+        color: var(--#{$prefix}color-text-stepper-item-critical-readonly);
+      }
+    }
+
+    &--disabled {
+      border: 2px solid var(--#{$prefix}color-border-stepper-item-disabled);
+      background-color: var(--#{$prefix}color-surface-stepper-item-disabled);
+      color: var(--#{$prefix}color-text-stepper-item-disabled);
+    }
+  }
+
+  .#{$prefix}stepper-item__indicator-text {
+    font-weight: var(--#{$prefix}typography-weight-strong);
+  }
+
+  .#{$prefix}stepper-item__connector-wrapper {
+    display: flex;
+    justify-content: center;
+    &-after {
+      &--vertical {
+        min-height: var(--#{$prefix}space-8x);
+        margin-top: var(--#{$prefix}space-1x);
+        grid-column-start: 1;
+        grid-row: 2 / 4;
+        margin-bottom: var(--#{$prefix}space-1x);
+        &-stacked {
+          min-height: var(--#{$prefix}space-4x);
+          margin-top: var(--#{$prefix}space-1x);
+          grid-row-start: 4;
+        }
+      }
+      &--horizontal {
+        grid-column-start: 3;
+        min-width: var(--#{$prefix}space-5x);
+        margin-left: var(--#{$prefix}space-1x);
+        &-inline {
+          flex: 1;
+          min-width: var(--#{$prefix}space-5x);
+        }
+      }
+    }
+    &-before {
+      &--vertical {
+        &-stacked {
+          grid-row-start: 1;
+          min-height: var(--#{$prefix}space-4x);
+          margin-bottom: var(--#{$prefix}space-1x);
+        }
+      }
+      &--horizontal {
+        grid-column-start: 1;
+        min-width: var(--#{$prefix}space-5x);
+        margin-right: var(--#{$prefix}space-1x);
+      }
+    }
+  }
+
+  .#{$prefix}stepper-item__connector {
+    background-color: var(--#{$prefix}color-surface-action-strong);
+
+    &--horizontal {
+      height: var(--#{$prefix}space-05x);
+      width: 100%;
+      margin-top: var(--#{$prefix}space-4x);
+      &-inline {
+        height: var(--#{$prefix}space-05x);
+        width: 100%;
+        margin-top: calc(var(--#{$prefix}space-2x) + var(--#{$prefix}space-05x));
+      }
+    }
+    &--vertical,
+    &--vertical-stacked {
+      width: var(--#{$prefix}space-05x);
+      height: 100%;
+    }
+
+    &--disabled {
+      background-color: var(--#{$prefix}color-surface-neutral-mild);
+    }
+  }
+
+  .#{$prefix}stepper-item__info {
+    display: flex;
+    overflow: hidden;
+
+    &--vertical {
+      flex-direction: column;
+      grid-row: span 2;
+      grid-column-start: 2;
+      max-width: 280px;
+      min-width: 120px;
+      margin-left: var(--#{$prefix}space-2x);
+      margin-top: 6px;
+      &-stacked {
+        flex-direction: column;
+        grid-row: 3;
+        max-width: 280px;
+        min-width: 160px;
+        margin-top: var(--#{$prefix}space-2x);
+        text-align: center;
+      }
+    }
+
+    &--horizontal {
+      grid-row-start: 2;
+      grid-column: span 3;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 var(--#{$prefix}space-4x);
+      margin-top: var(--#{$prefix}space-2x);
+      justify-self: center;
+      text-align: center;
+
+      &-inline {
+        grid-column-start: 2;
+        grid-row-start: 1;
+        margin-top: calc(var(--#{$prefix}space-1x) + var(--#{$prefix}space-05x));
+        margin-left: var(--#{$prefix}space-1x);
+        margin-right: var(--#{$prefix}space-1x);
+      }
+    }
+  }
+
+  .#{$prefix}stepper-item__info-heading {
+    color: var(--#{$prefix}color-typography-base);
+    font-weight: var(--#{$prefix}typography-weight-strong);
+
+    &--horizontal {
+      &-inline {
+        margin-left: var(--#{$prefix}space-1x);
+        margin-right: var(--#{$prefix}space-2x);
+      }
+    }
+
+    &--selected {
+      color: var(--#{$prefix}color-typography-action);
+    }
+    &--disabled {
+      color: var(--#{$prefix}color-typography-disabled);
+    }
+  }
+
+  .#{$prefix}stepper-item__info-description {
+    color: var(--#{$prefix}color-typography-neutral);
+
+    &--horizontal {
+      &-inline {
+        grid-column-start: 2;
+        grid-row-start: 2;
+        margin-top: calc(var(--#{$prefix}space-05x) * -1);
+        margin-left: var(--#{$prefix}space-2x);
+        margin-right: var(--#{$prefix}space-1x);
+      }
+    }
+
+    &--no-heading {
+      margin-top: var(--#{$prefix}space-6x);
+    }
+
+    &--disabled {
+      color: var(--#{$prefix}color-typography-disabled);
+    }
+  }
+
+  .#{$prefix}stepper-item--invisible {
+    visibility: hidden;
+  }
+}

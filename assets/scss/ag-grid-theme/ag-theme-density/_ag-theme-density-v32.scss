@@ -1,0 +1,127 @@
+@use '../ag-grid-theme-icon-variables' as icons;
+@use '../../animations/skeleton/skeleton' as skeleton;
+
+$-theme-params: ();
+
+@function get-theme-params() {
+  @return $-theme-params;
+}
+
+@mixin render-extras($prefix: ds-) {
+  .ag-theme-density {
+    --ag-icon-font-code-menu-alt: '\e907';
+
+    .ag-panel-title-bar.ag-default-panel-title-bar {
+      background-color: var(--ag-control-panel-background-color);
+    }
+
+    .ag-sort-indicator-icon {
+      position: relative;
+      left: -8px;
+
+      &.ag-sort-order {
+        left: 0px;
+      }
+    }
+
+    .ag-filter-active {
+      position: relative;
+      .ag-icon {
+        clip-path: polygon(
+          0% 0%,
+          70.89% 0%,
+          70.89% 6.78%,
+          70.89% 13.56%,
+          73.52% 20.05%,
+          79.56% 23.39%,
+          86.19% 25.34%,
+          93.09% 25.39%,
+          100% 25.34%,
+          100% 100%,
+          0% 100%
+        );
+      }
+    }
+
+    .ag-filter-active::before {
+      content: '';
+      position: absolute;
+      background-color: var(--#{$prefix}color-typography-action-active);
+      border-radius: 50%;
+      height: 6px;
+      width: 6px;
+      top: -2px;
+      right: -2px;
+    }
+
+    .ag-filter-active::after {
+      display: none;
+    }
+
+    .ag-skeleton-effect {
+      animation: none;
+      overflow: hidden;
+      position: relative;
+      background-color: var(--#{$prefix}color-surface-skeleton);
+      border-radius: var(--#{$prefix}shape-radius-base);
+    }
+
+    .ag-skeleton-effect::after {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(
+        90deg,
+        var(--#{$prefix}color-shimmer-1),
+        var(--#{$prefix}color-shimmer-2),
+        var(--#{$prefix}color-shimmer-3)
+      );
+      animation: skeleton.$shimmer-animation;
+    }
+
+    &:not(.zebra) {
+      .ag-sticky-top {
+        background-color: var(--#{$prefix}color-surface-page);
+
+        .ag-row.ag-row-group {
+          background-color: var(--#{$prefix}color-surface-page);
+        }
+      }
+
+      .ag-center-cols-viewport {
+        .ag-row-hover.ag-row-footer:not(:hover),
+        .ag-row-hover.ag-row-group-expanded:not(:hover) {
+          &.ag-row-odd::before {
+            background-color: var(--ag-odd-row-background-color);
+            background: var(--ag-odd-row-background-color);
+          }
+
+          &.ag-row-even::before {
+            background-color: var(--ag-odd-row-background-color);
+            background: var(--ag-odd-row-background-color);
+          }
+        }
+      }
+    }
+
+    .ag-center-cols-viewport {
+      .ag-row-hover.ag-row-footer:not(:hover),
+      .ag-row-hover.ag-row-group-expanded:not(:hover) {
+        &.ag-row-odd::before {
+          background-color: var(--ag-odd-row-background-color);
+          background: var(--ag-odd-row-background-color);
+        }
+
+        &.ag-row-even::before {
+          background-color: var(--#{$prefix}color-surface-base);
+          background: var(--#{$prefix}color-surface-base);
+        }
+      }
+    }
+
+    .ag-rich-select-row-selected.ag-rich-select-row-highlighted:not(:hover) {
+      background-image: none;
+    }
+  }
+}

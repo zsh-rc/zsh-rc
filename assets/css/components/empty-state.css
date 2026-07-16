@@ -1,0 +1,240 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-empty-state),
+:host(.ds-empty-state),
+.ds-empty-state-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: var(--ds-z-index-content-base);
+  width: 100%;
+  padding: var(--ds-space-12x);
+  background-color: var(--ds-color-surface-transparent);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper {
+  display: flex;
+  --illustration-wrapper-hight: '';
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content {
+  --asset-illustration-image: '';
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: var(--asset-illustration-image);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--lg,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--lg,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--lg {
+  width: 196px;
+  height: 196px;
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--sm,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--sm,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--sm {
+  width: var(--ds-space-12x);
+  height: var(--ds-space-12x);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--create-lg,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--create-lg,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--create-lg {
+  --asset-illustration-image: var(--ds-illustration-create-lg);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--create-sm,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--create-sm,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--create-sm {
+  --asset-illustration-image: var(--ds-illustration-create-sm);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--create-2-lg,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--create-2-lg,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--create-2-lg {
+  --asset-illustration-image: var(--ds-illustration-create-2-lg);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--create-2-sm,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--create-2-sm,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--create-2-sm {
+  --asset-illustration-image: var(--ds-illustration-create-2-sm);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--database-lg,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--database-lg,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--database-lg {
+  --asset-illustration-image: var(--ds-illustration-database-lg);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--database-sm,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--database-sm,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--database-sm {
+  --asset-illustration-image: var(--ds-illustration-database-sm);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--database-2-lg,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--database-2-lg,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--database-2-lg {
+  --asset-illustration-image: var(--ds-illustration-database-2-lg);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--database-2-sm,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--database-2-sm,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--database-2-sm {
+  --asset-illustration-image: var(--ds-illustration-database-2-sm);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--empty-lg,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--empty-lg,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--empty-lg {
+  --asset-illustration-image: var(--ds-illustration-empty-lg);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--empty-sm,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--empty-sm,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--empty-sm {
+  --asset-illustration-image: var(--ds-illustration-empty-sm);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--error-lg,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--error-lg,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--error-lg {
+  --asset-illustration-image: var(--ds-illustration-error-lg);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--error-sm,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--error-sm,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--error-sm {
+  --asset-illustration-image: var(--ds-illustration-error-sm);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--error-2-lg,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--error-2-lg,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--error-2-lg {
+  --asset-illustration-image: var(--ds-illustration-error-2-lg);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--error-2-sm,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--error-2-sm,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--error-2-sm {
+  --asset-illustration-image: var(--ds-illustration-error-2-sm);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--error-3-lg,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--error-3-lg,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--error-3-lg {
+  --asset-illustration-image: var(--ds-illustration-error-3-lg);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--error-3-sm,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--error-3-sm,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--error-3-sm {
+  --asset-illustration-image: var(--ds-illustration-error-3-sm);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--padlock-lg,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--padlock-lg,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--padlock-lg {
+  --asset-illustration-image: var(--ds-illustration-padlock-lg);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--padlock-sm,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--padlock-sm,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--padlock-sm {
+  --asset-illustration-image: var(--ds-illustration-padlock-sm);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--select-lg,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--select-lg,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--select-lg {
+  --asset-illustration-image: var(--ds-illustration-select-lg);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--select-sm,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--select-sm,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--select-sm {
+  --asset-illustration-image: var(--ds-illustration-select-sm);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--signal-lg,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--signal-lg,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--signal-lg {
+  --asset-illustration-image: var(--ds-illustration-signal-lg);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--signal-sm,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--signal-sm,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--signal-sm {
+  --asset-illustration-image: var(--ds-illustration-signal-sm);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--success-lg,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--success-lg,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--success-lg {
+  --asset-illustration-image: var(--ds-illustration-success-lg);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--success-sm,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--success-sm,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--success-sm {
+  --asset-illustration-image: var(--ds-illustration-success-sm);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--success-2-lg,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--success-2-lg,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--success-2-lg {
+  --asset-illustration-image: var(--ds-illustration-success-2-lg);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--success-2-sm,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--success-2-sm,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--success-2-sm {
+  --asset-illustration-image: var(--ds-illustration-success-2-sm);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--success-3-lg,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--success-3-lg,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--success-3-lg {
+  --asset-illustration-image: var(--ds-illustration-success-3-lg);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--success-3-sm,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--success-3-sm,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--success-3-sm {
+  --asset-illustration-image: var(--ds-illustration-success-3-sm);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--wait-lg,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--wait-lg,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--wait-lg {
+  --asset-illustration-image: var(--ds-illustration-wait-lg);
+}
+:host(ds-empty-state) .ds-empty-state-illustration-wrapper__content--wait-sm,
+:host(.ds-empty-state) .ds-empty-state-illustration-wrapper__content--wait-sm,
+.ds-empty-state-wrapper .ds-empty-state-illustration-wrapper__content--wait-sm {
+  --asset-illustration-image: var(--ds-illustration-wait-sm);
+}
+:host(ds-empty-state) .ds-empty-state-heading,
+:host(ds-empty-state) .ds-empty-state-description,
+:host(ds-empty-state) .ds-empty-state-footnote,
+:host(.ds-empty-state) .ds-empty-state-heading,
+:host(.ds-empty-state) .ds-empty-state-description,
+:host(.ds-empty-state) .ds-empty-state-footnote,
+.ds-empty-state-wrapper .ds-empty-state-heading,
+.ds-empty-state-wrapper .ds-empty-state-description,
+.ds-empty-state-wrapper .ds-empty-state-footnote {
+  text-align: center;
+}
+:host(ds-empty-state) .ds-empty-state-heading ::ng-deep ul li,
+:host(ds-empty-state) .ds-empty-state-heading ::ng-deep ol li,
+:host(ds-empty-state) .ds-empty-state-description ::ng-deep ul li,
+:host(ds-empty-state) .ds-empty-state-description ::ng-deep ol li,
+:host(ds-empty-state) .ds-empty-state-footnote ::ng-deep ul li,
+:host(ds-empty-state) .ds-empty-state-footnote ::ng-deep ol li,
+:host(.ds-empty-state) .ds-empty-state-heading ::ng-deep ul li,
+:host(.ds-empty-state) .ds-empty-state-heading ::ng-deep ol li,
+:host(.ds-empty-state) .ds-empty-state-description ::ng-deep ul li,
+:host(.ds-empty-state) .ds-empty-state-description ::ng-deep ol li,
+:host(.ds-empty-state) .ds-empty-state-footnote ::ng-deep ul li,
+:host(.ds-empty-state) .ds-empty-state-footnote ::ng-deep ol li,
+.ds-empty-state-wrapper .ds-empty-state-heading ::ng-deep ul li,
+.ds-empty-state-wrapper .ds-empty-state-heading ::ng-deep ol li,
+.ds-empty-state-wrapper .ds-empty-state-description ::ng-deep ul li,
+.ds-empty-state-wrapper .ds-empty-state-description ::ng-deep ol li,
+.ds-empty-state-wrapper .ds-empty-state-footnote ::ng-deep ul li,
+.ds-empty-state-wrapper .ds-empty-state-footnote ::ng-deep ol li {
+  text-align: left;
+}
+:host(ds-empty-state) .ds-empty-state-action-buttons,
+:host(.ds-empty-state) .ds-empty-state-action-buttons,
+.ds-empty-state-wrapper .ds-empty-state-action-buttons {
+  display: flex;
+  justify-content: center;
+}
+:host(ds-empty-state) .ds-empty-state-action-buttons .ds-action-buttons-spacer,
+:host(.ds-empty-state) .ds-empty-state-action-buttons .ds-action-buttons-spacer,
+.ds-empty-state-wrapper .ds-empty-state-action-buttons .ds-action-buttons-spacer {
+  margin-right: var(--ds-space-4x);
+}

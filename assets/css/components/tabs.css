@@ -1,0 +1,220 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-tabs),
+.ds-tabs {
+  --ds-tabs-labels-max-height: 62px;
+  --ds-tabs-label-three-dots-width: 32px;
+  --ds-tabs-label-three-dots-border-width: var(--ds-shape-size-x-tab-divider);
+  --ds-tabs-label-three-dots-border-color: var(--ds-color-surface-tab-dividers);
+  --ds-tabs-label-min-width: 48px;
+  --ds-tabs-slider-transition: all var(--ds-motion-duration-standard)
+    var(--ds-motion-timing-standard);
+  --ds-tabs-base-background-color: transparent;
+}
+:host(ds-tabs).ds-no-motion,
+.ds-tabs.ds-no-motion {
+  --ds-tabs-slider-transition: all 0s;
+}
+:host(ds-tabs),
+.ds-tabs {
+  width: 100%;
+  min-height: 0;
+  flex-direction: column;
+  display: flex;
+  position: relative;
+}
+
+.ds-tabs-wrapper {
+  height: 100%;
+}
+.ds-tabs-wrapper--hiding-box {
+  --ds-box-base-background-color: var(--ds-tabs-base-background-color);
+  --ds-box-box-shadow: none;
+}
+.ds-tabs-wrapper__header--justify-end {
+  display: flex;
+  justify-content: flex-end;
+}
+.ds-tabs-wrapper__header--justify-center {
+  display: flex;
+  justify-content: center;
+}
+.ds-tabs-wrapper__labels {
+  max-width: 100%;
+  max-height: var(--ds-tabs-labels-max-height);
+  overflow-x: auto;
+  position: relative;
+  display: flex;
+}
+.ds-tabs-wrapper__labels::-webkit-scrollbar {
+  display: none;
+}
+.ds-tabs-wrapper__labels--overflowing {
+  max-width: calc(100% - var(--ds-tabs-label-three-dots-width));
+}
+.ds-tabs-wrapper__labels--overflowing ::ng-deep ds-tabs-label {
+  max-width: calc(100% - var(--ds-tabs-label-min-width));
+}
+.ds-tabs-wrapper__labels--grow-labels {
+  width: 100%;
+}
+.ds-tabs-wrapper__labels--grow-labels ::ng-deep ds-tabs-label {
+  flex: 1;
+}
+.ds-tabs-wrapper__labels--grow-labels ::ng-deep ds-tabs-label ::ng-deep ds-box-header {
+  width: 100%;
+}
+.ds-tabs-wrapper__divider {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: var(--ds-shape-size-y-tab-divider);
+  background-color: var(--ds-color-border-tab-divider);
+  z-index: calc(var(--ds-z-index-content-base) + 1);
+}
+.ds-tabs-wrapper__three-dots {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--ds-tabs-label-three-dots-width);
+  height: 100%;
+  cursor: pointer;
+  background-color: var(--ds-color-surface-tab-enabled);
+}
+.ds-tabs-wrapper__three-dots--empty {
+  display: none;
+}
+.ds-tabs-wrapper__three-dots:focus:not(:focus-visible) {
+  outline: none;
+}
+.ds-tabs-wrapper__three-dots:hover {
+  background-color: var(--ds-color-surface-tab-hover);
+  border-color: var(--ds-color-surface-tab-hover);
+}
+.ds-tabs-wrapper__three-dots::before {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  content: " ";
+  height: calc(100% - 16px);
+  width: var(--ds-tabs-label-three-dots-border-width);
+  background-color: var(--ds-color-surface-tab-dividers);
+}
+.ds-tabs-wrapper__slider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  overflow: hidden;
+  z-index: calc(var(--ds-z-index-content-base) + 2);
+}
+.ds-tabs-wrapper__slider__bar {
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--ds-color-surface-tab-selected-accent);
+  border-radius: var(--ds-shape-radius-tab-accent-bar) var(--ds-shape-radius-tab-accent-bar) 0px 0px;
+  transition: var(--ds-tabs-slider-transition);
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-tabs-content),
+.ds-tabs-content {
+  display: none;
+  height: 100%;
+  min-height: 0;
+}
+:host(ds-tabs-content).ds-tabs-content--selected,
+.ds-tabs-content.ds-tabs-content--selected {
+  display: flex;
+}
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-tabs-label),
+.ds-tabs-label {
+  --ds-tabs-label-min-width: 48px;
+  --ds-tabs-label-vertical-padding: 16px;
+  --ds-tabs-label-label-actions-break: 4px;
+  --ds-tabs-label-small-vertical-padding: 12px;
+  --ds-tabs-label-left-padding: var(--ds-space-inline-start-tab);
+  --ds-tabs-label-right-padding: var(--ds-space-inline-end-tab);
+  --ds-tabs-label-accent-bar-width: var(--ds-shape-size-y-tab-accent-bar);
+  --ds-tabs-label-focus-outline: 2px solid var(--ds-color-outline-tab);
+  --ds-tabs-label-leading-icon-margin-right: var(--ds-space-inline-couple-tab);
+  --ds-tabs-label-close-icon-displace-value: -6px;
+  --ds-tabs-label-close-icon-right-displace-value: -12px;
+  display: inline-flex;
+  position: relative;
+  user-select: none;
+}
+:host(ds-tabs-label):focus-visible,
+.ds-tabs-label:focus-visible {
+  outline: var(--ds-size-outline-default) solid var(--ds-color-outline-action);
+  outline-offset: -3px;
+}
+:host(ds-tabs-label):focus:not(:focus-visible),
+.ds-tabs-label:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.ds-tabs-label-wrapper {
+  cursor: pointer;
+  min-width: var(--ds-tabs-label-min-width);
+  --ds-box-header-base-padding: var(--ds-tabs-label-vertical-padding)
+    var(--ds-tabs-label-right-padding) var(--ds-tabs-label-vertical-padding)
+    var(--ds-tabs-label-left-padding);
+  --ds-box-header-small-base-padding: var(--ds-tabs-label-small-vertical-padding)
+    var(--ds-tabs-label-right-padding) var(--ds-tabs-label-small-vertical-padding)
+    var(--ds-tabs-label-left-padding);
+  --ds-box-header-icon-right-margin: var(--ds-tabs-label-leading-icon-margin-right);
+  --ds-box-header-label-actions-break: var(--ds-tabs-label-label-actions-break);
+  --ds-box-header-base-color: var(--ds-color-text-tab);
+  --ds-box-header-actions-max-width: none;
+  --ds-box-header-font-size: var(--ds-font-size-tab);
+  --ds-box-header-font-weight: var(--ds-font-weight-tab);
+  --ds-box-header-line-height: var(--ds-font-line-height-tab);
+  --ds-box-header-button-y-margin: -6px;
+  --ds-box-header-icon-y-margin: 0;
+  background-color: var(--ds-color-surface-tab-enabled);
+}
+.ds-tabs-label-wrapper--selected {
+  --ds-box-header-background-color: var(--ds-color-surface-tab-selected);
+  --ds-box-header-base-color: var(--ds-color-text-tab-selected);
+}
+.ds-tabs-label-wrapper:hover:not(.ds-tabs-label-wrapper--disabled) {
+  background-color: var(--ds-color-surface-tab-hover);
+  --ds-box-header-background-color: var(--ds-color-surface-tab-hover);
+}
+.ds-tabs-label-wrapper--disabled {
+  --ds-box-header-background-color: var(--ds-color-surface-tab-disabled);
+  cursor: no-drop;
+  opacity: 0.5;
+}
+.ds-tabs-label-wrapper--with-only-child {
+  --ds-tabs-label-leading-icon-margin-right: 0;
+}
+.ds-tabs-label-wrapper ::ng-deep .ds-box-header__label-wrapper {
+  text-transform: none;
+}
+.ds-tabs-label-wrapper__actions {
+  display: flex;
+  max-height: 20px;
+}

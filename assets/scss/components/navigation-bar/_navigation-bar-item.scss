@@ -1,0 +1,220 @@
+@use '../../density-styles-sass' as *;
+@use '../../utilities/typography-utilities' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}navigation-bar-item),
+.#{$prefix}navigation-bar-item {
+  --#{$prefix}navigation-bar-item-height: 40px;
+  --#{$prefix}navigation-bar-item-left-padding: 10px;
+  --#{$prefix}navigation-bar-item-parent-icon-right: 2px;
+
+  --#{$prefix}navigation-bar-item-motion-timing: var(--#{$prefix}motion-timing-entrance);
+  --#{$prefix}navigation-bar-item-motion-duration: 1ms;
+
+  --#{$prefix}navigation-bar-item-timing-function-entrance: var(--#{$prefix}motion-timing-entrance);
+  --#{$prefix}navigation-bar-item-duration-entrance: 1ms;
+  --#{$prefix}navigation-bar-item-timing-function-exit: var(--#{$prefix}motion-timing-exit);
+  --#{$prefix}navigation-bar-item-duration-exit: 1ms;
+
+  &.#{$prefix}navigation-bar-item {
+    position: relative;
+    display: block;
+
+    &--hidden {
+      display: none;
+      visibility: hidden;
+    }
+
+    & > a {
+      text-decoration: none;
+    }
+
+    &:focus-visible {
+      outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+      outline-offset: -2px; //TODO: TEMPORARY UNTIL DESIGNERS STUDY THE IMPACT OF THE USER TO INCREASE THE OUTLINE OFFSET, TALK TO RSF FOR MORE INFO
+    }
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+  }
+}
+
+.#{$prefix}navigation-bar-item__children__items {
+  &:hover {
+    .#{$prefix}list-item:not(.#{$prefix}list-item--selected):hover::before {
+      content: ' ';
+      position: absolute;
+      width: var(--#{$prefix}shape-size-x-nav-node-line);
+      height: 100%;
+      left: 1px;
+      background-color: var(--#{$prefix}color-surface-nav-divider);
+    }
+  }
+}
+
+.#{$prefix}navigation-bar-item__highlight-flag {
+  display: none;
+  visibility: hidden;
+}
+
+.#{$prefix}navigation-bar-item__label {
+  @extend .text-label;
+
+  padding-right: var(--#{$prefix}space-inline-end-nav-item);
+  padding-left: var(--#{$prefix}navigation-bar-item-left-padding);
+  height: var(--#{$prefix}navigation-bar-item-height);
+  max-height: var(--#{$prefix}navigation-bar-item-height);
+  line-height: var(--#{$prefix}typography-line-height-regular);
+  align-items: center;
+  cursor: pointer;
+
+  --#{$prefix}color-surface-list-item: var(--#{$prefix}color-surface-nav-item);
+  --#{$prefix}color-surface-list-item-selected: var(--#{$prefix}color-surface-nav-item-selected);
+  --#{$prefix}space-inline-couple-list-item: var(--#{$prefix}space-inline-couple-nav-item);
+  --#{$prefix}color-icon-list-item: var(--#{$prefix}color-icon-list-item);
+  --#{$prefix}color-icon-list-item-selected: var(--#{$prefix}color-icon-list-item-active);
+  --#{$prefix}color-surface-list-item-selected-bar: var(--#{$prefix}color-surface-nav-item-selected-bar);
+  --#{$prefix}color-surface-list-item-selected-hover: var(--#{$prefix}color-surface-action-hover);
+
+  &.#{$prefix}list-item--supress-parent {
+    --#{$prefix}color-surface-list-item-selected: var(--#{$prefix}color-surface-nav-item-selected);
+    --#{$prefix}color-surface-list-item-selected-hover: var(--#{$prefix}color-surface-action-hover);
+  }
+
+  &:focus-visible:not([disabled]):not(.#{$prefix}navigation-bar-item__label--expanded) {
+    --#{$prefix}space-inline-end-list-item: 10px;
+  }
+
+  &--expanded {
+    padding-left: var(--#{$prefix}space-inline-start-nav-item);
+    max-height: initial;
+
+    &.#{$prefix}navigation-bar-item__label--active:not(.#{$prefix}list-item--selected) {
+      --#{$prefix}color-surface-list-item-selected: transparent;
+    }
+  }
+
+  &--selected {
+    --#{$prefix}color-icon-list-item: var(--#{$prefix}color-icon-list-item-active);
+    --#{$prefix}color-text-list-item: var(--#{$prefix}color-text-list-item-active);
+  }
+
+  &--group {
+    cursor: inherit;
+    color: var(--#{$prefix}color-typography-neutral);
+    font-family: var(--#{$prefix}typography-family-base);
+    font-size: var(--#{$prefix}typography-size-title-xs);
+    font-weight: var(--#{$prefix}typography-weight-title-xs);
+    line-height: var(--#{$prefix}typography-line-height-title-xs);
+    text-transform: var(--#{$prefix}typography-transform-uppercase);
+    height: var(--#{$prefix}space-8x);
+  }
+
+  &--hovered {
+    cursor: inherit;
+    background-color: var(--#{$prefix}color-surface-nav-item-hover);
+  }
+
+  &--disabled {
+    cursor: no-drop;
+  }
+
+  &__collapsed-parent-icon {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+
+  &.#{$prefix}no-motion {
+    --#{$prefix}navigation-bar-item-motion-duration: 0s;
+    --#{$prefix}navigation-bar-item-motion-timing: initial;
+  }
+
+  ::ng-deep .#{$prefix}list-item__content-wrapper ~ .icon-right.#{$prefix}icon {
+    margin-top: var(--#{$prefix}space-05x);
+  }
+
+  .#{$prefix}navigation-bar-item__collapsed-badge {
+    position: absolute;
+    top: 0;
+    right: var(--#{$prefix}space-05x);
+
+    &--dot {
+      top: var(--#{$prefix}space-05x);
+    }
+  }
+}
+
+.#{$prefix}navigation-bar-item__children {
+  &__items {
+    display: block;
+    position: relative;
+    margin: 1px 0 0 var(--#{$prefix}space-indent-nav-item);
+
+    &--closed {
+      display: none;
+    }
+
+    ::ng-deep #{$prefix}list-item {
+      &:not(.#{$prefix}list-item--selected) {
+        background-color: transparent;
+      }
+
+      & .#{$prefix}list-item__content-wrapper {
+        margin-left: var(--#{$prefix}space-indent-nav-item-label);
+      }
+    }
+
+    &::before {
+      content: ' ';
+      position: absolute;
+      width: var(--#{$prefix}shape-size-x-nav-node-line);
+      height: 100%;
+      left: 1px;
+      background-color: var(--#{$prefix}color-surface-nav-divider);
+    }
+  }
+
+  &::after {
+    border-top: 0px;
+  }
+}
+
+.#{$prefix}navigation-bar-item__group-divider {
+  height: 1px;
+  margin: var(--#{$prefix}space-inline-start-nav-item) 0;
+}
+
+.#{$prefix}navigation-bar-item__tooltip-template {
+  color: var(--#{$prefix}color-text-tooltip);
+  font-family: var(--#{$prefix}font-family-tooltip);
+  line-height: var(--#{$prefix}font-line-height-tooltip);
+  font-size: var(--#{$prefix}font-size-tooltip);
+  font-weight: var(--#{$prefix}font-weight-tooltip);
+
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &__badge {
+    margin-left: var(--#{$prefix}space-2x);
+  }
+}
+
+.#{$prefix}navigation-bar-item__list-item-template {
+  display: flex;
+  align-items: center;
+
+  &__label {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__badge {
+    margin-left: var(--#{$prefix}space-2x);
+  }
+}

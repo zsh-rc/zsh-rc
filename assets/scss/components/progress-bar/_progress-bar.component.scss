@@ -1,0 +1,75 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}progress-bar),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}progress-bar {
+  display: block;
+
+  &.#{$prefix}progress-bar {
+    height: var(--#{$prefix}shape-size-y-progress-bar-track);
+
+    &--sm {
+      --#{$prefix}shape-size-y-progress-bar-track: var(--#{$prefix}shape-size-y-progress-bar-track-sm);
+      --#{$prefix}shape-size-y-progress-bar-fill: var(--#{$prefix}shape-size-y-progress-bar-fill-sm);
+      --#{$prefix}shape-radius-progress-bar-track: var(--#{$prefix}shape-radius-progress-bar-track-sm);
+      --#{$prefix}shape-radius-progress-bar-fill: var(--#{$prefix}shape-radius-progress-bar-fill-sm);
+    }
+
+    &--lg {
+      --#{$prefix}shape-size-y-progress-bar-track: var(--#{$prefix}shape-size-y-progress-bar-track-lg);
+      --#{$prefix}shape-size-y-progress-bar-fill: var(--#{$prefix}shape-size-y-progress-bar-fill-lg);
+      --#{$prefix}shape-radius-progress-bar-track: var(--#{$prefix}shape-radius-progress-bar-track-lg);
+      --#{$prefix}shape-radius-progress-bar-fill: var(--#{$prefix}shape-radius-progress-bar-fill-lg);
+    }
+
+    & .#{$prefix}progress-bar__track {
+      position: relative;
+      height: var(--#{$prefix}shape-size-y-progress-bar-track);
+      border-radius: var(--#{$prefix}shape-size-y-progress-bar-track) var(--#{$prefix}shape-radius-progress-bar-track);
+      overflow: hidden;
+    }
+
+    & .#{$prefix}progress-bar__background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: var(--#{$prefix}color-surface-progress-bar-track);
+      opacity: 0.2;
+    }
+
+    & .#{$prefix}progress-bar__fill {
+      height: 100%;
+      background-color: var(--#{$prefix}color-surface-progress-bar-fill);
+      transform-origin: left;
+      transition: transform var(--#{$prefix}motion-duration-rapid) var(--#{$prefix}motion-timing-standard);
+
+      &--indeterminate {
+        border-radius: var(--#{$prefix}shape-size-y-progress-bar-fill) var(--#{$prefix}shape-radius-progress-bar-fill);
+        animation: #{$prefix}progress-bar-indeterminate-animation 1s linear infinite;
+        // Only using width instead of transform: scaleX(0.33) because of border-radius 😢
+        width: 33%;
+      }
+    }
+  }
+
+  @keyframes #{$prefix}progress-bar-indeterminate-animation {
+    0% {
+      transform: translate(-100%) scaleX(1);
+      border-radius: var(--#{$prefix}shape-size-y-progress-bar-fill) var(--#{$prefix}shape-radius-progress-bar-fill);
+    }
+    30% {
+      transform: translate(0%) scaleX(1.25);
+    }
+    50% {
+      transform: translate(calc((100% * 66.5 / 39) - 100%)) scaleX(1.5);
+      border-radius: calc((var(--#{$prefix}shape-radius-progress-bar-fill) / 1.5)) /
+        var(--#{$prefix}shape-radius-progress-bar-fill);
+    }
+    100% {
+      transform: translate(calc((100% * 100 / 33))) scaleX(1);
+      border-radius: var(--#{$prefix}shape-size-y-progress-bar-fill) var(--#{$prefix}shape-radius-progress-bar-fill);
+    }
+  }
+}

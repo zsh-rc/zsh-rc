@@ -1,0 +1,62 @@
+@use '../../density-styles-sass' as *;
+@use '../../utilities/sass_utilities' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}toast),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}toast {
+  --#{$prefix}toast-transition-timing-function: var(--#{$prefix}motion-timing-standard);
+  --#{$prefix}toast-transition-duration: var(--#{$prefix}motion-duration-standard);
+  --#{$prefix}toast-transition-delay: var(--#{$prefix}motion-delay-standard);
+
+  --#{$prefix}toast-transition-timing-function-entrance: var(--#{$prefix}motion-timing-entrance);
+  --#{$prefix}toast-transition-duration-entrance: var(--#{$prefix}motion-duration-quick);
+  --#{$prefix}toast-transition-delay-entrance: var(--#{$prefix}motion-delay-rapid);
+
+  --#{$prefix}toast-transition-timing-function-exit: var(--#{$prefix}motion-timing-exit);
+  --#{$prefix}toast-transition-duration-exit: var(--#{$prefix}motion-duration-quick);
+  --#{$prefix}toast-transition-delay-exit: var(--#{$prefix}motion-delay-rapid);
+
+  --#{$prefix}toast-accent-bar-color: var(--#{$prefix}color-elements-toast-neutral);
+
+  position: relative;
+  border-radius: var(--#{$prefix}shape-radius-toast);
+  box-shadow: var(--#{$prefix}elevation-toast);
+  overflow: hidden;
+
+  &.#{$prefix}no-motion {
+    --#{$prefix}toast-transition-duration: 0s;
+    --#{$prefix}toast-transition-duration-entrance: 0s;
+    --#{$prefix}toast-transition-duration-exit: 0s;
+  }
+
+  &.#{$prefix}toast {
+    &--neutral {
+      --#{$prefix}toast-accent-bar-color: var(--#{$prefix}color-elements-toast-neutral);
+    }
+    &--info {
+      --#{$prefix}toast-accent-bar-color: var(--#{$prefix}color-elements-toast-info);
+    }
+    &--positive {
+      --#{$prefix}toast-accent-bar-color: var(--#{$prefix}color-elements-toast-positive);
+    }
+    &--caution {
+      --#{$prefix}toast-accent-bar-color: var(--#{$prefix}color-elements-toast-caution);
+    }
+    &--critical {
+      --#{$prefix}toast-accent-bar-color: var(--#{$prefix}color-elements-toast-critical);
+    }
+
+    & .#{$prefix}toast__accent-bar {
+      position: absolute;
+      background-color: var(--#{$prefix}toast-accent-bar-color);
+      height: 100%;
+      width: var(--#{$prefix}shape-size-x-accent-bar);
+      left: 0;
+      z-index: z-index(content);
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@use '../../mixins/placeholder' as *;
+@use '../../density-styles-sass' as *;
+
+:host(#{$prefix}drawer),
+.#{$prefix}drawer {
+  &.#{$prefix}drawer--popover
+    ::ng-deep
+    > .#{$prefix}box
+    > .#{$prefix}box__wrapper
+    > .#{$prefix}box__content-wrapper
+    > .#{$prefix}drawer__box__last-content {
+    padding: var(--#{$prefix}space-2x);
+  }
+}

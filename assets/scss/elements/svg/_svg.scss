@@ -1,0 +1,9 @@
+@use '../../density-styles-sass' as *;
+
+svg.#{$prefix}svg:not([fill]) {
+  fill: currentColor;
+
+  path {
+    fill: inherit;
+  }
+}

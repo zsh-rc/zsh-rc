@@ -1,0 +1,79 @@
+@use '../../density-styles-sass' as *;
+@use '../../utilities/sass_utilities' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}tooltip),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}tooltip {
+  --#{$prefix}tooltip-base-padding: 8px;
+  --#{$prefix}tooltip-arrow-border-width: 12px;
+  --#{$prefix}tooltip-content-background-color: var(--#{$prefix}color-surface-tooltip);
+  --#{$prefix}tooltip-arrow-color: var(--#{$prefix}tooltip-content-background-color);
+  --#{$prefix}content-title-text-transform: uppercase;
+  --#{$prefix}tooltip-animation-duration: var(--#{$prefix}motion-duration-rapid);
+  --#{$prefix}tooltip-animation-timing: var(--#{$prefix}motion-timing-exit);
+  --#{$prefix}tooltip-animation-delay: 0ms;
+
+  display: flex;
+  pointer-events: auto;
+  width: fit-content;
+
+  opacity: 0;
+  transition:
+    opacity var(--#{$prefix}tooltip-animation-duration) var(--#{$prefix}tooltip-animation-timing),
+    transform var(--#{$prefix}tooltip-animation-duration) var(--#{$prefix}tooltip-animation-timing),
+    visibility var(--#{$prefix}tooltip-animation-duration) var(--#{$prefix}tooltip-animation-timing);
+
+  &.#{$prefix}tooltip--visible {
+    opacity: 1;
+
+    --#{$prefix}tooltip-animation-duration: var(--#{$prefix}motion-duration-rapid);
+    --#{$prefix}tooltip-animation-timing: var(--#{$prefix}motion-timing-entrance);
+    --#{$prefix}tooltip-animation-delay: 0ms;
+  }
+
+  &.#{$prefix}no-motion {
+    --#{$prefix}tooltip-animation-duration: 0s;
+  }
+
+  &.#{$prefix}tooltip--defined-width {
+    width: 100%;
+  }
+}
+
+.#{$prefix}tooltip-wrapper {
+  position: relative;
+  flex: 1;
+  --#{$prefix}box-with-arrow-margin: var(--#{$prefix}tooltip-base-padding);
+
+  &__content {
+    height: 100%;
+    z-index: z-index(content);
+  }
+
+  &__title {
+    color: var(--#{$prefix}color-text-tooltip);
+    font-family: var(--#{$prefix}font-family-tooltip-title);
+    line-height: var(--#{$prefix}font-line-height-tooltip-title);
+    font-size: var(--#{$prefix}font-size-tooltip-title);
+    font-weight: var(--#{$prefix}font-weight-tooltip-title);
+    text-transform: var(--#{$prefix}content-title-text-transform);
+
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__text {
+    color: var(--#{$prefix}color-text-tooltip);
+    font-family: var(--#{$prefix}font-family-tooltip);
+    line-height: var(--#{$prefix}font-line-height-tooltip);
+    font-size: var(--#{$prefix}font-size-tooltip);
+    font-weight: var(--#{$prefix}font-weight-tooltip);
+
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

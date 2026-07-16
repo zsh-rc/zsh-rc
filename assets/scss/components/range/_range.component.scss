@@ -1,0 +1,35 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}range-slider),
+
+
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}range-slider {
+  display: block;
+  height: var(--#{$prefix}shape-size-y-range);
+
+  &.#{$prefix}range-slider {
+    &.#{$prefix}range-slider--lg {
+      --#{$prefix}shape-size-y-range: var(--#{$prefix}shape-size-y-range-lg);
+    }
+
+    &.#{$prefix}range-slider--vertical {
+      height: 100%;
+    }
+
+    & .#{$prefix}range-slider__inputs {
+      display: none;
+      visibility: hidden;
+      width: 100%;
+
+      & ::ng-deep > input {
+        width: 100%;
+        appearance: auto;
+      }
+    }
+  }
+}

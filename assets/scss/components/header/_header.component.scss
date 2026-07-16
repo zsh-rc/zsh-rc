@@ -1,0 +1,219 @@
+@use '../../density-styles-sass' as *;
+@use '../../utilities/sass_utilities' as *;
+@use 'sass:list';
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}header),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}header {
+  z-index: z-index(header);
+  position: sticky;
+  top: 0;
+
+  .#{$prefix}header__wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: var(--#{$prefix}shape-size-y-header);
+    background-color: var(--#{$prefix}color-surface-header);
+    padding-left: var(--#{$prefix}space-inline-start-header);
+    padding-right: var(--#{$prefix}space-inline-end-header);
+
+    &:focus {
+      outline: 0;
+    }
+
+    &__application {
+      display: flex;
+      align-items: center;
+      height: inherit;
+      overflow: hidden;
+      padding-left: var(--#{$prefix}space-05x);
+      padding-right: var(--#{$prefix}space-05x);
+
+      &__menu-icon {
+        margin-left: var(--#{$prefix}space-05x);
+        margin-right: var(--#{$prefix}space-05x);
+      }
+      $brand-logos: (
+        default: (
+          var(--#{$prefix}logo-bmwgroup-bmw-mini),
+          126px,
+        ),
+        bmwgroup: (
+          var(--#{$prefix}logo-bmwgroup),
+          38px,
+        ),
+        bmw: (
+          var(--#{$prefix}logo-bmwgroup-bmw),
+          89px,
+        ),
+        mini: (
+          var(--#{$prefix}logo-bmwgroup-mini),
+          100px,
+        ),
+        rr: (
+          var(--#{$prefix}logo-bmwgroup-bmw-mini-rr),
+          175px,
+        ),
+        bmw-i: (
+          var(--#{$prefix}logo-bmwgroup-bmw-i),
+          113px,
+        ),
+        bmw-m: (
+          var(--#{$prefix}logo-bmwgroup-bmw-m),
+          123px,
+        ),
+        bmw-motorrad: (
+          var(--#{$prefix}logo-bmwgroup-bmw-motorrad),
+          162px,
+        ),
+        mini-jcw: (
+          var(--#{$prefix}logo-bmwgroup-bmw-mini-jcw),
+          149px,
+        ),
+      );
+
+      .#{$prefix}header__logos-wrapper {
+        display: flex;
+        align-items: center;
+        height: inherit;
+
+        &__content {
+          --asset-brand-logos-image: var(--#{$prefix}logo-bmwgroup-bmw-mini);
+
+          height: var(--#{$prefix}space-5x);
+          background-image: var(--asset-brand-logos-image);
+          background-repeat: no-repeat;
+          background-size: cover;
+
+          @each $name, $data in $brand-logos {
+            &--#{$name} {
+              --asset-brand-logos-image: #{list.nth($data, 1)};
+              width: #{list.nth($data, 2)};
+              background-image: var(--asset-brand-logos-image);
+            }
+          }
+        }
+      }
+
+      .#{$prefix}header__app-name-wrapper {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .#{$prefix}header__env-tag {
+        align-self: center;
+        margin-left: var(--#{$prefix}space-inline-couple-header);
+      }
+    }
+
+    &__content {
+      margin: 0 var(--#{$prefix}space-inline-content-header);
+    }
+
+    &__utilities {
+      height: inherit;
+
+      &__user-menu {
+        display: inline-flex;
+        align-items: center;
+        height: inherit;
+
+        .user-menu__button-content {
+          display: inline-flex;
+          align-items: center;
+          height: var(--#{$prefix}shape-size-ymin-button);
+
+          &__avatar {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: var(--#{$prefix}shape-size-avatar-header);
+            height: var(--#{$prefix}shape-size-avatar-header);
+            background-color: var(--#{$prefix}color-surface-avatar-header);
+            border-radius: var(--#{$prefix}shape-radius-avatar-header);
+
+            &__profile-image {
+              width: 100%;
+              border-radius: var(--#{$prefix}shape-radius-avatar-header);
+            }
+
+            &__sso-badge {
+              --shape-size-sso-badge-header: 10px;
+              --space-inline-sso-badge-header: -4px;
+
+              box-sizing: content-box;
+              position: absolute;
+              bottom: var(--space-inline-sso-badge-header);
+              right: var(--space-inline-sso-badge-header);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: var(--shape-size-sso-badge-header);
+              height: var(--shape-size-sso-badge-header);
+              background-color: var(--#{$prefix}color-surface-sso-badge-header);
+              border-radius: var(--#{$prefix}shape-radius-sso-badge-header);
+              border: 1px solid var(--#{$prefix}color-white);
+              color: var(--#{$prefix}color-surface-header);
+            }
+          }
+        }
+      }
+
+      &__theme,
+      &__options-menu {
+        display: inline-flex;
+        align-items: center;
+        height: inherit;
+      }
+
+      &__locale {
+        display: inline-flex;
+        align-items: center;
+        height: inherit;
+
+        &__wrapper .#{$prefix}select {
+          min-width: var(--#{$prefix}shape-size-xmin-input);
+        }
+      }
+
+      &__imprint {
+        display: inline-flex;
+        align-items: center;
+        height: inherit;
+      }
+    }
+
+    .#{$prefix}header__vertical-divider {
+      position: relative;
+      width: var(--#{$prefix}space-divider-header);
+      height: inherit;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: var(--#{$prefix}space-divider-header);
+        height: calc(100% - (2 * var(--#{$prefix}space-divider-header)));
+        margin-top: var(--#{$prefix}space-divider-header);
+
+        background: linear-gradient(var(--#{$prefix}color-divider-header), var(--#{$prefix}color-divider-header))
+          no-repeat center/1px 100%;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: calc(-1 * var(--#{$prefix}shape-divider-header));
+      left: 0;
+      height: var(--#{$prefix}shape-divider-header);
+      width: 100%;
+      background-color: var(--#{$prefix}color-divider-header);
+    }
+  }
+}

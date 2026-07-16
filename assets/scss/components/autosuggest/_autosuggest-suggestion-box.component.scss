@@ -1,0 +1,56 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}autosuggest-suggestion-box),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}autosuggest-suggestion-box {
+  --#{$prefix}autosuggest-suggestion-box-animation-timing: var(--#{$prefix}motion-duration-slow);
+  --#{$prefix}autosuggest-suggestion-box-animation-function: var(--#{$prefix}motion-timing-standard);
+  --#{$prefix}autosuggest-suggestion-box-animation-delay: var(--#{$prefix}motion-delay-rapid);
+
+  display: block;
+  width: 100%;
+
+  &.#{$prefix}no-motion {
+    --#{$prefix}autosuggest-suggestion-box-animation-timing: 0s;
+  }
+
+  &.#{$prefix}autosuggest-suggestion-box {
+    &--hidden {
+      visibility: hidden;
+    }
+  }
+
+  .#{$prefix}box {
+    height: 100%;
+  }
+}
+
+.#{$prefix}autosuggest-suggestion-box {
+  &__wrapper {
+    width: 100%;
+
+    &--hide {
+      display: none;
+      padding: 0;
+    }
+  }
+
+  #{$prefix}autosuggest-item {
+    margin: 0px var(--#{$prefix}space-1x);
+
+    &:first-child {
+      margin: var(--#{$prefix}space-1x);
+    }
+
+    &:last-child {
+      margin: var(--#{$prefix}space-1x);
+    }
+  }
+
+  &__suggestions {
+    max-height: 100%;
+    overflow: auto;
+  }
+}

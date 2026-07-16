@@ -1,0 +1,5 @@
+@use '../../density-styles-sass' as *;
+
+.#{$prefix}date {
+  padding: 0;
+}

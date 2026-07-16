@@ -1,0 +1,91 @@
+@use '../../density-styles-sass' as *;
+@use '../../mixins/placeholder' as *;
+@use '../../utilities/sass_utilities' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}select-list-item),
+
+
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}select-list-item {
+  display: block;
+
+  .#{$prefix}select-list-item__item {
+    &--group {
+      cursor: inherit;
+      color: var(--#{$prefix}color-typography-neutral);
+      font-family: var(--#{$prefix}typography-family-base);
+      font-size: var(--#{$prefix}typography-size-title-xs);
+      font-weight: var(--#{$prefix}typography-weight-title-xs);
+      line-height: var(--#{$prefix}typography-line-height-title-xs);
+      text-transform: var(--#{$prefix}typography-transform-uppercase);
+      min-height: var(--#{$prefix}space-3x);
+      padding: var(--#{$prefix}space-2x) 0;
+
+      &--first {
+        padding-top: 0;
+      }
+    }
+
+    ::ng-deep mark {
+      pointer-events: none;
+    }
+  }
+}
+
+.#{$prefix}select-list-item__group-wrapper {
+  &:not(.#{$prefix}select-list-item__group-wrapper--first-option) {
+    margin-top: var(--#{$prefix}space-2x);
+  }
+
+  &--no-title:not(.#{$prefix}select-list-item__group-wrapper--first-option) {
+    padding-top: var(--#{$prefix}space-2x);
+
+    &:not(.#{$prefix}select-list-item__group-wrapper--with-dividers) {
+      margin-top: 0;
+    }
+  }
+
+  * .#{$prefix}box-content {
+    margin: var(--#{$prefix}space-1x);
+  }
+
+  &::before {
+    @useant as *;
+    z-index: z-index(content);
+  }
+}
+
+.#{$prefix}select-list-item__children {
+  &__items {
+    display: block;
+    position: relative;
+    margin: 0 var(--#{$prefix}space-indent-nav-item);
+
+    &--closed {
+      display: none;
+    }
+
+    ::ng-deep #{$prefix}list-item {
+      &:not(.#{$prefix}list-item--selected) {
+        background-color: transparent;
+      }
+
+      & .#{$prefix}list-item__content-wrapper {
+        margin-left: var(--#{$prefix}space-indent-nav-item);
+      }
+    }
+
+    &::before {
+      content: ' ';
+      position: absolute;
+      width: var(--#{$prefix}shape-size-x-nav-node-line);
+      height: 100%;
+      left: 1px;
+      background-color: var(--#{$prefix}color-surface-nav-divider);
+    }
+  }
+}

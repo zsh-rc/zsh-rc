@@ -1,0 +1,20 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}popover),
+:host(.#{$prefix}popover),
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}popover {
+  display: block;
+}
+
+.#{$prefix}popover-wrapper {
+  flex: auto;
+
+  &__context {
+    display: flex;
+    width: 100%;
+  }
+}

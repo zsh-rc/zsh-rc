@@ -1,0 +1,164 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}dialog),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}dialog {
+  --#{$prefix}dialog-backdrop-transition-duration: var(--cdk-overlay-backdrop-transition-duration);
+}
+
+.#{$prefix}dialog-wrapper {
+  --#{$prefix}dialog-border-radius: 2px;
+
+  --#{$prefix}dialog-close-icon-size: 20px;
+
+  --#{$prefix}dialog-content-padding: 16px;
+
+  --#{$prefix}dialog-animation-timing: var(--#{$prefix}motion-duration-3);
+  --#{$prefix}dialog-animation-function: var(--#{$prefix}motion-timing-2);
+  --#{$prefix}dialog-animation-delay: var(--#{$prefix}motion-delay-0);
+
+  &.#{$prefix}no-motion {
+    --#{$prefix}dialog-animation-timing: 0s;
+  }
+
+  position: relative;
+  border-radius: var(--#{$prefix}dialog-border-radius);
+  width: 100%;
+  opacity: 0;
+  transition:
+    opacity var(--#{$prefix}dialog-animation-timing) var(--#{$prefix}dialog-animation-function)
+      var(--#{$prefix}dialog-animation-delay),
+    transform var(--#{$prefix}dialog-animation-timing) var(--#{$prefix}dialog-animation-function)
+      var(--#{$prefix}dialog-animation-delay),
+    visibility var(--#{$prefix}dialog-animation-timing) var(--#{$prefix}dialog-animation-function)
+      var(--#{$prefix}dialog-animation-delay);
+
+  &--in-modal {
+    margin: var(--#{$prefix}space-12x) var(--#{$prefix}space-6x);
+    flex: 1;
+    pointer-events: all;
+
+    &.#{$prefix}dialog-wrapper--non-scrollable {
+      height: 100%;
+    }
+  }
+
+  &--size- {
+    &sm {
+      max-width: 42%;
+
+      @include media-breakpoint-down(xl) {
+        max-width: 50%;
+      }
+
+      @include media-breakpoint-down(md) {
+        max-width: 58%;
+      }
+
+      @include media-breakpoint-down(sm) {
+        max-width: 100%;
+      }
+    }
+    &md {
+      max-width: 58%;
+
+      @include media-breakpoint-down(xl) {
+        max-width: 66%;
+      }
+
+      @include media-breakpoint-down(md) {
+        max-width: 75%;
+      }
+
+      @include media-breakpoint-down(sm) {
+        max-width: 100%;
+      }
+    }
+    &lg {
+      max-width: 75%;
+
+      @include media-breakpoint-down(xl) {
+        max-width: 83%;
+      }
+
+      @include media-breakpoint-down(md) {
+        max-width: 92%;
+      }
+
+      @include media-breakpoint-down(sm) {
+        max-width: 100%;
+      }
+    }
+  }
+
+  // narrow screen
+  @include media-breakpoint-down(sm) {
+    // if touch device
+    @media (any-hover: none) {
+      transform: translateY(100%);
+      max-width: none;
+      padding: 0 0;
+      margin-bottom: 0;
+    }
+  }
+
+  // if touch device (regular size screen)
+  @media (any-hover: none) {
+  }
+
+  &--visible {
+    opacity: 1;
+
+    // narrow screen
+    @include media-breakpoint-down(sm) {
+      // if touch device
+      @media (any-hover: none) {
+        transform: translateY(0);
+      }
+    }
+
+    // if touch device (regular size screen)
+    @media (any-hover: none) {
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+
+    ::ng-deep #{$prefix}box-header {
+      flex: 1;
+    }
+  }
+
+  ::ng-deep #{$prefix}box-footer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+.#{$prefix}dialog-wrapper__context {
+  width: 100%;
+  max-height: 100%;
+  display: inherit;
+  justify-content: inherit;
+  user-select: none;
+  overflow: visible;
+
+  &--allow-overflow {
+    overflow: auto;
+  }
+
+  &--align-top {
+    align-self: flex-start;
+  }
+
+  @include media-breakpoint-down(sm) {
+    align-self: initial;
+  }
+}

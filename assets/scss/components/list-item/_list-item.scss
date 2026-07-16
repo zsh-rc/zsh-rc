@@ -1,0 +1,209 @@
+@use 'sass:map';
+@use '../../density-styles-sass' as *;
+@use '../../utilities/sass_utilities' as *;
+@use 'list-item.states';
+
+:host(#{$prefix}list-item, [#{$prefix}list-item], #{$prefix}menu-item, [#{$prefix}menu-item]),
+.#{$prefix}list-item {
+  display: flex;
+  align-items: flex-start;
+  min-height: var(--#{$prefix}shape-size-ymin-list-item);
+  --vertical-padding: calc(
+    (var(--#{$prefix}shape-size-ymin-list-item) - var(--#{$prefix}font-line-height-list-item)) / 2
+  );
+  padding: var(--vertical-padding) var(--#{$prefix}space-inline-end-list-item) var(--vertical-padding)
+    var(--#{$prefix}space-inline-start-list-item);
+  outline: none;
+  position: relative;
+  cursor: default;
+  user-select: none;
+  border-radius: var(--#{$prefix}shape-radius-list-item);
+  overflow: hidden;
+  // this is a fix for safari bug (accent bar doesn't get the rounded corners)
+  transform: translate3d(0, 0, 0);
+  z-index: z-index(content);
+
+  @each $type, $states in list-item.$list-item-states {
+    $selector: '&.#{$prefix}list-item--#{$type}';
+    /*
+     *  By default set "primary" style.
+     */
+    @if $type == 'primary' {
+      $selector: '&,' + $selector;
+    }
+
+    #{$selector} {
+      @each $prop, $value in map.get($states, 'enabled') {
+        #{$prop}: #{$value};
+      }
+
+      &.#{$prefix}list-item--hoverable,
+      &.#{$prefix}list-item--selectable {
+        // This media query prevents item from looking hovered after click
+        @media (hover: hover) {
+          &:hover:not([disabled]):not(.#{$prefix}list-item--readonly) {
+            @each $prop, $value in map.get($states, 'hover') {
+              #{$prop}: #{$value};
+            }
+            z-index: z-index(content);
+          }
+        }
+
+        &:focus-visible:not([disabled]),
+        &:target:not([disabled]) {
+          @each $prop, $value in map.get($states, 'focus') {
+            #{$prop}: #{$value};
+          }
+          z-index: calc(z-index(content) + 1);
+        }
+
+        &.#{$prefix}navigation-bar-item__label:focus-visible:not([disabled]),
+        &.#{$prefix}navigation-bar-item__label:target:not([disabled]) {
+          outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+          outline-offset: -2px; //TODO: TEMPORARY UNTIL DESIGNERS STUDY THE IMPACT OF THE USER TO INCREASE THE OUTLINE OFFSET, TALK TO RSF FOR MORE INFO
+        }
+
+        &:focus:not(:focus-visible) {
+          outline: none;
+        }
+      }
+
+      &[disabled] {
+        @each $prop, $value in map.get($states, 'disabled') {
+          #{$prop}: #{$value};
+        }
+
+        #{$prefix}icon {
+          color: inherit;
+        }
+      }
+
+      @if $type == 'selected' {
+        &:not(.#{$prefix}list-item--parent),
+        &.#{$prefix}list-item--supress-parent {
+          &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--#{$prefix}color-surface-list-item-selected-bar);
+          }
+        }
+
+        &.#{$prefix}list-item--parent {
+          --#{$prefix}color-text-list-item: var(--#{$prefix}color-typography-action-active);
+          --#{$prefix}color-icon-list-item: var(--#{$prefix}color-icon-list-item-active);
+        }
+      }
+
+      @if $type == 'hoverable' {
+        &.#{$prefix}list-item--hoverable-active {
+          @each $prop, $value in map.get($states, 'hover') {
+            #{$prop}: #{$value};
+          }
+        }
+      }
+    }
+  }
+
+  .#{$prefix}list-item__template-parent,
+  .#{$prefix}list-item__template-switch {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    align-items: flex-start;
+  }
+
+  > #{$prefix}switch {
+    margin-left: var(--#{$prefix}space-inline-couple-list-item);
+    flex: 0 0 auto;
+  }
+
+  > .#{$prefix}checkbox {
+    margin-right: var(--#{$prefix}space-inline-couple-list-item);
+    flex: 0 0 auto;
+
+    &.#{$prefix}list-item__checkbox--with-icon {
+      margin-right: var(--#{$prefix}space-inline-join-list-item);
+    }
+  }
+
+  > .#{$prefix}list-item__checkbox-wrapper {
+    width: var(--#{$prefix}shape-size-y-checkbox);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: var(--#{$prefix}space-inline-couple-list-item);
+    margin-left: 1px;
+    flex: 0 0 auto;
+  }
+
+  .#{$prefix}list-item__content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .#{$prefix}list-item__content {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &.#{$prefix}list-item--truncate {
+    .#{$prefix}list-item__content {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &.#{$prefix}list-item__label--group {
+    cursor: inherit;
+    color: var(--#{$prefix}color-typography-neutral);
+    font-family: var(--#{$prefix}typography-family-base);
+    font-size: var(--#{$prefix}typography-size-title-xs);
+    font-weight: var(--#{$prefix}typography-weight-title-xs);
+    line-height: var(--#{$prefix}typography-line-height-title-xs);
+    text-transform: var(--#{$prefix}typography-transform-uppercase);
+    padding-left: 0;
+    min-height: fit-content;
+  }
+
+  #{$prefix}icon {
+    flex: 0 0 auto;
+    color: var(--#{$prefix}color-icon-list-item);
+  }
+
+  &.#{$prefix}list-item--selected {
+    #{$prefix}icon {
+      color: var(--#{$prefix}color-icon-list-item-active);
+    }
+  }
+
+  .icon-left,
+  .#{$prefix}list-item__prefix {
+    margin-right: var(--#{$prefix}space-inline-couple-list-item);
+  }
+
+  .icon-right,
+  .#{$prefix}list-item__suffix {
+    margin-left: var(--#{$prefix}space-inline-couple-list-item);
+  }
+
+  .#{$prefix}list-item__tree-indicator {
+    width: var(--#{$prefix}space-6x);
+    margin-right: var(--#{$prefix}space-inline-node-list-item);
+  }
+}
+
+.#{$prefix}list-item__overlay--disabled {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}

@@ -1,0 +1,81 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}breadcrumb-item),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}breadcrumb-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  line-height: var(--#{$prefix}space-6x);
+  color: var(--#{$prefix}color-typography-neutral);
+  font-size: var(--#{$prefix}typography-size-label);
+  margin-right: var(--#{$prefix}space-1x);
+
+  &.#{$prefix}breadcrumb-item {
+    &--link:not(.#{$prefix}breadcrumb-item--non-clickable) {
+      cursor: pointer;
+      text-decoration: underline;
+
+      & ::ng-deep a {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        color: var(--#{$prefix}color-typography-neutral);
+
+        &:focus-visible {
+          outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+          outline-offset: var(--#{$prefix}size-outline-offset);
+        }
+        &:focus:not(:focus-visible) {
+          outline: none;
+        }
+      }
+
+      & .#{$prefix}breadcrumb-item__content:hover {
+        color: var(--#{$prefix}color-typography-action);
+
+        & ::ng-deep a {
+          color: var(--#{$prefix}color-typography-action);
+        }
+      }
+    }
+
+    &--last {
+      color: var(--#{$prefix}color-typography-base);
+      font-weight: var(--#{$prefix}typography-weight-strong);
+      pointer-events: none;
+
+      & ::ng-deep a {
+        display: block;
+        text-decoration: none;
+        color: var(--#{$prefix}color-typography-base);
+        pointer-events: none;
+      }
+    }
+
+    &--hidden {
+      display: none;
+    }
+
+    &:focus-visible {
+      outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+      outline-offset: var(--#{$prefix}size-outline-offset);
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .#{$prefix}breadcrumb-item__icon-box {
+      cursor: default;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // TODO: waiting for token
+      // padding: var(--#{$prefix}space-inset-breadcrumb-separator);
+      padding: var(--#{$prefix}space-1x);
+    }
+  }
+}

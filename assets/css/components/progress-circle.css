@@ -1,0 +1,90 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-progress-circle),
+.ds-progress-circle {
+  display: block;
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+  height: var(--ds-icon-size-small);
+  width: var(--ds-icon-size-small);
+  pointer-events: none;
+  color: var(--ds-color-surface-progress-circle-fill);
+}
+:host(ds-progress-circle) svg,
+.ds-progress-circle svg {
+  position: absolute;
+  transform: rotate(-90deg);
+  top: 0;
+  left: 0;
+  transform-origin: center;
+  overflow: visible;
+}
+:host(ds-progress-circle) svg.ds-progress-circle__svg--spinning,
+.ds-progress-circle svg.ds-progress-circle__svg--spinning {
+  animation: ds-progress-circle-rotate 1s linear infinite;
+}
+:host(ds-progress-circle) circle,
+.ds-progress-circle circle {
+  fill: transparent;
+}
+:host(ds-progress-circle) .ds-progress-circle__track,
+.ds-progress-circle .ds-progress-circle__track {
+  stroke: var(--ds-color-surface-progress-circle-track);
+  stroke-width: var(--ds-shape-size-y-progress-circle-track);
+  stroke-opacity: 20%;
+}
+:host(ds-progress-circle) .ds-progress-circle__indicator,
+.ds-progress-circle .ds-progress-circle__indicator {
+  stroke: currentColor;
+  stroke-width: var(--ds-shape-size-y-progress-circle-fill);
+  stroke-opacity: 100%;
+}
+:host(ds-progress-circle) .ds-progress-circle__indicator.spinning,
+.ds-progress-circle .ds-progress-circle__indicator.spinning {
+  animation: ds-progress-circle-breathe 1.5s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: stroke-dashoffset 0.5s ease-in-out;
+  stroke-linecap: round;
+  stroke-dashoffset: var(--ds-progress-circle-stroke-circumference-start);
+}
+@keyframes ds-progress-circle-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes ds-progress-circle-breathe {
+  0% {
+    stroke-dashoffset: var(--ds-progress-circle-stroke-circumference-start);
+  }
+  50% {
+    stroke-dashoffset: var(--ds-progress-circle-stroke-circumference-end);
+  }
+  100% {
+    stroke-dashoffset: var(--ds-progress-circle-stroke-circumference-start);
+  }
+}
+:host(ds-progress-circle).ds-progress-circle--sm,
+.ds-progress-circle.ds-progress-circle--sm {
+  height: var(--ds-icon-size-small);
+  width: var(--ds-icon-size-small);
+}
+:host(ds-progress-circle).ds-progress-circle--md,
+.ds-progress-circle.ds-progress-circle--md {
+  height: var(--ds-icon-size-medium);
+  width: var(--ds-icon-size-medium);
+}
+:host(ds-progress-circle).ds-progress-circle--lg,
+.ds-progress-circle.ds-progress-circle--lg {
+  height: var(--ds-icon-size-large);
+  width: var(--ds-icon-size-large);
+}

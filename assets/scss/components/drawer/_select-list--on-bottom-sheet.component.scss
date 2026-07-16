@@ -1,0 +1,152 @@
+@use '../../mixins/placeholder' as *;
+@use '../../density-styles-sass' as *;
+
+/* this is always the same - START */
+:host(#{$prefix}drawer),
+.#{$prefix}drawer {
+  &.#{$prefix}drawer--select
+    ::ng-deep
+    > .#{$prefix}box
+    > .#{$prefix}box__wrapper
+    > .#{$prefix}box__header-wrapper
+    > #{$prefix}box-header
+    > .#{$prefix}box-header__item {
+    padding-bottom: 0px;
+  }
+  &.#{$prefix}drawer
+    ::ng-deep
+    > .#{$prefix}box
+    > .#{$prefix}box__wrapper
+    > .#{$prefix}box__header-wrapper
+    > #{$prefix}box-header
+    > .#{$prefix}box-header__item
+    > .#{$prefix}box-header__header-wrapper--with-actions
+    > .#{$prefix}box-header__actions {
+    /* this is always the same - END */
+
+    /* this should be specific to the component - START */
+    & > .#{$prefix}select-list__drawer__actions {
+      flex: 1;
+
+      & > .#{$prefix}select-list__filter {
+        position: relative;
+        top: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: var(--#{$prefix}color-surface-list-item-search);
+        min-height: var(--#{$prefix}space-10x);
+
+        & > .#{$prefix}select-list__filter__icon {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: var(--#{$prefix}space-inline-start-list-item);
+          pointer-events: none;
+          color: var(--#{$prefix}color-icon-list-item);
+        }
+
+        & > input.#{$prefix}select-list__filter__input {
+          width: 100%;
+          height: inherit;
+          border: 0;
+          background-color: transparent;
+
+          padding-left: calc(
+            var(--#{$prefix}space-inline-start-list-item) + var(--#{$prefix}icon-size-small) +
+              var(--#{$prefix}space-inline-couple-list-item)
+          );
+          padding-top: var(--#{$prefix}space-stack-start-list-item);
+          padding-right: var(--#{$prefix}space-inline-end-list-item);
+          padding-bottom: var(--#{$prefix}space-stack-end-list-item);
+          color: var(--#{$prefix}color-text-list-item);
+          font-family: var(--#{$prefix}font-family-list-item);
+          font-size: var(--#{$prefix}font-size-list-item);
+          font-weight: var(--#{$prefix}font-weight-list-item);
+          line-height: var(--#{$prefix}font-line-height-list-item);
+
+          @include placeholder {
+            display: flex;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            color: var(--#{$prefix}color-text-input-placeholder);
+            font-size: var(--#{$prefix}font-size-input-placeholder);
+            font-style: var(--#{$prefix}font-style-input-placeholder);
+            font-style: italic;
+          }
+
+          &:focus {
+            outline: 0;
+            box-shadow: var(--select-list-selected-bs);
+          }
+
+          &--lg {
+            --#{$prefix}font-size-list-item: var(--#{$prefix}font-size-list-item-large);
+            --#{$prefix}font-line-height-list-item: var(--#{$prefix}font-line-height-list-item-large);
+            --#{$prefix}space-stack-start-list-item: var(--#{$prefix}space-stack-start-list-item-large);
+            --#{$prefix}space-stack-end-list-item: var(--#{$prefix}space-stack-end-list-item-large);
+          }
+        }
+      }
+
+      & > li {
+        list-style: none;
+
+        .#{$prefix}select-list__select-all {
+          padding: var(--#{$prefix}space-2x);
+          margin-bottom: 1px;
+
+          .#{$prefix}list-item__content-wrapper .#{$prefix}list-item__content {
+            max-height: var(--#{$prefix}typography-line-height-regular);
+          }
+
+          span {
+            width: auto;
+            font-size: var(--#{$prefix}font-size-list-item);
+          }
+
+          span:nth-child(1) {
+            padding-right: var(--#{$prefix}space-1x);
+
+            // TODO tokens. Replace with component token
+            color: var(--#{$prefix}color-typography-action-active);
+          }
+
+          span:nth-child(2) {
+            padding-left: 0;
+
+            // TODO tokens. Replace with component token
+            color: var(--#{$prefix}color-typography-neutral);
+          }
+        }
+      }
+    }
+    /* this should be specific to the component - END */
+  }
+
+  &.#{$prefix}drawer
+    ::ng-deep
+    > .#{$prefix}box
+    > .#{$prefix}box__wrapper
+    > .#{$prefix}box__content-wrapper
+    > .#{$prefix}drawer__box__main-content
+    > .#{$prefix}box-content__content-wrapper
+    > #{$prefix}select-list
+    > .#{$prefix}select-list__wrapper
+    > .#{$prefix}box__wrapper
+    > .#{$prefix}box__content-wrapper
+    > .#{$prefix}box-content
+    > .#{$prefix}box-content__content-wrapper
+    > .#{$prefix}select-list__options-container
+    > .#{$prefix}box-content__content-wrapper
+    > .#{$prefix}select-list__options-container-list
+    > .cdk-virtual-scroll-viewport
+    > .cdk-virtual-scroll-content-wrapper
+    > ul
+    > li:first-child {
+    padding-top: var(--#{$prefix}space-2x);
+  }
+}

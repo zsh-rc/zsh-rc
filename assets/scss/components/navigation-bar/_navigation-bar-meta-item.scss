@@ -1,0 +1,50 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}navigation-bar-meta-item),
+.#{$prefix}navigation-bar-meta-item {
+  --#{$prefix}navigation-bar-item-max-height: 40px;
+  --#{$prefix}navigation-bar-button-width: 40px;
+  --#{$prefix}navigation-bar-item-left-padding: 10px;
+
+  &.#{$prefix}navigation-bar-meta-item {
+    position: relative;
+    width: 100%;
+
+    & > a {
+      text-decoration: none;
+    }
+
+    &.#{$prefix}navigation-bar-meta-item--expanded:not(.#{$prefix}navigation-bar-meta-item--mobile):not(
+        .#{$prefix}navigation-bar-meta-item__children
+      ) {
+      &:last-of-type {
+        ::ng-deep #{$prefix}list-item {
+          max-width: calc(100% - var(--#{$prefix}navigation-bar-button-width));
+        }
+      }
+    }
+  }
+}
+
+.#{$prefix}navigation-bar-meta-item__list-item {
+  height: var(--#{$prefix}navigation-bar-item-max-height);
+  width: 100%;
+  padding-left: var(--#{$prefix}navigation-bar-item-left-padding);
+  line-height: var(--#{$prefix}typography-line-height-regular);
+  align-items: center;
+
+  &:focus-visible:not([disabled]):not(.#{$prefix}navigation-bar-meta-item__parent):not(
+      .#{$prefix}navigation-bar-meta-item__child
+    ) {
+    --#{$prefix}space-inline-end-list-item: 10px;
+
+    &.#{$prefix}navigation-bar-meta-item__list-item--expanded {
+      max-width: calc(100% - var(--#{$prefix}navigation-bar-button-width));
+    }
+  }
+
+  &--expanded {
+    width: initial;
+  }
+}

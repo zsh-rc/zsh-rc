@@ -1,0 +1,132 @@
+/**
+ * This file could be ignored due to the changes made to it being mostly done via scripts that prepare the storybook or density-test build.
+ * To make changes to this file and commit them first run the command `pnpm run git:not-ignore-files-changed-by-scripts`
+ */
+$font-family: 'ag-grid-density' !default;
+$font-path: 'fonts/' !default;
+
+$ag-icon-none: '\e900';
+$ag-icon-asc: '\e901';
+$ag-icon-desc: '\e902';
+$ag-icon-radio-button-off: '\e903';
+$ag-icon-previous: '\e904';
+$ag-icon-expanded: '\e905';
+$ag-icon-columns: '\e906';
+$ag-icon-menu: '\e907';
+$ag-icon-aggregation: '\e908';
+$ag-icon-cancel: '\e909';
+$ag-icon-color-picker: '\e90a';
+$ag-icon-paste: '\e90b';
+$ag-icon-pin: '\e90c';
+$ag-icon-copy: '\e90d';
+$ag-icon-chart: '\e90e';
+$ag-icon-unlinked: '\e90f';
+$ag-icon-linked: '\e910';
+$ag-icon-small-up: '\e911';
+$ag-icon-small-down: '\e912';
+$ag-icon-small-left: '\e913';
+$ag-icon-checkbox-checked: '\e924';
+$ag-icon-csv: '\e915';
+$ag-icon-tick: '\e916';
+$ag-icon-checkbox-unchecked: '\e917';
+$ag-icon-tree-open: '\e918';
+$ag-icon-tree-closed: '\e919';
+$ag-icon-next: '\e91a';
+$ag-icon-contracted: '\e91b';
+$ag-icon-right: '\e91c';
+$ag-icon-excel: '\e91d';
+$ag-icon-filter: '\e91e';
+$ag-icon-grip: '\e91f';
+$ag-icon-tree-indeterminate: '\e920';
+$ag-icon-not-allowed: '\e921';
+$ag-icon-small-right: '\e922';
+$ag-icon-radio-button-on: '\e923';
+$ag-icon-checkbox-indeterminate: '\e914';
+$ag-icon-cross: '\e925';
+$ag-icon-save: '\e926';
+$ag-icon-eye: '\e927';
+$ag-icon-eye-slash: '\e928';
+$ag-icon-left: '\e929';
+$ag-icon-loading: '\e92a';
+$ag-icon-minimize: '\e92b';
+$ag-icon-maximize: '\e92c';
+$ag-icon-pivot: '\e92d';
+$ag-icon-group: '\e92e';
+$ag-icon-arrows: '\e92f';
+$ag-icon-last: '\e930';
+$ag-icon-first: '\e931';
+$ag-icon-checkbox-checked-alpine: '\e932';
+$ag-icon-checkbox-indeterminate-alpine: '\e933';
+$ag-icon-table-sort-asc-path1: '\e934';
+$ag-icon-table-sort-asc-path2: '\e935';
+$ag-icon-table-sort-desc-path1: '\e936';
+$ag-icon-table-sort-desc-path2: '\e937';
+
+$theme-params-icons: (
+  'icon-font-family': 'ag-grid-density',
+  'icon-font-code-aggregation': $ag-icon-aggregation,
+  'icon-font-code-arrows': $ag-icon-arrows,
+  'icon-font-code-asc': $ag-icon-table-sort-asc-path1,
+  'icon-font-code-cancel': $ag-icon-cancel,
+  'icon-font-code-chart': $ag-icon-chart,
+  'icon-font-code-checkbox-checked': $ag-icon-checkbox-checked-alpine,
+  'icon-font-code-checkbox-indeterminate': $ag-icon-checkbox-indeterminate-alpine,
+  'icon-font-code-checkbox-unchecked': $ag-icon-checkbox-unchecked,
+  'icon-font-code-color-picker': $ag-icon-color-picker,
+  'icon-font-code-columns': $ag-icon-columns,
+  'icon-font-code-contracted': $ag-icon-tree-closed,
+  'icon-font-code-copy': $ag-icon-copy,
+  'icon-font-code-cross': $ag-icon-cross,
+  'icon-font-code-csv': $ag-icon-csv,
+  'icon-font-code-desc': $ag-icon-table-sort-desc-path2,
+  'icon-font-code-excel': $ag-icon-excel,
+  'icon-font-code-expanded': $ag-icon-previous,
+  'icon-font-code-eye-slash': $ag-icon-eye-slash,
+  'icon-font-code-eye': $ag-icon-eye,
+  'icon-font-code-filter': $ag-icon-filter,
+  'icon-font-code-first': $ag-icon-first,
+  'icon-font-code-grip': $ag-icon-grip,
+  'icon-font-code-group': $ag-icon-group,
+  'icon-font-code-last': $ag-icon-last,
+  'icon-font-code-left': $ag-icon-left,
+  'icon-font-code-linked': $ag-icon-linked,
+  'icon-font-code-loading': $ag-icon-loading,
+  'icon-font-code-maximize': $ag-icon-maximize,
+  'icon-font-code-menu': $ag-icon-menu,
+  'icon-font-code-minimize': $ag-icon-minimize,
+  'icon-font-code-next': $ag-icon-next,
+  'icon-font-code-none': $ag-icon-none,
+  'icon-font-code-not-allowed': $ag-icon-not-allowed,
+  'icon-font-code-paste': $ag-icon-paste,
+  'icon-font-code-pin': $ag-icon-pin,
+  'icon-font-code-pivot': $ag-icon-pivot,
+  'icon-font-code-previous': $ag-icon-expanded,
+  'icon-font-code-radio-button-off': $ag-icon-radio-button-off,
+  'icon-font-code-radio-button-on': $ag-icon-radio-button-on,
+  'icon-font-code-right': $ag-icon-right,
+  'icon-font-code-save': $ag-icon-save,
+  'icon-font-code-small-down': $ag-icon-tree-open,
+  'icon-font-code-small-left': $ag-icon-small-left,
+  'icon-font-code-small-right': $ag-icon-contracted,
+  'icon-font-code-small-up': $ag-icon-small-up,
+  'icon-font-code-tick': $ag-icon-tick,
+  'icon-font-code-tree-closed': $ag-icon-small-right,
+  'icon-font-code-tree-indeterminate': $ag-icon-tree-indeterminate,
+  'icon-font-code-tree-open': $ag-icon-small-down,
+  'icon-font-code-unlinked': $ag-icon-unlinked,
+);
+
+@mixin render-font-face {
+  @font-face {
+    font-display: block;
+    font-family: $font-family;
+    font-style: normal;
+    font-weight: normal;
+    src: url('!correct-path!fonts/ag-grid-density.eot?10m643');
+    src:
+      url('!correct-path!fonts/ag-grid-density.eot?10m643#iefix') format('embedded-opentype'),
+      url('!correct-path!fonts/ag-grid-density.ttf?10m643') format('truetype'),
+      url('!correct-path!fonts/ag-grid-density.woff?10m643') format('woff'),
+      url('!correct-path!fonts/ag-grid-density.svg?10m643#ag-grid-density') format('svg');
+  }
+}

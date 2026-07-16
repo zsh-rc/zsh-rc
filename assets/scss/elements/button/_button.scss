@@ -1,0 +1,199 @@
+@use 'sass:map';
+@use 'button.states' as *;
+@use '../../density-styles-sass' as *;
+@use '../../utilities/sass_utilities' as *;
+
+.#{$prefix}button {
+  align-items: center;
+  border-radius: var(--#{$prefix}shape-radius-button);
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: none;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--#{$prefix}typography-family-button);
+  font-size: var(--#{$prefix}typography-size-button);
+  font-weight: var(--#{$prefix}typography-weight-button);
+  line-height: var(--#{$prefix}typography-line-height-button);
+  max-width: 100%;
+  height: var(--#{$prefix}shape-size-ymin-button);
+  min-width: var(--#{$prefix}shape-size-xmin-button);
+  outline: none;
+  overflow: hidden;
+  padding: 0 var(--#{$prefix}space-inline-end-button) 0 var(--#{$prefix}space-inline-start-button);
+  position: relative;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-decoration: none;
+  justify-content: center;
+
+  > * {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &.has-no-content.has-icon {
+    padding: calc(var(--#{$prefix}space-inline-couple-button) - 1px);
+  }
+
+  > #{$prefix}icon {
+    flex: 0 0 auto;
+  }
+
+  @each $type, $states in $button-states {
+    $selector: '&.#{$prefix}button--#{$type}';
+    /*
+     *  Fallback button type to "primary" if type class doesn't exist
+     */
+    @if $type == 'primary' {
+      $selector: '&,' + $selector;
+    }
+
+    #{$selector} {
+      @each $prop, $value in map.get($states, 'enabled') {
+        #{$prop}: #{$value};
+      }
+
+      &:hover {
+        @each $prop, $value in map.get($states, 'hover') {
+          #{$prop}: #{$value};
+        }
+        text-decoration: none;
+        z-index: z-index(content);
+      }
+
+      &:focus-visible,
+      &:target {
+        @each $prop, $value in map.get($states, 'focus') {
+          #{$prop}: #{$value};
+        }
+        z-index: z-index(content);
+      }
+
+      &:focus:not(:focus-visible) {
+        outline: none;
+      }
+
+      @if $type != 'toggle' {
+        &.#{$prefix}button--loading,
+        &:active,
+        &--active {
+          @each $prop, $value in map.get($states, 'active') {
+            #{$prop}: #{$value};
+          }
+          z-index: z-index(content);
+        }
+      }
+
+      @if $type == 'toggle' {
+        &--active {
+          @each $prop, $value in map.get($states, 'active') {
+            #{$prop}: #{$value};
+          }
+        }
+        &--active:hover {
+          @each $prop, $value in map.get($states, 'active:hover') {
+            #{$prop}: #{$value};
+          }
+        }
+        &[disabled]#{&}--active {
+          cursor: not-allowed;
+          @each $prop, $value in map.get($states, 'active-disabled') {
+            #{$prop}: #{$value};
+          }
+        }
+      }
+
+      &[disabled] {
+        cursor: not-allowed;
+        @each $prop, $value in map.get($states, 'disabled') {
+          #{$prop}: #{$value};
+        }
+      }
+    }
+  }
+
+  #{$prefix}icon {
+    &.icon-left {
+      margin-right: var(--#{$prefix}space-inline-couple-button);
+    }
+
+    &.icon-right {
+      margin-left: var(--#{$prefix}space-inline-couple-button);
+    }
+  }
+
+  &.has-no-content.has-icon #{$prefix}icon {
+    margin: 0;
+  }
+
+  &--sm {
+    font-size: var(--#{$prefix}typography-size-button-sm);
+    line-height: var(--#{$prefix}typography-line-height-button-sm);
+    height: var(--#{$prefix}shape-size-ymin-button-sm);
+    min-width: var(--#{$prefix}shape-size-xmin-button-sm);
+    padding: 0 var(--#{$prefix}space-inline-end-button-sm) 0 var(--#{$prefix}space-inline-start-button-sm);
+  }
+
+  &--md {
+    font-size: var(--#{$prefix}typography-size-button);
+    line-height: var(--#{$prefix}typography-line-height-button);
+    height: var(--#{$prefix}shape-size-ymin-button);
+    min-width: var(--#{$prefix}shape-size-xmin-button);
+    padding: 0 var(--#{$prefix}space-inline-end-button) 0 var(--#{$prefix}space-inline-start-button);
+  }
+
+  &--lg {
+    font-size: var(--#{$prefix}typography-size-button-lg);
+    line-height: var(--#{$prefix}typography-line-height-button-lg);
+    height: var(--#{$prefix}shape-size-ymin-button-lg);
+    min-width: var(--#{$prefix}shape-size-xmin-button-lg);
+    padding: 0 var(--#{$prefix}space-inline-end-button-lg) 0 var(--#{$prefix}space-inline-start-button-lg);
+  }
+
+  &--loading {
+    .#{$prefix}button__progress-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      color: inherit;
+      animation: #{$prefix}button-loading-entrance var(--#{$prefix}motion-duration-standard)
+        var(--#{$prefix}motion-timing-entrance) forwards;
+
+      & ~ * {
+        animation: #{$prefix}button-loading-exit var(--#{$prefix}motion-duration-quick)
+          var(--#{$prefix}motion-timing-exit) forwards;
+      }
+    }
+
+    &:not(:disabled) {
+      cursor: default;
+    }
+
+    @keyframes #{$prefix}button-loading-entrance {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -70%);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    @keyframes #{$prefix}button-loading-exit {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(16%);
+      }
+    }
+  }
+
+  &--with-badge {
+    overflow: visible;
+  }
+}

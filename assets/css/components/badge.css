@@ -1,0 +1,146 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(ds-badge),
+:host(.ds-badge),
+.ds-badge {
+  display: flex;
+  align-items: flex-start;
+  z-index: calc(var(--ds-z-index-content-base) + 1);
+  color: var(--ds-color-typography-invert);
+  --ds-badge-background-color: var(--ds-color-surface-badge-neutral);
+  /*
+  *  Fallback tag type to "neutral" if type class doesn't exist
+  */
+}
+:host(ds-badge), :host(ds-badge).ds-badge--neutral,
+:host(.ds-badge),
+:host(.ds-badge).ds-badge--neutral,
+.ds-badge,
+.ds-badge.ds-badge--neutral {
+  --ds-badge-background-color: var(--ds-color-surface-badge-neutral);
+}
+:host(ds-badge),
+:host(.ds-badge),
+.ds-badge {
+  /*
+  *  Fallback tag type to "neutral" if type class doesn't exist
+  */
+}
+:host(ds-badge).ds-badge--info,
+:host(.ds-badge).ds-badge--info,
+.ds-badge.ds-badge--info {
+  --ds-badge-background-color: var(--ds-color-surface-badge-info);
+}
+:host(ds-badge),
+:host(.ds-badge),
+.ds-badge {
+  /*
+  *  Fallback tag type to "neutral" if type class doesn't exist
+  */
+}
+:host(ds-badge).ds-badge--positive,
+:host(.ds-badge).ds-badge--positive,
+.ds-badge.ds-badge--positive {
+  --ds-badge-background-color: var(--ds-color-surface-badge-positive);
+}
+:host(ds-badge),
+:host(.ds-badge),
+.ds-badge {
+  /*
+  *  Fallback tag type to "neutral" if type class doesn't exist
+  */
+}
+:host(ds-badge).ds-badge--caution,
+:host(.ds-badge).ds-badge--caution,
+.ds-badge.ds-badge--caution {
+  --ds-badge-background-color: var(--ds-color-surface-badge-caution);
+  color: var(--ds-color-typography-base);
+}
+:host(ds-badge),
+:host(.ds-badge),
+.ds-badge {
+  /*
+  *  Fallback tag type to "neutral" if type class doesn't exist
+  */
+}
+:host(ds-badge).ds-badge--critical,
+:host(.ds-badge).ds-badge--critical,
+.ds-badge.ds-badge--critical {
+  --ds-badge-background-color: var(--ds-color-surface-badge-critical);
+}
+:host(ds-badge),
+:host(.ds-badge),
+.ds-badge {
+  /*
+  *  Fallback tag type to "neutral" if type class doesn't exist
+  */
+}
+:host(ds-badge).ds-badge--disabled,
+:host(.ds-badge).ds-badge--disabled,
+.ds-badge.ds-badge--disabled {
+  --ds-badge-background-color: var(--ds-color-surface-badge-disabled);
+  color: var(--ds-color-typography-disabled);
+}
+:host(ds-badge).ds-badge--elevation-base .ds-badge__content-wrapper,
+:host(.ds-badge).ds-badge--elevation-base .ds-badge__content-wrapper,
+.ds-badge.ds-badge--elevation-base .ds-badge__content-wrapper {
+  box-shadow: var(--ds-elevation-base);
+}
+:host(ds-badge).ds-badge--translate-content,
+:host(.ds-badge).ds-badge--translate-content,
+.ds-badge.ds-badge--translate-content {
+  transform: translate(-50%, -50%);
+}
+:host(ds-badge).ds-badge--truncate .ds-badge__inline-label,
+:host(.ds-badge).ds-badge--truncate .ds-badge__inline-label,
+.ds-badge.ds-badge--truncate .ds-badge__inline-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+:host(ds-badge) .ds-badge__tooltip-wrapper,
+:host(.ds-badge) .ds-badge__tooltip-wrapper,
+.ds-badge .ds-badge__tooltip-wrapper {
+  pointer-events: auto;
+}
+:host(ds-badge) .ds-badge__tooltip-wrapper--empty,
+:host(.ds-badge) .ds-badge__tooltip-wrapper--empty,
+.ds-badge .ds-badge__tooltip-wrapper--empty {
+  width: 100%;
+  height: 100%;
+}
+:host(ds-badge) .ds-badge__content-wrapper,
+:host(.ds-badge) .ds-badge__content-wrapper,
+.ds-badge .ds-badge__content-wrapper {
+  display: flex;
+  min-width: var(--ds-shape-size-xmin-badgecounter);
+  height: var(--ds-shape-size-y-badgecounter);
+  border-radius: var(--ds-shape-radius-badgecounter);
+  padding: 0 var(--ds-space-inline-end-badgecounter) 0 var(--ds-space-inline-start-badgecounter);
+  justify-content: center;
+  align-items: center;
+  font-weight: var(--ds-typography-weight-strong);
+  background-color: var(--ds-badge-background-color);
+}
+:host(ds-badge) .ds-badge__content-wrapper--no-counter,
+:host(.ds-badge) .ds-badge__content-wrapper--no-counter,
+.ds-badge .ds-badge__content-wrapper--no-counter {
+  min-width: var(--ds-shape-size-x-badgedot);
+  width: var(--ds-shape-size-x-badgedot);
+  height: var(--ds-shape-size-y-badgedot);
+  border-radius: var(--ds-shape-radius-badgedot);
+  margin-top: var(--ds-space-stack-start-badgedot);
+}
+:host(ds-badge) .ds-badge__inline-label,
+:host(.ds-badge) .ds-badge__inline-label,
+.ds-badge .ds-badge__inline-label {
+  margin-left: var(--ds-space-inline-couple-badge);
+  color: var(--ds-color-typography-base);
+}

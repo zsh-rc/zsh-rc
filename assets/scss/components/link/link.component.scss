@@ -1,0 +1,122 @@
+@use '../../density-styles-sass' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument.
+ * We add this argument to avoid conflicts when library is used independently with Shadow DOM.
+ */
+:host(#{$prefix}link),
+:host(.#{$prefix}link),
+  /* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}link {
+  &.#{$prefix}link-wrapper {
+    outline: none;
+
+    &:focus-visible {
+      outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+      outline-offset: var(--#{$prefix}size-outline-offset);
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  a {
+    &.#{$prefix}link {
+      &--primary {
+        &:not(:visited) {
+          color: var(--#{$prefix}color-typography-action);
+          &:hover {
+            color: var(--#{$prefix}color-typography-action-hover);
+          }
+          &:active {
+            color: var(--#{$prefix}color-typography-action-active);
+          }
+        }
+        &:visited {
+          color: var(--#{$prefix}color-typography-action-visited);
+          &:hover {
+            color: var(--#{$prefix}color-typography-action-visited-hover);
+          }
+          &:active {
+            color: var(--#{$prefix}color-typography-action-visited-active);
+          }
+        }
+      }
+
+      &--muted {
+        color: var(--#{$prefix}color-typography-neutral);
+        &:not(:visited) {
+          &:hover {
+            color: var(--#{$prefix}color-typography-action-hover);
+          }
+          &:active {
+            color: var(--#{$prefix}color-typography-action-active);
+          }
+        }
+        &:visited {
+          &:hover {
+            color: var(--#{$prefix}color-typography-action-visited-hover);
+          }
+          &:active {
+            color: var(--#{$prefix}color-typography-action-visited-active);
+          }
+        }
+      }
+
+      &--disabled {
+        pointer-events: none;
+        color: var(--#{$prefix}color-typography-disabled);
+        text-decoration: none;
+      }
+    }
+  }
+
+  .#{$prefix}link {
+    &-label-wrapper {
+      display: inline;
+      white-space: normal;
+    }
+
+    &-text-wrapper {
+      display: inline;
+      white-space: nowrap;
+    }
+
+    &-icon-wrapper {
+      vertical-align: text-bottom;
+      &--left {
+        margin-right: var(--#{$prefix}space-1x);
+      }
+      &--right {
+        margin-left: var(--#{$prefix}space-1x);
+      }
+    }
+  }
+
+  .#{$prefix}link {
+    &--primary:visited {
+      .#{$prefix}link-icon-wrapper {
+        ::ng-deep > svg > svg > svg > path {
+          fill: var(--#{$prefix}color-typography-action-visited);
+        }
+      }
+    }
+    &--primary:visited,
+    &--muted:visited {
+      &:hover {
+        .#{$prefix}link-icon-wrapper {
+          ::ng-deep > svg > svg > svg > path {
+            fill: var(--#{$prefix}color-typography-action-visited-hover);
+          }
+        }
+      }
+      &:active {
+        .#{$prefix}link-icon-wrapper {
+          ::ng-deep > svg > svg > svg > path {
+            fill: var(--#{$prefix}color-typography-action-visited-active);
+          }
+        }
+      }
+    }
+  }
+}

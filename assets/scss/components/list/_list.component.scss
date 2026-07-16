@@ -1,0 +1,18 @@
+@use '../../density-styles-sass' as *;
+@use '../../utilities/sass_utilities' as *;
+
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(#{$prefix}list),
+
+/* CSS selector for independent library use without Shadow DOM */
+.#{$prefix}list {
+  display: block;
+
+  &.#{$prefix}list {
+    & ul {
+      //resets ul style
+      list-style: none;
+      padding-left: 0;
+    }
+  }
+}

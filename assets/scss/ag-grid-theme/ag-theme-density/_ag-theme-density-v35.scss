@@ -1,0 +1,12 @@
+@use 'sass:map';
+@use 'ag-theme-density-mixins';
+
+// Base for the theming API
+@mixin render-extras-v35($prefix: ds-) {
+  .density-ag-theme {
+    div.ag-overlay-loading-center {
+      @include ag-theme-density-mixins.density-ag-grid-loading($prefix);
+      align-items: center;
+    }
+  }
+}

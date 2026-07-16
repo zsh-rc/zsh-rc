@@ -1,0 +1,64 @@
+@use '../../mixins/placeholder' as *;
+@use '../../density-styles-sass' as *;
+
+/* this is always the same - START */
+:host(#{$prefix}drawer),
+.#{$prefix}drawer {
+  &.#{$prefix}drawer
+    ::ng-deep
+    > .#{$prefix}box
+    > .#{$prefix}box__wrapper
+    > .#{$prefix}box__header-wrapper
+    > #{$prefix}box-header
+    > .#{$prefix}box-header__item
+    > .#{$prefix}box-header__header-wrapper--with-actions
+    > .#{$prefix}box-header__actions {
+    /* this is always the same - END */
+
+    /* this should be specific to the component - START */
+    .#{$prefix}form-field__wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding-left: var(--#{$prefix}space-inline-box-header-bsheet);
+      padding-right: var(--#{$prefix}space-inline-box-header-bsheet);
+      margin-bottom: var(--#{$prefix}space-2x);
+
+      & .#{$prefix}input.#{$prefix}input-wrapper {
+        &.#{$prefix}input-wrapper--invalid {
+          background-color: var(--#{$prefix}color-surface-input-error);
+          border-color: var(--#{$prefix}color-border-input-error);
+          color: var(--#{$prefix}color-text-input-error);
+
+          input {
+            color: var(--#{$prefix}color-text-input-error);
+          }
+
+          &.focused {
+            background-color: var(--#{$prefix}color-surface-input-error);
+            border-color: var(--#{$prefix}color-border-input-error);
+            outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+            outline-offset: var(--#{$prefix}size-outline-offset);
+          }
+        }
+      }
+
+      & ::ng-deep .#{$prefix}input.focused {
+        &.#{$prefix}input-wrapper {
+          border: 1px solid var(--#{$prefix}color-border-input-focus);
+          outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+          outline-offset: var(--#{$prefix}size-outline-offset);
+
+          &:not(.#{$prefix}input-wrapper--non-typeable) {
+            background-color: var(--#{$prefix}color-surface-input);
+          }
+        }
+      }
+    }
+    /* this should be specific to the component - END */
+  }
+
+  &.#{$prefix}drawer ::ng-deep > .#{$prefix}box {
+    width: 100%;
+  }
+}

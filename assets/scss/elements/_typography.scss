@@ -1,0 +1,89 @@
+@use '../density-styles-sass' as *;
+
+//
+// Headings
+//
+
+h1,
+.h1 {
+  font-family: var(--#{$prefix}typography-family-brand);
+  font-size: var(--#{$prefix}typography-size-title-lg);
+  font-weight: var(--#{$prefix}typography-weight-title-lg);
+  line-height: var(--#{$prefix}typography-line-height-title-lg);
+  text-transform: var(--#{$prefix}typography-transform-uppercase);
+}
+
+h2,
+.h2 {
+  font-family: var(--#{$prefix}typography-family-base);
+  font-size: var(--#{$prefix}typography-size-title-md);
+  font-weight: var(--#{$prefix}typography-weight-title-md);
+  line-height: var(--#{$prefix}typography-line-height-title-md);
+}
+
+h3,
+.h3 {
+  font-family: var(--#{$prefix}typography-family-base);
+  font-size: var(--#{$prefix}typography-size-title-sm);
+  font-weight: var(--#{$prefix}typography-weight-title-sm);
+  line-height: var(--#{$prefix}typography-line-height-title-sm);
+  text-transform: var(--#{$prefix}typography-transform-uppercase);
+}
+
+h4,
+.h4 {
+  font-family: var(--#{$prefix}typography-family-base);
+  font-size: var(--#{$prefix}typography-size-title-xs);
+  font-weight: var(--#{$prefix}typography-weight-title-xs);
+  line-height: var(--#{$prefix}typography-line-height-title-xs);
+  text-transform: var(--#{$prefix}typography-transform-uppercase);
+}
+
+h5,
+.h5 {
+  font-family: var(--#{$prefix}typography-family-base);
+  font-size: var(--#{$prefix}typography-size-title-xs);
+  font-weight: var(--#{$prefix}typography-weight-title-xs);
+  line-height: var(--#{$prefix}typography-line-height-title-xs);
+  text-transform: var(--#{$prefix}typography-transform-uppercase);
+}
+
+h6,
+.h6 {
+  font-family: var(--#{$prefix}typography-family-base);
+  font-size: var(--#{$prefix}typography-size-title-xs);
+  font-weight: var(--#{$prefix}typography-weight-title-xs);
+  line-height: var(--#{$prefix}typography-line-height-title-xs);
+  text-transform: var(--#{$prefix}typography-transform-uppercase);
+}
+
+// //
+// // Emphasis
+// //
+// .small {
+//   @extend small;
+// }
+
+// .mark {
+//   @extend mark;
+// }
+
+// //
+// // Lists
+// //
+
+// .list-unstyled {
+//   @include list-unstyled();
+// }
+
+// // Inline turns list items into inline-block
+// .list-inline {
+//   @include list-unstyled();
+// }
+// .list-inline-item {
+//   display: inline-block;
+
+//   &:not(:last-child) {
+//     margin-right: $list-inline-padding;
+//   }
+// }

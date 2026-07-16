@@ -1,0 +1,90 @@
+@use '../../density-styles-sass' as *;
+
+:host(#{$prefix}timepicker),
+.#{$prefix}timepicker {
+  flex: 1 1 auto;
+
+  &.#{$prefix}timepicker--non-typeable {
+    ::ng-deep .#{$prefix}input.#{$prefix}input-wrapper {
+      cursor: pointer;
+      background-color: var(--#{$prefix}color-surface-input-alt);
+      transition: all 150ms ease-in-out;
+
+      &:hover {
+        background-color: var(--#{$prefix}color-surface-input-hover);
+        border: 1px solid var(--#{$prefix}color-border-input-hover);
+        outline: 0;
+      }
+
+      & input {
+        cursor: pointer;
+      }
+    }
+
+    &--supressed-hover {
+      ::ng-deep .#{$prefix}input.#{$prefix}input-wrapper {
+        &:hover {
+          background-color: var(--#{$prefix}color-surface-input-alt);
+          border: 1px solid var(--#{$prefix}color-border-input);
+          outline: 0;
+        }
+      }
+    }
+
+    &.#{$prefix}timepicker--readonly {
+      ::ng-deep .#{$prefix}input.#{$prefix}input-wrapper {
+        cursor: default;
+        & input {
+          cursor: default;
+        }
+      }
+    }
+  }
+
+  ::ng-deep .#{$prefix}input.#{$prefix}input-wrapper > .#{$prefix}input {
+    display: inline-flex;
+    align-items: center;
+    flex: 1 1 auto;
+  }
+
+  ::ng-deep .#{$prefix}input.#{$prefix}input-wrapper > .#{$prefix}input > input {
+    background: transparent;
+    border: 0;
+    height: auto;
+    box-shadow: none;
+    vertical-align: middle;
+    flex: 1 1 auto;
+    width: 100%;
+    color: var(--#{$prefix}color-text-input-value);
+
+    &:focus-visible {
+      border: none;
+      outline: none;
+    }
+  }
+
+  ::ng-deep input[disabled] {
+    cursor: not-allowed;
+  }
+
+  ::ng-deep .#{$prefix}date-range-separator {
+    display: inline-flex;
+    align-items: center;
+    color: var(--#{$prefix}color-typography-neutral);
+    padding: 0 4px;
+  }
+  ::ng-deep .#{$prefix}form-field--disabled .#{$prefix}date-range-separator {
+    color: var(--#{$prefix}color-typography-button-disabled);
+  }
+}
+
+::ng-deep .#{$prefix}input.#{$prefix}input-wrapper {
+  & > #{$prefix}timepicker,
+  .#{$prefix}timepicker {
+    height: 100%;
+    & > #{$prefix}form-field,
+    .#{$prefix}form-field {
+      height: 100%;
+    }
+  }
+}

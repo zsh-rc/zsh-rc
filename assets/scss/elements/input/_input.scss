@@ -1,0 +1,648 @@
+@forward '../button/button';
+@use '../../density-styles-sass' as *;
+@use '../../mixins/placeholder' as *;
+
+@mixin input-core-styles {
+  align-items: center;
+  background-color: var(--#{$prefix}color-surface-input);
+  border: 1px solid var(--#{$prefix}color-border-input);
+  border-radius: var(--#{$prefix}shape-radius-input);
+  color: var(--#{$prefix}color-text-input-value);
+  display: flex;
+  font-family: var(--#{$prefix}font-family-input);
+  font-size: var(--#{$prefix}font-size-input-label);
+  font-weight: var(--#{$prefix}font-weight-input);
+  height: var(--#{$prefix}shape-size-y-input);
+  line-height: var(--#{$prefix}font-line-height-input);
+  min-width: var(--#{$prefix}shape-size-xmin-input);
+  padding-bottom: 0;
+  padding-left: calc(var(--#{$prefix}space-inline-start-input) - 1px);
+  padding-right: calc(var(--#{$prefix}space-inline-end-input) - 1px);
+  padding-top: 0;
+  width: 100%;
+}
+
+@mixin input-state-styles {
+  &:hover:not(.#{$prefix}input-wrapper--supress-hover) {
+    background-color: var(--#{$prefix}color-surface-input-hover);
+    border: 1px solid var(--#{$prefix}color-border-input-hover);
+  }
+
+  &:focus {
+    border: 1px solid var(--#{$prefix}color-border-input-focus);
+    outline: var(--#{$prefix}size-outline-default) solid var(--#{$prefix}color-outline-action);
+    outline-offset: var(--#{$prefix}size-outline-offset);
+
+    &:not(.#{$prefix}input-wrapper--non-typeable) {
+      background-color: var(--#{$prefix}color-surface-input);
+    }
+  }
+}
+
+@mixin input-disabled-styles {
+  &:disabled:disabled,
+  &[disabled][disabled] {
+    background-color: var(--#{$prefix}color-surface-input-disabled);
+    border-color: var(--#{$prefix}color-border-input-disabled);
+    color: var(--#{$prefix}color-text-input-disabled);
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: var(--#{$prefix}color-surface-input-disabled);
+      border-color: var(--#{$prefix}color-border-input-disabled);
+    }
+  }
+}
+
+@mixin input-readonly-styles {
+  &[readonly][readonly] {
+    border-color: var(--#{$prefix}color-border-input-readonly);
+    color: var(--#{$prefix}color-text-input-readonly);
+    background-color: var(--#{$prefix}color-surface-input-readonly);
+  }
+}
+
+@mixin input-invalid-styles {
+  &--invalid {
+    background-color: var(--#{$prefix}color-surface-input-error);
+    border-color: var(--#{$prefix}color-border-input-error);
+    color: var(--#{$prefix}color-text-input-error);
+
+    &:hover {
+      background-color: var(--#{$prefix}color-surface-input-error);
+      border-color: var(--#{$prefix}color-border-input-error);
+    }
+
+    &:focus {
+      background-color: var(--#{$prefix}color-surface-input-error);
+    }
+
+    &:disabled {
+      background-color: var(--#{$prefix}color-surface-input-disabled);
+      border-color: var(--#{$prefix}color-border-input-disabled);
+    }
+  }
+}
+
+@mixin input-base-styles {
+  @include input-core-styles;
+  @include input-state-styles;
+  @include input-disabled-styles;
+  @include input-readonly-styles;
+  @include input-invalid-styles;
+}
+
+@mixin input-placeholder-styles {
+  @include placeholder {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    color: var(--#{$prefix}color-text-input-placeholder);
+    font-size: var(--#{$prefix}font-size-input-placeholder);
+    font-style: var(--#{$prefix}font-style-input-placeholder);
+  }
+}
+
+.#{$prefix}input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* Change Autocomplete styles in Chrome*/
+  &:-webkit-autofill,
+  &:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--#{$prefix}autofill-text-color);
+    caret-color: var(--#{$prefix}autofill-text-color);
+    transition:
+      background-color 600000s ease-in-out 0s,
+      color 600000s ease-in-out 0s;
+  }
+
+  &.#{$prefix}inputnumber {
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      margin: 0;
+    }
+  }
+}
+
+input:not([type]),
+input[type='file'],
+input[type='text'],
+input[type='date'],
+input[type='datetime-local'],
+input[type='month'],
+input[type='week'],
+input[type='time'],
+input[type='search'],
+input[type='url'],
+input[type='tel'],
+input[type='number'],
+input[type='password'],
+input[type='email'],
+textarea,
+.#{$prefix}input.#{$prefix}input-wrapper,
+.#{$prefix}multi-value-input-wrapper,
+.#{$prefix}inputnumber.#{$prefix}input-wrapper {
+  @include input-placeholder-styles;
+
+  &.#{$prefix}input {
+    @include input-base-styles;
+
+    &--lg {
+      font-size: var(--#{$prefix}font-size-input-label-large);
+      line-height: var(--#{$prefix}font-line-height-input-large);
+      height: var(--#{$prefix}shape-size-y-input-large);
+
+      @include placeholder {
+        font-size: var(--#{$prefix}font-size-input-placeholder-large);
+      }
+
+      &.#{$prefix}input-wrapper {
+        --#{$prefix}shape-size-y-input: var(--#{$prefix}shape-size-y-input-large);
+        --#{$prefix}font-size-input-label: var(--#{$prefix}font-size-input-label-large);
+        --#{$prefix}font-size-input-placeholder: var(--#{$prefix}font-size-input-placeholder-large);
+      }
+    }
+
+    &.#{$prefix}autosuggest {
+      &:not(:has(~ .#{$prefix}input-wrapper__affixes__trailing)) {
+        width: 100% !important;
+      }
+    }
+
+    &.#{$prefix}input-wrapper {
+      cursor: text;
+
+      &--non-typeable {
+        background-color: var(--#{$prefix}color-surface-input-alt);
+      }
+
+      &--adaptative-width {
+        width: fit-content;
+      }
+
+      .#{$prefix}form-field__wrapper {
+        height: 100%;
+      }
+
+      & > .#{$prefix}input,
+      .#{$prefix}input-wrapper.#{$prefix}input {
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0;
+        outline: 0;
+      }
+    }
+
+    &.#{$prefix}inputnumber {
+      min-width: 0;
+      text-align: center;
+    }
+  }
+}
+:not(.#{$prefix}input-wrapper) > input[type='number'] {
+  &.#{$prefix}inputnumber {
+    min-width: 0;
+    padding: var(--#{$prefix}space-0x) var(--#{$prefix}space-1x) var(--#{$prefix}space-0x) var(--#{$prefix}space-2x);
+    text-align: left;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: textfield;
+      -moz-appearance: textfield;
+      appearance: textfield;
+      height: 24px;
+    }
+  }
+
+  &.#{$prefix}inputnumber.#{$prefix}input--invalid:hover {
+    background-color: var(--#{$prefix}color-surface-input-error);
+    border-color: var(--#{$prefix}color-border-input-error);
+    color: var(--#{$prefix}color-text-input-error);
+  }
+}
+
+input[type='file'] {
+  &.#{$prefix}input {
+    padding: var(--#{$prefix}space-0x) var(--#{$prefix}space-1x);
+    display: inline-block;
+    align-content: center;
+    cursor: pointer;
+
+    &:not(.#{$prefix}input--invalid):not(:disabled):not(:hover) {
+      background-color: var(--#{$prefix}-color-surface-input-alt);
+    }
+
+    &:hover,
+    &:focus-visible {
+      &::file-selector-button {
+        background-color: var(--#{$prefix}color-surface-button-ghost);
+        border-color: var(--#{$prefix}color-border-button-ghost);
+        color: var(--#{$prefix}color-typography-button-ghost);
+        padding: 0 var(--#{$prefix}space-inline-end-button-ghost) 0 var(--#{$prefix}space-inline-start-button-ghost);
+
+        margin-right: var(--#{$prefix}space-3x);
+        vertical-align: unset;
+      }
+    }
+
+    &:focus:not(.#{$prefix}input-wrapper--non-typeable):not(.#{$prefix}input--invalid) {
+      background-color: var(--#{$prefix}color-surface-input-alt);
+    }
+
+    &:focus:not(.#{$prefix}input-wrapper--non-typeable):is(.#{$prefix}input--invalid) {
+      background-color: var(--#{$prefix}color-surface-input-error);
+    }
+
+    &--md {
+      font-family: var(--#{$prefix}font-family-input);
+      font-size: var(--#{$prefix}font-size-input-label);
+      font-weight: var(--#{$prefix}font-weight-input);
+      line-height: var(--#{$prefix}font-line-height-input);
+    }
+
+    &::file-selector-button {
+      @extend .#{$prefix}button--sm;
+      height: var(--#{$prefix}shape-size-ymin-button-sm) !important;
+      font-weight: var(--#{$prefix}typography-weight-button);
+      cursor: pointer;
+
+      background-color: var(--#{$prefix}color-surface-button-ghost);
+      border-color: var(--#{$prefix}color-border-button-ghost);
+      color: var(--#{$prefix}color-typography-button-ghost);
+      padding: 0 var(--#{$prefix}space-inline-end-button-ghost) 0 var(--#{$prefix}space-inline-start-button-ghost);
+
+      margin-right: var(--#{$prefix}space-3x);
+      vertical-align: unset;
+
+      &:active {
+        background-color: var(--#{$prefix}color-surface-button-ghost-active);
+        border-color: var(--#{$prefix}color-border-button-ghost-active);
+        color: var(--#{$prefix}color-typography-button-ghost);
+        z-index: var(--#{$prefix}z-index-content-base);
+      }
+
+      &:hover {
+        background-color: var(--#{$prefix}color-surface-button-ghost-hover);
+        border-color: var(--#{$prefix}color-border-button-ghost-hover);
+        color: var(--#{$prefix}color-typography-button-ghost);
+        text-decoration: none;
+        z-index: var(--#{$prefix}z-index-content-base);
+      }
+
+      &:focus-visible {
+        background-color: var(--#{$prefix}color-surface-button-ghost);
+        border-color: var(--#{$prefix}color-border-button-ghost);
+        color: var(--#{$prefix}color-typography-button-ghost);
+        box-shadow: 0 0 0 2px var(--#{$prefix}color-outline-button);
+        z-index: var(--#{$prefix}z-index-content-base);
+      }
+    }
+
+    &--lg {
+      &::file-selector-button {
+        @extend .#{$prefix}button--md;
+        height: var(--#{$prefix}shape-size-ymin-button) !important;
+      }
+
+      font-family: var(--#{$prefix}font-family-input);
+      font-size: var(--#{$prefix}font-size-input-label-large);
+      font-weight: var(--#{$prefix}font-weight-input);
+      line-height: var(--#{$prefix}font-line-height-input-large);
+    }
+
+    &:hover.#{$prefix}input--invalid:not(:disabled) {
+      background-color: var(--#{$prefix}color-surface-input-error);
+      border-color: var(--#{$prefix}color-border-input-error);
+      color: var(--#{$prefix}color-text-input-error);
+    }
+
+    &:disabled::file-selector-button {
+      cursor: not-allowed;
+      background-color: var(--#{$prefix}color-surface-button-ghost-disabled);
+      border-color: var(--#{$prefix}color-border-button-ghost-disabled);
+      color: var(--#{$prefix}color-typography-button-disabled);
+    }
+  }
+}
+
+input[type='number'],
+.#{$prefix}input-wrapper {
+  &:has(.#{$prefix}inputnumber__step-down-button--lg) {
+    --#{$prefix}shape-size-y-input: var(--#{$prefix}shape-size-y-input-large);
+    --#{$prefix}font-size-input-label: var(--#{$prefix}font-size-input-label-large);
+    --#{$prefix}font-size-input-placeholder: var(--#{$prefix}font-size-input-placeholder-large);
+  }
+
+  .#{$prefix}inputnumber__step-down-button,
+  .#{$prefix}inputnumber__step-up-button {
+    @extend .#{$prefix}button--sm;
+
+    padding: 0;
+    --icon-size: var(--#{$prefix}icon-size-small);
+    height: var(--#{$prefix}shape-size-ymin-button-sm) !important;
+
+    &--lg {
+      @extend .#{$prefix}button--md;
+
+      --icon-size: var(--#{$prefix}icon-size-medium);
+      height: var(--#{$prefix}shape-size-ymin-button) !important;
+    }
+
+    &--icon {
+      width: var(--icon-size);
+      height: var(--icon-size);
+    }
+  }
+
+  .#{$prefix}inputnumber__step-down-button {
+    margin-left: calc(-1 * var(--#{$prefix}space-1x));
+
+    & > .#{$prefix}inputnumber__step-down-button--icon {
+      background-image: var(--#{$prefix}icon-minus);
+    }
+  }
+
+  .#{$prefix}inputnumber__step-up-button {
+    margin-left: var(--#{$prefix}space-inline-couple-input);
+
+    & > .#{$prefix}inputnumber__step-up-button--icon {
+      background-image: var(--#{$prefix}icon-plus);
+    }
+  }
+}
+
+input[type='datetime-local'],
+input[type='month'],
+input[type='week'],
+input[type='date'] {
+  &.#{$prefix}input {
+    display: revert;
+
+    &::-webkit-calendar-picker-indicator {
+      content: '';
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.3333 2.66671H13.9999C14.3681 2.66671 14.6666 2.96518 14.6666 3.33337V14C14.6666 14.3682 14.3681 14.6667 13.9999 14.6667H1.99992C1.63173 14.6667 1.33325 14.3682 1.33325 14V3.33337C1.33325 2.96518 1.63173 2.66671 1.99992 2.66671H4.66659V1.33337H5.99992V2.66671H9.99992V1.33337H11.3333V2.66671ZM13.3333 8.00004H2.66659V13.3334H13.3333V8.00004ZM9.99992 4.00004H5.99992V5.33337H4.66659V4.00004H2.66659V6.66671H13.3333V4.00004H11.3333V5.33337H9.99992V4.00004ZM3.99992 9.33337H5.33325V10.6667H3.99992V9.33337ZM7.33325 9.33337H8.66659V10.6667H7.33325V9.33337ZM10.6666 9.33337H11.9999V10.6667H10.6666V9.33337Z' fill='%23037493'/%3E%3C/svg%3E");
+      background-repeat: no-repeat no-repeat;
+      background-position: center center;
+      background-size: cover;
+      width: 16px;
+      height: 16px;
+    }
+
+    &--lg {
+      &::-webkit-calendar-picker-indicator {
+        content: '';
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.3333 2.66671H13.9999C14.3681 2.66671 14.6666 2.96518 14.6666 3.33337V14C14.6666 14.3682 14.3681 14.6667 13.9999 14.6667H1.99992C1.63173 14.6667 1.33325 14.3682 1.33325 14V3.33337C1.33325 2.96518 1.63173 2.66671 1.99992 2.66671H4.66659V1.33337H5.99992V2.66671H9.99992V1.33337H11.3333V2.66671ZM13.3333 8.00004H2.66659V13.3334H13.3333V8.00004ZM9.99992 4.00004H5.99992V5.33337H4.66659V4.00004H2.66659V6.66671H13.3333V4.00004H11.3333V5.33337H9.99992V4.00004ZM3.99992 9.33337H5.33325V10.6667H3.99992V9.33337ZM7.33325 9.33337H8.66659V10.6667H7.33325V9.33337ZM10.6666 9.33337H11.9999V10.6667H10.6666V9.33337Z' fill='%23037493'/%3E%3C/svg%3E");
+        background-repeat: no-repeat no-repeat;
+        background-position: center center;
+        background-size: cover;
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+input[type='time'] {
+  &.#{$prefix}input {
+    display: revert;
+
+    &::-webkit-calendar-picker-indicator {
+      content: '';
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none' %3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.99992 14.6667C4.31792 14.6667 1.33325 11.682 1.33325 8.00004C1.33325 4.31804 4.31792 1.33337 7.99992 1.33337C11.6819 1.33337 14.6666 4.31804 14.6666 8.00004C14.6666 11.682 11.6819 14.6667 7.99992 14.6667ZM7.99992 13.3334C10.9454 13.3334 13.3333 10.9456 13.3333 8.00004C13.3333 5.05452 10.9454 2.66671 7.99992 2.66671C5.0544 2.66671 2.66659 5.05452 2.66659 8.00004C2.66659 10.9456 5.0544 13.3334 7.99992 13.3334ZM8.66659 8.00004H11.3333V9.33337H7.33325V4.66671H8.66659V8.00004Z' fill='%23037493'/%3E%3C/svg%3E");
+      background-repeat: no-repeat no-repeat;
+      background-position: center center;
+      background-size: cover;
+      width: 16px;
+      height: 16px;
+    }
+
+    &--lg {
+      &::-webkit-calendar-picker-indicator {
+        content: '';
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.99992 14.6667C4.31792 14.6667 1.33325 11.682 1.33325 8.00004C1.33325 4.31804 4.31792 1.33337 7.99992 1.33337C11.6819 1.33337 14.6666 4.31804 14.6666 8.00004C14.6666 11.682 11.6819 14.6667 7.99992 14.6667ZM7.99992 13.3334C10.9454 13.3334 13.3333 10.9456 13.3333 8.00004C13.3333 5.05452 10.9454 2.66671 7.99992 2.66671C5.0544 2.66671 2.66659 5.05452 2.66659 8.00004C2.66659 10.9456 5.0544 13.3334 7.99992 13.3334ZM8.66659 8.00004H11.3333V9.33337H7.33325V4.66671H8.66659V8.00004Z' fill='%23037493'/%3E%3C/svg%3E");
+        background-repeat: no-repeat no-repeat;
+        background-position: center center;
+        background-size: cover;
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+input[type='search'] {
+  &.#{$prefix}input {
+    display: revert;
+
+    &::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none' %3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.3033 9.125L14.4283 5L15.6067 6.17833L11.4817 10.3033L15.6067 14.4283L14.4283 15.6067L10.3033 11.4817L6.17833 15.6067L5 14.4283L9.125 10.3033L5 6.17833L6.17833 5L10.3033 9.125Z' fill='%2369707A'/%3E%3C/svg%3E");
+      background-repeat: no-repeat no-repeat;
+      background-position: center center;
+      background-size: cover;
+      width: 16px;
+      height: 16px;
+    }
+
+    &--lg {
+      &::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none' %3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.3033 9.125L14.4283 5L15.6067 6.17833L11.4817 10.3033L15.6067 14.4283L14.4283 15.6067L10.3033 11.4817L6.17833 15.6067L5 14.4283L9.125 10.3033L5 6.17833L6.17833 5L10.3033 9.125Z' fill='%2369707A'/%3E%3C/svg%3E");
+        background-repeat: no-repeat no-repeat;
+        background-position: center center;
+        background-size: cover;
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+:root:has(.#{$prefix}dark) {
+  input[type='datetime-local'],
+  input[type='month'],
+  input[type='week'],
+  input[type='date'] {
+    &.#{$prefix}input {
+      &::-webkit-calendar-picker-indicator {
+        content: '';
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.3333 2.66671H13.9999C14.3681 2.66671 14.6666 2.96518 14.6666 3.33337V14C14.6666 14.3682 14.3681 14.6667 13.9999 14.6667H1.99992C1.63173 14.6667 1.33325 14.3682 1.33325 14V3.33337C1.33325 2.96518 1.63173 2.66671 1.99992 2.66671H4.66659V1.33337H5.99992V2.66671H9.99992V1.33337H11.3333V2.66671ZM13.3333 8.00004H2.66659V13.3334H13.3333V8.00004ZM9.99992 4.00004H5.99992V5.33337H4.66659V4.00004H2.66659V6.66671H13.3333V4.00004H11.3333V5.33337H9.99992V4.00004ZM3.99992 9.33337H5.33325V10.6667H3.99992V9.33337ZM7.33325 9.33337H8.66659V10.6667H7.33325V9.33337ZM10.6666 9.33337H11.9999V10.6667H10.6666V9.33337Z' fill='%233ccaff'/%3E%3C/svg%3E");
+        background-repeat: no-repeat no-repeat;
+        background-position: center center;
+        background-size: cover;
+        width: 16px;
+        height: 16px;
+      }
+
+      &--lg {
+        &::-webkit-calendar-picker-indicator {
+          content: '';
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.3333 2.66671H13.9999C14.3681 2.66671 14.6666 2.96518 14.6666 3.33337V14C14.6666 14.3682 14.3681 14.6667 13.9999 14.6667H1.99992C1.63173 14.6667 1.33325 14.3682 1.33325 14V3.33337C1.33325 2.96518 1.63173 2.66671 1.99992 2.66671H4.66659V1.33337H5.99992V2.66671H9.99992V1.33337H11.3333V2.66671ZM13.3333 8.00004H2.66659V13.3334H13.3333V8.00004ZM9.99992 4.00004H5.99992V5.33337H4.66659V4.00004H2.66659V6.66671H13.3333V4.00004H11.3333V5.33337H9.99992V4.00004ZM3.99992 9.33337H5.33325V10.6667H3.99992V9.33337ZM7.33325 9.33337H8.66659V10.6667H7.33325V9.33337ZM10.6666 9.33337H11.9999V10.6667H10.6666V9.33337Z' fill='%233ccaff'/%3E%3C/svg%3E");
+          background-repeat: no-repeat no-repeat;
+          background-position: center center;
+          background-size: cover;
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+
+  input[type='time'] {
+    &.#{$prefix}input {
+      &::-webkit-calendar-picker-indicator {
+        content: '';
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none' %3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.99992 14.6667C4.31792 14.6667 1.33325 11.682 1.33325 8.00004C1.33325 4.31804 4.31792 1.33337 7.99992 1.33337C11.6819 1.33337 14.6666 4.31804 14.6666 8.00004C14.6666 11.682 11.6819 14.6667 7.99992 14.6667ZM7.99992 13.3334C10.9454 13.3334 13.3333 10.9456 13.3333 8.00004C13.3333 5.05452 10.9454 2.66671 7.99992 2.66671C5.0544 2.66671 2.66659 5.05452 2.66659 8.00004C2.66659 10.9456 5.0544 13.3334 7.99992 13.3334ZM8.66659 8.00004H11.3333V9.33337H7.33325V4.66671H8.66659V8.00004Z' fill='%233ccaff'/%3E%3C/svg%3E");
+        background-repeat: no-repeat no-repeat;
+        background-position: center center;
+        background-size: cover;
+        width: 16px;
+        height: 16px;
+      }
+
+      &--lg {
+        &::-webkit-calendar-picker-indicator {
+          content: '';
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none' %3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.99992 14.6667C4.31792 14.6667 1.33325 11.682 1.33325 8.00004C1.33325 4.31804 4.31792 1.33337 7.99992 1.33337C11.6819 1.33337 14.6666 4.31804 14.6666 8.00004C14.6666 11.682 11.6819 14.6667 7.99992 14.6667ZM7.99992 13.3334C10.9454 13.3334 13.3333 10.9456 13.3333 8.00004C13.3333 5.05452 10.9454 2.66671 7.99992 2.66671C5.0544 2.66671 2.66659 5.05452 2.66659 8.00004C2.66659 10.9456 5.0544 13.3334 7.99992 13.3334ZM8.66659 8.00004H11.3333V9.33337H7.33325V4.66671H8.66659V8.00004Z' fill='%233ccaff'/%3E%3C/svg%3E");
+          background-repeat: no-repeat no-repeat;
+          background-position: center center;
+          background-size: cover;
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+
+  input[type='search'] {
+    &.#{$prefix}input {
+      &::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none' %3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.3033 9.125L14.4283 5L15.6067 6.17833L11.4817 10.3033L15.6067 14.4283L14.4283 15.6067L10.3033 11.4817L6.17833 15.6067L5 14.4283L9.125 10.3033L5 6.17833L6.17833 5L10.3033 9.125Z' fill='%233ccaff'/%3E%3C/svg%3E");
+        background-repeat: no-repeat no-repeat;
+        background-position: center center;
+        background-size: cover;
+        width: 16px;
+        height: 16px;
+      }
+
+      &--lg {
+        &::-webkit-search-cancel-button {
+          -webkit-appearance: none;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none' %3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.3033 9.125L14.4283 5L15.6067 6.17833L11.4817 10.3033L15.6067 14.4283L14.4283 15.6067L10.3033 11.4817L6.17833 15.6067L5 14.4283L9.125 10.3033L5 6.17833L6.17833 5L10.3033 9.125Z' fill='%233ccaff'/%3E%3C/svg%3E");
+          background-repeat: no-repeat no-repeat;
+          background-position: center center;
+          background-size: cover;
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}
+
+textarea.#{$prefix}input {
+  min-height: var(--#{$prefix}shape-size-y-input);
+  height: auto;
+  padding: calc(var(--#{$prefix}space-inset-textarea) - 1px);
+  vertical-align: bottom;
+
+  &.#{$prefix}textarea-autosize-measuring {
+    height: auto !important;
+    overflow: hidden;
+  }
+}
+
+:not(.#{$prefix}input-wrapper--has-char-counter):not(.#{$prefix}input-wrapper__affixes)
+  > .#{$prefix}input.#{$prefix}char-limit {
+  margin-bottom: var(--#{$prefix}space-1x);
+}
+
+.#{$prefix}input-textarea-char-counter {
+  align-items: center;
+  color: var(--#{$prefix}color-text-input-label);
+  display: flex;
+
+  // TODO tokens: replace typography tokens taken from global tokens to the forms's component tokens
+  font-size: var(--#{$prefix}typography-size-smallprint);
+  font-weight: normal;
+  justify-content: flex-end;
+  line-height: var(--#{$prefix}typography-line-height-xs);
+  text-align: right;
+
+  .error {
+    color: var(--#{$prefix}color-text-input-error);
+  }
+}
+
+.#{$prefix}form-field {
+  &:not(:is(.#{$prefix}form-field--disabled, .#{$prefix}form-field--focused, .#{$prefix}form-field--readonly)) {
+    > .#{$prefix}form-field__wrapper > div.#{$prefix}input-wrapper.#{$prefix}input-wrapper--non-typeable {
+      .#{$prefix}input-wrapper:has(.#{$prefix}button:not([disabled]):hover) {
+        background-color: var(--#{$prefix}color-surface-input-alt);
+      }
+    }
+
+    :not(
+      :is(
+        .#{$prefix}input-wrapper--non-typeable,
+        .#{$prefix}datepicker--non-typeable,
+        .#{$prefix}timepicker--non-typeable
+      )
+    ) {
+      div.#{$prefix}input-wrapper:not(.#{$prefix}input-wrapper--non-typeable):has(
+          .#{$prefix}button:not([disabled]):hover
+        ) {
+        background-color: var(--#{$prefix}color-surface-input);
+        border-color: var(--#{$prefix}color-border-input);
+      }
+      div.#{$prefix}input-wrapper--file-input:has(.#{$prefix}button:not([disabled]):hover) {
+        background-color: var(--#{$prefix}color-surface-input-alt);
+        border-color: var(--#{$prefix}color-border-input);
+      }
+    }
+  }
+
+  &:not(
+      :is(.#{$prefix}form-field--disabled, .#{$prefix}form-field--focused, .#{$prefix}form-field--readonly)
+    ).#{$prefix}form-field--invalid {
+    :not(
+      :is(
+        .#{$prefix}input-wrapper--non-typeable,
+        .#{$prefix}datepicker--non-typeable,
+        .#{$prefix}timepicker--non-typeable
+      )
+    ) {
+      div.#{$prefix}input-wrapper:has(.#{$prefix}button:not([disabled]):hover) {
+        background-color: var(--#{$prefix}color-surface-input-error);
+        border-color: var(--#{$prefix}color-border-input-error);
+      }
+    }
+  }
+
+  &.#{$prefix}form-field--focused.#{$prefix}form-field--invalid {
+    :not(
+      :is(
+        .#{$prefix}input-wrapper--non-typeable,
+        .#{$prefix}datepicker--non-typeable,
+        .#{$prefix}timepicker--non-typeable
+      )
+    ) {
+      div.#{$prefix}input-wrapper {
+        &:has(.#{$prefix}button:not([disabled]):hover) {
+          background-color: var(--#{$prefix}color-surface-input);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@use '../../density-styles-sass' as *;
+
+$badge-states: (
+  'neutral': (
+    '--#{$prefix}badge-background-color': var(--#{$prefix}color-surface-badge-neutral),
+  ),
+  'info': (
+    '--#{$prefix}badge-background-color': var(--#{$prefix}color-surface-badge-info),
+  ),
+  'positive': (
+    '--#{$prefix}badge-background-color': var(--#{$prefix}color-surface-badge-positive),
+  ),
+  'caution': (
+    '--#{$prefix}badge-background-color': var(--#{$prefix}color-surface-badge-caution),
+    'color': var(--#{$prefix}color-typography-base),
+  ),
+  'critical': (
+    '--#{$prefix}badge-background-color': var(--#{$prefix}color-surface-badge-critical),
+  ),
+  'disabled': (
+    '--#{$prefix}badge-background-color': var(--#{$prefix}color-surface-badge-disabled),
+    'color': var(--#{$prefix}color-typography-disabled),
+  ),
+);

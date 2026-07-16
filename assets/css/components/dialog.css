@@ -1,0 +1,142 @@
+/*
+ * Library SASS variables. Must have.
+ */
+/*
+ * Media breakpoints
+ */
+/* Selects a shadow root host only if it is matched by the selector argument. We add this argument to avoid conflicts when library used independently with Shadow DOM */
+:host(ds-dialog),
+.ds-dialog {
+  --ds-dialog-backdrop-transition-duration: var(--cdk-overlay-backdrop-transition-duration);
+}
+
+.ds-dialog-wrapper {
+  --ds-dialog-border-radius: 2px;
+  --ds-dialog-close-icon-size: 20px;
+  --ds-dialog-content-padding: 16px;
+  --ds-dialog-animation-timing: var(--ds-motion-duration-3);
+  --ds-dialog-animation-function: var(--ds-motion-timing-2);
+  --ds-dialog-animation-delay: var(--ds-motion-delay-0);
+}
+.ds-dialog-wrapper.ds-no-motion {
+  --ds-dialog-animation-timing: 0s;
+}
+.ds-dialog-wrapper {
+  position: relative;
+  border-radius: var(--ds-dialog-border-radius);
+  width: 100%;
+  opacity: 0;
+  transition: opacity var(--ds-dialog-animation-timing) var(--ds-dialog-animation-function) var(--ds-dialog-animation-delay), transform var(--ds-dialog-animation-timing) var(--ds-dialog-animation-function) var(--ds-dialog-animation-delay), visibility var(--ds-dialog-animation-timing) var(--ds-dialog-animation-function) var(--ds-dialog-animation-delay);
+}
+.ds-dialog-wrapper--in-modal {
+  margin: var(--ds-space-12x) var(--ds-space-6x);
+  flex: 1;
+  pointer-events: all;
+}
+.ds-dialog-wrapper--in-modal.ds-dialog-wrapper--non-scrollable {
+  height: 100%;
+}
+.ds-dialog-wrapper--size-sm {
+  max-width: 42%;
+}
+@media (max-width: 1199.98px) {
+  .ds-dialog-wrapper--size-sm {
+    max-width: 50%;
+  }
+}
+@media (max-width: 767.98px) {
+  .ds-dialog-wrapper--size-sm {
+    max-width: 58%;
+  }
+}
+@media (max-width: 575.98px) {
+  .ds-dialog-wrapper--size-sm {
+    max-width: 100%;
+  }
+}
+.ds-dialog-wrapper--size-md {
+  max-width: 58%;
+}
+@media (max-width: 1199.98px) {
+  .ds-dialog-wrapper--size-md {
+    max-width: 66%;
+  }
+}
+@media (max-width: 767.98px) {
+  .ds-dialog-wrapper--size-md {
+    max-width: 75%;
+  }
+}
+@media (max-width: 575.98px) {
+  .ds-dialog-wrapper--size-md {
+    max-width: 100%;
+  }
+}
+.ds-dialog-wrapper--size-lg {
+  max-width: 75%;
+}
+@media (max-width: 1199.98px) {
+  .ds-dialog-wrapper--size-lg {
+    max-width: 83%;
+  }
+}
+@media (max-width: 767.98px) {
+  .ds-dialog-wrapper--size-lg {
+    max-width: 92%;
+  }
+}
+@media (max-width: 575.98px) {
+  .ds-dialog-wrapper--size-lg {
+    max-width: 100%;
+  }
+}
+@media (max-width: 575.98px) and (any-hover: none) {
+  .ds-dialog-wrapper {
+    transform: translateY(100%);
+    max-width: none;
+    padding: 0 0;
+    margin-bottom: 0;
+  }
+}
+.ds-dialog-wrapper--visible {
+  opacity: 1;
+}
+@media (max-width: 575.98px) and (any-hover: none) {
+  .ds-dialog-wrapper--visible {
+    transform: translateY(0);
+  }
+}
+.ds-dialog-wrapper__header {
+  display: flex;
+  justify-content: space-between;
+}
+.ds-dialog-wrapper__header ::ng-deep ds-box-header {
+  flex: 1;
+}
+.ds-dialog-wrapper ::ng-deep ds-box-footer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.ds-dialog-wrapper__context {
+  width: 100%;
+  max-height: 100%;
+  display: inherit;
+  justify-content: inherit;
+  user-select: none;
+  overflow: visible;
+}
+.ds-dialog-wrapper__context--allow-overflow {
+  overflow: auto;
+}
+.ds-dialog-wrapper__context--align-top {
+  align-self: flex-start;
+}
+@media (max-width: 575.98px) {
+  .ds-dialog-wrapper__context {
+    align-self: initial;
+  }
+}

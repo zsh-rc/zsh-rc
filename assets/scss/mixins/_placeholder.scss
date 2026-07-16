@@ -1,0 +1,28 @@
+@use 'sass:selector';
+
+@mixin optional-at-root($sel) {
+  $root-sel: $sel;
+  @if & {
+    $root-sel: selector.append(&, $sel);
+  }
+  @at-root #{$root-sel} {
+    @content;
+  }
+}
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}

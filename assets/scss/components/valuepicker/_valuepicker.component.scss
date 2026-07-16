@@ -1,0 +1,75 @@
+@use '../../density-styles-sass' as *;
+
+:host(#{$prefix}valuepicker),
+.#{$prefix}valuepicker {
+  display: block;
+
+  .#{$prefix}valuepicker-grid {
+    display: grid;
+    height: 256px;
+
+    &--lg {
+      height: 320px;
+    }
+
+    &--ignore-height {
+      height: 100%;
+    }
+  }
+
+  .#{$prefix}valuepicker-row {
+    margin: 0px var(--#{$prefix}space-1x);
+    .#{$prefix}valuepicker-value:first-child {
+      margin-top: var(--#{$prefix}space-1x);
+    }
+  }
+
+  @for $i from 1 to 11 {
+    .#{$prefix}valuepicker-cols-#{$i} {
+      grid-template-columns: repeat(#{$i}, 1fr);
+    }
+  }
+
+  .#{$prefix}valuepicker-selected {
+    background: green;
+  }
+
+  .#{$prefix}valuepicker-col-scroll-viewport {
+    height: 100%;
+
+    // This media query prevents item from looking hovered after click
+    @media (hover: hover) {
+      overflow: hidden;
+
+      &:hover {
+        overflow-y: auto;
+      }
+    }
+  }
+
+  .#{$prefix}valuepicker-col {
+    border-right: 1px solid var(--#{$prefix}color-surface-box-content-divider);
+    margin-bottom: -8px;
+    padding-bottom: 8px;
+    &:last-of-type {
+      border-right: 1px solid transparent;
+    }
+    &:not(:first-child) {
+      #{$prefix}list-item {
+        &:before {
+          display: none;
+        }
+      }
+    }
+
+    &:not(:first-child, :last-child) {
+      #{$prefix}list-item {
+        border-radius: 0;
+      }
+    }
+  }
+
+  .#{$prefix}valuepicker-value {
+    height: 100%;
+  }
+}
