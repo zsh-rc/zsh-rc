@@ -10,7 +10,7 @@
 
 ### About Me 
 
-[![My Web Portal](https://img.shields.io/badge/My_Web_Portal_-ZSH--WEB-darkblue?logo=github&logoColor=white)](https://cc-github.bmwgroup.net/pages/zachshao/zsh-web)
+[![My Web Blog](https://img.shields.io/badge/My_Web_Blog_-ZSH--RC-darkblue?logo=github&logoColor=white)](https://zsh-rc.github.io/)
 
 **Diligent** manager with proven ability to manage and lead teams effectively. Successfully implemented process improvements, enhanced operational efficiency and team productivity. Demonstrated strong problem-solving and communication skills to drive team success.
 
@@ -18,19 +18,19 @@
 
 ### Career
 
-#### BMW Group (2017 ~ Present)
+#### German Auto OEM (2017 ~ Present)
 
 <img src="assets/images/career-at-bmw.svg" width="100%" alt="Career at BMW" >
 
-#### Before BMW
+#### Before German Auto OEM
 
-***Accenture (2005 ~ 2017):***
-Business Analysis, Technical Solution Consulting and Delivery Management for various clients (DOW Chemical, Sony, Honeywell, etc.). Led cross-functional teams to deliver high-quality solutions on time and within budget.
+***Global Consulting Firm (2005 ~ 2017):***
+Business Analysis, Technical Solution Consulting and Delivery Management for various clients (Chemical, Electronics, Manufacturing, etc.). Led cross-functional teams to deliver high-quality solutions on time and within budget.
 
-***Infosys (2004 ~ 2005):***
+***India Outsourcing Company (2004 ~ 2005):***
 JAVA web developer. Clients include CISCO, PepsiCo, and JP Morgan.
 
-***Langchao Group (2000 ~ 2004):***
+***China State Owned Group (2000 ~ 2004):***
 Project Coordinator, WAP Gateway, billing system in telecom industry, and IT support.
 
 ### Core Competencies
