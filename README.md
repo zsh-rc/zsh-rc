@@ -1,12 +1,12 @@
 <!-- Your title -->
-## 👋 Hi, there. I'm Zach Shao from BCS China. 
+## 👋 Hi, there. I'm from China.
 
 [![location](https://img.shields.io/badge/Location-Shanghai,%20China-443deb?logo=google-maps&logoColor=white)](https://english.shanghai.gov.cn/en-ThisisShanghai/index.html)
-[![GitHub](https://img.shields.io/badge/GitHub-000000?logo=github&logoColor=white)](https://cc-github.bmwgroup.net/zachshao)
+[![GitHub](https://img.shields.io/badge/GitHub-000000?logo=github&logoColor=white)](https://github.com/zsh-rc)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/zshrc/)
-[![Outlook / Teams](https://img.shields.io/badge/Outlook-Teams-0078D4?logo=microsoft&logoColor=white)](mailto:zach.shao@bmw.com)
+[![Outlook / Teams](https://img.shields.io/badge/Outlook-Teams-0078D4?logo=microsoft&logoColor=white)](mailto:shaozelian@live.com)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?logo=whatsapp&logoColor=white)](mailto:shaozelian@live.com)
-[![Wechat](https://img.shields.io/badge/Wechat%20|%20QQ-09B83E?logo=wechat&logoColor=white)](mailto:425908@qq.com)
+[![Wechat](https://img.shields.io/badge/Wechat%20|%20QQ-09B83E?logo=wechat&logoColor=white)](mailto:894160@qq.com)
 
 ### About Me 
 
