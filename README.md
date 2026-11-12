@@ -10,7 +10,7 @@
 
 ### About Me 
 
-[![My Web Blog](https://img.shields.io/badge/My_Web_Blog_-ZSH--RC-darkblue?logo=github&logoColor=white)](https://zsh-rc.github.io/)
+[![My Web Blog](https://img.shields.io/badge/My_Site_-ZSH--RC-darkblue?logo=github&logoColor=white)](http://zshrc.cn)
 
 **Diligent** manager with proven ability to manage and lead teams effectively. Successfully implemented process improvements, enhanced operational efficiency and team productivity. Demonstrated strong problem-solving and communication skills to drive team success.
 
